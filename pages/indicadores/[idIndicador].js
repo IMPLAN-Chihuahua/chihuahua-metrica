@@ -1,8 +1,6 @@
 import Head from 'next/head';
 
-export default function Indicador(props) {
-    console.log(props);
-    
+export default function Indicador(props) {    
     const data = props.data;
     const indicadores = data.map(indicador => {
         return <li>{indicador.nombre}</li>

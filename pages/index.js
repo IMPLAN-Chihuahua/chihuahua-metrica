@@ -16,7 +16,7 @@ export default function Home() {
         <h1>Observatorio Urbano</h1>
         <Link href="/indicador">
           <a>
-            Indicadores
+            
           </a>
         </Link>
       </Container>

@@ -1,5 +1,5 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
-import { deepPurple, amber } from "@mui/material/colors";
+import { amber } from "@mui/material/colors";
 
 let theme = createTheme({
     palette: {

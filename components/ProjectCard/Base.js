@@ -1,15 +1,26 @@
-import {Avatar, Card, CardContent, CartHeader, Rating, Typography, SearchIcon} from '@mui/material'
+import {Avatar, Card, CardContent, CardHeader, Rating, Typography, SearchIcon} from '@mui/material';
 
-export const Base = ({title, body}) => {
+const Base = ({title='Indicadores', body='noice'}) => {
     return (
-        <Card sx={{maxWidth: 345}}>
+        <Card sx={{maxWidth: 800}}>
             <CardHeader 
                 avatar={
-
+                    <Avatar
+                        sx={{bgcolor: 'secondary.main'}}
+                        aria-label={`Icono de proyecto ${title}`}
+                    >
+                    </Avatar>
                 }
-            >
-
-            </CardHeader>
+                title={title}
+                titleTypographyProps={{variant:'h4'}}
+            />
+            <CardContent>
+                <Typography variant="body">
+                    {body}
+                </Typography>
+            </CardContent>
         </Card>
     )
 }
+
+export default Base;

@@ -6,6 +6,7 @@ import { styled } from "@mui/system";
 
 import Navbar from "./Navbar";
 import SideBar from "./SideBar";
+import HideOnScroll from "helpers/HideOnScroll";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
@@ -17,6 +18,7 @@ const navLinks = [
 const Header = () => {
     return (
         <>
+        <HideOnScroll>
             <AppBar position="fixed">
                 <Toolbar>
                     <Container
@@ -33,6 +35,7 @@ const Header = () => {
                     </Container>
                 </Toolbar>
             </AppBar>
+            </HideOnScroll>
             <Offset />
         </>
     )

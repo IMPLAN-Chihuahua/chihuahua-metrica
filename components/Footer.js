@@ -22,14 +22,13 @@ const Footer = () => {
     ];
     return (
         <footer>
-            <Grid container rowSpacing={2} spacing={4} sx={{
+            <Grid container sx={{
                 backgroundColor: 'primary.main',
                 color: 'primary.onMain',
+                textAlign: 'center',
                 fontWeight: 'regular',
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: 0
+                paddingTop: '20px',
+                marginTop: '20px'
             }}>
                 <Grid item xs={12} md={4}>
                     <Typography>
@@ -59,6 +58,11 @@ const Footer = () => {
                         Mantente actualizado
                     </Typography>
                     <SocialNetworksList socialNetworks={socialNetworks} />
+                </Grid>
+                <Grid item xs={12} md={12}>
+                    <Typography variant='caption'>
+                        Derechos reservados {new Date().getFullYear() } por IMPLAN 
+                    </Typography>
                 </Grid>
             </Grid>
         </footer>

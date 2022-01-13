@@ -9,7 +9,9 @@ let theme = createTheme({
             onMain: 'whitesmoke'
         },
         
-        secondary: amber,
+        secondary: {
+            main: '#d1a961',
+        },
     }
 });
 

@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-
-
 export default function Modulo(props) {
     const data = props.data;
     const modulos = data.map(modulo => {

@@ -1,5 +1,6 @@
 import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
+import { useState, useEffect, useCallback } from "react";
 import Autoplay from 'embla-carousel-autoplay'
 
 const EmblaCarousel = () => {
@@ -7,10 +8,21 @@ const EmblaCarousel = () => {
     const autoplayRoot = (emblaRoot) => emblaRoot.parentElement // Root node
     const autoplay = Autoplay(options, autoplayRoot)
    
-    const [emblaRef] = useEmblaCarousel({loop: true},[Autoplay()])
+    const [emblaRef, emblaApi] = useEmblaCarousel({
+      align: "start",
+      loop: true,
+      skipSnaps: false,
+      inViewThreshold: 0.7,
+    },[Autoplay()])
 
-
-
+    const scrollPrev = useCallback(() => {
+      if (emblaApi) emblaApi.scrollPrev()
+    }, [emblaApi])
+  
+    const scrollNext = useCallback(() => {
+      if (emblaApi) emblaApi.scrollNext()
+    }, [emblaApi])
+    
     const route = '/Banner/'
     const items = [
       {
@@ -32,12 +44,26 @@ const EmblaCarousel = () => {
       }
   ]
 
+  
+
+
   return (
     <div className="embla" ref={emblaRef}>
 
+   
         <div className="embla__container">
-            {items.map(slide => <div className="embla__slide"><img src= {slide.url} className='embla__image'/></div>)}
+            {items.map(slide => <div key={slide.name} className="embla__slide"><img src= {slide.url} className='embla__image'/>
+
+            <button className="embla__prev" onClick={scrollPrev}>
+            Previer
+          </button>
+          <button className="embla__next" onClick={scrollNext}>
+            Next
+          </button>
+            </div>)}
         </div>
+      
+
 
     <style jsx>
     {`
@@ -54,7 +80,9 @@ const EmblaCarousel = () => {
       }
       .embla__image {
         width: 100%;
-
+      }
+      embla__prev{
+        color: white;
       }
     `}
     </style>

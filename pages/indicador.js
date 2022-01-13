@@ -1,7 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Link from 'next/link';
-
 
 export default function Modulo(props) {
     const data = props.data;

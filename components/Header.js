@@ -7,26 +7,29 @@ import { styled } from "@mui/system";
 import Navbar from "./Navbar";
 import SideBar from "./SideBar";
 
-const Offset = styled("div")(({theme}) => theme.mixins.toolbar);
+const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
 const navLinks = [
-    {title: 'Inicio', path: '/'},
-    {title: 'Proyectos', path: '/'},
-    {title: 'About us', path: '/'},
+    { title: 'Inicio', path: '/' },
+    { title: 'Proyectos', path: '/' },
+    { title: 'About us', path: '/' },
 ]
 const Header = () => {
     return (
         <>
             <AppBar position="fixed">
                 <Toolbar>
-                    <Container 
+                    <Container
                         maxWidth="lg"
-                        sx={{display: `flex`, justifyContent: `space-between`}}
+                        sx={{
+                            display: `flex`,
+                            justifyContent: `space-between`
+                        }}
                     >
-                    <Image src='/images/small-logo.png' width={100} height={60} />
+                        <Image src='/images/small-logo.png' width={100} height={60} />
 
-                    <Navbar navLinks={navLinks} />
-                    <SideBar navLinks={navLinks}/>
+                        <Navbar navLinks={navLinks} />
+                        <SideBar navLinks={navLinks} />
                     </Container>
                 </Toolbar>
             </AppBar>

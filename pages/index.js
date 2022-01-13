@@ -3,9 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Container from "@mui/material/Container";
-
+import EmblaCarousel from '@components/EmblaCarousel';
 export default function Home() {
   return (
+    <>
+      <EmblaCarousel />
     <div className={styles.container}>
       <Head>
         <title>Observatorio urbano</title>
@@ -21,5 +23,6 @@ export default function Home() {
         </Link>
       </Container>
     </div>
+    </>
   )
 }

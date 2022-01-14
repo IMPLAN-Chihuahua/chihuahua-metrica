@@ -26,7 +26,7 @@ const GridBase = () => {
                 {
                 JSON.map( ({title, body, name}) => {
                     return (
-                        <Grid item xs={12} md={4}>
+                        <Grid key={name} item xs={12} md={4}>
                                 <Link href={`/${name}`} style={{textDecoration: 'none'}}>
                                     <a>
                                         <Base title={title} body={body}/>

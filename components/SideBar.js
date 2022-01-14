@@ -22,7 +22,7 @@ const SideBar = ( {navLinks}) => {
 
 const list = (anchor) => (
     <Box
-        sx={{width: 250, marginTop: 'auto', marginBottmo: 'auto'}}
+        sx={{width: 200, marginTop: 'auto', marginBottom: 'flex'}}
         role='presentation'
         onClick={toggleBar(anchor, false)}
         onKeyDown={toggleBar(anchor, false)}
@@ -35,19 +35,22 @@ const list = (anchor) => (
                 ml: 5,
                 my: 2,
                 textTransform: 'uppercase',
+                color: 'common.white',
             }}
             sx={{
                 ml: 5,
                 my: 2,
                 textTransform: 'uppercase',
+                color: 'common.white',
             }}
             sx={{
-                ml: 5,
-                my: 2,
+                ml: 1,
+                my: 3,
                 textTransform: 'uppercase',
+                color: 'common.white',
             }}
             >
-        <Link href={path}>
+        <Link href={path} key={title}>
             <a>
                 {title}
             </a>
@@ -56,8 +59,6 @@ const list = (anchor) => (
     ))}
     </Box>
 );
-
-
     return (
     <>
         <IconButton
@@ -69,7 +70,7 @@ const list = (anchor) => (
                 display: {xs: 'inline', md: 'none'},
             }}
         >
-            <Menu fontSIZE='large'/>
+            <Menu fontSize='large'/>
         </IconButton>
 
         <Drawer

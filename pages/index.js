@@ -2,9 +2,15 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Container from "@mui/material/Container";
+import EmblaCarousel from '@components/EmblaCarousel';
+import Footer from '@components/Footer';
+import GridBase from '@components/ProjectCard/GridBase';
+
 
 export default function Home() {
   return (
+    <>
+      <EmblaCarousel />
     <div className={styles.container}>
       <Head>
         <title>Observatorio urbano</title>
@@ -13,12 +19,9 @@ export default function Home() {
       </Head>
       <Container>
         <h1>Observatorio Urbano</h1>
-        <Link href="/indicador">
-          <a>
-            Indicadores
-          </a>
-        </Link>
+        <GridBase />
       </Container>
-    </div>
+      </div>
+    </>
   )
 }

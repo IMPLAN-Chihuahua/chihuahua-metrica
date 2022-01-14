@@ -6,8 +6,9 @@ import EmblaCarousel from '@components/EmblaCarousel';
 import Footer from '@components/Footer';
 import GridBase from '@components/ProjectCard/GridBase';
 
-
 export default function Home() {
+
+
   return (
     <>
       <EmblaCarousel />

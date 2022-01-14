@@ -26,10 +26,8 @@ const Footer = () => {
                 backgroundColor: 'primary.main',
                 color: 'primary.onMain',
                 fontWeight: 'regular',
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: 0
+                padding: '20px',
+                marginTop: '20px'
             }}>
                 <Grid item xs={12} md={4}>
                     <Typography>

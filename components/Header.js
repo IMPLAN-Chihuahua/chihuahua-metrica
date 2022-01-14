@@ -3,10 +3,14 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Image from 'next/image';
 import { styled } from "@mui/system";
+import { Fab } from "@mui/material";
+import { KeyboardArrowUp } from "@mui/icons-material";
 
 import Navbar from "./Navbar";
 import SideBar from "./SideBar";
 import HideOnScroll from "helpers/HideOnScroll";
+import BackToTop from "./BackToTop";
+
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
@@ -36,7 +40,12 @@ const Header = () => {
                 </Toolbar>
             </AppBar>
             </HideOnScroll>
-            <Offset />
+            <Offset id="back-to-top"/>
+            <BackToTop>
+                <Fab color="secondary" size="large" aria-label="back to top">
+                    <KeyboardArrowUp /> 
+                </Fab>
+            </BackToTop>
         </>
     )
 }

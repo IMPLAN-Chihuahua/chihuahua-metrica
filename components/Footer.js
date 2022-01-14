@@ -42,7 +42,7 @@ const Footer = () => {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Link href='politicas'>
+                    <Link href='/politicas'>
                         <a>
                             <Typography>
                                 Politcas de uso

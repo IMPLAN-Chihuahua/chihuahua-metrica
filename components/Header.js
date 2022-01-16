@@ -2,9 +2,9 @@ import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Image from 'next/image';
-import { styled } from "@mui/system";
-import { Fab } from "@mui/material";
-import { KeyboardArrowUp } from "@mui/icons-material";
+import styled from "@mui/system/styled";
+import Fab from "@mui/material/Fab";
+import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
 
 import Navbar from "./Navbar";
 import SideBar from "./SideBar";

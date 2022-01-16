@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Container from "@mui/material/Container";
 import EmblaCarousel from '@components/EmblaCarousel';
-import Footer from '@components/Footer';
 import GridBase from '@components/ProjectCard/GridBase';
 
 export default function Home() {

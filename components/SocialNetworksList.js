@@ -1,4 +1,5 @@
-import { ImageList, ImageListItem } from '@mui/material';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageList from '@mui/material/ImageList';
 import Image from 'next/image';
 import Link from 'next/link';
 

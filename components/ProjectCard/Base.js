@@ -1,4 +1,4 @@
-import {Avatar, Card, CardContent, CardHeader, Rating, Typography, SearchIcon, Link} from '@mui/material';
+import {Avatar, Card, CardContent, CardHeader, Typography, Link} from '@mui/material';
 
 const Base = ({title, body, url}) => {
     return (

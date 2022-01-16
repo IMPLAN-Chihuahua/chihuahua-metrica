@@ -4,6 +4,7 @@ import { CacheProvider } from '@emotion/react';
 import createEmotionCache from '../styles/createEmotionCache';
 import Head from 'next/head';
 import theme from '../styles/theme';
+import '../styles/globals.css';
 
 // Manually generated
 import Header from '@components/Header';

@@ -6,7 +6,7 @@ let theme = createTheme({
         // Change color after checking MUI
         primary: { 
             main: '#263044',
-            onMain: 'whitesmoke'
+            onMain: '#E3F6FA'
         },
         
         secondary: {

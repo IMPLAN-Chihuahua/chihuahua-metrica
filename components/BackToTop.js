@@ -1,12 +1,12 @@
 import { Box, useScrollTrigger, Zoom } from "@mui/material";
-
 const BackToTop = ({children}) => {
     const trigger = useScrollTrigger();
+    
     const handleClick = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
-        })
+        });
     };
 
     return(

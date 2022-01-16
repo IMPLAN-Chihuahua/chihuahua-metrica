@@ -4,7 +4,7 @@ const Base = ({title, body, url}) => {
     return (
         <>
             <Link href={`/${url}`} style={{textDecoration: 'none'}}>
-                <Card sx={{maxWidth: 800}}>
+                <Card sx={{maxWidth: 900, boxShadow:30}} variant='outlined'>
                     <CardHeader 
                         avatar={
                             <Avatar

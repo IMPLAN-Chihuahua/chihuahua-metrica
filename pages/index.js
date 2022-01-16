@@ -3,9 +3,12 @@ import styles from '../styles/Home.module.css'
 import Container from "@mui/material/Container";
 import EmblaCarousel from '@components/EmblaCarousel';
 import GridBase from '@components/ProjectCard/GridBase';
+import Typography from '@mui/material/Typography';
+import theme from 'styles/theme';
+import { Box } from '@mui/system';
+import { Divider } from '@mui/material';
 
 export default function Home() {
-
 
   return (
     <>
@@ -17,7 +20,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <h1>Observatorio Urbano</h1>
+        <Typography variant='h4' sx={{mb: 3, mt: 3, color: 'primary.main', fontWeight:'bold'}}>Observatorio Urbano</Typography>
+        <Box component='div' sx={{mb: 3}}>
+          <Typography variant='p'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum mi vel risus ultricies vestibulum. Maecenas consectetur ut arcu id dignissim. Vivamus lorem purus, malesuada eu nisl nec, pharetra varius purus. In facilisis quis sem in ornare. Suspendisse varius magna sapien, et congue ante cursus eget. Praesent mattis, eros eget congue rutrum, massa lorem auctor neque, a molestie metus risus vel leo. Aenean ac odio nisl.
+          </Typography>
+        </Box>
+      </Container>
+
+      <Container>
+        <Box display="flex">
+          <Typography variant='h4' 
+          sx={{m:'auto', mb:3, color: 'primary.main', fontWeight:'bold'}} justyfy='center'>Proyectos</Typography>
+        </Box>
         <GridBase />
       </Container>
       </div>

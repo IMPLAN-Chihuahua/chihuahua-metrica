@@ -19,6 +19,7 @@ function MyApp(props) {
       <Head>
         <title>Observatorio Urbano</title>
         <meta name='viewport' content='initial-scale=1, width=device-width' />
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=optional" rel="stylesheet"/>
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

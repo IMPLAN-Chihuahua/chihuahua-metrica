@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 import { responsiveFontSizes } from "@mui/material/styles";
+import { typography } from "@mui/system";
 
 let theme = createTheme({
     palette: {
@@ -12,7 +13,7 @@ let theme = createTheme({
         secondary: {
             main: '#d1a961',
         },
-    }
+    },
 });
 
 theme = responsiveFontSizes(theme);

@@ -19,6 +19,7 @@ const navLinks = [
     { title: 'Proyectos', path: '/' },
     { title: 'About us', path: '/' },
 ]
+
 const Header = () => {
     return (
         <>

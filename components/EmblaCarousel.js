@@ -113,7 +113,7 @@ const EmblaCarousel = () => {
   min-width: 100%;
   max-width: none;
   height: 100%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0%);
 }
 
 .embla__dots {

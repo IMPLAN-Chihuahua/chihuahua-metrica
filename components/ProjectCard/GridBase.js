@@ -1,20 +1,20 @@
 import Base from '@components/ProjectCard/Base';
-import { Grid, Link } from '@mui/material';
+import Grid from '@mui/material/Grid';
 
 const JSON = [
     {
-        title: 'Microme',
-        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin nisl et finibus convallis. Nulla id ultricies dui. Nulla facilisi. Nunc gravida lorem ultricies, pretium arcu sed, euismod massa. Cras non tellus velit. Sed hendrerit quis turpis vitae ornare. Praesent erat ex, malesuada viverra odio ultrices, suscipit convallis nibh. In hac habitasse platea dictumst. Quisque vestibulum ut nisl a scelerisque. Curabitur sit amet auctor quam. Maecenas sed pretium justo. Praesent gravida massa euismod consectetur tincidunt. Donec nec scelerisque leo, eget sodales justo.',
+        title: 'Indicadores',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin nisl et finibus convallis. Nulla id ultricies dui. Nulla facilisi. Nunc gravida lorem ultricies, pretium arcu sed, euismod massa. Cras non tellus velit. Sed hendrerit quis turpis vitae ornare.',
         url: 'indicador'
     },
     {
-        title: 'Papi bowser',
-        body: 'Moc moc',
+        title: 'Proyecto 2',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin nisl et finibus convallis. Nulla id ultricies dui. Nulla facilisi. Nunc gravida lorem ultricies, pretium arcu sed, euismod massa. Cras non tellus velit. Sed hendrerit quis turpis vitae ornare.',
         url: 'indicador2'
     },
     {
-        title: 'www',
-        body: 'Heheeeee',
+        title: 'Proyecto 3',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin nisl et finibus convallis. Nulla id ultricies dui. Nulla facilisi. Nunc gravida lorem ultricies, pretium arcu sed, euismod massa. Cras non tellus velit. Sed hendrerit quis turpis vitae ornare.',
         url: 'indicador3'
     },
 ]

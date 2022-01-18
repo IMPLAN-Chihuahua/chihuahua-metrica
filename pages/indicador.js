@@ -1,4 +1,5 @@
 import { Container, Grid } from '@mui/material';
+import { Box } from '@mui/system';
 import Head from 'next/head';
 import Link from 'next/link';
 import style from '../styles/indicador.module.css'
@@ -8,31 +9,31 @@ export default function Modulo(props) {
     const modulos = data.map(modulo => {
         return (
             <Grid item xs={12} md={6} lg={4} key={modulo.codigo} >
-                <section className={style.cardSection}>
-                <div className={style.card}>
-                    <div className={style.cardFront}>
-                        <div className={style.cardFront__tp}>
+                <Box className={style.cardSection}>
+                <Box className={style.card}>
+                    <Box className={style.cardFront} >
+                        <Box className={style.cardFront__tp} sx={{backgroundColor: 'black'}} >
                             <p className={style.cardFront__icon}>
                                 Test
                             </p>
                             <h2 className={style.cardFront__heading}>
                                 {modulo.codigo}
                             </h2>
-                        </div>
-                        <div className={style.cardFront__bt}>
-                            <p className={style.card_text}>
+                        </Box>
+                        <Box className={style.cardFront__bt} sx={{color:'black'}}>
+                            <p className={style.card_text}  >
                                 <b>{modulo.temaIndicador}</b>
                             </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        </Box>
+                    </Box>
+                </Box>
+            </Box>
         </Grid> 
         );
     });
 
     return (
-        <div>
+        <>
             <Container>
             <Head>
                 <title>Modulos</title>
@@ -62,7 +63,7 @@ export default function Modulo(props) {
                 {modulos}
             </Grid>
         </Container>
-        </div>
+        </>
     );
 };
 export async function getServerSideProps(context) {

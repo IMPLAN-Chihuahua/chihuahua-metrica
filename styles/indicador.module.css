@@ -91,11 +91,9 @@
   border: 2px solid #d1a961;
 }
 .cardSection:hover .cardFront__tp{
-  clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 99%, 43% 90%, 0 90%);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
 }
-.cardSection:hover .card_text{
-  margin-top: 0.8rem;
-}
+
 .card {
   background-color: rgba(0,0,0, .05);
 }
@@ -118,7 +116,7 @@
 
 .cardFront__tp {
   align-items: center;
-  clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 99%, 43% 90%, 0 90%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,9 +128,6 @@
   font-size: 1.4rem;
 }
 
-.cardFront__tp {
-  background-color: #263044;
-}
 
 .cardFront__bt {
   align-items: center;

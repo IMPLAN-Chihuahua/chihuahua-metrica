@@ -53,9 +53,6 @@ const EmblaCarousel = () => {
       }
   ]
 
-  
-
-
   return (
     <>
     <style jsx>

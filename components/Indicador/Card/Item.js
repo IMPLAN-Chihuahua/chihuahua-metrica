@@ -40,7 +40,8 @@ const Item = (props) => {
                                 color='detail.main'
                                 fontWeight='bold'
                                 fontSize={20}
-                            >{indicador.ultimoValorDisponible.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                // .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                            >{indicador.ultimoValorDisponible}
                             </Typography>
                             <Typography>
                                 Último Valor Disponible

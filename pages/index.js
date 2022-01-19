@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Container from "@mui/material/Container";
 import EmblaCarousel from '@components/EmblaCarousel';
 import GridBase from '@components/ProjectCard/GridBase';

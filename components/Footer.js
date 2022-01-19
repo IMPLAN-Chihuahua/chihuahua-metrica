@@ -1,15 +1,10 @@
 import { Stack, Box, Typography, Divider } from '@mui/material'
 import Image from 'next/image';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import styles from './Footer.module.css';
 import { Facebook, Twitter, Instagram } from '@mui/icons-material';
 import Link from 'next/link';
 
 const Footer = () => {
-    const theme = useTheme();
-    const isMidSize = useMediaQuery(theme.breakpoints.down('md'));
-    let size = isMidSize ? { display: 'none' } : { height: '50px' };
     return (
         <Box
             component='footer'
@@ -19,7 +14,7 @@ const Footer = () => {
             paddingTop={4}
             paddingBottom={4}
             backgroundColor='primary.main'
-            color='primary.onMain'
+            color='primary.contrastText'
             marginTop={5}
         >
             <Stack
@@ -28,7 +23,8 @@ const Footer = () => {
                 divider={
                     <Divider
                         sx={{
-                            ...size,
+                            display: { xs: 'none', md: 'block' },
+                            height: 25,
                             border: '1px dashed #E8E8E8',
                             alignSelf: 'center'
                         }}

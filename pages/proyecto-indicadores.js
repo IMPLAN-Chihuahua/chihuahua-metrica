@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material';
+import { Card, Container, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -8,8 +8,8 @@ export default function Modulo(props) {
     const data = props.data;
     const modulos = data.map(modulo => {
         return (
-            <Grid item xs={12} md={6} lg={4} key={modulo.codigo} >
-                <Box className={style.cardSection}>
+            <Grid item xs={12} md={6} lg={4} key={modulo.codigo}  >
+                <Card className={style.cardSection} sx={{maxWidth: 900, boxShadow:30}} variant='outlined'>
                 <Box className={style.card}>
                     <Box className={style.cardFront} >
                         <Box className={style.cardFront__tp} sx={{backgroundColor: 'black'}} >
@@ -27,7 +27,7 @@ export default function Modulo(props) {
                         </Box>
                     </Box>
                 </Box>
-            </Box>
+            </Card>
         </Grid> 
         );
     });

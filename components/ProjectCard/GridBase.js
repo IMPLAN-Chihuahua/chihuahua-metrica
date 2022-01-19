@@ -5,7 +5,7 @@ const JSON = [
     {
         title: 'Indicadores',
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin nisl et finibus convallis. Nulla id ultricies dui. Nulla facilisi. Nunc gravida lorem ultricies, pretium arcu sed, euismod massa. Cras non tellus velit. Sed hendrerit quis turpis vitae ornare.',
-        url: 'indicador'
+        url: 'proyecto-indicadores'
     },
     {
         title: 'Proyecto 2',

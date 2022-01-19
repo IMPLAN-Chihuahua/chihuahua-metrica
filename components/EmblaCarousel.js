@@ -2,27 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import { DotButton, PrevButton, NextButton } from "./EmblaCarouselButtons";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from 'embla-carousel-autoplay'
-
-const route = '/Images/Banner/'
-const slides = [
-  {
-      name: "banner-01",
-      description: "description #1",
-      url: `${route}banner-01.webp`
-  },
-  {
-      name: "banner-02",
-      description: "description #2",
-      url: `${route}banner-02.webp`
- 
-  },
-  {
-      name: "banner-03",
-      description: "description #3",
-      url: `${route}banner-03.webp`
- 
-  }
-]
+import slides from '../helpers/CarouselImages'
+import { Box } from "@mui/material";
+import style from '../styles/EmblaCarousel.module.css'
+import Image from "next/image";
 
 const EmblaCarousel = () => {
   const options = { delay: 3000} // Options
@@ -55,95 +38,25 @@ const EmblaCarousel = () => {
 
   return (
     <>
-    <style jsx>
-{`
-.embla {
-  position: relative;
-
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-
-
-}
-
-.embla__viewport {
-  overflow: hidden;
-  width: 100%;
-
-}
-
-.embla__viewport.is-draggable {
-  cursor: move;
-  cursor: grab;
-}
-
-.embla__viewport.is-dragging {
-  cursor: grabbing;
-}
-
-.embla__container {
-  display: flex;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -khtml-user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  margin-left: -10px;
-  height: 100%;
-}
-
-.embla__slide {
-  position: relative;
-  min-width: 100%;
-  padding-left: 10px;
-}
-
-.embla__slide__inner {
-  position: relative;
-  overflow: hidden;
-  
-}
-
-.embla__slide__img {
-  position: relative;
-  display: block;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  min-width: 100%;
-  max-width: none;
-  height: 100%;
-  transform: translate(-50%, 0);
-}
-
-.embla__dots {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  padding-top: 10px;
-}
-
-`}
-   </style>
-      <div className="embla" >
-        <div className="embla__viewport" ref={viewportRef}>
-          <div className="embla__container">
+      <Box className={style.embla} >
+        <Box className={style.embla__viewport} ref={viewportRef}>
+          <Box className={style.embla__container}>
             {slides.map((index) => (
-              <div className="embla__slide" key={index.name}>
-                <div className="embla__slide__inner">
+              <Box className={style.embla__slide} key={index.name}>
+                <Box className={style.embla__slide__inner}>
                   <img
-                    className="embla__slide__img"
+                    className={style.embla__slide__img}
                     src={index.url} id={index.name}
                   />
-                </div>
-              </div>
+                </Box>
+              </Box>
             ))}
-          </div>
-        </div>
+          </Box>
+        </Box>
         <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
         <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-      </div>
-      <div className="embla__dots">
+      </Box>
+      <Box className={style.embla__dots}>
         {scrollSnaps.map((_, index) => (
           <DotButton
           key={index}
@@ -151,7 +64,7 @@ const EmblaCarousel = () => {
           onClick={() => scrollTo(index)}
           />
           ))}
-      </div>
+      </Box>
     </>
   );
 };

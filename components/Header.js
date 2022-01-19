@@ -10,6 +10,7 @@ import Navbar from "./Navbar";
 import SideBar from "./SideBar";
 import HideOnScroll from "helpers/HideOnScroll";
 import BackToTop from "./BackToTop";
+import { Grid } from "@mui/material";
 
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
@@ -19,31 +20,29 @@ const navLinks = [
     { title: 'Proyectos', path: '/' },
     { title: 'About us', path: '/' },
 ]
+
 const Header = () => {
     return (
         <>
-        <HideOnScroll>
-            <AppBar position="fixed">
-                <Toolbar>
-                    <Container
-                        maxWidth="lg"
-                        sx={{
-                            display: `flex`,
-                            justifyContent: `space-between`
-                        }}
-                    >
-                        <Image src='/images/small-logo.png' width={100} height={60} />
-
-                        <Navbar navLinks={navLinks} />
-                        <SideBar navLinks={navLinks} />
-                    </Container>
-                </Toolbar>
-            </AppBar>
+            <HideOnScroll>
+                <AppBar position="fixed">
+                    <Toolbar>
+                        <Grid container direction='row'>
+                            <Grid item xs flexGrow={1}>
+                                <Image src='/images/small-logo.png' width={100} height={60} />
+                            </Grid>
+                            <Grid item xs flexGrow={1} container justifyContent='flex-end'>
+                                <Navbar navLinks={navLinks} />
+                                <SideBar navLinks={navLinks} />
+                            </Grid>
+                        </Grid>
+                    </Toolbar>
+                </AppBar>
             </HideOnScroll>
-            <Offset id="back-to-top"/>
+            <Offset id="back-to-top" />
             <BackToTop>
                 <Fab color="secondary" size="large" aria-label="back to top">
-                    <KeyboardArrowUp /> 
+                    <KeyboardArrowUp />
                 </Fab>
             </BackToTop>
         </>

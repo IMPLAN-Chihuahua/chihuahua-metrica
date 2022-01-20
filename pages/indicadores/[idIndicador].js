@@ -17,7 +17,9 @@ export default function FichaTecnica(props) {
 }
 
 export async function getServerSideProps(context){
-    const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos/1/indicadores/1`);
+    const idIndicador = context.params.idIndicador;
+    console.log(idIndicador);
+    const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos/1/indicadores/${idIndicador}`);
     const data = await res.json();
     if (res.status === 200) {
         return {

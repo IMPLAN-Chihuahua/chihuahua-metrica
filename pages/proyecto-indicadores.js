@@ -1,18 +1,20 @@
-import { Card, Container, Grid } from '@mui/material';
+import { Button, Card, Container, Grid, Link } from '@mui/material';
 import { Box } from '@mui/system';
 import Head from 'next/head';
-import Link from 'next/link';
 import style from '../styles/indicador.module.css'
+
+
 
 export default function Modulo(props) {
     const data = props.data;
     const modulos = data.map(modulo => {
         return (
-            <Grid item xs={12} md={6} lg={4} key={modulo.codigo}  >
+            <Grid item xs={12} md={6} lg={4} key={modulo.codigo}>
                 <Card className={style.cardSection} sx={{maxWidth: 900, boxShadow:30}} variant='outlined'>
-                <Box className={style.card}>
+                    <Box className={style.card}>
                     <Box className={style.cardFront} >
-                        <Box className={style.cardFront__tp} sx={{backgroundColor: 'black'}} >
+                        <Link href={`/modulos/${modulo.id}`} style={{textDecoration: 'none'}}>
+                        <Box className={style.cardFront__tp} sx={{backgroundColor: `black`}} >
                             <p className={style.cardFront__icon}>
                                 Test
                             </p>
@@ -20,11 +22,12 @@ export default function Modulo(props) {
                                 {modulo.codigo}
                             </h2>
                         </Box>
-                        <Box className={style.cardFront__bt} sx={{color:'black'}}>
+                        <Box className={style.cardFront__bt} sx={{color:`main.primary`}}>
                             <p className={style.card_text}  >
                                 <b>{modulo.temaIndicador}</b>
                             </p>
                         </Box>
+                        </Link>
                     </Box>
                 </Box>
             </Card>
@@ -60,7 +63,7 @@ export default function Modulo(props) {
             <h1 className={style.title}>Temas de interés</h1>
             
             <Grid container spacing={2}>
-                {modulos}
+           {modulos}
             </Grid>
         </Container>
         </>

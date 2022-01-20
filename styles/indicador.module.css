@@ -91,6 +91,7 @@
 }
 .cardSection:hover .cardFront__tp{
   clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
+  opacity: 0.8;
 }
 
 .card {

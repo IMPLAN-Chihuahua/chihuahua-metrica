@@ -1,14 +1,34 @@
-// import Head from 'next/head';
-// import useSWR from 'swr';
 
-// export default function FichaTecnica(context) {
-//     const idIndicador = context.params.idIndicador;
+export default function FichaTecnica(props) {
+    const data = props.data;
 
+    console.table(data);
+    /**
+     * data.nombre
+     * data.ultimoValorDisponible
+     * data.anioUltimoValorDisponible
+     * data.definicion
+     * data.Modulo.temaIndicador
+     * data.Modulo.color
+     * data.Cobertura.nombre
+     * 
+     */
+    return <li>test</li>
+}
 
-//     const fichaIndicador = data.map();
-    
-// }
-
-// const fetcher = async (props) => {
-//     const response = fetch('http://localhost:8080/api/v1/modulos/1/indicadores/')
-// }
+export async function getServerSideProps(context){
+    const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos/1/indicadores/1`);
+    const data = await res.json();
+    if (res.status === 200) {
+        return {
+            props: { ...data }
+        }
+    } else
+    {
+        return{
+            props: {
+                data: []
+            }
+        }
+    }
+}

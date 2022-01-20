@@ -39,14 +39,8 @@ const Item = (props) => {
                             <Typography
                                 color='detail.main'
                                 fontWeight='bold'
-<<<<<<< HEAD
                                 fontSize={25}
                             >{indicador.ultimoValorDisponible.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-=======
-                                fontSize={20}
-                                // .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                            >{indicador.ultimoValorDisponible}
->>>>>>> dev
                             </Typography>
                             <Typography>
                                 Último Valor Disponible

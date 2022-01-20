@@ -39,7 +39,7 @@ const Item = (props) => {
                             <Typography
                                 color='detail.main'
                                 fontWeight='bold'
-                                fontSize={20}
+                                fontSize={25}
                             >{indicador.ultimoValorDisponible.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                             </Typography>
                             <Typography>
@@ -65,7 +65,7 @@ const Item = (props) => {
                             <Typography
                                 fontWeight='bold'
                             >
-                                Arboles por persona
+                                {indicador.UnidadMedida.nombre}
                             </Typography>
                             <Typography>
                                 Unidad de Medida
@@ -118,7 +118,7 @@ const Item = (props) => {
                             <Typography
                                 fontWeight='bold'
                             >
-                                Nacional
+                                {indicador.CoberturaGeografica.nombre}
                             </Typography>
                             <Typography>
                                 Cobertura Geográfica

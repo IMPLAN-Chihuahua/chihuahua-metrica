@@ -1,9 +1,14 @@
-import Head from 'next/head';
-import useSWR from 'swr';
+// import Head from 'next/head';
+// import useSWR from 'swr';
 
-export default function FichaTecnica(props) {
-    const data = props.data;
-    const fichaIndicador = data.map();
-}
+// export default function FichaTecnica(context) {
+//     const idIndicador = context.params.idIndicador;
 
-export async
+
+//     const fichaIndicador = data.map();
+    
+// }
+
+// const fetcher = async (props) => {
+//     const response = fetch('http://localhost:8080/api/v1/modulos/1/indicadores/')
+// }

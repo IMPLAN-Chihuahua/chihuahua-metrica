@@ -20,6 +20,7 @@ export default function Indicador(props) {
 };
 
 export async function getServerSideProps(context) {
+    console.log(context.params);
     const idModulo = context.params.idIndicador;
     const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos/${idModulo}/indicadores`);
     const data = await res.json();

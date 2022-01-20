@@ -23,7 +23,6 @@ export async function getServerSideProps(context) {
     const idModulo = context.params.idIndicador;
     const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos/${idModulo}/indicadores`);
     const data = await res.json();
-    console.log(data);
     if (res.status === 200) {
         return {
             props: { ...data }

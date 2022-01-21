@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import MathJax from "react-mathjax";
 
 export default function FichaTecnica(props) {
-    const formulaTest = `k_{n+1}=x^2 + k_n^2 + k_n^2 + k_n^2 + k_n^2 + k_n^2 + k_n^2`;
+    const formulaTest = `k_{n+1}=x^2 + k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2`;
     const data = props.data;
     /**
      * data.nombre
@@ -103,14 +103,14 @@ export default function FichaTecnica(props) {
             height: auto;
 }
          .formulaText{
-            font-size: 2vw;
+            font-size: 2rem;
             font-weight: bold;
             color: white;
             margin-top: 10px;
             margin-bottom: 10px;
-            overflow-x: scroll;
+            overflow-x: auto;
             overflow-y: hidden;
-            height: 1000px;
+            height: 80px;
             
         }
         /* width */
@@ -194,7 +194,7 @@ export default function FichaTecnica(props) {
                 </Grid>
                 
                 <Grid xs={12} md={6} sx={{bgcolor: '', display:`flex`, justifyContent:`center`, alignItems:`center`}}>
-                    <Grid sx={{bgcolor: 'cardInformation.main', height:`96%`, width:`90%`,mt:`5%`, textAlign:`center`, color:`white` }}>
+                    <Grid sx={{bgcolor: 'cardInformation.main', height:`96%`, width:`95%`,mt:`5%`,ml:`5%`, textAlign:`center`, color:`white`,borderRadius:`5px` }}>
                     <br />
                     <h2>Formula</h2>
                      <MathJax.Provider>

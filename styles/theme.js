@@ -7,7 +7,8 @@ let theme = createTheme({
         primary: { 
             main: '#263044',
             contrastText: '#E3F6FA',
-            buttonColor: '#EEEEEE'
+            buttonColor: '#EEEEEE',
+            white: '#FFFFFF',
         },
         
         secondary: {
@@ -21,6 +22,10 @@ let theme = createTheme({
       
         detail: {
             main: '#158585'
+        },
+
+        cardInformation: {
+            main: '#204C5A'
         }
     }
 });

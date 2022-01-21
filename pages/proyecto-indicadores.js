@@ -14,7 +14,7 @@ export default function Modulo(props) {
                     <Box className={style.card}>
                     <Box className={style.cardFront} >
                         <Link href={`/modulos/${modulo.id}`} style={{textDecoration: 'none'}}>
-                        <Box className={style.cardFront__tp} sx={{backgroundColor: `black`}} >
+                        <Box className={style.cardFront__tp} sx={{backgroundColor: `${modulo.color}`}} >
                             <p className={style.cardFront__icon}>
                                 Test
                             </p>

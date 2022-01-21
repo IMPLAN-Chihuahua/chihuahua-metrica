@@ -19,7 +19,7 @@ const Information = ({header, title, body}) => {
                  <Box
                 display="flex"
                 >
-                    <Avatar sx={{m: 'auto', mt: 1, width: '150px', height: '150px', bgcolor: 'primary.white', color: 'primary.main', fontWeight: 'bold'}}>
+                    <Avatar sx={{m: 'auto', mt: 2, width: '150px', height: '150px', bgcolor: 'primary.white', color: 'primary.main', fontWeight: 'bold'}}>
                     {header}
                     </Avatar>
                 </Box>

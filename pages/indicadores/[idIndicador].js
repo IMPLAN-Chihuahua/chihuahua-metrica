@@ -4,8 +4,10 @@ import DownloadIcon from '@mui/icons-material/Download';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import { styled } from '@mui/material/styles';
+import MathJax from "react-mathjax";
 
 export default function FichaTecnica(props) {
+    const formulaTest = `k_{n+1}=x^2 + k_n^2 + k_n^2 + k_n^2 + k_n^2 + k_n^2 + k_n^2`;
     const data = props.data;
     /**
      * data.nombre
@@ -101,11 +103,35 @@ export default function FichaTecnica(props) {
             height: auto;
 }
          .formulaText{
-            font-size: 5rem;
+            font-size: 2vw;
             font-weight: bold;
             color: white;
             margin-top: 10px;
             margin-bottom: 10px;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            height: 1000px;
+            
+        }
+        /* width */
+        ::-webkit-scrollbar {
+        width: 10px;    
+      }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: rgba(241,241,241,0.1); 
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #888; 
+          background: rgba(136, 136, 136,0.4); 
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: rgba(85, 85, 85,0.4); 
         }
          
          `}
@@ -171,7 +197,9 @@ export default function FichaTecnica(props) {
                     <Grid sx={{bgcolor: 'cardInformation.main', height:`96%`, width:`90%`,mt:`5%`, textAlign:`center`, color:`white` }}>
                     <br />
                     <h2>Formula</h2>
-                    <h1 className="formulaText">X+X=2X</h1>
+                     <MathJax.Provider>
+                    <h1 className="formulaText"><MathJax.Node inline formula={formulaTest} /></h1>
+                    </MathJax.Provider>
                     <h3>Descripción</h3>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     <h3>Fuente de consulta</h3>
@@ -224,7 +252,6 @@ export default function FichaTecnica(props) {
           </>
           );
         }
-        
 export async function getServerSideProps(context){
     const idIndicador = context.params.idIndicador;
     console.log(idIndicador);

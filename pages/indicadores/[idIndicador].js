@@ -3,6 +3,7 @@ import Information from "@components/Indicador/Datasheet/Information";
 import DownloadIcon from "@mui/icons-material/Download";
 import Typography from "@mui/material/Typography";
 import MathJax from "react-mathjax";
+import Graph from "@components/Indicador/Datasheet/Graph";
 
 import {
   ImageButton,
@@ -16,7 +17,7 @@ import {
 export default function FichaTecnica(props) {
   const formulaTest = `k_{n+1}=x^2 + k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2`;
   const data = props.data;
-  console.log(data.Historicos);
+
   return (
     <>
       <Container>
@@ -60,6 +61,8 @@ export default function FichaTecnica(props) {
             }
           `}
         </style>
+
+        <Graph data={data.Historicos} />
 
         {/*=============================== Hea ======================================*/}
         <Grid container sx={{ mt: "2%" }}>

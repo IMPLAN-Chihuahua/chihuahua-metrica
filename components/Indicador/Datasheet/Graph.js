@@ -37,7 +37,6 @@ const Graph = ({ data }) => {
     ],
   };
 
-  console.log(state.datasets);
   return (
     <>
       <Box sx={{ width: "35%", height: "20%" }}>

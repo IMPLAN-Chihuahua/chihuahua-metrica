@@ -4,6 +4,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 import Typography from "@mui/material/Typography";
 import MathJax from "react-mathjax";
 import Graph from "@components/Indicador/Datasheet/Graph";
+import CustomTable from "@components/Indicador/Datasheet/CustomTable";
 
 import {
   ImageButton,
@@ -12,7 +13,7 @@ import {
   ImageBackdrop,
   ImageMarked,
   mapImage,
-} from "@components/Indicador/Datasheet/ImageButton";
+} from "styles/Components/ImageButton";
 
 export default function FichaTecnica(props) {
   const formulaTest = `k_{n+1}=x^2 + k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2`;
@@ -63,7 +64,7 @@ export default function FichaTecnica(props) {
         </style>
 
         <Graph data={data.Historicos} />
-
+        <CustomTable data={data.Historicos} />
         {/*=============================== Hea ======================================*/}
         <Grid container sx={{ mt: "2%" }}>
           <Grid item xs={12} md={6}>

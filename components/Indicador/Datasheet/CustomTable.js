@@ -1,7 +1,5 @@
 import { Box } from "@mui/system";
 import { StyledTable, StyledTableBody , StyledTableCell } from "styles/Components/StyledTable";
-import createEmotionCache from "styles/createEmotionCache";
-
 const {
   Table,
   TableBody,
@@ -18,7 +16,7 @@ const CustomTable = ({ data }) => {
   return (
     <Box>
     <TableContainer>
-      <StyledTable sx={{maxWidth: 450}} aria-label='Tabla de datos históricos'>
+      <Table sx={{maxWidth: 450}} aria-label='Tabla de datos históricos'>
         <caption>Tabla con la evolución de los datos registrados en los últimos 5 años.</caption>
         <TableHead>
           <TableRow>
@@ -36,7 +34,7 @@ const CustomTable = ({ data }) => {
             </TableRow>
           ))}
         </StyledTableBody>
-      </StyledTable>
+      </Table>
     </TableContainer>
     </Box>
   );

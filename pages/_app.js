@@ -7,8 +7,8 @@ import theme from '../styles/theme';
 import '../styles/globals.css';
 
 // Manually generated
-import Header from '@components/Header';
-import Footer from '@components/Footer';
+import Header from '@components/commons/Header';
+import Footer from '@components/commons/Footer';
 
 const clientSideEmotionCache = createEmotionCache();
 

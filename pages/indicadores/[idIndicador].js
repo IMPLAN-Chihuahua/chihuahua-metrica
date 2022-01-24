@@ -15,6 +15,7 @@ import {
   mapImage,
 } from "styles/Components/ImageButton";
 import theme from "styles/theme";
+import Title from "@components/commons/Title";
 
 export default function FichaTecnica(props) {
   const formulaTest = `k_{n+1}=x^2 + k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2`;
@@ -70,7 +71,6 @@ export default function FichaTecnica(props) {
          
          <Grid item xs={12} md={6} >
          <img src={data.urlImagen} alt={data.nombre} className="imgTop" />
-         
           </Grid>
           <Grid item xs={12} md={6} >
           <Grid item xs={12} sx={{color: `text.primary`}}>
@@ -80,6 +80,7 @@ export default function FichaTecnica(props) {
           </Box>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
           </Grid>
+
           <Grid item xs={12} sx={{justifyContent: `center`, textAlign:`center`, display:`flex`, alignItems:`center`}}>
           <Grid item xs={3}>
           <Button variant="contained" color="primary" sx={{width: `90%`}} startIcon={<DownloadIcon/>}> CSV </Button>
@@ -97,6 +98,13 @@ export default function FichaTecnica(props) {
           </Grid>
           </Grid>
         {/*=============================== Cuerpo ======================================*/}
+
+        <Box sx={{display: 'flex'}}>
+          <Box m="auto" sx={{mt: 3}}>
+            <Title variant={'h3'} content="Ficha técnica"></Title>
+          </Box>
+        </Box>
+        
         <Grid container item xs={12} md={12} >
                 <Grid item xs={12} md={6} sx={{bgcolor: ''}}>
                         <Grid container spacing={3} sx={{mt: '1%'}}>
@@ -198,7 +206,7 @@ export default function FichaTecnica(props) {
 export async function getServerSideProps(context) {
   const idIndicador = context.params.idIndicador;
   const res = await fetch(
-    `${process.env.INDICADORES_BASE_URL}/modulos/1/indicadores/${idIndicador}`
+    `${process.env.INDICADORES_BASE_URL}/indicadores/${idIndicador}`
   );
   const data = await res.json();
   if (res.status === 200) {

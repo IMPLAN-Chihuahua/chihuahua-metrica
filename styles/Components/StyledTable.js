@@ -9,7 +9,6 @@ const {
 } = require("@mui/material");
 
 const StyledTable = styled(Table)(( { theme }) => ({
-
     '& caption': {
         fontWeight: 'bold',
         textAlign: 'center',
@@ -28,6 +27,8 @@ const StyledTable = styled(Table)(( { theme }) => ({
 const StyledTableBody = styled(TableBody)(( { theme }) => ({
     borderTopStyle: "none",
     maxWidth: "500px",
+    border: `2px solid ${theme.palette.info.outline}`,
+
 }));
 
 const StyledTableHeaderCell = styled(TableCell)(( { theme }) => ({

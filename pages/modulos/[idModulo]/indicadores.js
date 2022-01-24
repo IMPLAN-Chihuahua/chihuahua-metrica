@@ -6,8 +6,9 @@ import IndicadorList from "@components/indicador/IndicadorList";
 import IndicadorPagination from "@components/indicador/IndicadorPagination";
 
 export default function Modulo(props) {
+    const [isLoading, setLoading] = useState(false);
     const [modulo, setModulo] = useState(props.modulo);
-    const [indicadores, setIndicadores] = useState(props.indicadores);
+    const [indicadores, setIndicadores] = useState(props.indicadores.data);
     const [filtros, setFiltros] = useState('');
     const [page, setPage] = useState(props.indicadores.page);
     const [totalPages, setTotalPages] = useState(props.indicadores.totalPages);
@@ -19,18 +20,28 @@ export default function Modulo(props) {
         fetch(getURL(params))
             .then(res => res.json())
             .then(indicadores => {
+                setLoading(false);
                 setIndicadores(indicadores.data);
                 setTotalPages(indicadores.total_pages);
             });
     };
 
     useEffect(() => {
+        setLoading(true);
         fetchIndicadores(`indicadores?page=${page}`);
-    }, [page]);
+    }, [page, modulo]);
 
     const handlePagination = (event, value) => {
         setPage(value);
     };
+
+    const handleModulo = (event, value) => {
+        if (value === null) {
+            setModulo(props.modulo);
+        } else {
+            setModulo(value.id)
+        }
+    } 
 
     return (
         <div>
@@ -46,15 +57,19 @@ export default function Modulo(props) {
                     unidadMedidaList={[...props.catalogos.unidadMedida]}
                     coberturaList={[...props.catalogos.coberturas]}
                     modulosList={[...props.modulos.data]}
+                    handleModulo={handleModulo}
                 />
-                <IndicadorList indicadores={indicadores.data} />
-                <IndicadorPagination
-                    page={page}
-                    totalPages={totalPages}
-                    handlePagination={handlePagination} />
+                {isLoading ? <p>Loading...</p> :
+                    <>
+                        <IndicadorList indicadores={indicadores} />
+                        <IndicadorPagination
+                            page={page}
+                            totalPages={totalPages}
+                            handlePagination={handlePagination} />
+                    </>
+                }
             </Container>
         </div>
-
     );
 }
 

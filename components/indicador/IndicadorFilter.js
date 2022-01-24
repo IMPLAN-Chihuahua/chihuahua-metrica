@@ -7,10 +7,13 @@ import {
 
 
 const IndicadorFilter = (props) => {
-    const { odsList, unidadMedidaList, coberturaList, modulosList } = props;
+    const { odsList, unidadMedidaList,
+        coberturaList, modulosList, handleModulo } = props;
     const start = new Date().getFullYear();
     const end = start - 15;
     const yearList = [...Array(start - end + 1).keys()].map((x) => start - x);
+    const tendencyList = ['Ascendente', 'Descendente', 'No aplica'];
+
     return (
         <Grid
             container
@@ -47,6 +50,7 @@ const IndicadorFilter = (props) => {
                             options={modulosList}
                             getOptionLabel={(option) => option.temaIndicador}
                             noOptionsText="No hay opciones"
+                            onChange={handleModulo}
                             renderInput={(params) => (
                                 <TextField {...params} label="Temática" />
                             )}
@@ -97,6 +101,17 @@ const IndicadorFilter = (props) => {
                             noOptionsText="No hay opciones"
                             renderInput={(params) => (
                                 <TextField {...params} label="Cobertura Geográfica" />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={4} lg={3}>
+                        <Autocomplete
+                            disablePortal
+                            id="cbx-fuente"
+                            options={tendencyList}
+                            noOptionsText="No hay opciones"
+                            renderInput={(params) => (
+                                <TextField {...params} label="Tendencia" />
                             )}
                         />
                     </Grid>

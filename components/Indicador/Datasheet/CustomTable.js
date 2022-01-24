@@ -1,7 +1,6 @@
 import { StyledTable, StyledTableBody , StyledTableHeaderCell, StyledTableCell } from "styles/Components/StyledTable";
 
 const {
-  TableCell,
   TableContainer,
   TableHead,
   TableRow,

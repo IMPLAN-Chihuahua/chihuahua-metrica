@@ -5,10 +5,6 @@ const {
   Table,
   TableBody,
   TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
   tableCellClasses 
 } = require("@mui/material");
 
@@ -17,9 +13,8 @@ const StyledTable = styled(Table)(( { theme }) => ({
     '& caption': {
         fontWeight: 'bold',
         textAlign: 'center',
-        pr: 5,
-        pl: 5,
         fontSize: '14px',
+        padding: '10px 0',
         color: theme.palette.primary.subtleMain,
     },
     '& td': {
@@ -31,7 +26,6 @@ const StyledTable = styled(Table)(( { theme }) => ({
 }));
 
 const StyledTableBody = styled(TableBody)(( { theme }) => ({
-    border: `2px solid ${theme.palette.secondary.main}`,
     borderTopStyle: "none",
     maxWidth: "500px",
 }));

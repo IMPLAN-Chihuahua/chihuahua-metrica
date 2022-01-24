@@ -14,6 +14,7 @@ import {
   ImageMarked,
   mapImage,
 } from "styles/Components/ImageButton";
+import theme from "styles/theme";
 
 export default function FichaTecnica(props) {
   const formulaTest = `k_{n+1}=x^2 + k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2`;
@@ -63,87 +64,38 @@ export default function FichaTecnica(props) {
           `}
         </style>
 
-        {/*=============================== Hea ======================================*/}
-        <Grid container sx={{ mt: "2%" }}>
-          <Grid item xs={12} md={6}>
-            <img src={data.urlImagen} alt={data.nombre} className="imgTop" />
+        {/*=============================== Header ======================================*/}
+          
+         <Grid container sx={{mt: '2%'}}>
+         
+         <Grid item xs={12} md={6} >
+         <img src={data.urlImagen} alt={data.nombre} className="imgTop" />
+         
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Grid item xs={12} sx={{ color: `text.primary` }}>
-              <Box sx={{ lineHeight: "30%" }}>
-                <h2>{data.nombre}</h2>
-                <h4>{data.Modulo.temaIndicador}</h4>
-              </Box>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum
-              </p>
-            </Grid>
-            <Grid
-              container
-              xs={12}
-              sx={{
-                justifyContent: `center`,
-                textAlign: `center`,
-                display: `flex`,
-                alignItems: `center`,
-              }}
-            >
-              <Grid item xs={3}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ width: `90%` }}
-                  startIcon={<DownloadIcon />}
-                >
-                  {" "}
-                  CSV{" "}
-                </Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ width: `90%` }}
-                  startIcon={<DownloadIcon />}
-                >
-                  {" "}
-                  EXCEL{" "}
-                </Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ width: `90%` }}
-                  startIcon={<DownloadIcon />}
-                >
-                  {" "}
-                  JSON{" "}
-                </Button>
-              </Grid>
-              <Grid item xs={3}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ width: `90%` }}
-                  startIcon={<DownloadIcon />}
-                >
-                  {" "}
-                  PDF{" "}
-                </Button>
-              </Grid>
-            </Grid>
+          <Grid item xs={12} md={6} >
+          <Grid item xs={12} sx={{color: `text.primary`}}>
+          <Box sx={{lineHeight: '30%'}}>
+          <h2>{data.nombre}</h2>
+          <h4>{data.Modulo.temaIndicador}</h4>
+          </Box>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
           </Grid>
-        </Grid>
+          <Grid item xs={12} sx={{justifyContent: `center`, textAlign:`center`, display:`flex`, alignItems:`center`}}>
+          <Grid item xs={3}>
+          <Button variant="contained" color="primary" sx={{width: `90%`}} startIcon={<DownloadIcon/>}> CSV </Button>
+          </Grid>
+          <Grid item xs={3}>
+          <Button variant="contained" color="primary" sx={{width: `90%`}} startIcon={<DownloadIcon/>}> EXCEL </Button>
+          </Grid>
+          <Grid item xs={3}>
+          <Button variant="contained" color="primary" sx={{width: `90%`}} startIcon={<DownloadIcon/>}> JSON </Button>
+          </Grid>
+          <Grid item xs={3}>
+          <Button variant="contained" color="primary" sx={{width: `90%`}} startIcon={<DownloadIcon/>}> PDF </Button>
+          </Grid>
+          </Grid>
+          </Grid>
+          </Grid>
         {/*=============================== Cuerpo ======================================*/}
         <Grid container item xs={12} md={12} >
                 <Grid item xs={12} md={6} sx={{bgcolor: ''}}>
@@ -192,7 +144,7 @@ export default function FichaTecnica(props) {
           <Grid item xs={12} md={6}>
             <CustomTable data={data.Historicos} />
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} sx={{[theme.breakpoints.down('md')]: {mt: '2%'},}}>
             <Graph data={data.Historicos} />
           </Grid>
         </Grid>

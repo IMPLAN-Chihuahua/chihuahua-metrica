@@ -24,7 +24,7 @@ ChartJS.register(
 const Graph = ({ data }) => {
 
   const state = {
-    labels: data.map((historico) => historico.anio),
+    labels: data.reverse().map((historico) => historico.anio),
     datasets: [
       {
         label: "Valor registrado",
@@ -32,7 +32,7 @@ const Graph = ({ data }) => {
         hoverBackgroundColor: `${theme.palette.primary.darkerMain}`,
         borderColor: `${theme.palette.primary.main}`,
         borderWidth: 1,
-        data: data.map((historico) => historico.valor),
+        data: data.reverse().map((historico) => historico.valor),
         barPercentage: 0.6,
         borderRadius: 2,
       },
@@ -52,7 +52,7 @@ const Graph = ({ data }) => {
           width={'auto'}
           height={'165%'}
         />
-        <Typography variant="p" sx={{fontSize: '14px', fontWeight: 'bold', color: theme.palette.primary.subtleMain, pl: 5, pr: 5}}>
+        <Typography variant="p" sx={{fontSize: '14px', fontWeight: 'bold', color: theme.palette.primary.subtleMain, pt: 10}}>
           Gráfica de barras representativa del valor en los últimos años disponibles
         </Typography>
       </Box>

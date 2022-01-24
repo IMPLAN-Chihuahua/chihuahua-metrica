@@ -1,6 +1,7 @@
-import { Button, Card, Container, Grid, Link } from '@mui/material';
+import { Button, Card, CardActionArea, Container, Grid, Link } from '@mui/material';
 import { Box } from '@mui/system';
 import Head from 'next/head';
+import AdbIcon from '@mui/icons-material/Adb';
 import style from '../styles/indicador.module.css'
 
 
@@ -11,16 +12,23 @@ export default function Modulo(props) {
         return (
             <Grid item xs={12} md={6} lg={4} key={modulo.codigo}>
                 <Card className={style.cardSection} sx={{maxWidth: 900, boxShadow:30}} variant='outlined'>
+                    <CardActionArea>
                     <Box className={style.card}>
                     <Box className={style.cardFront} >
-                        <Link href={`/modulos/${modulo.id}`} style={{textDecoration: 'none'}}>
-                        <Box className={style.cardFront__tp} sx={{backgroundColor: `${modulo.color}`}} >
-                            <p className={style.cardFront__icon}>
-                                Test
-                            </p>
-                            <h2 className={style.cardFront__heading}>
-                                {modulo.codigo}
-                            </h2>
+                        <Link href={`/modulos/${modulo.id}/indicadores`} style={{textDecoration: 'none'}}>
+                        
+                        <Box className={style.cardFront__tp} sx={{backgroundColor: `#34495E`}} >
+                            <Box sx={
+                                theme => ({
+                                    display: `flex`,
+                                    marginTop: `5%`,
+                                    marginBottom: `10%`,
+                                })
+
+                            }>
+                                <AdbIcon sx={{fontSize: '100px'}} />
+                            </Box>
+                           
                         </Box>
                         <Box className={style.cardFront__bt} sx={{color:`main.primary`}}>
                             <p className={style.card_text}  >
@@ -30,6 +38,7 @@ export default function Modulo(props) {
                         </Link>
                     </Box>
                 </Box>
+                </CardActionArea>
             </Card>
         </Grid> 
         );

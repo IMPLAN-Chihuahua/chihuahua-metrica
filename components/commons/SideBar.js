@@ -37,18 +37,6 @@ const list = (anchor) => (
                 textTransform: 'uppercase',
                 color: 'common.white',
             }}
-            sx={{
-                ml: 5,
-                my: 2,
-                textTransform: 'uppercase',
-                color: 'common.white',
-            }}
-            sx={{
-                ml: 1,
-                my: 3,
-                textTransform: 'uppercase',
-                color: 'common.white',
-            }}
             >
         <Link href={path} key={title}>
             <a>

@@ -1,10 +1,10 @@
 import { Button, Container, Grid, Box } from "@mui/material";
-import Information from "@components/Indicador/Datasheet/Information";
+import Information from "@components/indicador/Datasheet/Information";
 import DownloadIcon from "@mui/icons-material/Download";
 import Typography from "@mui/material/Typography";
 import MathJax from "react-mathjax";
-import Graph from "@components/Indicador/Datasheet/Graph";
-import CustomTable from "@components/Indicador/Datasheet/CustomTable";
+import Graph from "@components/indicador/Datasheet/Graph";
+import CustomTable from "@components/indicador/Datasheet/CustomTable";
 
 import {
   ImageButton,
@@ -46,7 +46,7 @@ export default function FichaTecnica(props) {
             ::-webkit-scrollbar {
               width: 10px;
             }
-
+            
             /* Track */
             ::-webkit-scrollbar-track {
               background: rgba(241, 241, 241, 0.1);
@@ -208,7 +208,9 @@ export async function getServerSideProps(context) {
   const res = await fetch(
     `${process.env.INDICADORES_BASE_URL}/indicadores/${idIndicador}`
   );
+
   const data = await res.json();
+  console.log(data)
   if (res.status === 200) {
     return {
       props: { ...data },

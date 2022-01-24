@@ -53,19 +53,9 @@
 }
 
 /*---------style Modules------------*/
-.cardFront__heading {
-  font-size: 1.3rem;
-  margin-top: .25rem;
-}
+
 .cardFront__tp { color: #fafbfa; }
 
-.cardFront__icon {
-  fill: #fafbfa;
-  font-size: 3vw;
-  height: 2.25rem;
-  margin-top: 1rem;
-
-}
 
 .card-area {
   align-items: center;
@@ -115,16 +105,18 @@
 
 .cardFront__tp {
   align-items: center;
-  clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 99.5%, 43% 90%, 0 90%);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 84%, 43% 90%, 0 90%);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: .75rem;
+  transition: clip-path 0.5s;
+  /* padding: .75rem; */
 }
 
 .card_text{
   margin-top: 1rem;
   font-size: 1.4rem;
+  
 }
 
 

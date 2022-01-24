@@ -13,7 +13,7 @@ export default function Modulo(props) {
                 <Card className={style.cardSection} sx={{maxWidth: 900, boxShadow:30}} variant='outlined'>
                     <Box className={style.card}>
                     <Box className={style.cardFront} >
-                        <Link href={`/modulos/${modulo.id}`} style={{textDecoration: 'none'}}>
+                        <Link href={`/modulos/${modulo.id}/indicadores`} style={{textDecoration: 'none'}}>
                         <Box className={style.cardFront__tp} sx={{backgroundColor: `black`}} >
                             <p className={style.cardFront__icon}>
                                 Test

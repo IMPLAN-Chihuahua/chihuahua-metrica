@@ -1,49 +1,36 @@
 import Head from "next/head";
-import Item from "@components/Indicador/Card/Item";
-import Stack from "@mui/material/Stack";
-import Pagination from "@mui/material/Pagination";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import { Autocomplete, TextField, Typography } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import IndicadorFilter from "@components/indicador/IndicadorFilter";
+import IndicadorList from "@components/indicador/IndicadorList";
+import IndicadorPagination from "@components/indicador/IndicadorPagination";
 
 export default function Modulo(props) {
-    const data = props.data.indicadores.data;
-    const [indicadores, setIndicadores] = useState(data);
-    const idModulo = props.idModulo;
-    console.log(indicadores);
-    const totalPages = props.data.indicadores["total_pages"];
-    const indicadoresList = indicadores.map((indicador) => {
-        return <Item indicador={indicador} key={indicador.id} />;
-    });
-    const odsList = [...props.data.catalogos.ods];
-    const unidadMedidaList = [...props.data.catalogos.unidadMedida];
-    const coberturaList = [...props.data.catalogos.coberturas];
-    const modulosList = [...props.data.modulos.data];
-    const start = new Date().getFullYear();
-    const end = start - 15;
-    const yearList = [...Array(start - end + 1).keys()].map((x) => start - x);
-    const [ods, setOds] = useState(null);
-
-    useEffect(() => {
-        if (ods === null) return;
-        console.log('use effect ods', ods);
-        handleFilter();
-    }, [ods])
-
-    const handleOdsChange = (event, value) => {
-        if (value === '') console.log('clear');
-        if (value === null) return;
-        console.log('ods id =', value.id);
-        setOds(value.id);
+    const [modulo, setModulo] = useState(props.modulo);
+    const [indicadores, setIndicadores] = useState(props.indicadores);
+    const [filtros, setFiltros] = useState('');
+    const [page, setPage] = useState(props.indicadores.page);
+    const [totalPages, setTotalPages] = useState(props.indicadores.totalPages);
+    const getURL = (params) => {
+        return `${process.env.INDICADORES_BASE_URL}/modulos/${modulo}/${params}`;
     };
 
-    const handleFilter = useCallback(async () => {
-        console.log('handler filter', ods)
-        const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos/${idModulo}/indicadores?idOds=${ods}`);
-        const data = await res.json();
-        setIndicadores(data.data);
-    }, [ods]);
+    const fetchIndicadores = (params) => {
+        fetch(getURL(params))
+            .then(res => res.json())
+            .then(indicadores => {
+                setIndicadores(indicadores.data);
+                setTotalPages(indicadores.total_pages);
+            });
+    };
+
+    useEffect(() => {
+        fetchIndicadores(`indicadores?page=${page}`);
+    }, [page]);
+
+    const handlePagination = (event, value) => {
+        setPage(value);
+    };
 
     return (
         <div>
@@ -53,135 +40,43 @@ export default function Modulo(props) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Container maxWidth="xl">
-                <h1>Indicadores Modulo {idModulo}</h1>
-                <Grid
-                    container
-                    sx={{
-                        backgroundColor: "info.main",
-                        marginBottom: 4,
-                    }}
-                    borderRadius={2}
-                >
-                    <Grid
-                        item
-                        container
-                        padding={2}
-                        rowSpacing={2}
-                        columnSpacing={2}
-                        direction="column"
-                    >
-                        <Grid item>
-                            <Typography variant="h5" component="h2">
-                                Filtrar Indicadores
-                            </Typography>
-                        </Grid>
-                        <Grid
-                            item
-                            container
-                            direction="row"
-                            columnSpacing={2}
-                            rowSpacing={2}
-                        >
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Autocomplete
-                                    disablePortal
-                                    id="cbx-tematica"
-                                    options={modulosList}
-                                    getOptionLabel={(option) => option.temaIndicador}
-                                    noOptionsText="No hay opciones"
-                                    renderInput={(params) => (
-                                        <TextField {...params} label="Temática" />
-                                    )}
-                                />
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Autocomplete
-                                    disablePortal
-                                    id="cbx-ods"
-                                    onChange={handleOdsChange}
-                                    options={odsList}
-                                    getOptionLabel={(option) => option.nombre}
-                                    noOptionsText="No hay opciones"
-                                    renderInput={(params) => (
-                                        <TextField {...params} label="Ods" />
-                                    )}
-                                />
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Autocomplete
-                                    disablePortal
-                                    id="cbx-medida"
-                                    options={unidadMedidaList}
-                                    getOptionLabel={(option) => option.nombre}
-                                    noOptionsText="No hay opciones"
-                                    renderInput={(params) => (
-                                        <TextField {...params} label="Unidad de Medida" />
-                                    )}
-                                />
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Autocomplete
-                                    disablePortal
-                                    id="cbx-year"
-                                    options={yearList}
-                                    getOptionLabel={(option) => option.toString()}
-                                    noOptionsText="No hay opciones"
-                                    renderInput={(params) => (
-                                        <TextField {...params} label="Año" />
-                                    )}
-                                />
-                            </Grid>
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Autocomplete
-                                    disablePortal
-                                    id="cbx-fuente"
-                                    options={coberturaList}
-                                    getOptionLabel={(option) => option.nombre}
-                                    noOptionsText="No hay opciones"
-                                    renderInput={(params) => (
-                                        <TextField {...params} label="Cobertura Geográfica" />
-                                    )}
-                                />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Stack spacing={2} alignItems="stretch" justifyContent="space-around">
-                    {indicadoresList}
-                </Stack>
-                <Pagination
-                    count={totalPages}
-                    showFirstButton
-                    showLastButton
-                    sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}
+                <h1>Indicadores Modulo {modulo}</h1>
+                <IndicadorFilter
+                    odsList={[...props.catalogos.ods]}
+                    unidadMedidaList={[...props.catalogos.unidadMedida]}
+                    coberturaList={[...props.catalogos.coberturas]}
+                    modulosList={[...props.modulos.data]}
                 />
+                <IndicadorList indicadores={indicadores.data} />
+                <IndicadorPagination
+                    page={page}
+                    totalPages={totalPages}
+                    handlePagination={handlePagination} />
             </Container>
         </div>
+
     );
 }
 
 export async function getServerSideProps(context) {
-    const urlBase = process.env.INDICADORES_BASE_URL;
-    const idModulo = context.params.idModulo;
+    const baseUrl = process.env.INDICADORES_BASE_URL;
+    const modulo = context.params.idModulo;
     const [indicadoresRes, catalogosRes, modulosRes] = await Promise.all([
-        fetch(`${urlBase}/modulos/${idModulo}/indicadores`),
-        fetch(`${urlBase}/catalogos`),
-        fetch(`${urlBase}/modulos`),
+        fetch(`${baseUrl}/modulos/${modulo}/indicadores`),
+        fetch(`${baseUrl}/catalogos`),
+        fetch(`${baseUrl}/modulos`),
     ]);
     const [indicadores, catalogos, modulos] = await Promise.all([
         indicadoresRes.json(),
         catalogosRes.json(),
         modulosRes.json(),
     ]);
-
     return {
         props: {
-            idModulo,
-            data: {
-                indicadores,
-                catalogos,
-                modulos,
-            },
+            modulo,
+            catalogos,
+            modulos,
+            indicadores
         },
     };
 }

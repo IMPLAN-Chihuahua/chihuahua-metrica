@@ -1,10 +1,14 @@
-import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
-import { ButtonBase, Divider, Typography } from '@mui/material';
+import {
+    ButtonBase,
+    Divider,
+    Typography,
+    Card,
+    Grid
+} from '@mui/material';
 
-const Item = (props) => {
-    const { indicador } = props;
-    const updatedAt = props.indicador.updatedAt.split('T')[0];
+const Indicador = (props) => {
+    const indicador = props.value;
+    const updatedAt = indicador.updatedAt.split('T')[0];
     return (
         <Card sx={{ padding: 2 }} variant='outlined'>
             <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2}>
@@ -144,4 +148,4 @@ const Item = (props) => {
     );
 };
 
-export default Item;
+export default Indicador;

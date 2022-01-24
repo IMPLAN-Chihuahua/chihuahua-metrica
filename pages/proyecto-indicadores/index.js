@@ -2,7 +2,7 @@ import { Button, Card, CardActionArea, Container, Grid, Link } from '@mui/materi
 import { Box } from '@mui/system';
 import Head from 'next/head';
 import AdbIcon from '@mui/icons-material/Adb';
-import style from '../styles/indicador.module.css'
+import style from '../../styles/indicador.module.css'
 
 
 

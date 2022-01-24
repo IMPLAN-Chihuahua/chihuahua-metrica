@@ -102,7 +102,7 @@ export default function Modulo(props) {
                 {
 
                     isLoading ?
-                        Array.from(new Array(3)).map(_ => <IndicadorSkeleton />)
+                        Array.from(new Array(3)).map((_, i) => <IndicadorSkeleton key={i} />)
                         :
                         <>
                             <IndicadorList indicadores={indicadores} />

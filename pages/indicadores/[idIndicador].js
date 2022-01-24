@@ -18,7 +18,7 @@ import theme from "styles/theme";
 import Title from "@components/commons/Title";
 
 export default function FichaTecnica(props) {
-  const formulaTest = `k_{n+1}=x^2 + k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2`;
+  const formulaTest = 'k_{n+1}=x^2 + k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2';
   const data = props.data;
 
   return (
@@ -73,26 +73,26 @@ export default function FichaTecnica(props) {
          <img src={data.urlImagen} alt={data.nombre} className="imgTop" />
           </Grid>
           <Grid item xs={12} md={6} >
-          <Grid item xs={12} sx={{color: `text.primary`}}>
+          <Grid item xs={12} sx={{color: 'text.primary'}}>
           <Box sx={{lineHeight: '30%'}}>
           <h2>{data.nombre}</h2>
           <h4>{data.Modulo.temaIndicador}</h4>
           </Box>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard of dummy text of the industry ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
           </Grid>
 
-          <Grid item xs={12} sx={{justifyContent: `center`, textAlign:`center`, display:`flex`, alignItems:`center`}}>
+          <Grid item xs={12} sx={{justifyContent: 'center', textAlign:'center', display:'flex', alignItems:'center'}}>
           <Grid item xs={3}>
-          <Button variant="contained" color="primary" sx={{width: `90%`}} startIcon={<DownloadIcon/>}> CSV </Button>
+          <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> CSV </Button>
           </Grid>
           <Grid item xs={3}>
-          <Button variant="contained" color="primary" sx={{width: `90%`}} startIcon={<DownloadIcon/>}> EXCEL </Button>
+          <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> EXCEL </Button>
           </Grid>
           <Grid item xs={3}>
-          <Button variant="contained" color="primary" sx={{width: `90%`}} startIcon={<DownloadIcon/>}> JSON </Button>
+          <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> JSON </Button>
           </Grid>
           <Grid item xs={3}>
-          <Button variant="contained" color="primary" sx={{width: `90%`}} startIcon={<DownloadIcon/>}> PDF </Button>
+          <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> PDF </Button>
           </Grid>
           </Grid>
           </Grid>
@@ -117,30 +117,30 @@ export default function FichaTecnica(props) {
                         </Grid>
                 </Grid>
                 
-                <Grid item xs={12} md={6} sx={{bgcolor: '', display:`flex`, justifyContent:`center`, alignItems:`center`}}>
+                <Grid item xs={12} md={6} sx={{bgcolor: '', display:'flex', justifyContent:'center', alignItems:'center'}}>
                     <Grid sx={ theme => (
                       {
-                      borderRadius:`5px`, 
+                      borderRadius:'5px', 
                       bgcolor: 'cardInformation.main', 
-                      color:`white`,
-                      height:`96%`, 
-                      mt:`5%`,
-                      ml:`5%`, 
-                      textAlign:`center`, 
-                      width:`95%`,
+                      color:'white',
+                      height:'96%', 
+                      mt:'5%',
+                      ml:'5%', 
+                      textAlign:'center', 
+                      width:'95%',
                       [theme.breakpoints.down('md')]: {
-                        width:`100%`,
-                        ml:`0`, 
+                        width:'100%',
+                        ml:'0', 
                       },
                       })}>
-                      <Box sx={{ml:`10%`,mr:`10%`}}>
+                      <Box sx={{ml:'10%',mr:'10%'}}>
                     <br />
                     <h2>Formula</h2>
                      <MathJax.Provider>
                     <h1 className="formulaText"><MathJax.Node inline formula={formulaTest} /></h1>
                     </MathJax.Provider>
                     <h3>Descripción</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard for dummy text of the industry ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     <h3>Fuente de consulta</h3>
                     <p>TEST.INC</p>
                       </Box>
@@ -157,7 +157,7 @@ export default function FichaTecnica(props) {
           </Grid>
         </Grid>
         {/*=============================== Mapa ======================================*/}
-        <Grid container item sx={{mt: '5%', justifyContent:`center`, alignItems:`center`}} >
+        <Grid container item sx={{mt: '5%', justifyContent:'center', alignItems:'center'}} >
           <Box sx={ theme => (
             { 
             display: 'flex', 

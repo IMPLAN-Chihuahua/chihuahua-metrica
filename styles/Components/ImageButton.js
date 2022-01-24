@@ -67,7 +67,7 @@ const ImageMarked = styled("span")(({ theme }) => ({
 
 const mapImage = {
   title: "Mapa",
-  url: "/images/ficha_tecnica/mapaBase.webp",
+  url: "/images/ficha-tecnica/mapaBase.jpeg",
   width: "100%",
 };
 

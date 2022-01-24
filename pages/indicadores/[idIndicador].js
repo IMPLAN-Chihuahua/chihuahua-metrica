@@ -1,10 +1,10 @@
 import { Button, Container, Grid, Box } from "@mui/material";
-import Information from "@components/Indicador/Datasheet/Information";
+import Information from "@components/indicador/Datasheet/Information";
 import DownloadIcon from "@mui/icons-material/Download";
 import Typography from "@mui/material/Typography";
 import MathJax from "react-mathjax";
-import Graph from "@components/Indicador/Datasheet/Graph";
-import CustomTable from "@components/Indicador/Datasheet/CustomTable";
+import Graph from "@components/indicador/Datasheet/Graph";
+import CustomTable from "@components/indicador/Datasheet/CustomTable";
 
 import {
   ImageButton,
@@ -200,7 +200,9 @@ export async function getServerSideProps(context) {
   const res = await fetch(
     `${process.env.INDICADORES_BASE_URL}/modulos/1/indicadores/${idIndicador}`
   );
+
   const data = await res.json();
+  console.log(data)
   if (res.status === 200) {
     return {
       props: { ...data },

@@ -1,4 +1,4 @@
-const route = '/Images/Banner/'
+const route = '/images/Banner/'
     const slides = [
         {
             name: "banner-01",

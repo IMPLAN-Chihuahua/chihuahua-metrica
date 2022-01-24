@@ -1,6 +1,7 @@
 import { Button, Card, Container, Grid, Link } from '@mui/material';
 import { Box } from '@mui/system';
 import Head from 'next/head';
+import AdbIcon from '@mui/icons-material/Adb';
 import style from '../styles/indicador.module.css'
 
 
@@ -14,9 +15,9 @@ export default function Modulo(props) {
                     <Box className={style.card}>
                     <Box className={style.cardFront} >
                         <Link href={`/modulos/${modulo.id}/indicadores`} style={{textDecoration: 'none'}}>
-                        <Box className={style.cardFront__tp} sx={{backgroundColor: `${modulo.color}`}} >
+                        <Box className={style.cardFront__tp} sx={{backgroundColor: `salmon`}} >
                             <p className={style.cardFront__icon}>
-                                Test
+                                <AdbIcon sx={{fontSize: '85px'}} />
                             </p>
                             <h2 className={style.cardFront__heading}>
                                 {modulo.codigo}

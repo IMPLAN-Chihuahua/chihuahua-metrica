@@ -1,61 +1,60 @@
-import { Line } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
   Title,
   Tooltip,
   Legend,
+  BarElement,
 } from "chart.js";
+import theme from "styles/theme";
+import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  BarElement
 );
 
 const Graph = ({ data }) => {
+
   const state = {
     labels: data.map((historico) => historico.anio),
     datasets: [
       {
-        label: "Valores registrados",
-        fill: false,
-        lineTension: 0.5,
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(0,0,0,1)",
-        borderWidth: 3,
+        label: "Valor registrado",
+        backgroundColor: `${theme.palette.primary.subtleMain}`,
+        hoverBackgroundColor: `${theme.palette.primary.darkerMain}`,
+        borderColor: `${theme.palette.primary.main}`,
+        borderWidth: 1,
         data: data.map((historico) => historico.valor),
+        barPercentage: 0.6,
+        borderRadius: 2,
       },
     ],
   };
 
+  const options = {
+    responsive: true,
+  };
+
   return (
     <>
-      <Box sx={{ width: "35%", height: "20%" }}>
-        <Line
+      <Box sx={{textAlign: 'center', width:'auto', height: 'auto'}}>
+        <Bar
           data={state}
-          width={100}
-          height={100}
-          options={{
-            title: {
-              display: true,
-              text: "Datos históricos de indicador X",
-              fontSize: 20,
-            },
-            legend: {
-              display: false,
-            },
-            maintainAspectRatio: false,
-          }}
+          options={options}
+          width={'auto'}
+          height={'165%'}
         />
+        <Typography variant="p" sx={{fontSize: '14px', fontWeight: 'bold', color: theme.palette.primary.subtleMain, pl: 5, pr: 5}}>
+          Gráfica de barras representativa del valor en los últimos años disponibles
+        </Typography>
       </Box>
     </>
   );

@@ -1,42 +1,37 @@
-import { Box } from "@mui/system";
-import { StyledTable, StyledTableBody , StyledTableCell } from "styles/Components/StyledTable";
+import { StyledTable, StyledTableBody , StyledTableHeaderCell, StyledTableCell } from "styles/Components/StyledTable";
+
 const {
-  Table,
-  TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
 } = require("@mui/material");
 
 
 const CustomTable = ({ data }) => {
 
   return (
-    <Box>
     <TableContainer>
-      <Table sx={{maxWidth: 450}} aria-label='Tabla de datos históricos'>
+      <StyledTable sx={{maxWidth: 500}} aria-label='Tabla de datos históricos'>
         <caption>Tabla con la evolución de los datos registrados en los últimos 5 años.</caption>
         <TableHead>
           <TableRow>
-            <StyledTableCell>Año</StyledTableCell>
-            <StyledTableCell>Valor</StyledTableCell>
-            <StyledTableCell>Fuente de información</StyledTableCell>
+            <StyledTableHeaderCell>Año</StyledTableHeaderCell>
+            <StyledTableHeaderCell>Valor</StyledTableHeaderCell>
+            <StyledTableHeaderCell>Fuente de información</StyledTableHeaderCell>
           </TableRow>
         </TableHead>
         <StyledTableBody>
          {data.map((historico) => (
             <TableRow key={historico.anio}>
-              <TableCell>{historico.anio}</TableCell>
-              <TableCell>{historico.valor}</TableCell>
-              <TableCell>{historico.fuente}</TableCell>
+              <StyledTableCell>{historico.anio}</StyledTableCell>
+              <StyledTableCell>{historico.valor}</StyledTableCell>
+              <StyledTableCell>{historico.fuente}</StyledTableCell>
             </TableRow>
           ))}
         </StyledTableBody>
-      </Table>
+      </StyledTable>
     </TableContainer>
-    </Box>
   );
 };
 

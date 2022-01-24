@@ -63,8 +63,6 @@ export default function FichaTecnica(props) {
           `}
         </style>
 
-        <Graph data={data.Historicos} />
-        <CustomTable data={data.Historicos} />
         {/*=============================== Hea ======================================*/}
         <Grid container sx={{ mt: "2%" }}>
           <Grid item xs={12} md={6}>
@@ -264,6 +262,15 @@ export default function FichaTecnica(props) {
               </Image>
             </ImageButton>
           </Box>
+        </Grid>
+
+        <Grid container sx={{mt: '2%'}}>
+          <Grid item xs={12} md={6}>
+            <CustomTable data={data.Historicos} />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Graph data={data.Historicos} />
+          </Grid>
         </Grid>
       </Container>
     </>

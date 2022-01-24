@@ -1,4 +1,5 @@
 import theme from "styles/theme";
+import { styled } from "@mui/material/styles";
 
 const {
   Table,
@@ -10,14 +11,16 @@ const {
   Typography,
   tableCellClasses 
 } = require("@mui/material");
-const { styled } = require("@mui/styles");
 
 const StyledTable = styled(Table)(( { theme }) => ({
 
     '& caption': {
         fontWeight: 'bold',
         textAlign: 'center',
-        padding: 5
+        pr: 5,
+        pl: 5,
+        fontSize: '14px',
+        color: theme.palette.primary.subtleMain,
     },
     '& td': {
         textAlign: 'center',
@@ -25,15 +28,15 @@ const StyledTable = styled(Table)(( { theme }) => ({
     '& th': {
         textAlign: 'center',
     },
-
 }));
 
 const StyledTableBody = styled(TableBody)(( { theme }) => ({
     border: `2px solid ${theme.palette.secondary.main}`,
     borderTopStyle: "none",
+    maxWidth: "500px",
 }));
 
-const StyledTableCell = styled(TableCell)(( { theme }) => ({
+const StyledTableHeaderCell = styled(TableCell)(( { theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
@@ -41,17 +44,22 @@ const StyledTableCell = styled(TableCell)(( { theme }) => ({
         fontSize: '14px',
         textAlign: 'center',
         padding: '8px',
-        '&:first-child': {
-            borderTopLeftRadius: '3334px',
+        '&:first-of-type': {
+            borderTopLeftRadius: '10px',
         },
-        '&:last-child': {
-            borderTopRightRadius: '3334px',
+        '&:last-of-type': {
+            borderTopRightRadius: '10px',
         },
-    },
+    }
+}));
+
+const StyledTableCell = styled(TableCell)(( { theme }) => ({
     [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-    },  
+        fontSize: '14px',
+        textAlign: 'center',
+        padding: 'auto',
+    }
 }));
 
 
-export { StyledTable, StyledTableBody, StyledTableCell };
+export { StyledTable, StyledTableBody, StyledTableHeaderCell, StyledTableCell };

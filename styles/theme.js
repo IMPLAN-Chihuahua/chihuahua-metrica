@@ -6,8 +6,11 @@ let theme = createTheme({
         // Change color after checking MUI
         primary: { 
             main: '#263044',
-            contrastText: '#E3F6FA',
-            buttonColor: '#EEEEEE'
+            subtleMain: '#46587C',
+            darkerMain: '#1C2331',
+            contrastText: '#FFFFFF',
+            buttonColor: '#EEEEEE',
+            white: '#FFFFFF',
         },
         
         secondary: {
@@ -21,6 +24,10 @@ let theme = createTheme({
       
         detail: {
             main: '#158585'
+        },
+
+        cardInformation: {
+            main: '#204C5A'
         }
     }
 });

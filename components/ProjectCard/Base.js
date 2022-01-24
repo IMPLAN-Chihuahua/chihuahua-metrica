@@ -5,7 +5,7 @@ import theme from '../../styles/theme';
 
 const SecondaryColorButton = styled(Button)(({ theme }) => ({
     color: 'white',
-    backgroundColor: '#d1a961',
+    backgroundColor: 'red',
     '&:hover': {
         backgroundColor: '#B5955C',
     },

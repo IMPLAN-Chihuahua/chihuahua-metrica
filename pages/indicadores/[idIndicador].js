@@ -67,7 +67,7 @@ export default function FichaTecnica(props) {
 
         {/*=============================== Header ======================================*/}
           
-         <Grid container sx={{mt: '2%'}}>
+         <Grid container sx={{mt: '5%'}}>
          
          <Grid item xs={12} md={6} >
          <img src={data.urlImagen} alt={data.nombre} className="imgTop" />
@@ -98,14 +98,7 @@ export default function FichaTecnica(props) {
           </Grid>
           </Grid>
         {/*=============================== Cuerpo ======================================*/}
-
-        <Box sx={{display: 'flex'}}>
-          <Box m="auto" sx={{mt: 3}}>
-            <Title variant={'h3'} content="Ficha técnica"></Title>
-          </Box>
-        </Box>
-        
-        <Grid container item xs={12} md={12} >
+        <Grid container item xs={12} md={12} sx={{mt:`1%`}} >
                 <Grid item xs={12} md={6} sx={{bgcolor: ''}}>
                         <Grid container spacing={3} sx={{mt: '1%'}}>
                             <Information header={data.ultimoValorDisponible} title='Último valor disponible' body='TBD databse'/>

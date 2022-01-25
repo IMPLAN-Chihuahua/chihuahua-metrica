@@ -1,3 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+:root, body {
+  height:100%;
+  margin: 0;
+  padding:0;
+  width: 100%;
+
+  --primary-main: #263044;
+  --primary-on-main: #E3F6FA;
+  --secondary: #d1a961; 
+ }
+ 
+ #__next {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+ }
+ 
+ main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+ } 
+
 html,
 body {
   padding: 0;
@@ -11,6 +40,3 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}

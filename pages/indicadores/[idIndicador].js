@@ -6,16 +6,18 @@ import MathJax from "react-mathjax";
 import Graph from "@components/indicador/Datasheet/Graph";
 import CustomTable from "@components/indicador/Datasheet/CustomTable";
 
+
 import {
   ImageButton,
   ImageSrc,
-  Image,
+  ImageB,
   ImageBackdrop,
   ImageMarked,
   mapImage,
 } from "styles/Components/ImageButton";
 import theme from "styles/theme";
 import Title from "@components/commons/Title";
+import Image from "next/image";
 
 export default function FichaTecnica(props) {
   const formulaTest = 'k_{n+1}=x^2 + k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2';
@@ -26,12 +28,7 @@ export default function FichaTecnica(props) {
       <Container>
         <style jsx>
           {`
-            .imgTop {
-              padding-left: 10%;
-              padding-right: 10%;
-              width: 100%;
-              height: auto;
-            }
+           
             .formulaText {
               font-size: 2rem;
               font-weight: bold;
@@ -69,8 +66,16 @@ export default function FichaTecnica(props) {
           
          <Grid container sx={{mt: '5%'}}>
          
-         <Grid item xs={12} md={6} >
-         <img src={data.urlImagen} alt={data.nombre} className="imgTop" />
+         <Grid item xs={12} md={6} sx={{display:'flex',justifyContent:'center', alignItems:'center'}}>
+           <Box sx={{
+             bgcolor: 'black',
+             width: '80%',
+             height: '90%',
+             position: 'relative',
+           }}>
+         <Image src="/images/implan-logo.webp" alt={data.nombre} layout="fill" objectFit="contain"  />
+           </Box>
+             
           </Grid>
           <Grid item xs={12} md={6} >
           <Grid item xs={12} sx={{color: 'text.primary'}}>
@@ -169,11 +174,12 @@ export default function FichaTecnica(props) {
         >
           <ImageSrc style={{ backgroundImage: `url(${mapImage.url})` }} />
           <ImageBackdrop className="MuiImageBackdrop-root" />
-          <Image>
+          <ImageB>
             <Typography
               component="span"
               variant="subtitle1"
               color="inherit"
+              alt="Mapa"
               sx={{
                 position: 'relative',
                 p: 4,
@@ -187,7 +193,7 @@ export default function FichaTecnica(props) {
               Ver mapa
               <ImageMarked className="MuiImageMarked-root" />
             </Typography>
-          </Image>
+          </ImageB>
         </ImageButton>
     </Box>
           </Grid>

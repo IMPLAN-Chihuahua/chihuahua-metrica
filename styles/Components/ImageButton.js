@@ -32,7 +32,7 @@ const ImageSrc = styled("span")({
   backgroundPosition: "center 40%",
 });
 
-const Image = styled("span")(({ theme }) => ({
+const ImageB = styled("span")(({ theme }) => ({
   position: "absolute",
   left: 0,
   right: 0,
@@ -71,4 +71,4 @@ const mapImage = {
   width: "100%",
 };
 
-export { ImageButton, ImageSrc, Image, ImageBackdrop, ImageMarked, mapImage };
+export { ImageButton, ImageSrc, ImageB, ImageBackdrop, ImageMarked, mapImage };

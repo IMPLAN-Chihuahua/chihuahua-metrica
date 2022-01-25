@@ -36,7 +36,7 @@ const Footer = () => {
                 mb={2}
             >
                 <Box component='div' flexGrow={1} textAlign='center'>
-                    <Image src='/images/implan-logo.webp' width={200} height={150} />
+                    <Image src='/images/implan-logo.webp' width={200} height={150} alt='Implan logo' />
                 </Box>
                 <Box component='div' flexGrow={1}>
                     <Typography variant='h5' component='h3'>Más Información</Typography>

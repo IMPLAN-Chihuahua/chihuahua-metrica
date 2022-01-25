@@ -1,0 +1,14 @@
+.circleInfo:hover {
+    transition: 0.5s;
+    transform: scale(1.1)    
+}
+
+.circleInfo {
+    transition: 0.5s;
+    transform: scale(1);
+}
+
+
+.cardInfo {
+    background-color: red;
+}

@@ -1,6 +1,8 @@
 const { Card, Grid, CardContent, Typography, Box, CardHeader, Avatar} = require("@mui/material");
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import styles from './Information.module.css';
+import { numberWithCommas } from 'helpers/FormatNumbers';
 
 const Information = ({header, title, body}) => {
 
@@ -16,11 +18,9 @@ const Information = ({header, title, body}) => {
         <>
         <Grid item xs={12} md={6}>
             <Card sx={{bgcolor: 'cardInformation.main',  textAlign: 'center', minHeight: '310px'}}>
-                 <Box
-                display="flex"
-                >
-                    <Avatar sx={{m: 'auto', mt: 2, width: '150px', height: '150px', bgcolor: 'primary.white', color: 'primary.main', fontWeight: 'bold'}}>
-                    {header}
+                 <Box display="flex">
+                    <Avatar className={styles.circleInfo} sx={{m: 'auto', mt: 2, width: '150px', height: '150px', bgcolor: 'primary.white', color: 'primary.main', fontWeight: 'bold', fontSize:'2em'}}>
+                    {numberWithCommas(header)}
                     </Avatar>
                 </Box>
                 <CardContent sx={{ textAlign: 'center'}}>

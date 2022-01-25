@@ -2,12 +2,17 @@
     width: 50px;
     color: #989898;
     margin-top: 0;
+    margin-left: 0;
     border: none;
     height: 4px;
     background-color: #070b46;
-    transition: width 2s;
+    transition: width 1s;
 }
 
-.tests:hover > .titleDivider {
-    height: 20px;
+.titleFather:hover > .titleDivider {
+    width: 100%;
+}
+
+.titleFather:hover {
+    cursor: context-menu;
 }

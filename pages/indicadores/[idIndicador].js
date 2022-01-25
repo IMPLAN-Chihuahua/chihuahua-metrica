@@ -179,7 +179,7 @@ export default function FichaTecnica(props) {
               component="span"
               variant="subtitle1"
               color="inherit"
-              alt={Mapa}
+              alt="Mapa"
               sx={{
                 position: 'relative',
                 p: 4,

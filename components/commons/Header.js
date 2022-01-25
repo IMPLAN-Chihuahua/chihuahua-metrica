@@ -28,7 +28,7 @@ const Header = () => {
                     <Toolbar>
                         <Grid container direction='row'>
                             <Grid item xs flexGrow={1}>
-                                <Image src='/images/small-logo.png' width={100} height={60} />
+                                <Image src='/images/small-logo.png' width={100} height={60} alt="small Logo" />
                             </Grid>
                             <Grid item xs flexGrow={1} container justifyContent='flex-end'>
                                 <Navbar navLinks={navLinks} />

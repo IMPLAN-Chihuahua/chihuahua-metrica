@@ -8,7 +8,7 @@ import style from '../../styles/EmblaCarousel.module.css'
 import Image from "next/image";
 
 const EmblaCarousel = () => {
-  const options = { delay: 5000} // Options
+  const options = { delay: 4000} // Options
   const autoplayRoot = (emblaRoot) => emblaRoot.parentElement // Root node
   const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false, loop: true, startIndex:0, draggable: false},[Autoplay(options, autoplayRoot)]);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);

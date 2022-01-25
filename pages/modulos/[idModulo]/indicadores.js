@@ -2,10 +2,10 @@ import Head from "next/head";
 import Container from "@mui/material/Container";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect, useState } from "react";
-import IndicadorFilter from "@components/indicador/IndicadorFilter";
-import IndicadorList from "@components/indicador/IndicadorList";
-import IndicadorPagination from "@components/indicador/IndicadorPagination";
-import IndicadorSkeleton from "@components/indicador/IndicadorSkeleton";
+import IndicadorFilter from "@components/Indicador/IndicadorFilter";
+import IndicadorList from "@components/Indicador/IndicadorList";
+import IndicadorPagination from "@components/Indicador/IndicadorPagination";
+import IndicadorSkeleton from "@components/Indicador/IndicadorSkeleton";
 
 export default function Modulo(props) {
     const [isLoading, setLoading] = useState(false);

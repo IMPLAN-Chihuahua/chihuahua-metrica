@@ -14,7 +14,6 @@ import {
   ImageMarked,
   mapImage,
 } from "styles/Components/ImageButton";
-import theme from "styles/theme";
 import Title from "@components/commons/Title";
 
 export default function FichaTecnica(props) {
@@ -98,6 +97,7 @@ export default function FichaTecnica(props) {
           </Grid>
           </Grid>
         {/*=============================== Cuerpo ======================================*/}
+        <Title variant={'h4'} content={"test"}></Title>
         <Grid container item xs={12} md={12} sx={{mt:`1%`}} >
                 <Grid item xs={12} md={6} sx={{bgcolor: ''}}>
                         <Grid container spacing={3} sx={{mt: '1%'}}>
@@ -145,7 +145,7 @@ export default function FichaTecnica(props) {
           <Grid item xs={12} md={6}>
             <CustomTable data={data.Historicos} />
           </Grid>
-          <Grid item xs={12} md={6} sx={{[theme.breakpoints.down('md')]: {mt: '2%'},}}>
+          <Grid item xs={12} md={6}>
             <Graph data={data.Historicos} />
           </Grid>
         </Grid>

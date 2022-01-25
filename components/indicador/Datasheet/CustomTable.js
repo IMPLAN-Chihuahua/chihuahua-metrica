@@ -11,7 +11,7 @@ const CustomTable = ({ data }) => {
 
   return (
     <TableContainer>
-      <StyledTable sx={{maxWidth: 'auto'}} aria-label='Tabla de datos históricos'>
+      <StyledTable sx={{maxWidth:'99%'}} aria-label='Tabla de datos históricos'>
         <caption>Tabla con la evolución de los datos registrados en los últimos 5 años.</caption>
         <TableHead>
           <TableRow>
@@ -22,7 +22,7 @@ const CustomTable = ({ data }) => {
         </TableHead>
         <StyledTableBody>
          {data.map((historico) => (
-            <TableRow key={historico.anio}>
+            <TableRow hover key={historico.anio}>
               <StyledTableCell>{historico.anio}</StyledTableCell>
               <StyledTableCell>{historico.valor}</StyledTableCell>
               <StyledTableCell>{historico.fuente}</StyledTableCell>

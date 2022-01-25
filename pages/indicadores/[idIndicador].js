@@ -141,7 +141,7 @@ export default function FichaTecnica(props) {
                 </Grid>
             </Grid>
         {/*=============================== Graph ======================================*/}
-        <Grid container sx={{mt: '5%'}}>
+        <Grid container sx={{mt: '5%'}} spacing={4}>
           <Grid item xs={12} md={6}>
             <CustomTable data={data.Historicos} />
           </Grid>

@@ -11,7 +11,7 @@ const CustomTable = ({ data }) => {
 
   return (
     <TableContainer>
-      <StyledTable sx={{maxWidth: 500}} aria-label='Tabla de datos históricos'>
+      <StyledTable sx={{maxWidth: 'auto'}} aria-label='Tabla de datos históricos'>
         <caption>Tabla con la evolución de los datos registrados en los últimos 5 años.</caption>
         <TableHead>
           <TableRow>

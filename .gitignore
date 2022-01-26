@@ -33,8 +33,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-# Images
-*.png
-*.webp
-*.jpg

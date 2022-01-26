@@ -9,6 +9,7 @@ import '../styles/globals.css';
 // Manually generated
 import Header from '@components/commons/Header';
 import Footer from '@components/commons/Footer';
+import Document from './_document';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -19,7 +20,6 @@ function MyApp(props) {
       <Head>
         <title>Observatorio Urbano</title>
         <meta lang='es' name='viewport' content='initial-scale=1, width=device-width' />
-        <link href="https://fonts.googleapis.com/css2?family=Inter&display=optional" rel="stylesheet"/>
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

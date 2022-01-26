@@ -2,15 +2,15 @@ import React, { useState, useEffect, useCallback } from "react";
 import { DotButton, PrevButton, NextButton } from "./EmblaCarouselButtons";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from 'embla-carousel-autoplay'
-import slides from '../helpers/CarouselImages'
+import slides from '../../helpers/CarouselImages'
 import { Box } from "@mui/material";
-import style from '../styles/EmblaCarousel.module.css'
+import style from '../../styles/EmblaCarousel.module.css'
 import Image from "next/image";
 
 const EmblaCarousel = () => {
-  const options = { delay: 3000} // Options
+  const options = { delay: 4000} // Options
   const autoplayRoot = (emblaRoot) => emblaRoot.parentElement // Root node
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false, loop: true },[Autoplay(options, autoplayRoot)]);
+  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false, loop: true, startIndex:0, draggable: false},[Autoplay(options, autoplayRoot)]);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -44,10 +44,12 @@ const EmblaCarousel = () => {
             {slides.map((index) => (
               <Box className={style.embla__slide} key={index.name}>
                 <Box className={style.embla__slide__inner}>
-                  <img
-                    className={style.embla__slide__img}
+                  <Image
                     src={index.url} id={index.name}
-                  />
+                    alt={index.name}
+                    width={2000}
+                    height={860}
+                />
                 </Box>
               </Box>
             ))}

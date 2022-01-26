@@ -1,3 +1,4 @@
+import { numberWithCommas } from "helpers/FormatNumbers";
 import { StyledTable, StyledTableBody , StyledTableHeaderCell, StyledTableCell } from "styles/Components/StyledTable";
 
 const {
@@ -24,7 +25,7 @@ const CustomTable = ({ data }) => {
          {data.map((historico) => (
             <TableRow hover key={historico.anio}>
               <StyledTableCell>{historico.anio}</StyledTableCell>
-              <StyledTableCell>{historico.valor}</StyledTableCell>
+              <StyledTableCell>{numberWithCommas(historico.valor)}</StyledTableCell>
               <StyledTableCell>{historico.fuente}</StyledTableCell>
             </TableRow>
           ))}

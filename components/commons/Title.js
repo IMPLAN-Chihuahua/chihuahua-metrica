@@ -1,17 +1,14 @@
 import { Box } from '@mui/system';
 import styles from './Title.module.css';
+const { Typography, Divider } = require("@mui/material");
 
-const { Typography } = require("@mui/material");
-
-const Title = (props) => {
-    const variant = props.variant || 'h1';
-    const content = props.content;
+const Title = ({variant, content, margin, lineStart = 'auto'}) => {
     return (
         <>
-        <Box sx={{display: 'flex'}} className={styles.tests}>
-            <Box m="auto">
-                <Typography variant={variant}>{content}</Typography>
-                <hr className={styles.titleDivider} />
+        <Box sx={{display: 'flex', m: {margin}}} className={styles.titleGrandfather}>
+            <Box m="auto" className={styles.titleFather}>
+                <Typography className={styles.titleContent} variant={variant}>{content}</Typography>
+                <Divider sx={{m: lineStart}} className={styles.titleDivider}></Divider>
             </Box>
         </Box>  
         </>

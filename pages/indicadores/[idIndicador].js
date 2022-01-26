@@ -15,7 +15,6 @@ import {
   ImageMarked,
   mapImage,
 } from "styles/Components/ImageButton";
-import theme from "styles/theme";
 import Title from "@components/commons/Title";
 import Image from "next/image";
 
@@ -103,6 +102,7 @@ export default function FichaTecnica(props) {
           </Grid>
           </Grid>
         {/*=============================== Cuerpo ======================================*/}
+        <Title margin={'3% 0 0 0'} variant={'h4'} content="Ficha técnica"></Title>
         <Grid container item xs={12} md={12} sx={{mt:`1%`}} >
                 <Grid item xs={12} md={6} sx={{bgcolor: ''}}>
                         <Grid container spacing={3} sx={{mt: '1%'}}>
@@ -146,15 +146,17 @@ export default function FichaTecnica(props) {
                 </Grid>
             </Grid>
         {/*=============================== Graph ======================================*/}
-        <Grid container sx={{mt: '5%'}}>
+        <Title margin={'3% 0 0 0'} variant={'h4'} content="Valores históricos"></Title>
+        <Grid container sx={{mt: '1%'}} spacing={4}>
           <Grid item xs={12} md={6}>
             <CustomTable data={data.Historicos} />
           </Grid>
-          <Grid item xs={12} md={6} sx={{[theme.breakpoints.down('md')]: {mt: '2%'},}}>
+          <Grid item xs={12} md={6}>
             <Graph data={data.Historicos} />
           </Grid>
         </Grid>
         {/*=============================== Mapa ======================================*/}
+        <Title margin={'3% 0 0 0'} variant={'h4'} content="Mapa"></Title>
         <Grid container item sx={{mt: '5%', justifyContent:'center', alignItems:'center'}} >
           <Box sx={ theme => (
             { 
@@ -209,7 +211,6 @@ export async function getServerSideProps(context) {
   );
 
   const data = await res.json();
-  console.log(data)
   if (res.status === 200) {
     return {
       props: { ...data },

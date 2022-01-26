@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Container from "@mui/material/Container";
-import EmblaCarousel from '@components/EmblaCarousel';
+import EmblaCarousel from '@components/carousel/EmblaCarousel';
 import GridBase from '@components/proyecto/GridBase';
 import Typography from '@mui/material/Typography';
 import theme from 'styles/theme';

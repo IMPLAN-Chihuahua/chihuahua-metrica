@@ -1,4 +1,4 @@
-import Base from '@components/ProjectCard/Base';
+import Base from '@components/proyecto/Base';
 import Grid from '@mui/material/Grid';
 
 const JSON = [

@@ -44,6 +44,7 @@ const IndicadorFilter = (props) => {
                     direction="row"
                     columnSpacing={2}
                     rowSpacing={2}
+                    justifyContent='center'
                 >
                     <Grid item xs={12} md={4} lg={3}>
                         <Autocomplete
@@ -52,6 +53,7 @@ const IndicadorFilter = (props) => {
                             options={modulosList}
                             getOptionLabel={(option) => option.temaIndicador}
                             noOptionsText="No hay opciones"
+                            isOptionEqualToValue={(option, value) => option.id === value.id}
                             onChange={handleModulo}
                             renderInput={(params) => (
                                 <TextField {...params} label="Temática" />
@@ -64,6 +66,7 @@ const IndicadorFilter = (props) => {
                             id="cbx-ods"
                             options={odsList}
                             getOptionLabel={(option) => option.nombre}
+                            isOptionEqualToValue={(option, value) => option.id === value.id}
                             noOptionsText="No hay opciones"
                             onChange={handleOds}
                             renderInput={(params) => (
@@ -77,6 +80,7 @@ const IndicadorFilter = (props) => {
                             id="cbx-medida"
                             options={unidadMedidaList}
                             getOptionLabel={(option) => option.nombre}
+                            isOptionEqualToValue={(option, value) => option.id === value.id}
                             onChange={handleMedida}
                             noOptionsText="No hay opciones"
                             renderInput={(params) => (
@@ -103,6 +107,7 @@ const IndicadorFilter = (props) => {
                             id="cbx-cobertura"
                             options={coberturaList}
                             getOptionLabel={(option) => option.nombre}
+                            isOptionEqualToValue={(option, value) => option.id === value.id}
                             onChange={handleCobertura}
                             noOptionsText="No hay opciones"
                             renderInput={(params) => (

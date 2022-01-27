@@ -1,27 +1,16 @@
 import { Button, Container, Grid, Box } from "@mui/material";
 import Information from "@components/indicador/Datasheet/Information";
 import DownloadIcon from "@mui/icons-material/Download";
-import Typography from "@mui/material/Typography";
 import MathJax from "react-mathjax";
 import Graph from "@components/indicador/Datasheet/Graph";
 import CustomTable from "@components/indicador/Datasheet/CustomTable";
 
-
-import {
-  ImageButton,
-  ImageSrc,
-  ImageB,
-  ImageBackdrop,
-  ImageMarked,
-  mapImage,
-} from "styles/Components/ImageButton";
 import Title from "@components/commons/Title";
 import Image from "next/image";
+import MapButton from "@components/indicador/Datasheet/MapButton";
 
 export default function FichaTecnica(props) {
-  const formulaTest = 'k_{n+1}=x^2 + k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2+ k_n^2';
   const data = props.data;
-
   return (
     <>
       <Container>
@@ -106,7 +95,7 @@ export default function FichaTecnica(props) {
         <Grid container item xs={12} md={12} sx={{mt:`1%`}} >
                 <Grid item xs={12} md={6} sx={{bgcolor: ''}}>
                         <Grid container spacing={3} sx={{mt: '1%'}}>
-                            <Information header={data.ultimoValorDisponible} title='Último valor disponible' body='TBD databse'/>
+                            <Information header={data.ultimoValorDisponible} title='Último valor disponible' body={data.Unidad}/>
                             <Information header={data.tendenciaActual} title='Tendencia actual' body={data.tendenciaDeseada}/>
                         </Grid>
                         <Grid container spacing={3} sx={{mt: '1%'}}>
@@ -135,10 +124,10 @@ export default function FichaTecnica(props) {
                     <br />
                     <h2>Formula</h2>
                      <MathJax.Provider>
-                    <h1 className="formulaText"><MathJax.Node inline formula={formulaTest} /></h1>
+                    <h1 className="formulaText"><MathJax.Node inline formula={data.Formula.ecuacion} /></h1>
                     </MathJax.Provider>
                     <h3>Descripción</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard for dummy text of the industry ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>{data.Formula.descripcion}</p>
                     <h3>Fuente de consulta</h3>
                     <p>TEST.INC</p>
                       </Box>
@@ -156,49 +145,7 @@ export default function FichaTecnica(props) {
           </Grid>
         </Grid>
         {/*=============================== Mapa ======================================*/}
-        <Title margin={'3% 0 0 0'} variant={'h4'} content="Mapa"></Title>
-        <Grid container item sx={{mt: '5%', justifyContent:'center', alignItems:'center'}} >
-          <Box sx={ theme => (
-            { 
-            display: 'flex', 
-            flexWrap: 'wrap', 
-            minWidth: 300, 
-            width: '100%',
-
-          })
-            }>
-        <ImageButton
-          focusRipple
-          key={mapImage.title}
-          style={{
-            width: mapImage.width,
-          }}
-        >
-          <ImageSrc style={{ backgroundImage: `url(${mapImage.url})` }} />
-          <ImageBackdrop className="MuiImageBackdrop-root" />
-          <ImageB>
-            <Typography
-              component="span"
-              variant="subtitle1"
-              color="inherit"
-              alt="Mapa"
-              sx={{
-                position: 'relative',
-                p: 4,
-                pt: 2,
-                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-                backgroundColor: 'black',
-                opacity: 0.7,
-                borderRadius: '10%',
-              }}
-            >
-              Ver mapa
-              <ImageMarked className="MuiImageMarked-root" />
-            </Typography>
-          </ImageB>
-        </ImageButton>
-    </Box>
-          </Grid>
+          <MapButton hasMap={data.mapa}/>
           </Container>
           </>
   );

@@ -82,7 +82,7 @@ const Indicador = (props) => {
                                     <Typography
                                         fontWeight='bold'
                                     >
-                                        {indicador.UnidadMedida.nombre}
+                                        {indicador.UnidadMedida}
                                     </Typography>
                                     <Typography>
                                         Unidad de Medida
@@ -135,7 +135,7 @@ const Indicador = (props) => {
                                     <Typography
                                         fontWeight='bold'
                                     >
-                                        {indicador.CoberturaGeografica.nombre}
+                                        {indicador.CoberturaGeografica}
                                     </Typography>
                                     <Typography>
                                         Cobertura Geográfica

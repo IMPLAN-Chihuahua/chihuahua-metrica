@@ -34,11 +34,10 @@ export default function Modulo(props) {
                 setTotalPages(indicadores.total_pages);
                 setIndicadores(indicadores.data);
                 setHasError(false);
-                return indicadores;
             })
             .catch(() => setHasError(true))
             .finally(() => {
-                setTimeout(() => setLoading(false), 250)
+                setLoading(false);
             });
     }, [modulo, page, filters]);
 
@@ -61,8 +60,14 @@ export default function Modulo(props) {
     }, [ods, medida, year, cobertura, tendencia]);
 
     useEffect(() => {
-        updateFilter();
-        fetchIndicadores();
+        let isMounted = true;
+        if (isMounted) {
+            updateFilter();
+            fetchIndicadores();
+        }
+        return () => {
+            isMounted = false;
+        }
     }, [updateFilter, fetchIndicadores]);
 
     const handlePagination = (_, value) => setPage(value);
@@ -95,7 +100,7 @@ export default function Modulo(props) {
                     handleTendencia={handleTendencia}
                     handleCobertura={handleCobertura}
                 />
-                {hasError && <Alert severity='error' sx={{marginBottom: 2}}>Hubo un error</Alert>}
+                {hasError && <Alert severity='error' sx={{ marginBottom: 2 }}>Hubo un error</Alert>}
                 {isLoading ?
                     Array.from(new Array(3)).map((_, i) => <IndicadorSkeleton key={i} />)
                     :

@@ -35,55 +35,49 @@ function MyApp(props) {
 
   return (
     <>
-    
+
       <CacheProvider value={emotionCache}>
-      <Head>
-        <title>Observatorio Urbano</title>
-        <meta lang='es' name='viewport' content='initial-scale=1, width=device-width' />
-      </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Header />
-        
-      {
-        (loading)
-      ?
-        <main>
-      <Box sx={{
-        position: "fixed", 
-        top: "0", 
-        left: "0",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0,0,0,0.5)", 
-        zIndex: "999",
-      }}>
-      </Box>
-      <Box sx={{
-        position: "fixed", 
-        top: "40%", 
-        left: "48%", 
-        zIndex: "1000",
-      }}>
-      <PuffLoader 
-      color={'#F5A623'} 
-      loading={loading} 
-      size={100} 
-      />
-      </Box>
-      <Component {...pageProps} />
-      </main>
-     
-      :
-      <main>
-      <Component {...pageProps} />
-      </main>
-      
-      }
-        <Footer />
-      </ThemeProvider>
-    </CacheProvider>
-    
+        <Head>
+          <title>Observatorio Urbano</title>
+          <meta lang='es' name='viewport' content='initial-scale=1, width=device-width' />
+        </Head>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Header />
+          <main>
+            {
+              (loading)
+                ?
+                <>
+                  <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0,0,0,0.5)",
+                    zIndex: "999"}}>
+                    <PuffLoader
+                      color={'#F5A623'}
+                      loading={loading}
+                      size={100}
+                    />
+                  </Box>
+                </>
+
+
+                :
+                <Component {...pageProps} />
+
+            }
+          </main>
+          {
+            !loading && <Footer />
+            
+          }
+        </ThemeProvider>
+      </CacheProvider>
+
     </>
   );
 }

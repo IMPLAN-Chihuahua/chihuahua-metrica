@@ -9,7 +9,6 @@ import {
   ImageMarked,
   mapImage,
 } from "styles/Components/ImageButton";
-import Fade from 'react-reveal/Fade';
 
 const MapButton = ({hasMap}) => {
 

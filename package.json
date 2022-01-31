@@ -22,15 +22,16 @@
     "embla-carousel-autoplay": "^6.0.2",
     "embla-carousel-react": "^6.0.2",
     "next": "12.0.7",
+    "nprogress": "^0.2.0",
     "react": "17.0.2",
     "react-chartjs-2": "^4.0.1",
     "react-dom": "17.0.2",
     "react-mathjax": "^1.0.1",
-    "react-reveal": "^1.2.2",
     "react-spinners": "^0.11.0",
     "swr": "^1.1.2"
   },
   "devDependencies": {
+    "@types/nprogress": "^0.2.0",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.7"
   },

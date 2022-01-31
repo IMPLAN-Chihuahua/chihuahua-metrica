@@ -1,25 +1,18 @@
-import { Button, Container, Grid, Box } from "@mui/material";
-import Information from "@components/indicador/Datasheet/Information";
-import DownloadIcon from "@mui/icons-material/Download";
-import Graph from "@components/indicador/Datasheet/Graph";
-import CustomTable from "@components/indicador/Datasheet/CustomTable";
+import { Container } from "@mui/material";
 
-import Title from "@components/commons/Title";
-import Image from "next/image";
 import MapButton from "@components/indicador/Datasheet/MapButton";
-import Formula from "@components/indicador/Datasheet/Formula";
+import TopData from "@components/indicador/Datasheet/TopData";
+import DataSheet from "@components/indicador/Datasheet/DataSheet";
+import GraphBox from "@components/indicador/Datasheet/GraphBox";
 
 export default function FichaTecnica(props) {
   const data = props.data;
-  let formulaExists = true;
-  data.Formula === null ? formulaExists = false : formulaExists = true;
-  
+
   return (
     <>
       <Container>
         <style jsx>
           {`
-           
             .formulaText {
               font-size: 2rem;
               font-weight: bold;
@@ -52,79 +45,12 @@ export default function FichaTecnica(props) {
             }
           `}
         </style>
-
-        {/*=============================== Header ======================================*/}
-          
-         <Grid container sx={{mt: '5%'}}>
-         
-         <Grid item xs={12} md={6} sx={{display:'flex',justifyContent:'center', alignItems:'center'}}>
-           <Box sx={{
-             bgcolor: 'black',
-             width: '80%',
-             height: '90%',
-             position: 'relative',
-           }}>
-         <Image src="/images/implan-logo.webp" alt={data.nombre} layout="fill" objectFit="contain"  />
-           </Box>
-             
-          </Grid>
-          <Grid item xs={12} md={6} >
-          <Grid item xs={12} sx={{color: 'text.primary'}}>
-          <Box sx={{lineHeight: '30%'}}>
-          <h2>{data.nombre}</h2>
-          <h4>{data.Modulo.temaIndicador}</h4>
-          </Box>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard of dummy text of the industry ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-          </Grid>
-
-          <Grid item xs={12} sx={{justifyContent: 'center', textAlign:'center', display:'flex', alignItems:'center'}}>
-          <Grid item xs={3}>
-          <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> CSV </Button>
-          </Grid>
-          <Grid item xs={3}>
-          <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> EXCEL </Button>
-          </Grid>
-          <Grid item xs={3}>
-          <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> JSON </Button>
-          </Grid>
-          <Grid item xs={3}>
-          <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> PDF </Button>
-          </Grid>
-          </Grid>
-          </Grid>
-          </Grid>
-        {/*=============================== Cuerpo ======================================*/}
-        <Title margin={'3% 0 0 0'} variant={'h4'} content="Ficha técnica"></Title>
-        <Grid container item xs={12} md={12} sx={{mt:`1%`}} >
-                <Grid item xs={12} md={ formulaExists ? 6 : 12}>
-                        <Grid container spacing={3} sx={{mt: '1%'}}>
-                            <Information header={data.ultimoValorDisponible} title='Último valor disponible' body={data.Unidad}/>
-                            <Information header={data.tendenciaActual} title='Tendencia actual' body={data.tendenciaDeseada}/>
-                        </Grid>
-                        <Grid container spacing={3} sx={{mt: '1%'}}>
-                            <Information header={data.anioUltimoValorDisponible} title='Año de referencia' body='Año al que se refiere el último valor disponible'/>
-                            <Information header={data.CoberturaGeografica} title='Cobertura geográfica' body='Territorio al que se refiere la captación de datos'/>
-                        </Grid>
-                </Grid>
-                
-                <Grid item xs={12} md={formulaExists ? 6 : 12} sx={{display:'flex', justifyContent:'center', alignItems:'center'}}>
-                    <Formula formula = {data.Formula}/>
-                </Grid>
-            </Grid>
-        {/*=============================== Graph ======================================*/}
-        <Title margin={'3% 0 0 0'} variant={'h4'} content="Valores históricos"></Title>
-        <Grid container sx={{mt: '1%'}} spacing={4}>
-          <Grid item xs={12} md={6}>
-            <CustomTable data={data.Historicos} />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Graph data={data.Historicos} />
-          </Grid>
-        </Grid>
-        {/*=============================== Mapa ======================================*/}
-          <MapButton hasMap={data.mapa}/>
-          </Container>
-          </>
+        <TopData info={data} />
+        <DataSheet datasheet={data} />
+        <GraphBox history={data} />
+        <MapButton hasMap={data.mapa} />
+      </Container>
+    </>
   );
 }
 

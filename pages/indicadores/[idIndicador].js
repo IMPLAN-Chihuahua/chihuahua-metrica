@@ -1,4 +1,4 @@
-import {Container} from "@mui/material";
+import { Container } from "@mui/material";
 
 import MapButton from "@components/indicador/Datasheet/MapButton";
 import TopData from "@components/indicador/Datasheet/TopData";
@@ -7,6 +7,7 @@ import GraphBox from "@components/indicador/Datasheet/GraphBox";
 
 export default function FichaTecnica(props) {
   const data = props.data;
+
   return (
     <>
       <Container>
@@ -44,12 +45,12 @@ export default function FichaTecnica(props) {
             }
           `}
         </style>
-        <TopData info={data}/>
-        <DataSheet datasheet={data}/>
-        <GraphBox history={data}/>
-        <MapButton hasMap={data.mapa}/>
-        </Container>
-          </>
+        <TopData info={data} />
+        <DataSheet datasheet={data} />
+        <GraphBox history={data} />
+        <MapButton hasMap={data.mapa} />
+      </Container>
+    </>
   );
 }
 

@@ -6,7 +6,9 @@ import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 
 const GraphBox = (history) => {
-  if(history.Historicos === undefined){
+  const {history:data} = history;
+  console.log(data.Historicos);
+  if(Object.keys(data.Historicos).length === 0 ){
     return HistoricalValuesNotExists(history);
   }else {
     return HistoricalValuesExists(history);

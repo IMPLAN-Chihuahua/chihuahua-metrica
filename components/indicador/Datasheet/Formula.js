@@ -3,7 +3,6 @@ import { Box } from "@mui/system";
 import MathJax from "react-mathjax";
 
 const Formula = ({formula}) => {
-    console.table(formula);
     if (formula === null) {
         return <FormulaNotExists />
     } else {

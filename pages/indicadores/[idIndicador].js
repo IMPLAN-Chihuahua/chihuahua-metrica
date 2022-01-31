@@ -48,7 +48,7 @@ export default function FichaTecnica(props) {
         <TopData info={data} />
         <DataSheet datasheet={data} />
         <GraphBox history={data} />
-        <MapButton hasMap={data.mapa} />
+        <MapButton mapa={data.Mapa} />
       </Container>
     </>
   );

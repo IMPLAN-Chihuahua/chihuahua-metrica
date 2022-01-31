@@ -1,16 +1,19 @@
 import { Button, Container, Grid, Box } from "@mui/material";
 import Information from "@components/indicador/Datasheet/Information";
 import DownloadIcon from "@mui/icons-material/Download";
-import MathJax from "react-mathjax";
 import Graph from "@components/indicador/Datasheet/Graph";
 import CustomTable from "@components/indicador/Datasheet/CustomTable";
 
 import Title from "@components/commons/Title";
 import Image from "next/image";
 import MapButton from "@components/indicador/Datasheet/MapButton";
+import Formula from "@components/indicador/Datasheet/Formula";
 
 export default function FichaTecnica(props) {
   const data = props.data;
+  let formulaExists = true;
+  data.Formula === null ? formulaExists = false : formulaExists = true;
+  
   return (
     <>
       <Container>
@@ -93,7 +96,7 @@ export default function FichaTecnica(props) {
         {/*=============================== Cuerpo ======================================*/}
         <Title margin={'3% 0 0 0'} variant={'h4'} content="Ficha técnica"></Title>
         <Grid container item xs={12} md={12} sx={{mt:`1%`}} >
-                <Grid item xs={12} md={6} sx={{bgcolor: ''}}>
+                <Grid item xs={12} md={ formulaExists ? 6 : 12}>
                         <Grid container spacing={3} sx={{mt: '1%'}}>
                             <Information header={data.ultimoValorDisponible} title='Último valor disponible' body={data.Unidad}/>
                             <Information header={data.tendenciaActual} title='Tendencia actual' body={data.tendenciaDeseada}/>
@@ -104,34 +107,8 @@ export default function FichaTecnica(props) {
                         </Grid>
                 </Grid>
                 
-                <Grid item xs={12} md={6} sx={{bgcolor: '', display:'flex', justifyContent:'center', alignItems:'center'}}>
-                    <Grid sx={ theme => (
-                      {
-                      borderRadius:'5px', 
-                      bgcolor: 'cardInformation.main', 
-                      color:'white',
-                      height:'96%', 
-                      mt:'5%',
-                      ml:'5%', 
-                      textAlign:'center', 
-                      width:'95%',
-                      [theme.breakpoints.down('md')]: {
-                        width:'100%',
-                        ml:'0', 
-                      },
-                      })}>
-                      <Box sx={{ml:'10%',mr:'10%'}}>
-                    <br />
-                    <h2>Formula</h2>
-                     <MathJax.Provider>
-                    <h1 className="formulaText"><MathJax.Node inline formula={data.Formula.ecuacion} /></h1>
-                    </MathJax.Provider>
-                    <h3>Descripción</h3>
-                    <p>{data.Formula.descripcion}</p>
-                    <h3>Fuente de consulta</h3>
-                    <p>TEST.INC</p>
-                      </Box>
-                    </Grid>
+                <Grid item xs={12} md={formulaExists ? 6 : 12} sx={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+                    <Formula formula = {data.Formula}/>
                 </Grid>
             </Grid>
         {/*=============================== Graph ======================================*/}

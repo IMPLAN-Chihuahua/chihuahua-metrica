@@ -7,10 +7,7 @@ const Navbar = ({navLinks}) => {
         <>
             <Toolbar
                 component="nav"
-                sx=
-                    {{
-                        display: {xs: 'none', md: 'flex'},
-                    }}
+                sx={{display: {xs: 'none', md: 'flex'},}}
             >
             <Stack direction="row" spacing={3}>
                     {

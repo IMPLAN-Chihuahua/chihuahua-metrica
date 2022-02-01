@@ -60,30 +60,32 @@ const Footer = () => {
                 <Box component='div' flexGrow={1}>
                     <Typography variant='h5' component='h3'>Legal</Typography>
                     <ul className={styles.footerList}>
-                        <Link href='/'>
-                            <a className={styles.underline}>
-                                Politicas de Privacidad
-                            </a>
-                        </Link>
+                        <li>
+                            <Link href='/'>
+                                <a className={styles.underline}>
+                                    Politicas de Privacidad
+                                </a>
+                            </Link>
+                        </li>
                     </ul>
                 </Box>
                 <Box component='div' flexGrow={1}>
                     <Typography variant='h5' component='h3'>Siguenos</Typography>
                     <Stack direction='row' spacing={4} justifyContent='center' mt={2}>
                         <Link href='https://www.facebook.com/Implan-Chihuahua-108606468095094' passHref={true}>
-                            <a target='_blank' rel='noreferrer noopener'
+                            <a alt="Ícono de Facebook que redirecciona hacia el perfil del IMPLAN" title='¡Síguenos en Facebook!' aria-label="Ícono de Facebook"  target='_blank' rel='noreferrer noopener'
                                 className={styles.underline}>
                                 <Facebook fontSize='large' />
                             </a>
                         </Link>
-                        <Link href='https://twitter.com/IMPLANChih?s=08' passHref={true}>
-                            <a target='_blank' rel='noreferrer noopener'
+                        <Link aria-label="Ícono de Twitter" href='https://twitter.com/IMPLANChih?s=08' passHref={true}>
+                            <a alt="Ícono de Twitter que redirecciona hacia al perfil del IMPLAN" title='¡Síguenos en Twitter!' aria-label="Ícono de Twitter"  target='_blank' rel='noreferrer noopener'
                                 className={styles.underline}>
                                 <Twitter fontSize='large' />
                             </a>
                         </Link>
-                        <Link href='https://www.instagram.com/implanchihuahua/' passHref={true}>
-                            <a target='_blank' rel='noreferrer noopener'
+                        <Link aria-label="Ícono de Instagram" href='https://www.instagram.com/implanchihuahua/' passHref={true}>
+                            <a  alt="Ícono de Instagram que redirecciona al perfil del IMPLAN" title='¡Síguenos en Instagram!' aria-label="Ícono de Instagram"  target='_blank' rel='noreferrer noopener'
                                 className={styles.underline}>
                                 <Instagram fontSize='large' />
                             </a>

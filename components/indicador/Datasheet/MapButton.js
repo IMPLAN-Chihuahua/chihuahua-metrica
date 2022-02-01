@@ -1,7 +1,8 @@
 import Title from "@components/commons/Title";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import Stack from '@mui/material/Stack';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const MapButton = ({ mapa }) => {
     return (
@@ -27,9 +28,14 @@ const MapButton = ({ mapa }) => {
                                 </iframe>
                             </Box>
                         </Grid>
-                        <Grid container justifyContent='flex-end'>
+                        <Grid container justifyContent='flex-start'>
                             <Grid item>
-                                <Button target='_blank' rel='noreferrer noopener' href={mapa.url} variant='contained'>Mostrar Mapa</Button>
+                                <Button
+                                    target='_blank'
+                                    rel='noreferrer noopener'
+                                    href={mapa.url}
+                                    variant='contained'
+                                    endIcon={<OpenInNewIcon />}>abrir mapa</Button>
                             </Grid>
                         </Grid>
                     </Stack>

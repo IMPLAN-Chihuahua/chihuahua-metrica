@@ -1,5 +1,6 @@
-import React from 'react';
-import { Button, Grid, Box } from "@mui/material";
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import DownloadIcon from "@mui/icons-material/Download";
 import Image from "next/image";
 

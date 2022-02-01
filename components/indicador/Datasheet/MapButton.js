@@ -1,5 +1,6 @@
 import Title from "@components/commons/Title";
-import { Button, Grid } from "@mui/material";
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import Box from "@mui/material/Box";
 import Stack from '@mui/material/Stack';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';

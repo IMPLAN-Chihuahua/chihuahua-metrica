@@ -1,4 +1,3 @@
-import React from 'react';
 import Information from "@components/indicador/Datasheet/Information";
 import Formula from '@components/indicador/Datasheet/Formula';
 import Grid from "@mui/material/Grid";

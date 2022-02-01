@@ -1,5 +1,4 @@
-import { Container } from "@mui/material";
-
+import Container from "@mui/material/Container";
 import MapButton from "@components/indicador/Datasheet/MapButton";
 import TopData from "@components/indicador/Datasheet/TopData";
 import DataSheet from "@components/indicador/Datasheet/DataSheet";

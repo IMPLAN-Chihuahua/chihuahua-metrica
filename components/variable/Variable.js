@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import MathJax from "react-mathjax";
 
 const Variable = ({ expr }) => {

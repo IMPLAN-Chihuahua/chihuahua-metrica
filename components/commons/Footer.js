@@ -1,7 +1,12 @@
-import { Stack, Box, Typography, Divider } from '@mui/material'
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 import Image from 'next/image';
 import styles from './Footer.module.css';
-import { Facebook, Twitter, Instagram } from '@mui/icons-material';
+import Facebook from '@mui/icons-material/Facebook';
+import Twitter from '@mui/icons-material/Twitter';
+import Instagram from '@mui/icons-material/Instagram';
 import Link from 'next/link';
 
 const Footer = () => {

@@ -1,13 +1,11 @@
-import React from 'react';
 import Graph from "@components/indicador/Datasheet/Graph";
 import CustomTable from "@components/indicador/Datasheet/CustomTable";
 import Title from "@components/commons/Title";
-import { Grid } from "@mui/material";
-import { Box } from "@mui/system";
+import Grid  from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 
 const GraphBox = (history) => {
   const {history:data} = history;
-  console.log(data.Historicos);
   if(Object.keys(data.Historicos).length === 0 ){
     return HistoricalValuesNotExists(history);
   }else {

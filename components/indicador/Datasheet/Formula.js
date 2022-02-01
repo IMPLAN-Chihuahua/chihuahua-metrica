@@ -1,6 +1,6 @@
 import VariableList from "@components/variable/VariableList";
-import { Grid } from "@mui/material";
-import { Box } from "@mui/system";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import MathJax from "react-mathjax";
 
 const Formula = ({ formula }) => {

@@ -13,9 +13,8 @@ const Formula = ({ formula }) => {
 
 function FormulaExists({ formula }) {
     return (
-        <>
-            <style jsx>
-                {`
+        <div>
+            <style jsx>{`
               .formulaText {
                 font-size: 2rem;
                 font-weight: bold;
@@ -56,8 +55,7 @@ function FormulaExists({ formula }) {
               ::-webkit-scrollbar-thumb:hover {
                 background: rgba(85, 85, 85, 0.4);
               }
-            `}
-            </style>
+            `}</style>
             <Grid sx={theme => (
                 {
                     borderRadius: '5px',
@@ -88,7 +86,7 @@ function FormulaExists({ formula }) {
                     <br />
                 </Box>
             </Grid>
-        </>
+        </div>
     )
 }
 

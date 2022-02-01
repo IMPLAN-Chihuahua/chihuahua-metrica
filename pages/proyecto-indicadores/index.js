@@ -4,46 +4,11 @@ import AdbIcon from '@mui/icons-material/Adb';
 import style from '../../styles/indicador.module.css'
 import Image from 'next/image';
 import NextLink from 'next/link';
+import GridModulos from '@components/proyecto/GridModulos';
+import Title from '@components/commons/Title';
 
 export default function Modulo(props) {
     const data = props.data;
-    const modulos = data.map(modulo => {
-        return (
-            <Grid item xs={12} md={6} lg={4} key={modulo.codigo}>
-                <Card className={style.cardSection} sx={{ maxWidth: 900, boxShadow: 30 }} variant='outlined'>
-                    <CardActionArea>
-                        <Box className={style.card}>
-                            <Box className={style.cardFront} >
-                                <NextLink href={`/modulos/${modulo.id}/indicadores`} style={{ textDecoration: 'none' }} passHref>
-                                    <a>
-                                        <Box className={style.cardFront__tp} sx={{ backgroundColor: `#34495E` }} >
-                                            <Box sx={
-                                                theme => ({
-                                                    display: `flex`,
-                                                    marginTop: `5%`,
-                                                    marginBottom: `10%`,
-                                                })
-
-                                            }>
-                                                <AdbIcon sx={{ fontSize: '100px' }} />
-                                            </Box>
-
-                                        </Box>
-                                        <Box className={style.cardFront__bt} sx={{ color: `main.primary` }}>
-                                            <p className={style.card_text}  >
-                                                <b>{modulo.temaIndicador}</b>
-                                            </p>
-                                        </Box>
-                                    </a>
-                                </NextLink>
-                            </Box>
-                        </Box>
-                    </CardActionArea>
-                </Card>
-            </Grid>
-        );
-    });
-
     return (
         <>
             <Container>
@@ -72,12 +37,16 @@ export default function Modulo(props) {
                 <h1 className={style.title}>Temas de interés</h1>
 
                 <Grid container spacing={2}>
-                    {modulos}
+                    <GridModulos data={data}/>
                 </Grid>
             </Container>
         </>
     );
 };
+
+
+
+
 export async function getServerSideProps(context) {
     const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos`);
     const data = await res.json();

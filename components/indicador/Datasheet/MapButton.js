@@ -21,6 +21,7 @@ const MapButton = ({ mapa }) => {
                                 })
                             }>
                                 <iframe
+                                    title={`Mapa del indicador con ubicación en ${mapa.ubicacion}`}
                                     src={mapa.url}
                                     width='100%'
                                     height='100%'>

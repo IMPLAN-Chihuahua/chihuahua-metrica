@@ -20,7 +20,6 @@ const Base = ({ title, body, url }) => {
                     avatar={
                         <Avatar
                             sx={{ bgcolor: 'secondary.main' }}
-                            aria-label={`Icono de proyecto ${title}`}
                         >
                             <AttractionsIcon />
                         </Avatar>
@@ -36,7 +35,7 @@ const Base = ({ title, body, url }) => {
 
                 </CardContent>
                 <CardActions disableSpacing sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <Button variant='contained' size='small' sx={{ bgcolor: 'primary.main' }}>
+                    <Button title={`Sección de proyecto ${title}`} aria-label={`Botón que redirecciona a la sección del proyecto ${title}`} variant='contained' size='small' sx={{ bgcolor: 'primary.main' }}>
                         <NextLink href={`/${url}`} style={{ textDecoration: 'none' }} passHref>
                             <a>
                                 <Typography variant="body" sx={{ fontWeight: 'bold', color: 'primary.buttonColor' }}>

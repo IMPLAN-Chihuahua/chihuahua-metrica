@@ -46,7 +46,8 @@ const EmblaCarousel = () => {
                 <Box className={style.embla__slide__inner}>
                   <Image
                     src={index.url} id={index.name}
-                    alt={index.name}
+                    alt={`Fotografía banner de: ${index.description}`}
+                    title={index.description}
                     width={2000}
                     height={860}
                 />

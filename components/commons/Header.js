@@ -17,14 +17,13 @@ const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 const navLinks = [
     { title: 'Inicio', path: '/' },
     { title: 'Proyectos', path: '/' },
-    { title: 'About us', path: '/' },
 ]
 
 const Header = () => {
     return (
         <>
             <HideOnScroll>
-                <AppBar position="fixed">
+                <AppBar position="fixed" elevation={0}>
                     <Toolbar>
                         <Grid container direction='row'>
                             <Grid item xs flexGrow={1}>

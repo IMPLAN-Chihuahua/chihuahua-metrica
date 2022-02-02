@@ -33,7 +33,15 @@ let theme = createTheme({
     }
 });
 
-
 theme = responsiveFontSizes(theme);
+
+
+theme.typography.h1 = {
+    fontSize: '2.5rem',
+    '@media (max-width:600px)': {
+        
+    }
+}
+
 
 export default theme;

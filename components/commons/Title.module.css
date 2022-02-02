@@ -1,18 +1,9 @@
 .titleDivider {
-    width: 50px;
+    width: 100%;
     color: #989898;
-    margin-top: 0;
-    margin-left: 0;
     border: none;
     height: 4px;
     background-color: #070b46;
     transition: width 1s;
 }
 
-.titleDivider {
-    width: 100%;
-}
-
-.titleFather:hover {
-    cursor: context-menu;
-}

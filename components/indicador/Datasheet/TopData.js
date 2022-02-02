@@ -2,9 +2,11 @@ import React from 'react';
 import { Button, Grid, Box } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
 import Image from "next/image";
+import NextLink from 'next/link';
 
 const TopData = (info) => {
   const {info:data} = info;
+  console.log(data)
   return (
   <>
   <Grid container sx={{mt: '5%'}}>
@@ -33,7 +35,11 @@ const TopData = (info) => {
           <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> CSV </Button>
           </Grid>
           <Grid item xs={3}>
-          <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> EXCEL </Button>
+          <NextLink href={`${process.env.INDICADORES_BASE_URL}/indicadores/${data.id}/json`} >
+            <a download>
+            <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> EXCEL </Button>
+            </a>
+          </NextLink>
           </Grid>
           <Grid item xs={3}>
           <Button variant="contained" color="primary" sx={{width: '90%'}} startIcon={<DownloadIcon/>}> JSON </Button>

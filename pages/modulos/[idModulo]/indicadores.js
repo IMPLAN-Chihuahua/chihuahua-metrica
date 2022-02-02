@@ -5,17 +5,9 @@ import IndicadorFilter from "@components/indicador/IndicadorFilter";
 import IndicadorList from "@components/indicador/IndicadorList";
 import IndicadorPagination from "@components/indicador/IndicadorPagination";
 import IndicadorSkeleton from "@components/indicador/IndicadorSkeleton";
-import { Alert } from "@mui/material";
-
-const serialize = (obj) => {
-    let str = [];
-    for (let p in obj) {
-        if (obj.hasOwnProperty(p)) {
-            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
-        }
-    }
-    return str.join('&');
-};
+import Alert from "@mui/material/Alert";
+import { serialize } from '../../../helpers/StringUtils';
+import Title from "@components/commons/Title";
 
 export default function Modulo(props) {
     const [isLoading, setLoading] = useState(false);
@@ -77,17 +69,16 @@ export default function Modulo(props) {
     const handleYear = (_, value) => setYear(value);
     const handleTendencia = (_, value) => setTendencia(value);
     const handleCobertura = (_, value) => setCobertura(value === null ? '' : value.id);
-
+    const title = `indicadores modulo ${modulo}`;
     return (
-
-        <div>
+        <>
             <Head>
                 <title>Indicadores</title>
                 <meta name="description" content="Indicadores de la ciudad de Chihuahua" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Container maxWidth="xl">
-                <h1>Indicadores Modulo {modulo}</h1>
+            <Container maxWidth="xl">                
+                <Title variant='h3' component='h1' margin='3% 0 3% 0'>{title}</Title>
                 <IndicadorFilter
                     odsList={[...props.catalogos.ods]}
                     unidadMedidaList={[...props.catalogos.unidadMedida]}
@@ -115,7 +106,7 @@ export default function Modulo(props) {
                         />
                     </>)}
             </Container>
-        </div>
+        </>
     );
 };
 

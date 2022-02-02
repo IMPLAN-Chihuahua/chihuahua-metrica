@@ -4,17 +4,23 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import { toTitleCase } from 'helpers/StringUtils';
 
-const Title = ({ variant, content, margin, lineStart = 'auto' }) => {
+const Title = ({ variant, component, margin, lineStart = 'auto', children, fontWeight = 'regular' }) => {
+    component = component !== null ? component : variant;
     return (
         <>
-            <Box sx={{ display: 'flex', m: { margin } }} className={styles.titleGrandfather}>
-                <Box m="auto" className={styles.titleFather}>
-                    <Typography className={styles.titleContent} variant={variant}>{toTitleCase(content)}</Typography>
+            <Box sx={{ display: 'flex', m: { margin } }}>
+                <Box className={styles.titleFather}>
+                    <Typography
+                        className={styles.titleContent}
+                        variant={variant}
+                        component={component}
+                        sx={{ fontWeight: { fontWeight } }}>{
+                            toTitleCase(children)}
+                    </Typography>
                     <Divider sx={{ m: lineStart }} className={styles.titleDivider}></Divider>
                 </Box>
             </Box>
-        </>
-    );
+        </>);
 };
 
 export default Title;

@@ -10,18 +10,18 @@ const MapButton = ({ mapa }) => {
         <>
             {mapa &&
                 (<>
-                    <Title margin={'3% 0 0 0'} variant={'h4'} content="Mapa"></Title>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', mt: '5%' }}>
+                        <Title variant='h4'>Mapa</Title>
+                    </Box>
                     <Stack direction='column' spacing={1} >
-                        <Grid container item sx={{ mt: '5%', justifyContent: 'center', alignItems: 'center' }} >
-                            <Box sx={theme => (
-                                {
-                                    display: 'flex',
-                                    flexWrap: 'wrap',
-                                    minWidth: 300,
-                                    width: '100%',
-                                    height: 500
-                                })
-                            }>
+                        <Grid container item sx={{ mt: '2%', justifyContent: 'center', alignItems: 'center' }} >
+                            <Box sx={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                minWidth: 300,
+                                width: '100%',
+                                height: 500
+                            }}>
                                 <iframe
                                     title={`Mapa del indicador con ubicación en ${mapa.ubicacion}`}
                                     src={mapa.url}

@@ -1,10 +1,10 @@
-import { Box, Card, CardActionArea, Grid } from '@mui/material';
+import { Box, Card, CardActionArea, Grid, Typography } from '@mui/material';
 import React from 'react';
 import NextLink from 'next/link';
 import AdbIcon from '@mui/icons-material/Adb';
 import style from '../../styles/indicador.module.css'
 
-const GridModulos = ({data}) => {
+const GridModulos = ({ data }) => {
     const modulos = data.map(modulo => {
         return (
             <Grid item xs={12} md={6} lg={4} key={modulo.codigo}>
@@ -12,25 +12,23 @@ const GridModulos = ({data}) => {
                     <CardActionArea>
                         <Box className={style.card}>
                             <Box className={style.cardFront} >
-                                <NextLink href={`/modulos/${modulo.id}/indicadores`} style={{ textDecoration: 'none' }} passHref>
+                                <NextLink href={`/modulos/${modulo.id}/indicadores`} passHref>
                                     <a>
                                         <Box className={style.cardFront__tp} sx={{ backgroundColor: `#34495E` }} >
-                                            <Box sx={
-                                                theme => ({
-                                                    display: `flex`,
-                                                    marginTop: `5%`,
-                                                    marginBottom: `10%`,
-                                                })
-
-                                            }>
+                                            <Box sx={{
+                                                display: 'flex',
+                                                marginTop: '5%',
+                                                marginBottom: '10%',
+                                            }}>
                                                 <AdbIcon sx={{ fontSize: '100px' }} />
                                             </Box>
-
                                         </Box>
                                         <Box className={style.cardFront__bt} sx={{ color: `main.primary` }}>
-                                            <p className={style.card_text}  >
-                                                <b>{modulo.temaIndicador}</b>
-                                            </p>
+                                            <Typography
+                                                fontWeight='bold'
+                                                fontSize='1.2rem'>
+                                                {modulo.temaIndicador}
+                                            </Typography>
                                         </Box>
                                     </a>
                                 </NextLink>

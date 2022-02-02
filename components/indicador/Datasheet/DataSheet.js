@@ -1,6 +1,7 @@
 import Information from "@components/indicador/Datasheet/Information";
 import Formula from '@components/indicador/Datasheet/Formula';
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import Title from "@components/commons/Title";
 
 const DataSheet = (datasheet) => {
@@ -9,8 +10,10 @@ const DataSheet = (datasheet) => {
 
   return (
     <>
-      <Title margin={'3% 0 0 0'} variant={'h4'} content="Ficha técnica"></Title>
-      <Grid container item xs={12} md={12} sx={{ mt: `1%` }} >
+      <Box sx={{display: 'flex', justifyContent: 'center', mt: '5%'}}>
+        <Title variant='h4'>Ficha técnica</Title>
+      </Box>
+      <Grid container item xs={12} md={12} >
         <Grid item xs={12} md={formulaExists ? 6 : 12}>
           <Grid container spacing={3} sx={{ mt: '1%' }}>
             <Information header={data.ultimoValorDisponible} title='Último valor disponible' body={data.Unidad} />

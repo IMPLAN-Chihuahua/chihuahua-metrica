@@ -9,7 +9,7 @@ import { numberWithCommas } from 'helpers/FormatNumbers';
 
 const Indicador = (props) => {
     const indicador = props.value;
-=    const updatedAt = indicador.updatedAt.split('T')[0];
+    const updatedAt = indicador.updatedAt.split('T')[0];
     return (
         <Card variant='outlined'>
             <CardActionArea sx={{ padding: 2 }}>
@@ -151,7 +151,6 @@ const Indicador = (props) => {
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     backgroundColor: 'aliceBlue',
-                                    margin: 'auto'
                                 }}
                             >
                                 logo

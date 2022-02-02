@@ -6,6 +6,7 @@ import IndicadorList from "@components/indicador/IndicadorList";
 import IndicadorPagination from "@components/indicador/IndicadorPagination";
 import IndicadorSkeleton from "@components/indicador/IndicadorSkeleton";
 import { Alert } from "@mui/material";
+import { Title } from "@mui/icons-material";
 
 const serialize = (obj) => {
     let str = [];

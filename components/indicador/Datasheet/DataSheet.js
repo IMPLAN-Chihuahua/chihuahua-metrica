@@ -22,7 +22,7 @@ const DataSheet = (datasheet) => {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} md={formulaExists ? 6 : 12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid item xs={12} md={formulaExists ? 6 : 12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'stretch' }}>
           <Formula formula={data.Formula} />
         </Grid>
       </Grid>

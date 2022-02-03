@@ -10,25 +10,28 @@ import SideBar from "./SideBar";
 import HideOnScroll from "helpers/HideOnScroll";
 import BackToTop from "./BackToTop";
 import { Grid } from "@mui/material";
-
+import NextLink from "next/link";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
 const navLinks = [
     { title: 'Inicio', path: '/' },
     { title: 'Proyectos', path: '/' },
-    { title: 'About us', path: '/' },
 ]
 
 const Header = () => {
     return (
         <>
             <HideOnScroll>
-                <AppBar position="fixed">
+                <AppBar position="fixed" elevation={0}>
                     <Toolbar>
                         <Grid container direction='row'>
                             <Grid item xs flexGrow={1}>
-                                <Image src='/images/small-logo.png' width={100} height={60} />
+                                <NextLink href='/'>
+                                    <a>
+                                        <Image src='/images/small-logo.png' width={100} height={60} alt="small Logo" />
+                                    </a>
+                                </NextLink>
                             </Grid>
                             <Grid item xs flexGrow={1} container justifyContent='flex-end'>
                                 <Navbar navLinks={navLinks} />

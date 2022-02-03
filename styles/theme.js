@@ -4,7 +4,7 @@ import { responsiveFontSizes } from "@mui/material/styles";
 let theme = createTheme({
     palette: {
         // Change color after checking MUI
-        primary: { 
+        primary: {
             main: '#263044',
             subtleMain: '#46587C',
             darkerMain: '#1C2331',
@@ -12,17 +12,17 @@ let theme = createTheme({
             buttonColor: '#EEEEEE',
             white: '#FFFFFF',
         },
-        
+
         secondary: {
             main: '#d1a961',
             darkerMain: '#B5955C'
         },
-      
+
         info: {
             main: '#E3F6FA',
             outline: '#D7D0D8',
         },
-      
+
         detail: {
             main: '#158585'
         },
@@ -33,7 +33,7 @@ let theme = createTheme({
     }
 });
 
-
 theme = responsiveFontSizes(theme);
+
 
 export default theme;

@@ -1,21 +1,26 @@
-import { Box } from '@mui/system';
 import styles from './Title.module.css';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box';
+import { toTitleCase } from 'helpers/StringUtils';
 
-const { Typography } = require("@mui/material");
-
-const Title = (props) => {
-    const variant = props.variant || 'h1';
-    const content = props.content;
+const Title = ({ variant, component, margin, lineStart = 'auto', children, fontWeight = 'regular' }) => {
+    component = component !== null ? component : variant;
     return (
         <>
-        <Box sx={{display: 'flex'}} className={styles.tests}>
-            <Box m="auto">
-                <Typography variant={variant}>{content}</Typography>
-                <hr className={styles.titleDivider} />
+            <Box sx={{ display: 'flex', m: { margin } }}>
+                <Box className={styles.titleFather}>
+                    <Typography
+                        className={styles.titleContent}
+                        variant={variant}
+                        component={component}
+                        sx={{ fontWeight: { fontWeight } }}>{
+                            (children)}
+                    </Typography>
+                    <Divider sx={{ m: lineStart }} className={styles.titleDivider}></Divider>
+                </Box>
             </Box>
-        </Box>  
-        </>
-    );
+        </>);
 };
 
 export default Title;

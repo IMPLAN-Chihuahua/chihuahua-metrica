@@ -7,16 +7,13 @@ const Navbar = ({navLinks}) => {
         <>
             <Toolbar
                 component="nav"
-                sx=
-                    {{
-                        display: {xs: 'none', md: 'flex'},
-                    }}
+                sx={{display: {xs: 'none', md: 'flex'},}}
             >
             <Stack direction="row" spacing={3}>
                     {
                         navLinks.map(
                             ({title, path}, i) => (
-                                <Link href={path} key={title}>
+                                <Link href={path} key={title} passHref>
                                     <a>
                                         {title}
                                     </a>

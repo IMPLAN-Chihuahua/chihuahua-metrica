@@ -1,13 +1,11 @@
-import {
-    Box,
-    Divider,
-    Typography,
-    Card,
-    Grid,
-    CardActionArea
-} from '@mui/material';
-
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
+import CardActionArea from '@mui/material/CardActionArea';
 import NextLink from 'next/link';
+import { numberWithCommas } from 'helpers/FormatNumbers';
 
 const Indicador = (props) => {
     const indicador = props.value;
@@ -57,7 +55,7 @@ const Indicador = (props) => {
                                         color='detail.main'
                                         fontWeight='bold'
                                         fontSize={25}
-                                    >{indicador.ultimoValorDisponible.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                    >{numberWithCommas(indicador.ultimoValorDisponible)}
                                     </Typography>
                                     <Typography>
                                         Último Valor Disponible
@@ -82,7 +80,7 @@ const Indicador = (props) => {
                                     <Typography
                                         fontWeight='bold'
                                     >
-                                        {indicador.UnidadMedida.nombre}
+                                        {indicador.Unidad}
                                     </Typography>
                                     <Typography>
                                         Unidad de Medida
@@ -135,7 +133,7 @@ const Indicador = (props) => {
                                     <Typography
                                         fontWeight='bold'
                                     >
-                                        {indicador.CoberturaGeografica.nombre}
+                                        {indicador.Cobertura}
                                     </Typography>
                                     <Typography>
                                         Cobertura Geográfica
@@ -153,7 +151,6 @@ const Indicador = (props) => {
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     backgroundColor: 'aliceBlue',
-                                    margin: 'auto'
                                 }}
                             >
                                 logo

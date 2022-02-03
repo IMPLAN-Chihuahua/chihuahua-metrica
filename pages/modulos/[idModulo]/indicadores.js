@@ -1,92 +1,84 @@
 import Head from "next/head";
 import Container from "@mui/material/Container";
-import Skeleton from "@mui/material/Skeleton";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import IndicadorFilter from "@components/indicador/IndicadorFilter";
 import IndicadorList from "@components/indicador/IndicadorList";
 import IndicadorPagination from "@components/indicador/IndicadorPagination";
 import IndicadorSkeleton from "@components/indicador/IndicadorSkeleton";
+import Alert from "@mui/material/Alert";
+import { serialize } from '../../../helpers/StringUtils';
+import Title from "@components/commons/Title";
 
 export default function Modulo(props) {
     const [isLoading, setLoading] = useState(false);
+    const [hasError, setHasError] = useState(false);
     const [modulo, setModulo] = useState(props.modulo);
-    const [indicadores, setIndicadores] = useState(props.indicadores.data);
-    const [filtros, setFiltros] = useState('');
-    const [page, setPage] = useState(props.indicadores.page);
-    const [totalPages, setTotalPages] = useState(props.indicadores.totalPages);
-    const [ods, setOds] = useState(null);
-    const [medida, setMedida] = useState(null);
-    const [year, setYear] = useState(null);
-    const [cobertura, setCobertura] = useState(null);
-    const [tendencia, setTendencia] = useState(null);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const [filters, setFilters] = useState('');
 
-    const getURL = (params) => {
-
-        return `${process.env.INDICADORES_BASE_URL}/modulos/${modulo}/${params}`;
-    };
-
-    const fetchIndicadores = (params) => {
-
-        fetch(getURL(params))
+    const fetchIndicadores = useCallback(() => {
+        setLoading(true);
+        const url = `${process.env.INDICADORES_BASE_URL}/modulos/${modulo}/indicadores?per_page=2&page=${page}&${filters}`;
+        fetch(url)
             .then(res => res.json())
             .then(indicadores => {
-                setTimeout(() => {
-                    setLoading(false);
-                }, 500);
-                setIndicadores(indicadores.data);
                 setTotalPages(indicadores.total_pages);
+                setIndicadores(indicadores.data);
+                setHasError(false);
+            })
+            .catch(() => setHasError(true))
+            .finally(() => {
+                setLoading(false);
             });
-    };
+    }, [modulo, page, filters]);
+
+    const [indicadores, setIndicadores] = useState({});
+    const [ods, setOds] = useState('');
+    const [medida, setMedida] = useState('');
+    const [year, setYear] = useState('');
+    const [cobertura, setCobertura] = useState('');
+    const [tendencia, setTendencia] = useState('');
+
+    const updateFilter = useCallback(() => {
+        let filtersObj = {
+            ...(ods && { idOds: ods }),
+            ...(medida && { idUnidadMedida: medida }),
+            ...(year && { anioUltimoValorDisponible: year }),
+            ...(cobertura && { idCobertura: cobertura }),
+            ...(tendencia && { tendenciaActual: tendencia })
+        };
+        setFilters(serialize(filtersObj));
+    }, [ods, medida, year, cobertura, tendencia]);
 
     useEffect(() => {
-        let filters = '';
-        setLoading(true);
-
-        if (ods) {
-            filters += '&idOds=' + ods;
+        let isMounted = true;
+        if (isMounted) {
+            updateFilter();
+            fetchIndicadores();
         }
-
-        if (medida) {
-            filters += '&idUnidadMedida=' + medida;
+        return () => {
+            isMounted = false;
         }
+    }, [updateFilter, fetchIndicadores]);
 
-        if (year) {
-            filters += '&anioUltimoValorDisponible=' + year;
-        }
-
-        if (cobertura) {
-            filters += '&idCobertura=' + cobertura;
-        }
-
-        if (tendencia) {
-            filters += '&tendenciaActual=' + tendencia;
-        }
-
-        fetchIndicadores(`indicadores?page=${page}${filters}`);
-
-    }, [page, modulo, ods, medida, year, cobertura, tendencia]);
-
-    const handlePagination = (event, value) => {
-        setPage(value);
-    };
-
+    const handlePagination = (_, value) => setPage(value);
     const handleModulo = (_, value) => setModulo(value === null ? props.modulo : value.id);
     const handleOds = (_, value) => setOds(value === null ? '' : value.id);
     const handleMedida = (_, value) => setMedida(value === null ? '' : value.id);
-    const handleYear = (_, value) => setYear(value === null ? '' : value);
-    const handleTendencia = (_, value) => setTendencia(value === null ? '' : value);
+    const handleYear = (_, value) => setYear(value);
+    const handleTendencia = (_, value) => setTendencia(value);
     const handleCobertura = (_, value) => setCobertura(value === null ? '' : value.id);
-
+    const title = `indicadores modulo ${modulo}`;
     return (
-
-        <div>
+        <>
             <Head>
                 <title>Indicadores</title>
                 <meta name="description" content="Indicadores de la ciudad de Chihuahua" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Container maxWidth="xl">
-                <h1>Indicadores Modulo {modulo}</h1>
+            <Container maxWidth="xl">                
+                <Title variant='h3' component='h1' margin='3% 0 3% 0'>{title}</Title>
                 <IndicadorFilter
                     odsList={[...props.catalogos.ods]}
                     unidadMedidaList={[...props.catalogos.unidadMedida]}
@@ -99,35 +91,33 @@ export default function Modulo(props) {
                     handleTendencia={handleTendencia}
                     handleCobertura={handleCobertura}
                 />
-                {
-
-                    isLoading ?
-                        Array.from(new Array(3)).map((_, i) => <IndicadorSkeleton key={i} />)
-                        :
-                        <>
-                            <IndicadorList indicadores={indicadores} />
-                            <IndicadorPagination
-                                page={page}
-                                totalPages={totalPages}
-                                handlePagination={handlePagination}
-                            />
-                        </>
-                }
+                {hasError && <Alert severity='error' sx={{ marginBottom: 2 }}>Hubo un error</Alert>}
+                {isLoading ?
+                    Array.from(new Array(3)).map((_, i) => <IndicadorSkeleton key={i} />)
+                    :
+                    (<>
+                        <IndicadorList
+                            indicadores={indicadores}
+                        />
+                        <IndicadorPagination
+                            page={page}
+                            totalPages={totalPages}
+                            handlePagination={handlePagination}
+                        />
+                    </>)}
             </Container>
-        </div>
+        </>
     );
-}
+};
 
 export async function getServerSideProps(context) {
     const baseUrl = process.env.INDICADORES_BASE_URL;
     const modulo = context.params.idModulo;
-    const [indicadoresRes, catalogosRes, modulosRes] = await Promise.all([
-        fetch(`${baseUrl}/modulos/${modulo}/indicadores`),
+    const [catalogosRes, modulosRes] = await Promise.all([
         fetch(`${baseUrl}/catalogos`),
         fetch(`${baseUrl}/modulos`),
     ]);
-    const [indicadores, catalogos, modulos] = await Promise.all([
-        indicadoresRes.json(),
+    const [catalogos, modulos] = await Promise.all([
         catalogosRes.json(),
         modulosRes.json(),
     ]);
@@ -136,7 +126,6 @@ export async function getServerSideProps(context) {
             modulo,
             catalogos,
             modulos,
-            indicadores
         },
     };
 }

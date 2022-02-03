@@ -1,13 +1,9 @@
 .titleDivider {
-    width: 50px;
+    width: 100%;
     color: #989898;
-    margin-top: 0;
     border: none;
     height: 4px;
     background-color: #070b46;
-    transition: width 2s;
+    transition: width 1s;
 }
 
-.tests:hover > .titleDivider {
-    height: 20px;
-}

@@ -1,4 +1,5 @@
-import Base from '@components/ProjectCard/Base';
+import Base from '@components/proyecto/Base';
+import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid';
 
 const JSON = [
@@ -21,19 +22,19 @@ const JSON = [
 
 const GridBase = () => {
     return (
-        <div>
-            <Grid container spacing={3}>
+        <Box sx={{mt:'3%'}}>
+            <Grid container spacing={3} >
                 {
                 JSON.map( ({title, body, url}) => {
                     return (
-                        <Grid key={url} item xs={12} md={4}>
+                        <Grid key={url} item xs={12} md={4} >
                             <Base title={title} body={body} url={url}/>
                         </Grid>
                         )
                     })
                 }
             </Grid>
-        </div>
+        </Box>
     );
 }
 

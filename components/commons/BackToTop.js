@@ -15,6 +15,7 @@ const BackToTop = ({children}) => {
                 onClick={handleClick}
                 rele='presentation'
                 sx={{position: 'fixed', bottom: 18, right: 18, zIndex: 1}}
+                title='Volver al encabezado de la página'
             >
                 {children}
             </Box>

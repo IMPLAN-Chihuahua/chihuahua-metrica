@@ -44,18 +44,7 @@
     overflow: hidden;
     
   }
-  
-  .embla__slide__img {
-    position: relative;
-    display: block;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    min-width: 100%;
-    max-width: none;
-    height: 100%;
-    transform: translate(-50%, 0%);
-  }
+
   
   .embla__dots {
     display: flex;

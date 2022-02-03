@@ -95,7 +95,7 @@ const data = [
                         </Typography>
               </AccordionSummary>
               <AccordionDetails sx={{
-                backgroundColor:'rgb(49,154,197,0.1)'
+                color:'rgb(49,154,197)'
               }}>
                   <Typography>{answer}</Typography>
               </AccordionDetails>

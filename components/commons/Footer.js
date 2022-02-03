@@ -20,7 +20,13 @@ const Footer = () => {
             paddingBottom={4}
             backgroundColor='primary.main'
             color='primary.contrastText'
-            marginTop={5}
+            sx={{
+                position: 'relative',
+                backgroundImage: 'url(/images/city-shape.webp)',
+                backgroundRepeat: 'cover',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+            }}
         >
             <Stack
                 direction={{ xs: 'column', md: 'row' }}

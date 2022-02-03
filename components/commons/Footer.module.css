@@ -35,7 +35,7 @@
   color: var(--primary-on-main);
   right: 0;
   opacity: 100%;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 

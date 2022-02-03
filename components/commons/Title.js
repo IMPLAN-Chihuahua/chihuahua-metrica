@@ -14,8 +14,7 @@ const Title = ({ variant, component, margin, lineStart = 'auto', children, fontW
                         className={styles.titleContent}
                         variant={variant}
                         component={component}
-                        sx={{ fontWeight: { fontWeight } }}>{
-                            toTitleCase(children)}
+                        sx={{ fontWeight: { fontWeight } }}>{children}
                     </Typography>
                     <Divider sx={{ m: lineStart }} className={styles.titleDivider}></Divider>
                 </Box>

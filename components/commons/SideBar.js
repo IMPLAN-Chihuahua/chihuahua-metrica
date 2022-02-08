@@ -4,12 +4,23 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/icons-material/Menu";
 import Link from 'next/link';
-
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 const SideBar = ( {navLinks}) => {
+    const subMenuNull = []
+    const subMenu = [
+    {title:'Indicadores', path:'/proyecto-indicadores'},
+    {title:'Proyecto 2', path:'/'} 
+    ]
     const [bar, setBar] = useState({right: false},)
+    const [itemsSubMenu, setItemsSubMenu] = useState(subMenuNull);
+
+    const handleItemsSubMenu = () => {
+        (itemsSubMenu.length > 0)
+        ?setItemsSubMenu(subMenuNull)
+        :setItemsSubMenu(subMenu)
+    }
 
     const toggleBar = (anchor, open) => (e) => {
     if(e.type === 'keydown' && (e.key === 'Tab' || e.key === 'Shift'))
@@ -24,13 +35,47 @@ const list = (anchor) => (
     <Box
         sx={{width: 200, marginTop: 'auto', marginBottom: 'flex'}}
         role='presentation'
-        onClick={toggleBar(anchor, false)}
         onKeyDown={toggleBar(anchor, false)}
     > 
     {navLinks.map(({title, path}, i) => (
         <Typography
             variannt='button'
             key={`${title}${i}`}
+            onClick={toggleBar(anchor, false)}
+            sx={{
+                ml: 5,
+                my: 2,
+                textTransform: 'uppercase',
+                color: 'common.white',
+    
+            }}
+            >
+        <Link href={path} key={title}>
+            <a>
+                {title}
+            </a>
+        </Link>
+        </Typography>
+    ))}
+      <Typography
+            onClick={handleItemsSubMenu}
+            sx={{
+                ml: 5,
+                my: 2,
+                textTransform: 'uppercase',
+                color: 'common.white',
+
+            }}
+            >
+                Proyectos
+        </Typography>
+
+
+        {itemsSubMenu.map(({title, path}, i) => (
+        <Typography
+            variannt='button'
+            key={`${title}ID${i}`}
+            onClick={toggleBar(anchor, false)}
             sx={{
                 ml: 5,
                 my: 2,
@@ -38,9 +83,10 @@ const list = (anchor) => (
                 color: 'common.white',
             }}
             >
-        <Link href={path} key={title}>
+            
+        <Link href={path} key={title} >
             <a>
-                {title}
+                • {title}
             </a>
         </Link>
         </Typography>

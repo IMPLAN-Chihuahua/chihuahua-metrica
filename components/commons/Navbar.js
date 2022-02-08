@@ -74,7 +74,9 @@ const Navbar = ({navLinks}) => {
                          <Box className={style.dropdown}>
                           <p className={style.dropbtn}>Proyectos</p>
                           <Box className={style.dropdown_content}>
-                          <a href="/proyecto-indicadores">Indicadores</a>
+                            <Link href="/proyecto-indicadores" passHref>
+                              <a>Indicadores</a>
+                            </Link>
                           <a href="#">Proyecto 2</a>
                           <a href="#">Proyecto 3</a>
                         </Box>

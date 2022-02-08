@@ -11,7 +11,7 @@ const DataSheet = (datasheet) => {
   return (
     <>
       <Box sx={{display: 'flex', justifyContent: 'center', mt: '5%'}}>
-        <Title variant='h4'>Ficha técnica</Title>
+        <Title variant='h4' component='h2'>Ficha técnica</Title>
       </Box>
       <Grid container item xs={12} md={12} >
         <Grid item xs={12} md={formulaExists ? 6 : 12}>

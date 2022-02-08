@@ -20,8 +20,8 @@ const IndicadorFilter = (props) => {
         <Grid
             container
             sx={{
-                backgroundColor: "info.main",
                 marginBottom: 4,
+                border: '1px solid rgb(0, 0, 0, 0.1)'
             }}
             borderRadius={2}
         >

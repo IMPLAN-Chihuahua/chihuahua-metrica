@@ -13,7 +13,7 @@ const TopData = (info) => {
 
   return (
     <>
-      <Grid container sx={{ mt: '3%', alignItems: 'center' }}>
+      <Grid container sx={{ alignItems: 'center' }}>
         <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Box sx={{
             bgcolor: 'black',
@@ -35,20 +35,32 @@ const TopData = (info) => {
 
           <Grid item xs={12} sx={{ justifyContent: 'center', textAlign: 'center', display: 'flex', alignItems: 'center' }}>
             <Grid item xs={3}>
-              <Button variant="contained" color="primary" sx={{ width: '95%' }} startIcon={<DownloadIcon />}>CSV</Button>
+              <NextLink href={`${process.env.INDICADORES_BASE_URL}/indicadores/${data.id}/csv`} >
+                <a download>
+                  <Button variant="contained" color="primary" sx={{ width: '95%' }} startIcon={<DownloadIcon />}>CSV</Button>
+                </a>
+              </NextLink>
             </Grid>
             <Grid item xs={3}>
-              <NextLink href={`${process.env.INDICADORES_BASE_URL}/indicadores/${data.id}/json`} >
+              <NextLink href={`${process.env.INDICADORES_BASE_URL}/indicadores/${data.id}/xlsx`} >
                 <a download>
                   <Button variant="contained" color="primary" sx={{ width: '90%' }} startIcon={<DownloadIcon />}>EXCEL</Button>
                 </a>
               </NextLink>
             </Grid>
             <Grid item xs={3}>
-              <Button variant="contained" color="primary" sx={{ width: '90%' }} startIcon={<DownloadIcon />}>JSON</Button>
+              <NextLink href={`${process.env.INDICADORES_BASE_URL}/indicadores/${data.id}/json`} >
+                <a download>
+                  <Button variant="contained" color="primary" sx={{ width: '90%' }} startIcon={<DownloadIcon />}>JSON</Button>
+                </a>
+              </NextLink>
             </Grid>
             <Grid item xs={3}>
-              <Button variant="contained" color="primary" sx={{ width: '90%' }} startIcon={<DownloadIcon />}>PDF</Button>
+              <NextLink href={`${process.env.INDICADORES_BASE_URL}/indicadores/${data.id}/pdf`} >
+                <a download>
+                  <Button variant="contained" color="primary" sx={{ width: '90%' }} startIcon={<DownloadIcon />}>PDF</Button>
+                </a>
+              </NextLink>
             </Grid>
           </Grid>
         </Grid>

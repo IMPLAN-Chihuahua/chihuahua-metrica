@@ -19,7 +19,7 @@ export default function Modulo(props) {
 
     const fetchIndicadores = useCallback(() => {
         setLoading(true);
-        const url = `${process.env.INDICADORES_BASE_URL}/modulos/${modulo}/indicadores?per_page=2&page=${page}&${filters}`;
+        const url = `${process.env.INDICADORES_BASE_URL}/modulos/${modulo}/indicadores?page=${page}&${filters}`;
         fetch(url)
             .then(res => res.json())
             .then(indicadores => {

@@ -80,7 +80,7 @@
 }
 .cardSection:hover .cardFront__tp{
   clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
-  filter: brightness(90%);
+  filter: brightness(120%);
 }
 
 .card {
@@ -127,5 +127,16 @@
   background-color: white;
 }
 
+.numberCircle {
+  border-radius: 50%;
+  width: 38px;
+  height: 36px;
 
+  background: rgb(255,255,255,0.09);
+  color: white;
+  padding: 4px;
+
+  text-align: center;
+  font: 24px Arial, sans-serif;
+}
 

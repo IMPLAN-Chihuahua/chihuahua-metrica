@@ -77,8 +77,8 @@ export default function Modulo(props) {
                 <meta name="description" content="Indicadores de la ciudad de Chihuahua" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Container maxWidth="xl">                
-                <Title variant='h3' component='h1' margin='3% 0 3% 0'>{title}</Title>
+            <Container maxWidth="xl" sx={{mb: '2%', mt: '3%'}}>
+                <Title variant='h3' component='h1' margin='0% 0 3% 0'>{title}</Title>
                 <IndicadorFilter
                     odsList={[...props.catalogos.ods]}
                     unidadMedidaList={[...props.catalogos.unidadMedida]}

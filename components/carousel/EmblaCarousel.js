@@ -45,11 +45,13 @@ const EmblaCarousel = () => {
               <Box className={style.embla__slide} key={index.name}>
                 <Box className={style.embla__slide__inner}>
                   <Image
-                    src={index.url} id={index.name}
+                    src={index.url} 
+                    id={index.name}
                     alt={`Fotografía banner de: ${index.description}`}
                     title={index.description}
-                    width={2000}
-                    height={860}
+                    width= '100%'
+                    height= '50px'
+                    layout="responsive" 
                 />
                 </Box>
               </Box>

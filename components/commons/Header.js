@@ -16,7 +16,6 @@ const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
 const navLinks = [
     { title: 'Inicio', path: '/' },
-    { title: 'Proyectos', path: '/' },
 ]
 
 const Header = () => {

@@ -8,7 +8,7 @@ import Title from '@components/commons/Title';
 export const Proyectos = () => {
   return (
       <>
-        <Box sx={{backgroundColor:'rgb(38, 48, 68,0.03)'}}>
+        <Box sx={{backgroundColor:'rgb(38, 48, 68,0.03)', width:'100%' }}>
       <Container >
       <Title variant='h4' content='Proyectos'></Title>
       <GridBase />

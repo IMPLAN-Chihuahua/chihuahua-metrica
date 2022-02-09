@@ -55,7 +55,7 @@ const Footer = () => {
                         <li>
                             <Link href='/informacion/preguntas-frecuentes' passHref>
                                 <a className={styles.underline}>
-                                    Preguntas Frequentes
+                                    Preguntas Frecuentes
                                 </a>
                             </Link>
                         </li>

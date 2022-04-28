@@ -28,7 +28,7 @@ const TopData = (info) => {
           <Grid item xs={12} sx={{ color: 'text.primary' }}>
             <Box sx={{ lineHeight: '30%' }}>
               <Title variant='h3' component='h1' margin='0 0 5% 0'>{data.nombre}</Title>
-              <Typography fontSize={20} mb={1}>Modulo: {data.Modulo.temaIndicador}</Typography>
+              <Typography fontSize={20} mb={1}>Modulo: {data.modulo?.temaIndicador}</Typography>
             </Box>
             <Typography mb={2}>{data.definicion}</Typography>
           </Grid>

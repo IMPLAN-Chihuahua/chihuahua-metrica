@@ -21,12 +21,12 @@ const DataSheet = (datasheet) => {
           </Grid>
           <Grid container spacing={3} sx={{ mt: '1%' }}>
             <Information header={data.anioUltimoValorDisponible} title='Año de referencia' body='Año al que se refiere el último valor disponible' />
-            <Information header={data.CoberturaGeografica} title='Cobertura geográfica' body='Territorio al que se refiere la captación de datos' />
+            <Information header={data.cobetura} title='Cobertura geográfica' body='Territorio al que se refiere la captación de datos' />
           </Grid>
         </Grid>
 
         <Grid item xs={12} md={formulaExists ? 6 : 12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'stretch' }}>
-          <Formula formula={data.Formula} />
+          <Formula formula={data.formula} />
         </Grid>
       </Grid>
     </>

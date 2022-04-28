@@ -13,7 +13,7 @@ export default function FichaTecnica(props) {
         <TopData info={data} />
         <DataSheet datasheet={data} />
         <GraphBox history={data} />
-        <MapButton mapa={data.Mapa} />
+        <MapButton mapa={data.mapa} />
       </Container>
     </>
   );

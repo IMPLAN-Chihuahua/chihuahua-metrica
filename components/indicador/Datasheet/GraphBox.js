@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 
 const GraphBox = (history) => {
   const { history: data } = history;
-  if (Object.keys(data.Historicos).length === 0) {
+  if (Object.keys(data.historicos).length === 0) {
     return HistoricalValuesNotExists(history);
   } else {
     return HistoricalValuesExists(history);
@@ -22,10 +22,10 @@ function HistoricalValuesExists(history) {
       </Box>
       <Grid container sx={{ mt: '2%' }} columnSpacing={4}>
         <Grid item xs={12} md={6}>
-          <CustomTable data={data.Historicos} />
+          <CustomTable data={data.historicos} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Graph data={data.Historicos} />
+          <Graph data={data.historicos} />
         </Grid>
       </Grid>
     </>

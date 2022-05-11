@@ -9,6 +9,10 @@ import Alert from "@mui/material/Alert";
 import { serialize } from '../../../helpers/StringUtils';
 import Title from "@components/commons/Title";
 
+const ODS = 1;
+const UNIDAD_MEDIDA = 2;
+const COBERTURA_GEOGRAFICA = 3;
+
 export default function Modulo(props) {
     const [isLoading, setLoading] = useState(false);
     const [hasError, setHasError] = useState(false);
@@ -21,13 +25,20 @@ export default function Modulo(props) {
         setLoading(true);
         const url = `${process.env.INDICADORES_BASE_URL}/modulos/${modulo}/indicadores?page=${page}&${filters}`;
         fetch(url)
-            .then(res => res.json())
+            .then(res => {
+                if (res.ok) {
+                    return res.json()
+                }
+                throw new Error(res.error.text)
+            })
             .then(indicadores => {
                 setTotalPages(indicadores.total_pages);
                 setIndicadores(indicadores.data);
                 setHasError(false);
             })
-            .catch(() => setHasError(true))
+            .catch((err) => {
+                setHasError(true)
+            })
             .finally(() => {
                 setLoading(false);
             });
@@ -77,12 +88,12 @@ export default function Modulo(props) {
                 <meta name="description" content="Indicadores de la ciudad de Chihuahua" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Container maxWidth="xl" sx={{mb: '2%', mt: '3%'}}>
+            <Container maxWidth="xl" sx={{ mb: '2%', mt: '3%' }}>
                 <Title variant='h3' component='h1' margin='0% 0 3% 0'>{title}</Title>
                 <IndicadorFilter
-                    odsList={[...props.catalogos.ods]}
-                    unidadMedidaList={[...props.catalogos.unidadMedida]}
-                    coberturaList={[...props.catalogos.coberturas]}
+                    odsList={[...props.ods.data]}
+                    unidadMedidaList={[...props.medidas.data]}
+                    coberturaList={[...props.coberturas.data]}
                     modulosList={[...props.modulos.data]}
                     handleModulo={handleModulo}
                     handleOds={handleOds}
@@ -91,20 +102,22 @@ export default function Modulo(props) {
                     handleTendencia={handleTendencia}
                     handleCobertura={handleCobertura}
                 />
-                {hasError && <Alert severity='error' sx={{ marginBottom: 2 }}>Hubo un error</Alert>}
+                {!isLoading && hasError && <Alert severity='error' sx={{ marginBottom: 2 }}>Hubo un error</Alert>}
                 {isLoading ?
                     Array.from(new Array(3)).map((_, i) => <IndicadorSkeleton key={i} />)
                     :
-                    (<>
-                        <IndicadorList
-                            indicadores={indicadores}
-                        />
-                        <IndicadorPagination
-                            page={page}
-                            totalPages={totalPages}
-                            handlePagination={handlePagination}
-                        />
-                    </>)}
+                    !hasError &&
+                        (<>
+                            <IndicadorList
+                                indicadores={indicadores}
+                            />
+                            <IndicadorPagination
+                                page={page}
+                                totalPages={totalPages}
+                                handlePagination={handlePagination}
+                            />
+                        </>)
+                    }
             </Container>
         </>
     );
@@ -113,18 +126,24 @@ export default function Modulo(props) {
 export async function getServerSideProps(context) {
     const baseUrl = process.env.INDICADORES_BASE_URL;
     const modulo = context.params.idModulo;
-    const [catalogosRes, modulosRes] = await Promise.all([
-        fetch(`${baseUrl}/catalogos`),
+    const [odsRes, medidaRes, coberturaRes, modulosRes] = await Promise.all([
+        fetch(`${baseUrl}/catalogos/${ODS}`),
+        fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA}`),
+        fetch(`${baseUrl}/catalogos/${COBERTURA_GEOGRAFICA}`),
         fetch(`${baseUrl}/modulos`),
     ]);
-    const [catalogos, modulos] = await Promise.all([
-        catalogosRes.json(),
+    const [ods, medidas, coberturas, modulos] = await Promise.all([
+        odsRes.json(),
+        medidaRes.json(),
+        coberturaRes.json(),
         modulosRes.json(),
     ]);
     return {
         props: {
             modulo,
-            catalogos,
+            ods,
+            coberturas,
+            medidas,
             modulos,
         },
     };

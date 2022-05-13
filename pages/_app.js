@@ -4,14 +4,12 @@ import { CacheProvider } from '@emotion/react';
 import createEmotionCache from '../styles/createEmotionCache';
 import Head from 'next/head';
 import theme from '../styles/theme';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Router from 'next/router';
 import '../styles/globals.css';
 
-// Manually generated
 import Header from '@components/commons/Header';
 import Footer from '@components/commons/Footer';
-import Document from './_document';
 import NProgress from 'nprogress';
 import '../styles/nprogress.css';
 
@@ -38,19 +36,18 @@ function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <>
-
       <CacheProvider value={emotionCache}>
         <Head>
           <title>Observatorio Urbano</title>
           <meta lang='es' name='viewport' content='initial-scale=1, width=device-width' />
         </Head>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
-           <Header />
-          <main>
-                <Component {...pageProps} />
-          </main>
-            <Footer />   
+            <CssBaseline />
+            <Header />
+            <main>
+              <Component {...pageProps} />
+            </main>
+            <Footer />
         </ThemeProvider>
       </CacheProvider>
 

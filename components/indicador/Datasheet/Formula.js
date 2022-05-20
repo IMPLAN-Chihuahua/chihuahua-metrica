@@ -79,7 +79,7 @@ function FormulaExists({ formula }) {
                     </Box>
                     <h3>Donde:</h3>
                     <div className='variableText'>
-                        <VariableList variables={formula.Variables} />
+                        <VariableList variables={formula.variables} />
                     </div>
                     <h3>Descripción</h3>
                     <p>{formula.descripcion}</p>

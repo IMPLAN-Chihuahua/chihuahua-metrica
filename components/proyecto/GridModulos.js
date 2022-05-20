@@ -14,12 +14,27 @@ const GridModulos = ({ data }) => {
                             <Box className={style.cardFront} >
                                 <NextLink href={`/modulos/${modulo.id}/indicadores`} passHref>
                                     <a>
-                                        <Box className={style.cardFront__tp} sx={{ backgroundColor: `#34495E` }} >
+                                        <Box className={style.cardFront__tp} sx={{ 
+                                            backgroundColor: `#34495E`,
+                                            position:'relative',
+                                            }} >
+                                                 <Box
+                                                sx={{
+                                                    position: 'absolute',
+                                                    top: '10px',
+                                                    right: '20px',
+                                                }}
+                                                className={style.numberCircle}
+                                                >
+                                                    {modulo.indicadoresCount}
+                                                    </Box>
                                             <Box sx={{
                                                 display: 'flex',
                                                 marginTop: '5%',
                                                 marginBottom: '10%',
+                                            
                                             }}>
+                                               
                                                 <AdbIcon sx={{ fontSize: '100px' }} />
                                             </Box>
                                         </Box>

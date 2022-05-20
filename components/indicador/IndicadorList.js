@@ -8,8 +8,9 @@ const IndicadorList = (props) => {
         <Stack spacing={2} alignItems="stretch" justifyContent="space-around">
             {
                 indicadores.length > 0 ?
-                    indicadores.map(elem => <Indicador value={elem} key={elem.id} />) :
-                    <Alert severity="warning">No hay indicadores disponibles</Alert>}
+                    indicadores.map(elem => <Indicador value={elem} key={elem.id} />)
+                    : <Alert severity="warning">No hay indicadores disponibles</Alert>
+            }
         </Stack>
     );
 };

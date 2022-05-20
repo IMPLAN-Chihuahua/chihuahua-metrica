@@ -80,7 +80,7 @@ const Indicador = (props) => {
                                     <Typography
                                         fontWeight='bold'
                                     >
-                                        {indicador.Unidad}
+                                        {indicador.unidad}
                                     </Typography>
                                     <Typography>
                                         Unidad de Medida

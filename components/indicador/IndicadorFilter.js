@@ -4,132 +4,203 @@ import {
     Autocomplete,
     TextField
 } from '@mui/material';
-
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { subYears } from 'date-fns/fp'
+import { Controller, useFormContext } from 'react-hook-form'
+const tendencyList = [
+    { id: 1, value: 'Ascendente' },
+    { id: 2, value: 'Descendente' },
+    { id: 3, value: 'No aplica' }
+];
 
 const IndicadorFilter = (props) => {
     const { odsList, unidadMedidaList,
-        coberturaList, modulosList, handleModulo,
-        handleOds, handleCobertura, handleMedida,
-        handleYear, handleTendencia } = props;
-    const start = new Date().getFullYear();
-    const end = start - 15;
-    const yearList = [...Array(start - end + 1).keys()].map((x) => start - x);
-    const tendencyList = ['Ascendente', 'Descendente', 'No aplica'];
+        coberturaList, modulosList } = props;
+    const minDate = subYears(20, new Date());
+    const maxDate = new Date();
+    const { control } = useFormContext();
 
     return (
-        <Grid
-            container
-            sx={{
-                backgroundColor: "info.main",
-                marginBottom: 4,
-            }}
-            borderRadius={2}
-        >
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
             <Grid
-                item
                 container
-                padding={2}
-                rowSpacing={2}
-                columnSpacing={2}
-                direction="column"
+                sx={{
+                    marginBottom: 4,
+                    border: '1px solid rgb(0, 0, 0, 0.1)'
+                }}
+                borderRadius={2}
             >
-                <Grid item>
-                    <Typography variant="h5" component="h2">
-                        Filtrar Indicadores
-                    </Typography>
-                </Grid>
                 <Grid
                     item
                     container
-                    direction="row"
-                    columnSpacing={2}
+                    padding={2}
                     rowSpacing={2}
-                    justifyContent='center'
+                    columnSpacing={2}
+                    direction="column"
                 >
-                    <Grid item xs={12} md={4} lg={3}>
-                        <Autocomplete
-                            disablePortal
-                            id="cbx-tematica"
-                            options={modulosList}
-                            getOptionLabel={(option) => option.temaIndicador}
-                            noOptionsText="No hay opciones"
-                            isOptionEqualToValue={(option, value) => option.id === value.id}
-                            onChange={handleModulo}
-                            renderInput={(params) => (
-                                <TextField {...params} label="Temática" />
-                            )}
-                        />
+                    <Grid item>
+                        <Typography variant="h5" component="h2">
+                            Busqueda
+                        </Typography>
                     </Grid>
-                    <Grid item xs={12} md={4} lg={3}>
-                        <Autocomplete
-                            disablePortal
-                            id="cbx-ods"
-                            options={odsList}
-                            getOptionLabel={(option) => option.nombre}
-                            isOptionEqualToValue={(option, value) => option.id === value.id}
-                            noOptionsText="No hay opciones"
-                            onChange={handleOds}
-                            renderInput={(params) => (
-                                <TextField {...params} label="Ods" />
-                            )}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={3}>
-                        <Autocomplete
-                            disablePortal
-                            id="cbx-medida"
-                            options={unidadMedidaList}
-                            getOptionLabel={(option) => option.nombre}
-                            isOptionEqualToValue={(option, value) => option.id === value.id}
-                            onChange={handleMedida}
-                            noOptionsText="No hay opciones"
-                            renderInput={(params) => (
-                                <TextField {...params} label="Unidad de Medida" />
-                            )}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={3}>
-                        <Autocomplete
-                            disablePortal
-                            id="cbx-year"
-                            options={yearList}
-                            getOptionLabel={(option) => option.toString()}
-                            onChange={handleYear}
-                            noOptionsText="No hay opciones"
-                            renderInput={(params) => (
-                                <TextField {...params} label="Año" />
-                            )}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={3}>
-                        <Autocomplete
-                            disablePortal
-                            id="cbx-cobertura"
-                            options={coberturaList}
-                            getOptionLabel={(option) => option.nombre}
-                            isOptionEqualToValue={(option, value) => option.id === value.id}
-                            onChange={handleCobertura}
-                            noOptionsText="No hay opciones"
-                            renderInput={(params) => (
-                                <TextField {...params} label="Cobertura Geográfica" />
-                            )}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={4} lg={3}>
-                        <Autocomplete
-                            disablePortal
-                            id="cbx-tendencia"
-                            options={tendencyList}
-                            onChange={handleTendencia}
-                            noOptionsText="No hay opciones"
-                            renderInput={(params) => (
-                                <TextField {...params} label="Tendencia" />
-                            )}
-                        />
+                    <Grid
+                        item
+                        container
+                        direction="row"
+                        columnSpacing={2}
+                        rowSpacing={2}
+                        justifyContent='center'
+                    >
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Controller
+                                name='temaIndicador'
+                                control={control}
+                                defaultValue={null}
+                                render={({ field: props }) => (
+                                    <Autocomplete
+                                        {...props}
+                                        onChange={(_, data) => props.onChange(data)}
+                                        disablePortal
+                                        options={modulosList}
+                                        getOptionLabel={(option) => option.temaIndicador}
+                                        noOptionsText="No hay opciones"
+                                        isOptionEqualToValue={(option, value) => option.id === value.id}
+                                        renderInput={(params) => (
+                                            <TextField {...params} label="Temática" />
+                                        )}
+                                    />
+                                )}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Controller
+                                name='ods'
+                                control={control}
+                                defaultValue={null}
+                                render={({ field: props }) => (
+                                    <Autocomplete
+                                        {...props}
+                                        onChange={(_, data) => props.onChange(data)}
+                                        disablePortal
+                                        options={odsList}
+                                        getOptionLabel={(option) => option.nombre}
+                                        isOptionEqualToValue={(option, value) => option.id === value.id}
+                                        noOptionsText="No hay opciones"
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                label='ODS'
+                                                helperText='Objetivo de Desarrollo Sostenible'
+                                            />
+                                        )}
+                                    />
+                                )}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Controller
+                                name='medida'
+                                control={control}
+                                defaultValue={null}
+                                render={({ field: props }) => (
+                                    <Autocomplete
+                                        {...props}
+                                        onChange={(_, data) => props.onChange(data)}
+                                        disablePortal
+                                        id="cbx-medida"
+                                        options={unidadMedidaList}
+                                        getOptionLabel={(option) => option.nombre}
+                                        isOptionEqualToValue={(option, value) => option.id === value.id}
+                                        noOptionsText="No hay opciones"
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                label="Unidad de Medida"
+                                            />
+                                        )}
+                                    />
+
+                                )}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Controller
+                                name='anio'
+                                control={control}
+                                defaultValue={null}
+                                render={({ field: props }) => (
+                                    <DatePicker
+                                        views={['year']}
+                                        label="Año"
+                                        onChange={props.onChange}
+                                        value={props.value}
+                                        minDate={minDate}
+                                        maxDate={maxDate}
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                helperText={null}
+                                                fullWidth
+                                            />
+                                        )}
+                                    />
+                                )}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Controller
+                                name='cobertura'
+                                control={control}
+                                defaultValue={null}
+                                render={({ field: props }) => (
+                                    <Autocomplete
+                                        {...props}
+                                        onChange={(_, data) => props.onChange(data)}
+                                        disablePortal
+                                        options={coberturaList}
+                                        getOptionLabel={(option) => option.nombre}
+                                        isOptionEqualToValue={(option, value) => option.id === value.id}
+                                        noOptionsText="No hay opciones"
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                label="Cobertura Geográfica"
+                                            />
+                                        )}
+                                    />
+                                )}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Controller
+                                name='tendencia'
+                                control={control}
+                                defaultValue={null}
+                                render={({ field: props }) => (
+                                    <Autocomplete
+                                        {...props}
+                                        onChange={(_, data) => props.onChange(data)}
+                                        disablePortal
+                                        options={tendencyList}
+                                        getOptionLabel={(option) => option.value}
+                                        isOptionEqualToValue={(option, value) => option.id === value.id}
+                                        noOptionsText="No hay opciones"
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                label="Tendencia"
+                                            />
+                                        )}
+                                    />
+                                )}
+                            />
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-        </Grid>
+        </LocalizationProvider>
     );
 };
 

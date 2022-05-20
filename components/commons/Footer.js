@@ -53,28 +53,35 @@ const Footer = () => {
                     <Typography variant='h5' component='h3'>Más Información</Typography>
                     <ul className={styles.footerList}>
                         <li>
-                            <Link href='/'>
+                            <Link href='/informacion/preguntas-frecuentes' passHref>
                                 <a className={styles.underline}>
-                                    Preguntas Frequentes
+                                    Preguntas Frecuentes
                                 </a>
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link href='/'>
                                 <a className={styles.underline}>
                                     Objetivos
                                 </a>
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </Box>
                 <Box component='div' flexGrow={1}>
                     <Typography variant='h5' component='h3'>Legal</Typography>
                     <ul className={styles.footerList}>
-                        <li>
-                            <Link href='/'>
+                         <li>
+                            <Link href='/informacion/politicas-de-privacidad' passHref>
                                 <a className={styles.underline}>
-                                    Politicas de Privacidad
+                                    Politicas de privacidad
+                                </a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href='/informacion/aviso-de-privacidad-integral' passHref>
+                                <a className={styles.underline}>
+                                    Aviso de privacidad integral
                                 </a>
                             </Link>
                         </li>

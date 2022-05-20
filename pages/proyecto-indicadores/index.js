@@ -8,7 +8,7 @@ import Title from '@components/commons/Title';
 export default function Modulo(props) {
     const data = props.data;
     return (<>
-        <Container>
+        <Container sx={{mb:'3%'}}>
             <Head>
                 <title>Proyecto Indicadores</title>
                 <meta name="description" content="Proyecto indicadores de la ciudad de Chihuahua" />

@@ -52,9 +52,11 @@ const Graph = ({ data }) => {
           width={'auto'}
           height={'165%'}
         />
+        <Box sx={{mt:'1.6%'}}>
         <Typography variant="p" sx={{fontSize: '14px', fontWeight: 'bold', color: theme.palette.primary.subtleMain, pt: 10}}>
           Gráfica de barras representativa del valor en los últimos años disponibles
         </Typography>
+        </Box>
       </Box>
     </>
   );

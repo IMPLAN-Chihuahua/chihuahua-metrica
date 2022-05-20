@@ -9,11 +9,11 @@ export default function FichaTecnica(props) {
 
   return (
     <>
-      <Container>
+      <Container sx={{ mb: '2%', mt: '2%' }}>
         <TopData info={data} />
         <DataSheet datasheet={data} />
         <GraphBox history={data} />
-        <MapButton mapa={data.Mapa} />
+        <MapButton mapa={data.mapa} />
       </Container>
     </>
   );

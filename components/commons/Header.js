@@ -23,12 +23,12 @@ const Header = () => {
         <>
             <HideOnScroll>
                 <AppBar position="fixed" elevation={0}>
-                    <Toolbar>
-                        <Grid container direction='row'>
-                            <Grid item xs flexGrow={1}>
+                    <Toolbar sx={{ bgcolor: 'blue' }}>
+                        <Grid container direction='column' sx={{ bgcolor: 'green' }}>
+                            <Grid item flexGrow={1} sx={{ bgcolor: 'white' }}>
                                 <NextLink href='/'>
                                     <a>
-                                        <Image src='/images/small-logo.png' width={100} height={60} alt="small Logo" />
+                                        <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
                                     </a>
                                 </NextLink>
                             </Grid>

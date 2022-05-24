@@ -28,11 +28,16 @@ const Navbar = ({ navLinks }) => {
           <Box className={style.dropdown}>
             <p className={style.dropbtn}>Proyectos</p>
             <Box className={style.dropdown_content}>
-              <Link href="/proyecto-indicadores" passHref>
-                <a>Indicadores</a>
-              </Link>
-              <a href="#">Proyecto 2</a>
-              <a href="#">Proyecto 3</a>
+            </Box>
+          </Box>
+          <Box className={style.dropdown}>
+            <p className={style.dropbtn}>Conócenos</p>
+            <Box className={style.dropdown_content}>
+            </Box>
+          </Box>
+          <Box className={style.dropdown}>
+            <p className={style.dropbtn}>Contacto</p>
+            <Box className={style.dropdown_content}>
             </Box>
           </Box>
         </Stack>

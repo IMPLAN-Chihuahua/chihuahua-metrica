@@ -13,7 +13,6 @@ import Footer from '@components/commons/Footer';
 import NProgress from 'nprogress';
 import '../styles/nprogress.css';
 
-
 const clientSideEmotionCache = createEmotionCache();
 
 function MyApp(props) {
@@ -33,6 +32,22 @@ function MyApp(props) {
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const globalLoader = document.getElementById('globalLoader');
+      const loader = document.getElementById('loader');
+      
+      if (globalLoader && loader) {
+        setTimeout(() => {
+            loader.style.opacity = 0;
+          setTimeout(() => {
+            globalLoader.style.opacity = 0;
+          }, 400);
+        }, 900)
+      }
+    }
+  }, []);
+
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <>
@@ -42,12 +57,12 @@ function MyApp(props) {
           <meta lang='es' name='viewport' content='initial-scale=1, width=device-width' />
         </Head>
         <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Header />
-            <main>
-              <Component {...pageProps} />
-            </main>
-            <Footer />
+          <CssBaseline />
+          <Header />
+          <main>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
         </ThemeProvider>
       </CacheProvider>
 

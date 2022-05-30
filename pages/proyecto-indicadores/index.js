@@ -8,11 +8,11 @@ import Title from '@components/commons/Title';
 export default function Modulo(props) {
     const data = props.data;
     return (<>
-        <Container sx={{mb:'3%'}}>
+        <Container sx={{ mb: '3%' }}>
             <Head>
                 <title>Proyecto Indicadores</title>
                 <meta name="description" content="Proyecto indicadores de la ciudad de Chihuahua" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/icon.ico" />
             </Head>
             <Title variant='h3' component='h1' margin='3% 0 1% 0'>Módulos de Chihuahua</Title>
             <Grid container>

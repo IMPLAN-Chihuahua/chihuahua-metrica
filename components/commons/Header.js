@@ -12,27 +12,54 @@ import BackToTop from "./BackToTop";
 import { Grid } from "@mui/material";
 import NextLink from "next/link";
 
-const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
+import style from './Header.module.css'
+import { useState, useEffect } from "react";
+
+const Offset = styled("div")();
 
 const navLinks = [
     { title: 'Inicio', path: '/' },
+    { title: 'Proyectos', path: '/' },
+    { title: 'Conocenos', path: '/' },
+    { title: 'Contacto', path: '/' },
 ]
 
 const Header = () => {
+    const [scrollPosition, setScroll] = useState(0)
+    useEffect(() => {
+        const handleScroll = () => {
+            setScroll(window.scrollY);
+        };
+
+        // just trigger this so that the initial state 
+        // is updated as soon as the component is mounted
+        // related: https://stackoverflow.com/a/63408216
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+
     return (
         <>
             <HideOnScroll>
-                <AppBar position="fixed" elevation={0}>
-                    <Toolbar sx={{ bgcolor: 'blue' }}>
-                        <Grid container direction='column' sx={{ bgcolor: 'green' }}>
-                            <Grid item flexGrow={1} sx={{ bgcolor: 'white' }}>
+                <AppBar position="fixed" elevation={0} sx={{ backgroundColor: 'transparent', width: '100%', maxWidth: '100%' }}>
+                    <Toolbar >
+                        <Grid container direction='column'>
+                            <Grid item flexGrow={1} sx={{ bgcolor: 'white' }} className={style.navbarCentered}>
                                 <NextLink href='/'>
                                     <a>
                                         <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
                                     </a>
                                 </NextLink>
                             </Grid>
-                            <Grid item xs flexGrow={1} container justifyContent='flex-end'>
+
+                            <Grid item xs container justifyContent='flex-end' sx={{ height: '1000px' }} className={`${style.navbarCentered} ${style.navbarMenu} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}>
                                 <Navbar navLinks={navLinks} />
                                 <SideBar navLinks={navLinks} />
                             </Grid>

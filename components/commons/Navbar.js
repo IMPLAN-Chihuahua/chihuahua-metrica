@@ -15,13 +15,14 @@ const Navbar = ({ navLinks }) => {
           <Stack direction="row" spacing={3} className={style.navbar}>
             {
               navLinks.map(
-                ({ title, path }, i) => (
+                ({ title, path, cssName }, i) => (
                   <>
-                    <Link href={path} key={title} passHref >
-                      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} key={title} className={style.pointer}>
-                        <a >
+                    <Link href={path} key={i} passHref >
+                      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} key={i} className={`${style.pointer} ${style[cssName]}`}>
+                        <a key={i}>
                           {title}
                           <br />
+                          <span className={style.dot}></span>
                         </a>
                       </Box>
                     </Link>

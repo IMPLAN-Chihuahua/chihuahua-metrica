@@ -18,6 +18,24 @@
   text-decoration: none;
 }
 
+.dot {
+  opacity: 0;
+  height: 8px;
+  width: 8px;
+  margin-top: 11%;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.inicio:hover>a>.dot,
+.proyectos:hover>a>.dot,
+.conocenos:hover>a>.dot,
+.contacto:hover>a>.dot {
+  opacity: 1;
+  transition: 1s;
+}
+
 .dropdown {
   float: left;
   overflow: hidden;
@@ -38,10 +56,6 @@
   font-family: inherit;
   margin: 0;
 }
-
-/* .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-  } */
 
 .dropdown_content {
   display: none;

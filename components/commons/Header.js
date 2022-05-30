@@ -18,10 +18,10 @@ import { useState, useEffect } from "react";
 const Offset = styled("div")();
 
 const navLinks = [
-    { title: 'Inicio', path: '/' },
-    { title: 'Proyectos', path: '/' },
-    { title: 'Conocenos', path: '/' },
-    { title: 'Contacto', path: '/' },
+    { title: 'Inicio', path: '/', cssName: 'inicio' },
+    { title: 'Proyectos', path: '/', cssName: 'proyectos' },
+    { title: 'Conocenos', path: '/', cssName: 'conocenos' },
+    { title: 'Contacto', path: '/', cssName: 'contacto' },
 ]
 
 const Header = () => {

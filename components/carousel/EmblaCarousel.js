@@ -44,15 +44,20 @@ const EmblaCarousel = () => {
             {slides.map((index) => (
               <Box className={style.embla__slide} key={index.name}>
                 <Box className={style.embla__slide__inner}>
-                  <Image
-                    src={index.url}
-                    id={index.name}
-                    alt={`Fotografía banner de: ${index.description}`}
-                    title={index.description}
-                    width='100%'
-                    height='50px'
-                    layout="responsive"
-                  />
+                  <a href={index.projectURL}>
+                    <Image
+                      src={index.url}
+                      blurDataURL={index.url}
+                      placeholder="blur"
+                      id={index.name}
+                      alt={`Fotografía banner de: ${index.description}`}
+                      title={index.description}
+                      width='100%'
+                      height='50px'
+                      layout="responsive"
+                      priority
+                    />
+                  </a>
                 </Box>
               </Box>
             ))}

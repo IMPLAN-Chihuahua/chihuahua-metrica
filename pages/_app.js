@@ -13,7 +13,6 @@ import Footer from '@components/commons/Footer';
 import NProgress from 'nprogress';
 import '../styles/nprogress.css';
 
-
 const clientSideEmotionCache = createEmotionCache();
 
 function MyApp(props) {
@@ -33,6 +32,7 @@ function MyApp(props) {
     };
   }, []);
 
+
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <>
@@ -43,7 +43,7 @@ function MyApp(props) {
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Header sx={{ backgroundColor: 'transparent', width: '100%', maxWidth: '100%' }} />
+          <Header />
           <main>
             <Component {...pageProps} />
           </main>

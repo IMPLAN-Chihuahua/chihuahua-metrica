@@ -1,11 +1,13 @@
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-:root, body {
-  height:100%;
+:root,
+body {
+  height: 100%;
   margin: 0;
-  padding:0;
+  padding: 0;
   width: 100%;
 
   --blue: #2043db;
@@ -13,22 +15,22 @@
   --pink: #ee59e9;
   --primary-main: #263044;
   --primary-on-main: #E3F6FA;
-  --secondary: #d1a961; 
- }
- 
- #__next {
+  --secondary: #d1a961;
+}
+
+#__next {
   display: flex;
   flex: 1;
   flex-direction: column;
   height: 100%;
   width: 100%;
- }
- 
- main {
+}
+
+main {
   display: flex;
   flex: 1;
   flex-direction: column;
- } 
+}
 
 html,
 body {
@@ -42,4 +44,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-

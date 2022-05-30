@@ -7,36 +7,32 @@ import style from '../../styles/dropdown.module.css'
 const Navbar = ({ navLinks }) => {
   return (
     <>
-      <Toolbar
-        component="nav"
-        sx={{ display: { xs: 'none', md: 'flex' }, }}
-      >
-        <Stack direction="row" spacing={3} className={style.navbar}>
-          {
-            navLinks.map(
-              ({ title, path }, i) => (
-                <Link href={path} key={title} passHref >
-                  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className={style.pointer}>
-                    <a >
-                      {title}
-                    </a>
-                  </Box>
-                </Link>
+      <Box className={style.menu}>
+        <Toolbar
+          component="nav"
+          sx={{ display: { xs: 'none', md: 'flex' }, }}
+        >
+          <Stack direction="row" spacing={3} className={style.navbar}>
+            {
+              navLinks.map(
+                ({ title, path, cssName }, i) => (
+                  <>
+                    <Link href={path} key={i} passHref >
+                      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} key={i} className={`${style.pointer} ${style[cssName]}`}>
+                        <a key={i}>
+                          {title}
+                          <br />
+                          <span className={style.dot}></span>
+                        </a>
+                      </Box>
+                    </Link>
+                  </>
+                )
               )
-            )
-          }
-          <Box className={style.dropdown}>
-            <p className={style.dropbtn}>Proyectos</p>
-            <Box className={style.dropdown_content}>
-              <Link href="/proyecto-indicadores" passHref>
-                <a>Indicadores</a>
-              </Link>
-              <a href="#">Proyecto 2</a>
-              <a href="#">Proyecto 3</a>
-            </Box>
-          </Box>
-        </Stack>
-      </Toolbar>
+            }
+          </Stack>
+        </Toolbar>
+      </Box>
     </>
   );
 };

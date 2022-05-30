@@ -8,9 +8,9 @@ import style from '../../styles/EmblaCarousel.module.css'
 import Image from "next/image";
 
 const EmblaCarousel = () => {
-  const options = { delay: 4000} // Options
+  const options = { delay: 10000 } // Options
   const autoplayRoot = (emblaRoot) => emblaRoot.parentElement // Root node
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false, loop: true, startIndex:0, draggable: false},[Autoplay(options, autoplayRoot)]);
+  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false, loop: true, startIndex: 0, draggable: false }, [Autoplay(options, autoplayRoot)]);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -44,15 +44,20 @@ const EmblaCarousel = () => {
             {slides.map((index) => (
               <Box className={style.embla__slide} key={index.name}>
                 <Box className={style.embla__slide__inner}>
-                  <Image
-                    src={index.url} 
-                    id={index.name}
-                    alt={`Fotografía banner de: ${index.description}`}
-                    title={index.description}
-                    width= '100%'
-                    height= '50px'
-                    layout="responsive" 
-                />
+                  <a href={index.projectURL}>
+                    <Image
+                      src={index.url}
+                      blurDataURL={index.url}
+                      placeholder="blur"
+                      id={index.name}
+                      alt={`Fotografía banner de: ${index.description}`}
+                      title={index.description}
+                      width='100%'
+                      height='50px'
+                      layout="responsive"
+                      priority
+                    />
+                  </a>
                 </Box>
               </Box>
             ))}
@@ -64,11 +69,11 @@ const EmblaCarousel = () => {
       <Box className={style.embla__dots}>
         {scrollSnaps.map((_, index) => (
           <DotButton
-          key={index}
-          selected={index === selectedIndex}
-          onClick={() => scrollTo(index)}
+            key={index}
+            selected={index === selectedIndex}
+            onClick={() => scrollTo(index)}
           />
-          ))}
+        ))}
       </Box>
     </>
   );

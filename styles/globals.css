@@ -8,6 +8,9 @@
   padding:0;
   width: 100%;
 
+  --blue: #2043db;
+  --purple: #7b1ee3;
+  --pink: #ee59e9;
   --primary-main: #263044;
   --primary-on-main: #E3F6FA;
   --secondary: #d1a961; 

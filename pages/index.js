@@ -5,9 +5,10 @@ import { AboutLocation } from '@components/information/AboutLocation';
 import { ProjectsSection } from '@components/proyecto/ProjectSection';
 import { AboutForm } from '@components/information/AboutForm';
 import { useEffect } from 'react';
+import { Container } from '@mui/material';
 
 export default function Home() {
-  
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const globalLoader = document.getElementById('globalLoader');
@@ -33,37 +34,37 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-      <div id='globalLoader'
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              zIndex: 99999,
-              backgroundColor: 'black',
-              transition: 'all 1s linear',
-            }}>
-            <div id='loader' style={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              transition: 'opacity 0.25s linear',
-            }}>
-              <img
-                alt='Chihuahua Metrica Logo'
-                src='/Logotipo-editable-blanco_Mesa-de-trabajo-1.webp'
-                style={{ maxWidth: '300px' }} />
-            </div>
+        <div id='globalLoader'
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 99999,
+            backgroundColor: 'black',
+            transition: 'all 1s linear',
+          }}>
+          <div id='loader' style={{
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            transition: 'opacity 0.25s linear',
+          }}>
+            <img
+              alt='Chihuahua Metrica Logo'
+              src='/Logotipo-editable-blanco_Mesa-de-trabajo-1.webp'
+              style={{ maxWidth: '300px' }} />
           </div>
+        </div>
         <EmblaCarousel />
-        <div>
+        <Container maxWidth='lg' sx={{ marginTop: 3, marginBottom: 3 }}>
           <AboutDescription />
           <ProjectsSection />
           <AboutLocation />
           <AboutForm />
-        </div>
+        </Container>
       </body>
     </>
   )

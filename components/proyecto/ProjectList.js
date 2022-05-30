@@ -16,7 +16,7 @@ const PROJECTS = [
 
 const ProjectList = () => {
   return (
-    <Grid container spacing={3} sx={{ mt: '3%' }}>
+    <Grid container spacing={3} mt={1}>
       {PROJECTS.map((project, i) => (
         <Grid key={i} item xs={12} md={4} >
           <Project  {...project} />

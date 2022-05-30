@@ -6,53 +6,45 @@ import GridModulos from '@components/proyecto/GridModulos';
 import Title from '@components/commons/Title';
 
 export default function Modulo(props) {
-    const data = props.data;
-    return (<>
-        <Container sx={{mb:'3%'}}>
-            <Head>
-                <title>Proyecto Indicadores</title>
-                <meta name="description" content="Proyecto indicadores de la ciudad de Chihuahua" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Title variant='h3' component='h1' margin='3% 0 1% 0'>Módulos de Chihuahua</Title>
-            <Grid container>
-                <Grid item xs={12} lg={9}>
-                    <Typography textAlign='start' variant='body1'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum mi vel risus ultricies vestibulum. Maecenas consectetur ut arcu id dignissim. Vivamus lorem purus, malesuada eu nisl nec, pharetra varius purus. In facilisis quis sem in ornare. Suspendisse varius magna sapien, et congue ante cursus eget. Praesent mattis, eros eget congue rutrum, massa lorem auctor neque, a molestie metus risus vel leo. Aenean ac odio nisl.
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} lg={3}>
-                    <Box className={style.rightSide}>
-                        <Image src='/images/implan-logo.webp' alt='implan_logo' width={200} height={150} />
-                    </Box>
-                </Grid>
-            </Grid>
-            <Title variant='h4' component='h2' margin='0 0 2% 0'>Temas de interés</Title>
-            <Grid container spacing={2}>
-                <GridModulos data={data} />
-            </Grid>
-        </Container>
-    </>);
+  const data = props.data;
+  return (<>
+    <Head>
+      <title>Proyecto Indicadores</title>
+      <meta name="description" content="Proyecto indicadores de la ciudad de Chihuahua" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <Container sx={{ marginTop: 3, marginBottom: 3 }}>
+      <Title variant='h3' component='h1'>Indicadores de Chihuahua</Title>
+      <Grid container>
+        <Grid item xs={12} lg={9}>
+          <Typography textAlign='start' variant='body1' mt={3} fontSize='1.3rem'>
+            Los Indicadores de Chihuahua ofrecen a la ciudadanía los datos de la
+            estructura urbana, económica y social con el fin de dar a conocer la dirección
+            en la que se encuentra la ciudad y encontrar las áreas de oportunidad.
+          </Typography>
+          <Typography textAlign='start' variant='body1' mt={2} mb={3} fontSize='1.3rem'>
+            La plataforma cuenta con una base de 152 de indicadores, 42 técnico-urbanos
+            y 110 sociales, los cuales pueden ser usados de referencia para estudios y proyectos.
+            Son fundamentados con la información que brindan los censos de INEGI, CONEVAL,
+            IMCO, ONU, IMPLAN, entre otros organismos.
+          </Typography>
+        </Grid>
+        <Grid item xs={12} lg={3}>
+          <Box className={style.rightSide}>
+            <Image src='/images/implan-logo.webp' alt='implan_logo' width={200} height={150} />
+          </Box>
+        </Grid>
+      </Grid>
+      <Title variant='h4' component='h2' mb={3} mt={3}>Temas de Interés</Title>
+      <Grid container spacing={2}>
+        <GridModulos data={data} />
+      </Grid>
+    </Container>
+  </>);
 };
 
-
-
-
 export async function getServerSideProps(context) {
-    const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos`);
-    const data = await res.json();
-
-    if (res.status === 200) {
-        return {
-            props: {
-                ...data
-            }
-        }
-    } else {
-        return {
-            props: {
-                data: []
-            }
-        }
-    }
+  const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos`);
+  const data = await res.json();
+  return res.status === 200 ? { props: { ...data } } : { props: { data: [] } };
 }

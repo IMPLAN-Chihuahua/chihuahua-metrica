@@ -4,7 +4,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import {Container } from '@mui/material';
+import { Container } from '@mui/material';
 import { useState } from 'react';
 
 const data = [
@@ -62,60 +62,54 @@ const data = [
 
 
 
- const Summary = () => {   
-  
+const Summary = () => {
 
-    const faq = data.map(({id,question, answer}) => {
-        return (
-            
-            <Accordion key={id} elevation={0}>
-              <AccordionSummary 
-              expandIcon={<ExpandMoreIcon/>}
-              aria-controls="panel1a-content"
-              id={id}
-              sx={
-                [
-                  {
-                    '&:hover':{
-                      backgroundColor: 'rgb(49,154,197,0.1)'
-                    }
-                  }
-                ]
+
+  const faq = data.map(({ id, question, answer }) => {
+    return (
+
+      <Accordion key={id} elevation={0}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id={id}
+          sx={
+            [
+              {
+                '&:hover': {
+                  backgroundColor: 'rgb(49,154,197,0.1)'
+                }
               }
-              
-              >
-                <Typography 
-                variant='button' 
-                display='block' 
-                gutterBottom 
-                sx={{
-                    fontWeight:'bold',
-                    }}>
-                        {question}
-                        </Typography>
-              </AccordionSummary>
-              <AccordionDetails sx={{
-                color:'#4b4453'
-              }}>
-                  <Typography>{answer}</Typography>
-              </AccordionDetails>
-              </Accordion>
-          
-        ); 
-    })
-    return faq;
+            ]
+          }
+
+        >
+          <Typography
+            variant='button'
+            display='block'
+            gutterBottom
+            sx={{
+              fontWeight: 'bold',
+            }}>
+            {question}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails sx={{
+          color: '#4b4453'
+        }}>
+          <Typography>{answer}</Typography>
+        </AccordionDetails>
+      </Accordion>
+
+    );
+  })
+  return faq;
 };
 
-const QuestionsContent = () =>{
-    return(
-        <Container sx={{
-        mt:'3%',
-        mb:'3%'
-
-        }}>
-        <Summary/>
-        </Container>
-    )
+const QuestionsContent = () => {
+  return (
+    <Summary />
+  )
 }
 
 export default QuestionsContent;

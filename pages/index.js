@@ -5,6 +5,7 @@ import { AboutLocation } from '@components/information/AboutLocation';
 import { ProjectsSection } from '@components/proyecto/ProjectSection';
 import { AboutForm } from '@components/information/AboutForm';
 import { useEffect } from 'react';
+import { Container } from '@mui/material';
 
 export default function Home() {
 
@@ -58,12 +59,12 @@ export default function Home() {
           </div>
         </div>
         <EmblaCarousel />
-        <div>
+        <Container maxWidth='lg' sx={{ marginTop: 3, marginBottom: 3 }}>
           <AboutDescription />
           <ProjectsSection />
           <AboutLocation />
           <AboutForm />
-        </div>
+        </Container>
       </body>
     </>
   )

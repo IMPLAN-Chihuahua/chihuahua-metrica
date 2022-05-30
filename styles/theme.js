@@ -5,7 +5,7 @@ let theme = createTheme({
     palette: {
         // Change color after checking MUI
         primary: {
-            main: '#263044',
+            main: '#46587C',
             subtleMain: '#46587C',
             darkerMain: '#1C2331',
             contrastText: '#FFFFFF',

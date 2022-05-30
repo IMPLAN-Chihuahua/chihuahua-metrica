@@ -42,12 +42,12 @@ function MyApp(props) {
           <meta lang='es' name='viewport' content='initial-scale=1, width=device-width' />
         </Head>
         <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Header />
-            <main>
-              <Component {...pageProps} />
-            </main>
-            <Footer />
+          <CssBaseline />
+          <Header sx={{ backgroundColor: 'transparent', width: '100%', maxWidth: '100%' }} />
+          <main>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
         </ThemeProvider>
       </CacheProvider>
 

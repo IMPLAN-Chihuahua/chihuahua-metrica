@@ -32,21 +32,6 @@ function MyApp(props) {
     };
   }, []);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const globalLoader = document.getElementById('globalLoader');
-      const loader = document.getElementById('loader');
-      
-      if (globalLoader && loader) {
-        setTimeout(() => {
-            loader.style.opacity = 0;
-          setTimeout(() => {
-            globalLoader.style.opacity = 0;
-          }, 400);
-        }, 900)
-      }
-    }
-  }, []);
 
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (

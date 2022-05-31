@@ -6,17 +6,6 @@
   cursor: pointer;
 }
 
-.overlay {
-  background-color: rgba(0,0,0, 0.7);
-  position: relative;
-  height: 100%;
-  width: 100%;
-  transition: background-color .1s linear;
-}
-
-.overlay:hover {
-  background-color: rgba(0,0,0, 0.8);
-}
 
 .center-content {
   display: flex;

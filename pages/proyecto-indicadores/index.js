@@ -2,7 +2,7 @@ import { Box, Button, Card, CardActionArea, Container, Grid, Typography } from '
 import Head from 'next/head';
 import style from '../../styles/indicador.module.css'
 import Image from 'next/image';
-import GridModulos from '@components/proyecto/GridModulos';
+import TemaList from '@components/proyecto/GridModulos';
 import Title from '@components/commons/Title';
 
 export default function Modulo(props) {
@@ -36,8 +36,8 @@ export default function Modulo(props) {
         </Grid>
       </Grid>
       <Title variant='h4' component='h2' mb={3} mt={3}>Temas de Interés</Title>
-      <Grid container spacing={2}>
-        <GridModulos data={data} />
+      <Grid container rowSpacing={1} columnSpacing={1}>
+        <TemaList modulos={data} />
       </Grid>
     </Container>
   </>);

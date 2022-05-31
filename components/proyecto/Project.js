@@ -6,10 +6,12 @@ const Project = (props) => {
 
   return (
     <NextLink href={url}>
-      <div className={`${styles['card-proyecto']} ${styles['curve-borders']} ${styles['center-content']}`}
+      <div 
+      onMouseOver={() => console.log('expand divider')}
+      className={`${styles['card-proyecto']} ${styles['curve-borders']} ${styles['center-content']}`}
         style={{ backgroundImage: `url(${image})` }}
       >
-        <div className={`${styles.overlay} ${styles['curve-borders']} ${styles['center-content']}`}>
+        <div className={`overlay ${styles['curve-borders']} ${styles['center-content']}`}>
           <div className={styles['gradient-wrapper']}>
             <h5 className={styles['card-title']}>{name}</h5>
           </div>

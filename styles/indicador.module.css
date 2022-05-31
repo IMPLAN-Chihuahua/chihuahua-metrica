@@ -1,16 +1,26 @@
 .card {
-  border-radius: 10px;
   height: 200px;
   color: white;
   transition: font-size .2s linear;
+  cursor: pointer;
 }
 
 .divider {
+  border: none;
   width: 5px;
   height: 5px;
   border-radius: 25px;
-  margin-left: 1rem;
-  transition: width .2s linear;
+  margin-left: 0;
+  transition: all .2s linear;
+}
+
+@media only screen and (max-width: 810px) {
+  .divider {
+    width: 15px;
+    height: 15px;
+    border-radius: 25px;
+    margin-left: 0;
+  }
 }
 
 .divider-extended {

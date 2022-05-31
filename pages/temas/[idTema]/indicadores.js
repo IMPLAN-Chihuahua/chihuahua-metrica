@@ -19,7 +19,7 @@ export default function Modulo(props) {
   const [indicadores, setIndicadores] = useState({});
   const [isLoading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [modulo, setModulo] = useState(props.idModulo);
+  const [modulo, setModulo] = useState(props.idTema);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [filters, setFilters] = useState('');
@@ -69,7 +69,7 @@ export default function Modulo(props) {
     const subscription = watch((value) => {
       const payload = {};
       let updatedIdModulo = value?.temaIndicador?.id;
-      setModulo(isUndefined(updatedIdModulo) ? props.idModulo : updatedIdModulo);
+      setModulo(isUndefined(updatedIdModulo) ? props.idTema : updatedIdModulo);
       payload.idOds = value?.ods?.id;
       payload.idUnidadMedida = value?.medida?.id;
       payload.idCobertura = value?.cobertura?.id;
@@ -78,7 +78,7 @@ export default function Modulo(props) {
       setFilters(serialize(payload));
     });
     return () => subscription.unsubscribe();
-  }, [watch, props.idModulo]);
+  }, [watch, props.idTema]);
 
   const handlePagination = (_, value) => setPage(value);
   const title = `indicadores modulo ${modulo}`;
@@ -122,7 +122,7 @@ export default function Modulo(props) {
 
 export async function getServerSideProps(context) {
   const baseUrl = process.env.INDICADORES_BASE_URL;
-  const { idModulo } = context.params;
+  const { idTema } = context.params;
   const [odsRes, medidaRes, coberturaRes, modulosRes] = await Promise.all([
     fetch(`${baseUrl}/catalogos/${ODS}`),
     fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA}`),
@@ -137,7 +137,7 @@ export async function getServerSideProps(context) {
   ]);
   return {
     props: {
-      idModulo,
+      idTema,
       ods,
       coberturas,
       medidas,

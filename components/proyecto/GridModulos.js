@@ -10,21 +10,26 @@ const Tema = ({ modulo }) => {
 
   return (
     <Grid item xs={12} md={6} lg={4} key={modulo.id}>
-      <div
-        className={`${style.card}`}
-        style={{ backgroundImage: `url(/01-01-Planeación_-estructura-urbana-y-territorio.webp)` }}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
-        <div className='overlay rounded-corners'>
-          <Typography variant='h5' component='h3' pt={2} pl={2}>{modulo.temaIndicador}</Typography>
-          <hr
-            className={`${style.divider} ${isHover && style['divider-extended']}`}
-            style={{
-              backgroundColor: modulo.color
-            }} />
+      <NextLink href={`/temas/${modulo.id}/indicadores`}>
+        <div
+          className={`${style.card}`}
+          style={{ backgroundImage: `url(/01-01-Planeación_-estructura-urbana-y-territorio.webp)` }}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
+          <div className='overlay'>
+            <Box pt={2} pl={2}>
+              <Typography variant='h5' component='h3'>{modulo.temaIndicador}</Typography>
+              <hr
+                className={`${style.divider} ${isHover && style['divider-extended']}`}
+                style={{
+                  backgroundColor: modulo.color
+                }} />
+              <Typography variant='overline'>Indicadores: {modulo.indicadoresCount}</Typography>
+            </Box>
+          </div>
         </div>
-      </div>
+      </NextLink>
     </Grid>
   );
 }

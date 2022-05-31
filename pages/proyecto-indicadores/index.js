@@ -36,7 +36,7 @@ export default function Modulo(props) {
         </Grid>
       </Grid>
       <Title variant='h4' component='h2' mb={3} mt={3}>Temas de Interés</Title>
-      <Grid container spacing={2}>
+      <Grid container rowSpacing={1} columnSpacing={1}>
         <TemaList modulos={data} />
       </Grid>
     </Container>

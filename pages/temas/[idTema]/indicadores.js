@@ -20,6 +20,7 @@ export default function Modulo(props) {
   const [isLoading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [modulo, setModulo] = useState(props.idTema);
+  const [temaName, setTemaName] = useState(props.selectedTema.temaIndicador);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [filters, setFilters] = useState('');
@@ -69,7 +70,9 @@ export default function Modulo(props) {
     const subscription = watch((value) => {
       const payload = {};
       let updatedIdModulo = value?.temaIndicador?.id;
+      let updatedTema = value?.temaIndicador?.temaIndicador;
       setModulo(isUndefined(updatedIdModulo) ? props.idTema : updatedIdModulo);
+      setTemaName(isUndefined(updatedTema) ? props.selectedTema.temaIndicador : updatedTema);
       payload.idOds = value?.ods?.id;
       payload.idUnidadMedida = value?.medida?.id;
       payload.idCobertura = value?.cobertura?.id;
@@ -78,10 +81,10 @@ export default function Modulo(props) {
       setFilters(serialize(payload));
     });
     return () => subscription.unsubscribe();
-  }, [watch, props.idTema]);
+  }, [watch]);
 
   const handlePagination = (_, value) => setPage(value);
-  const title = `indicadores modulo ${modulo}`;
+  const title = `Indicadores del tema ${temaName}`;
   return (
     <>
       <Head>
@@ -123,17 +126,20 @@ export default function Modulo(props) {
 export async function getServerSideProps(context) {
   const baseUrl = process.env.INDICADORES_BASE_URL;
   const { idTema } = context.params;
-  const [odsRes, medidaRes, coberturaRes, modulosRes] = await Promise.all([
+  const [odsRes, medidaRes, coberturaRes, modulosRes, moduloRes] = await Promise.all([
     fetch(`${baseUrl}/catalogos/${ODS}`),
     fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA}`),
     fetch(`${baseUrl}/catalogos/${COBERTURA_GEOGRAFICA}`),
     fetch(`${baseUrl}/modulos`),
+    fetch(`${baseUrl}/modulos/${idTema}`),
   ]);
-  const [ods, medidas, coberturas, modulos] = await Promise.all([
+  const [ods, medidas, coberturas, modulos, modulo] = await Promise.all([
     odsRes.json(),
     medidaRes.json(),
     coberturaRes.json(),
     modulosRes.json(),
+    moduloRes.json(),
+    
   ]);
   return {
     props: {
@@ -142,6 +148,7 @@ export async function getServerSideProps(context) {
       coberturas,
       medidas,
       modulos,
+      selectedTema: { ...modulo.data },
     },
   };
 }

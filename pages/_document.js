@@ -14,6 +14,7 @@ class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet" />
         </Head>
         <body>
+          <a id="top" style={{ display: 'hidden' }}></a>
           <Main />
           <NextScript />
         </body>

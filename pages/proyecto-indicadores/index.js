@@ -4,6 +4,7 @@ import style from '../../styles/indicador.module.css'
 import Image from 'next/image';
 import TemaList from '@components/proyecto/GridModulos';
 import Title from '@components/commons/Title';
+import { useRouter } from 'next/router'
 
 export default function Modulo(props) {
   const data = props.data;

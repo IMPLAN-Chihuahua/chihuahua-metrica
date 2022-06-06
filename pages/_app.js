@@ -12,6 +12,8 @@ import Header from '@components/commons/Header';
 import Footer from '@components/commons/Footer';
 import NProgress from 'nprogress';
 import '../styles/nprogress.css';
+import { Box } from '@mui/material';
+import { useRouter } from 'next/router'
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -32,6 +34,7 @@ function MyApp(props) {
     };
   }, []);
 
+  const { pathname } = useRouter();
 
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
@@ -43,6 +46,13 @@ function MyApp(props) {
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          {
+            pathname !== '/' &&
+            <Box id='ghostly-div' sx={{ height: '50px' }}>
+              <br />
+              <br />
+            </Box>
+          }
           <Header />
           <main>
             <Component {...pageProps} />

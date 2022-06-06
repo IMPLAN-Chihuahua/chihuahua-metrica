@@ -6,7 +6,8 @@
 
 .navbar {
   overflow: hidden;
-  height: 120px;
+  margin-top: 2%;
+  border-bottom: 1.5px solid white;
 }
 
 .navbar a {
@@ -81,4 +82,21 @@
 
 .dropdown:hover .dropdown_content {
   display: block;
+}
+
+.scrolledDown {
+  transition: 3s;
+}
+
+.scrolledUp {
+  transition: 1.5s;
+}
+
+.scrolledUp>div>nav>div>div>a:hover {
+  transition: 1.5s;
+  border-radius: 20%;
+}
+
+.scrolledDown>div>nav>div>div>a:hover {
+  transition: 1.5s;
 }

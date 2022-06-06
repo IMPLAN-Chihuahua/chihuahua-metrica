@@ -70,7 +70,7 @@ function FormulaExists({ formula }) {
                         ml: '0',
                     },
                 })}>
-                <Box sx={{ ml: '10%', mr: '10%', pt: '3%'}}>
+                <Box sx={{ ml: '10%', mr: '10%', pt: '3%' }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <h1>Formula</h1>
                         <MathJax.Provider>

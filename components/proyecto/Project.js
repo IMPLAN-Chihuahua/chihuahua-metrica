@@ -5,9 +5,8 @@ const Project = (props) => {
   const { name, url, image } = props;
 
   return (
-    <NextLink href={url}>
-      <div 
-      onMouseOver={() => console.log('expand divider')}
+    <NextLink href={`${url}/#top`}>
+      <div
       className={`${styles['card-proyecto']} ${styles['curve-borders']} ${styles['center-content']}`}
         style={{ backgroundImage: `url(${image})` }}
       >

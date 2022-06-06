@@ -14,6 +14,8 @@ import NextLink from "next/link";
 
 import style from './Header.module.css'
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
+import { Box } from "@mui/system";
 
 const Offset = styled("div")();
 
@@ -31,9 +33,6 @@ const Header = () => {
             setScroll(window.scrollY);
         };
 
-        // just trigger this so that the initial state 
-        // is updated as soon as the component is mounted
-        // related: https://stackoverflow.com/a/63408216
         handleScroll();
 
         window.addEventListener("scroll", handleScroll);
@@ -41,35 +40,40 @@ const Header = () => {
             window.removeEventListener("scroll", handleScroll);
         };
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-
+    const { pathname } = useRouter();
     return (
         <>
-            <HideOnScroll>
-                <AppBar position="fixed" elevation={0} sx={{ backgroundColor: 'transparent', width: '100%', maxWidth: '100%' }}>
-                    <Toolbar >
-                        <Grid container direction='column'>
-                            <Grid item flexGrow={1} sx={{ bgcolor: 'white' }} className={style.navbarCentered}>
+            <AppBar position="fixed" elevation={0} sx={{ backgroundColor: 'transparent', width: '100%', maxWidth: '100%' }}>
+                <Grid container direction='column'>
+                    <Grid item flexGrow={1} className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`} md={2}>
+                        <NextLink href='/'>
+                            <a>
+                                <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
+                            </a>
+                        </NextLink>
+                    </Grid>
+                    {
+                        pathname === '/' &&
+                        <Grid item xs justifyContent='flex-end' className={`${style.navbarCentered} ${style.navbarMenu} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`} md={10} >
+                            {
+                                scrollPosition > 100 &&
                                 <NextLink href='/'>
                                     <a>
-                                        <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
+                                        <Image src='/Logotipo-editable-blanco_Mesa-de-trabajo-1.webp' width={210} height={60} alt="small Logo" />
                                     </a>
                                 </NextLink>
-                            </Grid>
-
-                            <Grid item xs container justifyContent='flex-end' sx={{ height: '1000px' }} className={`${style.navbarCentered} ${style.navbarMenu} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}>
-                                <Navbar navLinks={navLinks} />
-                                <SideBar navLinks={navLinks} />
-                            </Grid>
+                            }
+                            <Navbar navLinks={navLinks} />
+                            <SideBar navLinks={navLinks} />
                         </Grid>
-                    </Toolbar>
-                </AppBar>
-            </HideOnScroll>
+                    }
+                </Grid>
+            </AppBar>
             <Offset id="back-to-top" />
             <BackToTop>
-                <Fab color="secondary" size="large" aria-label="back to top">
+                <Fab sx={{ backgroundColor: "primary.subtleMain", color: "primary.contrastText" }} size="large" aria- label="back to top">
                     <KeyboardArrowUp />
                 </Fab>
             </BackToTop>

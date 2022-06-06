@@ -6,7 +6,7 @@ let theme = createTheme({
         // Change color after checking MUI
         primary: {
             main: '#000000',
-            subtleMain: '#46587C',
+            subtleMain: '#3F3F3F',
             darkerMain: '#1C2331',
             contrastText: '#FFFFFF',
             buttonColor: '#EEEEEE',

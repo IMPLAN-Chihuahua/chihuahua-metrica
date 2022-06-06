@@ -4,9 +4,12 @@ import style from '../../styles/indicador.module.css'
 import Image from 'next/image';
 import GridModulos from '@components/proyecto/GridModulos';
 import Title from '@components/commons/Title';
+import { useRouter } from 'next/router'
 
 export default function Modulo(props) {
     const data = props.data;
+    const router = useRouter();
+    console.log(router.pathname);
     return (<>
         <Container sx={{ mb: '3%' }}>
             <Head>

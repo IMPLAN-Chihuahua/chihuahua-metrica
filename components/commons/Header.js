@@ -47,13 +47,24 @@ const Header = () => {
         <>
             <AppBar position="fixed" elevation={0} sx={{ backgroundColor: 'transparent', width: '100%', maxWidth: '100%' }}>
                 <Grid container direction='column'>
-                    <Grid item flexGrow={1} className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`} md={2}>
-                        <NextLink href='/'>
-                            <a>
-                                <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
-                            </a>
-                        </NextLink>
-                    </Grid>
+                    {
+                        pathname === '/' ?
+                            <Grid item flexGrow={1} className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`} md={2}>
+                                <NextLink href='/'>
+                                    <a>
+                                        <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
+                                    </a>
+                                </NextLink>
+                            </Grid>
+                            :
+                            <Grid item flexGrow={1} className={`${style.navbarCentered} ${style.scrolledDown}`} md={2}>
+                                <NextLink href='/'>
+                                    <a>
+                                        <Image src='/Logotipo-editable-blanco_Mesa-de-trabajo-1.webp' width={210} height={60} alt="small Logo" />
+                                    </a>
+                                </NextLink>
+                            </Grid>
+                    }
                     {
                         pathname === '/' &&
                         <Grid item xs justifyContent='flex-end' className={`${style.navbarCentered} ${style.navbarMenu} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`} md={10} >

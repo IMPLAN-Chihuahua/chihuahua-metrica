@@ -11,7 +11,7 @@ export default function Modulo(props) {
     <Head>
       <title>Proyecto Indicadores</title>
       <meta name="description" content="Proyecto indicadores de la ciudad de Chihuahua" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/icon.ico" />
     </Head>
     <Container sx={{ marginTop: 3, marginBottom: 3 }}>
       <Title variant='h3' component='h1'>Indicadores de Chihuahua</Title>

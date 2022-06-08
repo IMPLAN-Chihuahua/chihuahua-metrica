@@ -48,7 +48,7 @@ const Footer = () => {
                 mb={2}
             >
                 <Box component='div' flexGrow={1} textAlign='center'>
-                    <Image src='/images/implan-logo.webp' width={200} height={150} alt='Implan logo' />
+                    <Image src='/logo_chihuahua_metrica.webp' height={90} width={300} alt='Implan logo' />
                 </Box>
                 <Box component='div' flexGrow={1}>
                     <Typography variant='h5' component='h3'>Más Información</Typography>
@@ -60,13 +60,6 @@ const Footer = () => {
                                 </a>
                             </Link>
                         </li>
-                        {/* <li>
-                            <Link href='/'>
-                                <a className={styles.underline}>
-                                    Objetivos
-                                </a>
-                            </Link>
-                        </li> */}
                     </ul>
                 </Box>
                 <Box component='div' flexGrow={1}>
@@ -89,7 +82,7 @@ const Footer = () => {
                     </ul>
                 </Box>
                 <Box component='div' flexGrow={1}>
-                    <Typography variant='h5' component='h3'>Siguenos</Typography>
+                    <Typography variant='h5' component='h3'>Síguenos</Typography>
                     <Stack direction='row' spacing={4} justifyContent='center' mt={2}>
                         <Link href='https://www.facebook.com/Implan-Chihuahua-108606468095094' passHref={true}>
                             <a
@@ -132,7 +125,7 @@ const Footer = () => {
                                 rel='noreferrer noopener'
                                 className={styles.underline}>
                                 <YouTube fontSize='large' style={{ color: '#FF0000' }} />
-                            </a>    
+                            </a>
                         </Link>
                     </Stack>
                 </Box>

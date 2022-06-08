@@ -11,7 +11,7 @@ const Project = (props) => {
         style={{ backgroundImage: `url(${image})` }}
       >
         <div className={`overlay ${styles['curve-borders']} ${styles['center-content']}`}>
-          <div className={styles['gradient-wrapper']}>
+          <div className='gradient-wrapper'>
             <h5 className={styles['card-title']}>{name}</h5>
           </div>
         </div>

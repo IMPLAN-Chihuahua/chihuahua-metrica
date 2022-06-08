@@ -16,7 +16,7 @@ const PROJECTS = [
 
 const ProjectList = () => {
   return (
-    <Grid container spacing={3} mt={1}>
+    <Grid container spacing={3} mt={1} justifyContent='space-around'>
       {PROJECTS.map((project, i) => (
         <Grid key={i} item xs={12} md={4} >
           <Project  {...project} />

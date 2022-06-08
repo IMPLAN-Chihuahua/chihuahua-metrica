@@ -54,7 +54,7 @@ export default function Home() {
           }}>
             <img
               alt='Chihuahua Metrica Logo'
-              src='/Logotipo-editable-blanco_Mesa-de-trabajo-1.webp'
+              src='/logo_chihuahua_metrica.webp'
               style={{ maxWidth: '300px' }} />
           </div>
         </div>

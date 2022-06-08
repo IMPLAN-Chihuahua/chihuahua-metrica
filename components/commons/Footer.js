@@ -8,6 +8,7 @@ import Facebook from '@mui/icons-material/Facebook';
 import Twitter from '@mui/icons-material/Twitter';
 import Instagram from '@mui/icons-material/Instagram';
 import Link from 'next/link';
+import { FacebookRounded, YouTube, YoutubeSearchedForOutlined } from '@mui/icons-material';
 
 const Footer = () => {
     return (
@@ -47,7 +48,7 @@ const Footer = () => {
                 mb={2}
             >
                 <Box component='div' flexGrow={1} textAlign='center'>
-                    <Image src='/images/implan-logo.webp' width={200} height={150} alt='Implan logo' />
+                    <Image src='/logo_chihuahua_metrica.webp' height={90} width={300} alt='Implan logo' />
                 </Box>
                 <Box component='div' flexGrow={1}>
                     <Typography variant='h5' component='h3'>Más Información</Typography>
@@ -59,19 +60,12 @@ const Footer = () => {
                                 </a>
                             </Link>
                         </li>
-                        {/* <li>
-                            <Link href='/'>
-                                <a className={styles.underline}>
-                                    Objetivos
-                                </a>
-                            </Link>
-                        </li> */}
                     </ul>
                 </Box>
                 <Box component='div' flexGrow={1}>
                     <Typography variant='h5' component='h3'>Legal</Typography>
                     <ul className={styles.footerList}>
-                         <li>
+                        <li>
                             <Link href='/informacion/politicas-de-privacidad' passHref>
                                 <a className={styles.underline}>
                                     Politicas de privacidad
@@ -88,27 +82,51 @@ const Footer = () => {
                     </ul>
                 </Box>
                 <Box component='div' flexGrow={1}>
-                    <Typography variant='h5' component='h3'>Siguenos</Typography>
+                    <Typography variant='h5' component='h3'>Síguenos</Typography>
                     <Stack direction='row' spacing={4} justifyContent='center' mt={2}>
                         <Link href='https://www.facebook.com/Implan-Chihuahua-108606468095094' passHref={true}>
-                            <a alt="Ícono de Facebook que redirecciona hacia el perfil del IMPLAN" title='¡Síguenos en Facebook!' aria-label="Ícono de Facebook"  target='_blank' rel='noreferrer noopener'
+                            <a
+                                alt="Ícono de Facebook que redirecciona hacia el perfil del IMPLAN"
+                                title='¡Síguenos en Facebook!'
+                                aria-label="Ícono de Facebook"
+                                target='_blank'
+                                rel='noreferrer noopener'
                                 className={styles.underline}>
-                                <Facebook fontSize='large' />
+                                <Facebook fontSize='large' style={{ color: '#4267B2' }} />
                             </a>
                         </Link>
                         <Link aria-label="Ícono de Twitter" href='https://twitter.com/IMPLANChih?s=08' passHref={true}>
-                            <a alt="Ícono de Twitter que redirecciona hacia al perfil del IMPLAN" title='¡Síguenos en Twitter!' aria-label="Ícono de Twitter"  target='_blank' rel='noreferrer noopener'
+                            <a
+                                alt="Ícono de Twitter que redirecciona hacia al perfil del IMPLAN"
+                                title='¡Síguenos en Twitter!'
+                                aria-label="Ícono de Twitter"
+                                target='_blank'
+                                rel='noreferrer noopener'
                                 className={styles.underline}>
-                                <Twitter fontSize='large' />
+                                <Twitter fontSize='large' style={{ color: '#1DA1F2' }} />
                             </a>
                         </Link>
                         <Link aria-label="Ícono de Instagram" href='https://www.instagram.com/implanchihuahua/' passHref={true}>
-                            <a  alt="Ícono de Instagram que redirecciona al perfil del IMPLAN" title='¡Síguenos en Instagram!' aria-label="Ícono de Instagram"  target='_blank' rel='noreferrer noopener'
+                            <a alt='Ícono de Instagram que redirecciona al perfil del IMPLAN'
+                                title='¡Síguenos en Instagram!'
+                                aria-label='Ícono de Instagram'
+                                target='_blank'
+                                rel='noreferrer noopener'
                                 className={styles.underline}>
-                                <Instagram fontSize='large' />
+                                <Instagram fontSize='large' style={{ color: '#E1306C' }} />
                             </a>
                         </Link>
-
+                        <Link aria-label="Ícono de Instagram" href='https://www.youtube.com/channel/UCOVGOuYfPdbttVLNz0yjGSg' passHref={true}>
+                            <a
+                                alt='Ícono de Instagram que redirecciona al perfil del IMPLAN'
+                                title='¡Síguenos en Instagram!'
+                                aria-label='Ícono de Instagram'
+                                target='_blank'
+                                rel='noreferrer noopener'
+                                className={styles.underline}>
+                                <YouTube fontSize='large' style={{ color: '#FF0000' }} />
+                            </a>
+                        </Link>
                     </Stack>
                 </Box>
             </Stack>

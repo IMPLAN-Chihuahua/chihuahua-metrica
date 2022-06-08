@@ -63,7 +63,7 @@ const Header = () => {
                             <Grid item flexGrow={1} className={`${style.navbarCentered} ${style.scrolledDown}`} md={2}>
                                 <NextLink href='/'>
                                     <a>
-                                        <Image src='/Logotipo-editable-blanco_Mesa-de-trabajo-1.webp' width={210} height={60} alt="small Logo" />
+                                        <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} alt="small Logo" />
                                     </a>
                                 </NextLink>
                             </Grid>
@@ -75,7 +75,7 @@ const Header = () => {
                                 scrollPosition > 100 &&
                                 <NextLink href='/'>
                                     <a>
-                                        <Image src='/Logotipo-editable-blanco_Mesa-de-trabajo-1.webp' width={210} height={60} alt="small Logo" />
+                                        <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} alt="small Logo" />
                                     </a>
                                 </NextLink>
                             }

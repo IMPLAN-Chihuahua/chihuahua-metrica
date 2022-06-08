@@ -1,0 +1,26 @@
+.overlay {
+  background-color: rgba(0, 0, 0, 0.38);
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.formula-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: --primary-on-main;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 80px;
+}
+
+.variable-text {
+  color: --primary-on-main;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 80px;
+}

@@ -9,7 +9,7 @@ import Navbar from "./Navbar";
 import SideBar from "./SideBar";
 import HideOnScroll from "helpers/HideOnScroll";
 import BackToTop from "./BackToTop";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import NextLink from "next/link";
 
 import style from './Header.module.css'
@@ -45,12 +45,15 @@ const Header = () => {
     const { pathname } = useRouter();
     return (
         <>
-            <AppBar position="fixed" elevation={0} sx={{ backgroundColor: 'transparent', width: '100%', maxWidth: '100%' }}>
+            <Container className={`${style.topHeader}`}>
+
+            </Container>
+            <AppBar position="fixed" elevation={0} className={`${style.appbar}`} >
                 <Grid container direction='column'>
                     {
                         pathname === '/' ?
                             <Grid item flexGrow={1} className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`} md={2}>
-                                <NextLink href='/'>
+                                <NextLink href='/' >
                                     <a>
                                         <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
                                     </a>

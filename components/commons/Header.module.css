@@ -1,9 +1,18 @@
+.topHeader {
+    background-color: red;
+    margin-bottom: 10px;
+}
+
 .navbarCentered {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     transition: 1.5s;
     max-width: 10px;
+}
+
+.appbar {
+    background-color: transparent !important;
 }
 
 .disappear {

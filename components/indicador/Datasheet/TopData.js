@@ -16,12 +16,11 @@ const TopData = (info) => {
       <Grid container sx={{ alignItems: 'center' }}>
         <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Box sx={{
-            bgcolor: 'black',
             width: '300px',
             height: '300px',
             position: 'relative',
           }}>
-            <Image src="/images/implan-logo.webp" alt={data.nombre} layout="fill" objectFit="contain" />
+            <Image src="/logo_implan.webp" alt={data.nombre} layout="fill" objectFit="contain" />
           </Box>
         </Grid>
         <Grid item xs={12} md={6} >

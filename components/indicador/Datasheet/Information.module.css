@@ -1,9 +1,16 @@
 .circleInfo:hover {
-    transition: 0.5s;
-    transform: scale(1.1)    
+  transition: 0.5s;
+  transform: scale(1.1);
 }
 
 .circleInfo {
-    transition: 0.5s;
-    transform: scale(1);
+  transition: 0.5s;
+  transform: scale(1);
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: relative;
+  height: 100%;
+  width: 100%;
 }

@@ -39,8 +39,6 @@ function HistoricalValuesNotExists() {
         <Grid sx={theme => (
           {
             borderRadius: '5px',
-            bgcolor: 'cardInformation.main',
-            color: 'white',
             height: '96%',
             mt: '5%',
             textAlign: 'center',

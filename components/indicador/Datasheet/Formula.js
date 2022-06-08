@@ -2,6 +2,7 @@ import VariableList from "@components/variable/VariableList";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MathJax from "react-mathjax";
+import style from './Formula.module.css'
 
 const Formula = ({ formula }) => {
     if (formula === null) {
@@ -56,21 +57,24 @@ function FormulaExists({ formula }) {
                 background: rgba(85, 85, 85, 0.4);
               }
             `}</style>
-            <Grid sx={theme => (
-                {
-                    borderRadius: '5px',
-                    bgcolor: 'cardInformation.main',
-                    color: 'white',
-                    height: '96%',
-                    mt: '5%',
-                    ml: '5%',
-                    width: '95%',
-                    [theme.breakpoints.down('md')]: {
-                        width: '100%',
-                        ml: '0',
-                    },
-                })}>
-                <Box sx={{ ml: '10%', mr: '10%', pt: '3%' }}>
+            <Grid
+                sx={theme => (
+                    {
+                        borderRadius: '5px',
+                        backgroundImage: 'url("/rectangle_3.webp")',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        color: 'white',
+                        height: '96%',
+                        mt: '5%',
+                        ml: '5%',
+                        width: '95%',
+                        [theme.breakpoints.down('md')]: {
+                            width: '100%',
+                            ml: '0',
+                        },
+                    })}>
+                <Box sx={{ p: 3, borderRadius: '5px' }} className={style.overlay}  >
                     <Box sx={{ textAlign: 'center' }}>
                         <h1>Formula</h1>
                         <MathJax.Provider>

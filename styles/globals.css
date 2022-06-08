@@ -81,8 +81,7 @@ a {
   bottom: 0;
   border-radius: 50px;
   border: 3px solid transparent;
-  background: linear-gradient(45deg, var(--blue), var(--purple), var(--pink))
-    border-box;
+  background: linear-gradient(45deg, var(--blue), var(--purple), var(--pink)) border-box;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;

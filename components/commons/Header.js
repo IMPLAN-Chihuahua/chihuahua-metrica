@@ -49,7 +49,7 @@ const Header = () => {
                 <Grid container direction='column'>
                     {
                         pathname === '/' ?
-                            <Grid item flexGrow={1} className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`} md={2}>
+                            <Grid item flexGrow={1} style={{backgroundColor: 'white'}} className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`} md={2}>
                                 <NextLink href='/'>
                                     <a>
                                         <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />

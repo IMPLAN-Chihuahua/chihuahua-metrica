@@ -14,7 +14,7 @@ body {
   --purple: #7b1ee3;
   --pink: #ee59e9;
   --primary-main: #263044;
-  --primary-on-main: #E3F6FA;
+  --primary-on-main: #e3f6fa;
   --secondary: #d1a961;
 }
 
@@ -46,7 +46,7 @@ a {
 }
 
 .overlay {
-  background-color: rgba(0,0,0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   position: relative;
   height: 100%;
   width: 100%;
@@ -54,15 +54,40 @@ a {
 }
 
 .overlay:hover {
-  background-color: rgba(0,0,0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .center-content {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .rounded-corners {
   border-radius: 10px;
+}
+
+.gradient-wrapper {
+  position: relative;
+  padding: 15px 20px;
+}
+
+.gradient-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  border: 3px solid transparent;
+  background: linear-gradient(45deg, var(--blue), var(--purple), var(--pink))
+    border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+.text-shadow {
+  text-shadow: #000 1px 0 10px;
 }

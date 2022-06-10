@@ -7,7 +7,6 @@ import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
 
 import Navbar from "./Navbar";
 import SideBar from "./SideBar";
-import HideOnScroll from "helpers/HideOnScroll";
 import BackToTop from "./BackToTop";
 import { Container, Grid } from "@mui/material";
 import NextLink from "next/link";
@@ -15,15 +14,14 @@ import NextLink from "next/link";
 import style from './Header.module.css'
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
-import { Box } from "@mui/system";
 
 const Offset = styled("div")();
 
 const navLinks = [
     { title: 'Inicio', path: '/', cssName: 'inicio' },
-    { title: 'Proyectos', path: '/', cssName: 'proyectos' },
+    { title: 'Proyectos', path: '#proyectos', cssName: 'proyectos' },
     { title: 'Conocenos', path: '/', cssName: 'conocenos' },
-    { title: 'Contacto', path: '/', cssName: 'contacto' },
+    { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
 ]
 
 const Header = () => {

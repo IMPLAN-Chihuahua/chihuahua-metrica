@@ -1,0 +1,120 @@
+.test {
+    height: 30vh;
+    background-color: rgb(14, 3, 37);
+    margin-top: 5%;
+    margin-bottom: 2%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+}
+
+.statsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+}
+
+.circle:hover {
+    color: white;
+    width: 180px;
+    height: 180px;
+    cursor: pointer;
+    background: center url("../../public/images/stats/imageTest.png") no-repeat;
+    background-size: cover;
+}
+
+.indicador {
+    font-size: 2.5vh;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    transition: 1s;
+}
+
+.circleStats {
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    transition: 1s;
+    text-align: center;
+}
+
+.circle:hover .circleStats {
+    color: white;
+    transition: 1s;
+}
+
+.circleStatsDescription {
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    position: fixed;
+    color: white;
+}
+
+.circle:hover .circleStatsDescription {
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    position: static;
+    color: black;
+}
+
+.lineContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 3%;
+}
+
+.line {
+    border-top: 1px solid white;
+    margin-left: 0;
+    transition: 3s;
+}
+
+
+.line:before,
+.line:after {
+    position: absolute;
+}
+
+.dot {
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background-color: white;
+    border-width: 3px;
+    border-color: black;
+    border-style: solid;
+    position: absolute;
+    transition: 1s;
+}
+
+.dot:hover {
+    height: 90px;
+    width: 90px;
+    transition: 1s;
+}

@@ -1,0 +1,107 @@
+.pollBanner {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+}
+
+.pollImage {
+    width: 100vw;
+}
+
+.surveyContainer {
+    margin-bottom: 2%;
+}
+
+.surveyText {
+    font-size: 3.5vh;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    transition: 1s;
+    white-space: pre-line;
+}
+
+.surveyTextContrast {
+    font-size: 4.5vh;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    transition: 1s;
+    white-space: pre-line;
+}
+
+.surveyItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.surveyImageContainer {
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.surveyImage {
+    width: 300px;
+    height: 300px;
+}
+
+
+
+
+.btn {
+    background: var(--gradient);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}

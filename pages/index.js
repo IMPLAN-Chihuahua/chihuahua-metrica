@@ -6,6 +6,8 @@ import { ProjectsSection } from '@components/proyecto/ProjectSection';
 import { AboutForm } from '@components/information/AboutForm';
 import { useEffect } from 'react';
 import { Container } from '@mui/material';
+import StatsIndicadores from '@components/stats/StatsIndicadores';
+import SatisfactionSurvey from '@components/stats/SatisfactionSurvey';
 
 export default function Home() {
 
@@ -63,8 +65,10 @@ export default function Home() {
           <AboutDescription />
           <ProjectsSection />
           <AboutLocation />
-          <AboutForm />
+          {/* <AboutForm /> */}
         </Container>
+        <StatsIndicadores />
+        <SatisfactionSurvey />
       </body>
     </>
   )

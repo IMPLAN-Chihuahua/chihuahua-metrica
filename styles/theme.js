@@ -3,7 +3,6 @@ import { responsiveFontSizes } from "@mui/material/styles";
 
 let theme = createTheme({
     palette: {
-        // Change color after checking MUI
         primary: {
             main: '#000000',
             subtleMain: '#3F3F3F',
@@ -11,6 +10,9 @@ let theme = createTheme({
             contrastText: '#FFFFFF',
             buttonColor: '#EEEEEE',
             white: '#FFFFFF',
+            blue: '#2043db',
+            pink: '#ee59e9',
+            purple: '#7b1ee3'
         },
 
         secondary: {

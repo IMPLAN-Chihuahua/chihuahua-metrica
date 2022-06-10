@@ -23,7 +23,7 @@ const DataSheet = (datasheet) => {
             <Information
               header={data.ultimoValorDisponible}
               title='Último valor disponible'>
-              {data.catalogos[1].nombre}
+              Unidad de medida: {data.catalogos[1].nombre}
             </Information>
             <Information
               header={data.tendenciaActual}

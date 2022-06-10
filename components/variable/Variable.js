@@ -5,9 +5,7 @@ const Variable = ({ expr }) => {
     const { nombre, nombreAtributo } = expr;
     return (
         <MathJax.Provider>
-            <Typography>
-                <MathJax.Node inline formula={`${nombre} =`} /> {nombreAtributo}
-            </Typography>
+            <Typography variant='body2' fontSize='1rem'><MathJax.Node inline formula={`${nombre} =`} /> {nombreAtributo}</Typography>
         </MathJax.Provider>);
 };
 

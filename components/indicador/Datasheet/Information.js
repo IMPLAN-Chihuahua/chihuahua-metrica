@@ -44,9 +44,9 @@ const Information = ({ header, title, children, icon = null }) => {
                 sx={{
                   m: 'auto',
                   mt: 5,
-                  width: '100px',
+                  width: '100%',
                   height: '100px',
-                  bgcolor: 'rgba(255, 255, 255, 0)',
+                  bgcolor: 'transparent',
                   color: 'white',
                   fontWeight: 'bold',
                   fontSize: '2em',
@@ -58,7 +58,7 @@ const Information = ({ header, title, children, icon = null }) => {
               <Typography variant='h5' sx={{ color: 'primary.contrastText', fontWeight: 'bold', }}>
                 {title}
               </Typography>
-              <Typography variant='body' sx={{ color: 'primary.contrastText' }}>
+              <Typography variant='body2' sx={{ color: 'primary.contrastText' }}>
                 {children}
               </Typography>
             </CardContent>

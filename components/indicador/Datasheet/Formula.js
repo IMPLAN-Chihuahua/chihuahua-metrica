@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MathJax from "react-mathjax";
 import style from './Formula.module.css'
+import { Typography } from "@mui/material";
 
 const Formula = ({ formula }) => {
     if (formula === null) {
@@ -74,20 +75,22 @@ function FormulaExists({ formula }) {
                             ml: '0',
                         },
                     })}>
-                <Box sx={{ p: 3, borderRadius: '5px' }} className={style.overlay}  >
-                    <Box sx={{ textAlign: 'center' }}>
-                        <h1>Formula</h1>
-                        <MathJax.Provider>
-                            <h2 className='formulaText'><MathJax.Node inline formula={formula.ecuacion} /></h2>
-                        </MathJax.Provider>
-                    </Box>
-                    <h3>Donde:</h3>
+                <Box sx={{ p: 3, borderRadius: '5px' }} className={style.overlay}>
+                    <Typography
+                        variant='h4'
+                        component='h2'
+                        textAlign='center'>
+                        Formula
+                    </Typography>
+                    <Typography variant='h5' mt={2} component='h3'>Descripcion</Typography>
+                    <Typography mb={2}>{formula.descripcion}</Typography>
+                    <MathJax.Provider>
+                        <Typography textAlign='center' variant='h3' mb={2} className='formulaText'><MathJax.Node inline formula={formula.ecuacion} /></Typography>
+                    </MathJax.Provider>
+                    <Typography variant='h5' component='h3'>Donde:</Typography>
                     <div className='variableText'>
                         <VariableList variables={formula.variables} />
                     </div>
-                    <h3>Descripción</h3>
-                    <p>{formula.descripcion}</p>
-                    <br />
                 </Box>
             </Grid>
         </div>
@@ -111,7 +114,6 @@ function FormulaNotExists() {
                     },
                 })}>
                 <Box>
-                    <br />
                     <h1 className="formulaText">¡No hay fórmula disponible para este indicador!</h1>
                     <h3>Fuente de consulta</h3>
                     <p>TEST.INC</p>

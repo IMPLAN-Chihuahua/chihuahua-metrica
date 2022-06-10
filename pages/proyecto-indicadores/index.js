@@ -17,12 +17,12 @@ export default function Modulo(props) {
       <Title variant='h3' component='h1'>Indicadores de Chihuahua</Title>
       <Grid container>
         <Grid item xs={12} lg={9}>
-          <Typography textAlign='start' variant='body1' mt={3} fontSize='1.3rem'>
+          <Typography textAlign='start' variant='body1' mt={3}>
             Los Indicadores de Chihuahua ofrecen a la ciudadanía los datos de la
             estructura urbana, económica y social con el fin de dar a conocer la dirección
             en la que se encuentra la ciudad y encontrar las áreas de oportunidad.
           </Typography>
-          <Typography textAlign='start' variant='body1' mt={2} mb={3} fontSize='1.3rem'>
+          <Typography textAlign='start' variant='body1' mt={2} mb={3}>
             La plataforma cuenta con una base de 152 de indicadores, 42 técnico-urbanos
             y 110 sociales, los cuales pueden ser usados de referencia para estudios y proyectos.
             Son fundamentados con la información que brindan los censos de INEGI, CONEVAL,

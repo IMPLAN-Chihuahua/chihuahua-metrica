@@ -10,13 +10,16 @@ import Title from '@components/commons/Title';
 export const AboutLocation = () => {
     return (
         <Box >
-            <Title variant='h4' component='h2' mt={5}>Contacto</Title>
+            <Title variant='h3' component='h1' mt={5}>Contacto</Title>
+            <Typography variant='body1' mb={3}>
+                Si te interesa Chihuahua Métrica y te gustaría saber más, ponte en contacto con nosotros.
+            </Typography>
             <Box mt={2}>
                 <Grid container spacing={5} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
                     <Grid container spacing={2} item xs={12} md={6} >
                         <Grid container item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', borderBottom: '1px solid rgb(0,0,0,0.2)' }}>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
-                                <FmdGoodIcon sx={{ fontSize: '72px', color: '#1e81b0' }} />
+                                <FmdGoodIcon sx={{ fontSize: '72px', color: 'gray' }} />
                             </Grid>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
                                 <Typography variant='p' sx={{ mt: '3%' }}>P.º Victoria 14, Zona Centro, 31000 Chihuahua, Chih.</Typography>
@@ -26,7 +29,7 @@ export const AboutLocation = () => {
 
                         <Grid container item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', borderBottom: '1px solid rgb(0,0,0,0.2)' }}>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
-                                <EventAvailableIcon sx={{ fontSize: '72px', color: '#10435b' }} />
+                                <EventAvailableIcon sx={{ fontSize: '72px', color: 'gray' }} />
                             </Grid>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
                                 <Typography variant='p' sx={{ mt: '3%' }}>De 9:00 a 15:00 horas de lunes a viernes</Typography>
@@ -35,7 +38,7 @@ export const AboutLocation = () => {
 
                         <Grid container item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', borderBottom: '1px solid rgb(0,0,0,0.2)' }}>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
-                                <SmartphoneIcon sx={{ fontSize: '72px', color: '#10435b' }} />
+                                <SmartphoneIcon sx={{ fontSize: '72px', color: 'gray' }} />
                             </Grid>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
                                 <Typography variant='p' sx={{ mt: '3%' }}>+52 614-200-4820</Typography>
@@ -43,7 +46,7 @@ export const AboutLocation = () => {
                         </Grid>
                         <Grid container item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', borderBottom: '1px solid rgb(0,0,0,0.2)' }}>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
-                                <TravelExploreIcon sx={{ fontSize: '72px', color: '#1e81b0' }} />
+                                <TravelExploreIcon sx={{ fontSize: '72px', color: 'gray' }} />
                             </Grid>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
                                 <Typography variant='p' sx={{ mt: '3%' }}><a href='http://implanchihuahua.org/'>implanchihuahua.org</a></Typography>

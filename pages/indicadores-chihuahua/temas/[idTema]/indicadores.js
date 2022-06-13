@@ -6,10 +6,10 @@ import IndicadorList from "@components/indicador/IndicadorList";
 import IndicadorPagination from "@components/indicador/IndicadorPagination";
 import IndicadorSkeleton from "@components/indicador/IndicadorSkeleton";
 import Alert from "@mui/material/Alert";
-import { serialize } from '../../../helpers/StringUtils';
 import Title from "@components/commons/Title";
 import { useForm, FormProvider } from "react-hook-form"
 import { isUndefined } from "helpers/ObjectUtils";
+import { serialize } from "helpers/StringUtils";
 
 const ODS = 1;
 const UNIDAD_MEDIDA = 2;
@@ -92,7 +92,7 @@ export default function Modulo(props) {
         <meta name="description" content="Indicadores de la ciudad de Chihuahua" />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Container maxWidth="xl" sx={{ mb: '2%', mt: '3%' }}>
+      <Container maxWidth="xl" sx={{ mb: 3, mt: 3 }}>
         <Title variant='h3' component='h1' margin='0% 0 3% 0'>{title}</Title>
         <FormProvider {...methods}>
           <IndicadorFilter

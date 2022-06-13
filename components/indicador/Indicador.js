@@ -13,7 +13,7 @@ const Indicador = (props) => {
   return (
     <Card variant='outlined'>
       <CardActionArea sx={{ padding: 2 }}>
-        <NextLink href={`/indicadores/${indicador.id}`} >
+        <NextLink href={`/indicadores-chihuahua/indicadores/${indicador.id}`} >
           <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2}>
             <Grid item sm container direction='column'>
               <Grid item>

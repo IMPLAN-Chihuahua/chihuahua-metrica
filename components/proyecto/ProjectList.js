@@ -4,21 +4,21 @@ import Grid from '@mui/material/Grid';
 const PROJECTS = [
   {
     name: 'Indicadores de Chihuahua',
-    url: '/proyecto-indicadores', 
+    url: '/indicadores-chihuahua', 
     image: '/01-Planeación_-estructura-urbana-y-territorio.webp'
   },
   {
     name: 'Arbolado Urbano',
-    url: '/arbolado',
+    url: '/arbolado-urbano',
     image: '/09-Medio-ambiente-y-recursos-naturales.webp'
   },
 ]
 
 const ProjectList = () => {
   return (
-    <Grid container spacing={3} mt={1} justifyContent='space-around'>
+    <Grid container mt={1} justifyContent='space-around'>
       {PROJECTS.map((project, i) => (
-        <Grid key={i} item xs={12} md={4} >
+        <Grid key={i} item xs={12} mb={2} md={4} sm={12} display='flex' justifyContent='center'>
           <Project  {...project} />
         </Grid>
       ))}

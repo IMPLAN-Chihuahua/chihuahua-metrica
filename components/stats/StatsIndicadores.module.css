@@ -31,6 +31,8 @@
     justify-content: center;
     align-items: center;
     transition: 1s;
+    border: 1px solid #f5f5f5;
+    transition: all 0.3s ease-in-out;
 }
 
 .circle:hover {
@@ -51,7 +53,7 @@
 }
 
 .circleStats {
-    color: black;
+    color: white;
     font-weight: bold;
     font-size: large;
     transition: 1s;
@@ -65,9 +67,11 @@
 
 .circleStatsDescription {
     opacity: 0;
-    transition: all 1s ease-in-out;
+    transition: all 0.2s ease-in-out;
     position: fixed;
-    color: white;
+    color: white !important;
+    font-size: 1.3rem !important;
+    font-weight: bold;
 }
 
 .circle:hover .circleStatsDescription {
@@ -77,42 +81,10 @@
     color: black;
 }
 
-.lineContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+.overlay {
+    background-color: rgba(0, 0, 0, 0.38);
+    position: relative;
+    height: 100%;
     width: 100%;
-    text-align: left;
-    margin-bottom: 3%;
-}
-
-.line {
-    border-top: 1px solid white;
-    margin-left: 0;
-    transition: 3s;
-}
-
-
-.line:before,
-.line:after {
-    position: absolute;
-}
-
-.dot {
-    height: 30px;
-    width: 30px;
-    border-radius: 100%;
-    background-color: white;
-    border-width: 3px;
-    border-color: black;
-    border-style: solid;
-    position: absolute;
-    transition: 1s;
-}
-
-.dot:hover {
-    height: 90px;
-    width: 90px;
-    transition: 1s;
+    border-radius: 50%;
 }

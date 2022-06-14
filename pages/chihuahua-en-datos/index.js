@@ -1,22 +1,20 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import Head from 'next/head';
-import style from '../../styles/indicador.module.css'
-import Image from 'next/image';
 import TemaList from '@components/proyecto/GridModulos';
 import Title from '@components/commons/Title';
 
 export default function Modulo(props) {
   const data = props.data;
-  return (<>
-    <Head>
-      <title>Chihuahua en Datos</title>
-      <meta name="description" content="Proyecto Chihuahua en Datos para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
-      <link rel="icon" href="/icon.ico" />
-    </Head>
-    <Container sx={{ marginTop: 3, marginBottom: 3 }}>
-      <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
-      <Grid container>
-        <Grid item xs={12} lg={9}>
+  return (
+    <>
+      <Head>
+        <title>Chihuahua en Datos</title>
+        <meta name="description" content="Proyecto Chihuahua en Datos para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
+        <link rel="icon" href="/icon.ico" />
+      </Head>
+      <Container sx={{ marginTop: 3, marginBottom: 3 }}>
+        <section>
+          <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
           <Typography textAlign='start' variant='body1' mt={3}>
             Chihuahua en Datos ofrece a la ciudadanía los datos de la
             estructura urbana, económica y social con el fin de dar a conocer la dirección
@@ -28,19 +26,19 @@ export default function Modulo(props) {
             Son fundamentados con la información que brindan los censos de INEGI, CONEVAL,
             IMCO, ONU, IMPLAN, entre otros organismos.
           </Typography>
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <Box className={style.rightSide}>
-            <Image src='/images/implan-logo.webp' alt='implan_logo' width={200} height={150} />
-          </Box>
-        </Grid>
-      </Grid>
-      <Title variant='h4' component='h2' mb={3} mt={3}>Temas de Interés</Title>
-      <Grid container rowSpacing={1} columnSpacing={1}>
-        <TemaList modulos={data} />
-      </Grid>
-    </Container>
-  </>);
+        </section>
+        <section>
+          <Title variant='h4' component='h2' mb={3} mt={3}>Temas de Interés</Title>
+          <Grid container rowSpacing={1} columnSpacing={1}>
+            <TemaList modulos={data} />
+          </Grid>
+        </section>
+        <section>
+          <Title variant='' component=''>Proyecto</Title>
+        </section>
+      </Container>
+    </>
+  );
 };
 
 export async function getServerSideProps(context) {

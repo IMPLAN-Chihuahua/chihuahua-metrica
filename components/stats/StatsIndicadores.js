@@ -1,63 +1,60 @@
-import { Container, Grid } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Box, Container, Grid, Typography } from '@mui/material'
+import Image from 'next/image'
+import React, { useState } from 'react'
 import style from './StatsIndicadores.module.css'
 
 const Stat = ({ indicador, indextest }) => {
-    const [isHovering, setIsHovering] = useState(false)
-    const [index, setIndex] = useState(0)
-    const [hoverStyle, setHoverStyle] = useState({})
+  const [isHovering, setIsHovering] = useState(false);
 
-    const mouseEntered = (index) => {
-        setIsHovering(true);
-        setIndex(index + 1);
-    }
-
-    const mouseLeft = () => setIsHovering(false)
-
-    useEffect(() => {
-        if (isHovering) {
-            setHoverStyle({
-                background: `center url("/images/stats/rounded-images/${index}.png") no-repeat`,
-                border: '1px solid #f5f5f5',
-                boxShadow: '0px 0px 10px #f5f5f5',
-                transition: 'all 0.3s ease-in-out'
-            });
-        } else {
-            setHoverStyle({});
-        }
-    }, [isHovering]);
-
-    return (
-        <Grid item xs={12} md={3} key={indextest}>
-            <div className={style.statsContainer}>
-                <div className={style.circle} style={hoverStyle} onMouseEnter={(e) => { mouseEntered(indextest) }} onMouseLeave={mouseLeft}>
-                    <p className={style.circleStats}>Some value</p>
-                    <p className={`${style.circleStats} ${style.circleStatsDescription}`}>Ver más</p>
-                </div>
-                <p className={style.indicador}>Some name</p>
-            </div>
-        </Grid>
-    );
+  return (
+    <Grid item xs={12} md={3}>
+      <div className={style.statsContainer}>
+        <div
+          className={`${style.circle}`}
+          style={{ backgroundImage: isHovering ? `url('/images/stats/rounded-images/${indextest + 1}.png')` : '' }}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
+          <div className={isHovering && style.overlay}>
+            <Box className={`${style.circleStats}`} style={{ filter: isHovering ? 'invert(100%)' : '' }}>
+              <Image src={indicador.icon} width={100} height={100} />
+            </Box>
+            <Typography textAlign='center' className={`${style.circleStatsDescription}`}>{indicador.value}</Typography>
+          </div>
+        </div>
+        <p className={style.indicador}>{indicador.name}</p>
+      </div>
+    </Grid>
+  );
 }
 
 
 const StatsIndicadores = () => {
+  const somearray = [{
+    icon: '/stat_1.png',
+    value: '10%',
+    name: 'lorem'
+  }, {
+    icon: '/stat_2.png',
+    value: '50%',
+    name: 'ipsum'
+  }, {
+    icon: '/stat_3.png',
+    value: '60%',
+    name: 'dolor'
+  }, {
+    icon: '/stat_4.png',
+    value: '60%',
+    name: 'sit'
+  }];
 
-    const somearray = ['10%', '50%', '60%', '60%']
-
-
-    return (
-        <>
-
-            {<Grid container className={style.test}>
-                {
-                    somearray.map((item, index) => (
-                        <Stat key={index} indicador={item} indextest={index} />
-                    ))
-                }
-            </Grid>}
-        </>
-    )
+  return (<>
+    {<Grid container className={style.test}>
+      {somearray.map((item, index) => (
+        <Stat key={index} indicador={item} indextest={index} />
+      ))}
+    </Grid>}
+  </>)
 }
 
 export default StatsIndicadores

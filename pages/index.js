@@ -18,7 +18,7 @@ export default function Home() {
       <body>
         <Splashscreen />
         <EmblaCarousel />
-        <Container maxWidth='lg' sx={{ marginTop: 3, marginBottom: 3 }}>
+        <Container maxWidth='lg' sx={{ marginTop: 3 }}>
           <AboutDescription />
           <ProjectsSection />
         </Container>

@@ -148,24 +148,28 @@ const ArboladoUrbano = () => {
             endIcon={<GitHub />}>Repositorio Github</Button>
         </section>
         <section>
-          <Title variant='h4' component='h2' mt={3}>Catalogo</Title>
-          <ul>
-            <li>synthesize extensible ROI</li>
-            <li>strategize interactive networks</li>
-            <li>monetize magnetic users</li>
-            <li>reintermediate revolutionary channels</li>
-          </ul>
-        </section>
-        <section>
-          <Title variant='h4' component='h2' mt={3}>Aplicación ArbolMid</Title>
-          <Typography>Quam et aut omnis reprehenderit exercitationem dolore. Eos animi aliquid amet iure sint. Autem quisquam omnis et quis qui.</Typography>
-          <Button
-            target='_blank'
-            rel='noreferrer noopener'
-            href='#'
-            size='lg'
-            variant='outlined'
-            endIcon={<Android />}>Aplicación</Button>
+          <Title variant='h4' component='h2' mt={3}>Censo del Arbolado</Title>
+          <Typography>Magni architecto ea impedit eaque alias adipisci veritatis quos.</Typography>
+          <section>
+            <Title variant='h5' component='h3' mt={3}>Catalogo</Title>
+            <ul>
+              <li>synthesize extensible ROI</li>
+              <li>strategize interactive networks</li>
+              <li>monetize magnetic users</li>
+              <li>reintermediate revolutionary channels</li>
+            </ul>
+          </section>
+          <section>
+            <Title variant='h5' component='h3' mt={3}>Aplicación ArbolMid</Title>
+            <Typography>Quam et aut omnis reprehenderit exercitationem dolore. Eos animi aliquid amet iure sint. Autem quisquam omnis et quis qui.</Typography>
+            <Button
+              target='_blank'
+              rel='noreferrer noopener'
+              href='#'
+              size='lg'
+              variant='outlined'
+              endIcon={<Android />}>Aplicación</Button>
+          </section>
         </section>
       </Container>
     </>

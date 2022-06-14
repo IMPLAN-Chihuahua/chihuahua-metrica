@@ -20,7 +20,7 @@ const Offset = styled("div")();
 const navLinks = [
     { title: 'Inicio', path: '/', cssName: 'inicio' },
     { title: 'Proyectos', path: '#proyectos', cssName: 'proyectos' },
-    { title: 'Conocenos', path: '/', cssName: 'conocenos' },
+    { title: 'Conocenos', path: '/conocenos', cssName: 'conocenos' },
     { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
 ]
 
@@ -50,12 +50,12 @@ const Header = () => {
                 <Grid container direction='column'>
                     {
                         pathname === '/' ?
-                            <Grid 
-                              item 
-                              flexGrow={1} 
-                              style={{backgroundColor: 'white'}} 
-                              className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`} 
-                              md={2}
+                            <Grid
+                                item
+                                flexGrow={1}
+                                style={{ backgroundColor: 'white' }}
+                                className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`}
+                                md={2}
                             >
                                 <NextLink href='/'>
                                     <a>

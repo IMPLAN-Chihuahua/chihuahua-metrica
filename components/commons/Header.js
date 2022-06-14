@@ -20,7 +20,7 @@ const Offset = styled("div")();
 const navLinks = [
     { title: 'Inicio', path: '/', cssName: 'inicio' },
     { title: 'Proyectos', path: '#proyectos', cssName: 'proyectos' },
-    { title: 'Conocenos', path: '/', cssName: 'conocenos' },
+    { title: 'Conocenos', path: '/conocenos', cssName: 'conocenos' },
     { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
 ]
 

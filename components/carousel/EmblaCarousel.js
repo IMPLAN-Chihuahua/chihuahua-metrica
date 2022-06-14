@@ -41,7 +41,6 @@ const EmblaCarousel = () => {
         <Box className={style.embla__viewport} ref={viewportRef}>
           <Box className={style.embla__container}>
             {slides.map((index) => (
-              console.log(index.url),
               <Box className={style.embla__slide} key={index.name}>
                 <Box className={style.embla__slide__inner}>
                   <a href={index.projectURL}>

@@ -50,12 +50,12 @@ const Header = () => {
                 <Grid container direction='column'>
                     {
                         pathname === '/' ?
-                            <Grid 
-                              item 
-                              flexGrow={1} 
-                              style={{backgroundColor: 'white'}} 
-                              className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`} 
-                              md={2}
+                            <Grid
+                                item
+                                flexGrow={1}
+                                style={{ backgroundColor: 'white' }}
+                                className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`}
+                                md={2}
                             >
                                 <NextLink href='/'>
                                     <a>
@@ -91,7 +91,15 @@ const Header = () => {
             </AppBar>
             <Offset id="back-to-top" />
             <BackToTop>
-                <Fab sx={{ backgroundColor: "primary.subtleMain", color: "primary.contrastText" }} size="large" aria- label="back to top">
+                <Fab sx={{
+                    backgroundColor: "primary.subtleMain",
+                    color: "primary.contrastText",
+                    '&:hover': {
+                        color: "primary.main"
+                    }
+                }}
+                    size="large"
+                    aria- label="back to top">
                     <KeyboardArrowUp />
                 </Fab>
             </BackToTop>

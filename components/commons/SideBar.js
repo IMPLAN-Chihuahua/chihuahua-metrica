@@ -10,7 +10,7 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 const SideBar = ({ navLinks }) => {
     const subMenuNull = []
     const subMenu = [
-        { title: 'Indicadores', path: '/indicadores-chihuahua' },
+        { title: 'Indicadores', path: '/chihuahua-en-datos' },
         { title: 'Proyecto 2', path: '/' }
     ]
     const [bar, setBar] = useState({ right: false },)

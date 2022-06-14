@@ -137,6 +137,7 @@ const Footer = () => {
                 variant='caption'
                 align='center'
                 display='block'
+                fontWeight={500}
                 sx={{
                     backgroundColor: 'whitesmoke',
                     lineHeight: '2rem',

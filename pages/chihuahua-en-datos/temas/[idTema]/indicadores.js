@@ -88,8 +88,8 @@ export default function Modulo(props) {
   return (
     <>
       <Head>
-        <title>Indicadores</title>
-        <meta name="description" content="Indicadores de la ciudad de Chihuahua" />
+        <title>Indicadores de tema seleccionado</title>
+        <meta name="description" content="Indicadores de un tema" />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container maxWidth="xl" sx={{ mb: 3, mt: 3 }}>

@@ -9,16 +9,16 @@ export default function Modulo(props) {
   const data = props.data;
   return (<>
     <Head>
-      <title>Proyecto Indicadores</title>
-      <meta name="description" content="Proyecto indicadores de la ciudad de Chihuahua" />
+      <title>Chihuahua en Datos</title>
+      <meta name="description" content="Proyecto Chihuahua en Datos para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
       <link rel="icon" href="/icon.ico" />
     </Head>
     <Container sx={{ marginTop: 3, marginBottom: 3 }}>
-      <Title variant='h3' component='h1'>Indicadores de Chihuahua</Title>
+      <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
       <Grid container>
         <Grid item xs={12} lg={9}>
           <Typography textAlign='start' variant='body1' mt={3}>
-            Los Indicadores de Chihuahua ofrecen a la ciudadanía los datos de la
+            Chihuahua en Datos ofrece a la ciudadanía los datos de la
             estructura urbana, económica y social con el fin de dar a conocer la dirección
             en la que se encuentra la ciudad y encontrar las áreas de oportunidad.
           </Typography>

@@ -15,9 +15,9 @@ export const AboutLocation = () => {
                 Si te interesa Chihuahua Métrica y te gustaría saber más, ponte en contacto con nosotros.
             </Typography>
             <Box mt={2}>
-                <Grid container spacing={5} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
-                    <Grid container spacing={2} item xs={12} md={6} >
-                        <Grid container item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', borderBottom: '1px solid rgb(0,0,0,0.2)' }}>
+                <Grid container className='center-content'>
+                    <Grid container item xs={12} md={6} >
+                        <Grid container item xs={12} md={6} className='center-content'>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
                                 <FmdGoodIcon sx={{ fontSize: '72px', color: 'gray' }} />
                             </Grid>
@@ -27,7 +27,7 @@ export const AboutLocation = () => {
 
                         </Grid>
 
-                        <Grid container item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', borderBottom: '1px solid rgb(0,0,0,0.2)' }}>
+                        <Grid container item xs={12} md={6} className='center-content'>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
                                 <EventAvailableIcon sx={{ fontSize: '72px', color: 'gray' }} />
                             </Grid>
@@ -36,7 +36,7 @@ export const AboutLocation = () => {
                             </Grid>
                         </Grid>
 
-                        <Grid container item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', borderBottom: '1px solid rgb(0,0,0,0.2)' }}>
+                        <Grid container item xs={12} md={6} className='center-content'>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
                                 <SmartphoneIcon sx={{ fontSize: '72px', color: 'gray' }} />
                             </Grid>
@@ -44,7 +44,7 @@ export const AboutLocation = () => {
                                 <Typography variant='p' sx={{ mt: '3%' }}>+52 614-200-4820</Typography>
                             </Grid>
                         </Grid>
-                        <Grid container item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', borderBottom: '1px solid rgb(0,0,0,0.2)' }}>
+                        <Grid container item xs={12} md={6} className='center-content'>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center', textAlign: 'center' }}>
                                 <TravelExploreIcon sx={{ fontSize: '72px', color: 'gray' }} />
                             </Grid>

@@ -11,6 +11,7 @@ import { subYears } from 'date-fns/fp'
 import { Controller, useFormContext } from 'react-hook-form'
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
+import Title from '@components/commons/Title';
 
 
 const tendencyList = [
@@ -31,7 +32,7 @@ const IndicadorFilter = (props) => {
       <Grid
         container
         sx={{
-          marginBottom: 4,
+          marginBottom: 3,
           border: '1px solid rgb(0, 0, 0, 0.1)'
         }}
         borderRadius={2}
@@ -40,14 +41,12 @@ const IndicadorFilter = (props) => {
           item
           container
           padding={2}
-          rowSpacing={2}
-          columnSpacing={2}
           direction="column"
         >
           <Grid item>
-            <Typography variant="h5" component="h2">
+            <Title variant="h5" component="h3">
               Búsqueda
-            </Typography>
+            </Title>
           </Grid>
           <Grid
             item

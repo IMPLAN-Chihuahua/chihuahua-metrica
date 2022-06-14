@@ -10,6 +10,7 @@ import Title from "@components/commons/Title";
 import { useForm, FormProvider } from "react-hook-form"
 import { isUndefined } from "helpers/ObjectUtils";
 import { serialize } from "helpers/StringUtils";
+import { Typography } from "@mui/material";
 
 const ODS = 1;
 const UNIDAD_MEDIDA = 2;
@@ -20,7 +21,7 @@ export default function Modulo(props) {
   const [isLoading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [modulo, setModulo] = useState(props.idTema);
-  const [temaName, setTemaName] = useState(props.selectedTema.temaIndicador);
+  const [selectedTema, setSelectedTema] = useState(props.selectedTema);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [filters, setFilters] = useState('');
@@ -70,9 +71,9 @@ export default function Modulo(props) {
     const subscription = watch((value) => {
       const payload = {};
       let updatedIdModulo = value?.temaIndicador?.id;
-      let updatedTema = value?.temaIndicador?.temaIndicador;
+      let updatedTema = value?.temaIndicador;
       setModulo(isUndefined(updatedIdModulo) ? props.idTema : updatedIdModulo);
-      setTemaName(isUndefined(updatedTema) ? props.selectedTema.temaIndicador : updatedTema);
+      setSelectedTema(isUndefined(updatedTema) ? props.selectedTema : updatedTema);
       payload.idOds = value?.ods?.id;
       payload.idUnidadMedida = value?.medida?.id;
       payload.idCobertura = value?.cobertura?.id;
@@ -84,7 +85,6 @@ export default function Modulo(props) {
   }, [watch]);
 
   const handlePagination = (_, value) => setPage(value);
-  const title = `Indicadores del tema ${temaName}`;
   return (
     <>
       <Head>
@@ -93,31 +93,37 @@ export default function Modulo(props) {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container maxWidth="xl" sx={{ mb: 3, mt: 3 }}>
-        <Title variant='h3' component='h1' margin='0% 0 3% 0'>{title}</Title>
-        <FormProvider {...methods}>
-          <IndicadorFilter
-            odsList={[...props.ods.data]}
-            unidadMedidaList={[...props.medidas.data]}
-            coberturaList={[...props.coberturas.data]}
-            modulosList={[...props.modulos.data]}
-          />
-        </FormProvider>
-        {!isLoading && hasError && <Alert severity='error' sx={{ marginBottom: 2 }}>Hubo un error</Alert>}
-        {isLoading ?
-          Array.from(new Array(3)).map((_, i) => <IndicadorSkeleton key={i} />)
-          :
-          !hasError &&
-          (<>
-            <IndicadorList
-              indicadores={indicadores}
+        <section>
+          <Title variant='h3' component='h1'>{selectedTema.temaIndicador}</Title>
+          <Typography>Los indicadores que se presentan se refieren a los elementos de organización, administración de la estructura y territorio de la ciudad que favorecen a la toma de decisiones con relación al crecimiento urbano.</Typography>
+        </section>
+        <section>
+          <Title variant='h4' component='h2'>Indicadores</Title>
+          <FormProvider {...methods}>
+            <IndicadorFilter
+              odsList={[...props.ods.data]}
+              unidadMedidaList={[...props.medidas.data]}
+              coberturaList={[...props.coberturas.data]}
+              modulosList={[...props.modulos.data]}
             />
-            <IndicadorPagination
-              page={page}
-              totalPages={totalPages}
-              handlePagination={handlePagination}
-            />
-          </>)
-        }
+          </FormProvider>
+          {isLoading ?
+            Array.from(new Array(3)).map((_, i) => <IndicadorSkeleton key={i} />)
+            :
+            !hasError &&
+            (<>
+              <IndicadorList
+                indicadores={indicadores}
+              />
+              <IndicadorPagination
+                page={page}
+                totalPages={totalPages}
+                handlePagination={handlePagination}
+              />
+            </>)
+          }
+          {!isLoading && hasError && <Alert severity='error' sx={{ marginBottom: 2 }}>Hubo un error</Alert>}
+        </section>
       </Container>
     </>
   );
@@ -139,7 +145,7 @@ export async function getServerSideProps(context) {
     coberturaRes.json(),
     modulosRes.json(),
     moduloRes.json(),
-    
+
   ]);
   return {
     props: {

@@ -6,6 +6,7 @@ import MonitorIcon from '@mui/icons-material/Monitor';
 import FlagIcon from '@mui/icons-material/Flag';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ContactlessIcon from '@mui/icons-material/Contactless';
+import TimelineIcon from '@mui/icons-material/Timeline';
 
 const AboutUs = () => {
     return (
@@ -40,7 +41,7 @@ const AboutUs = () => {
             <Grid item xs={12} md={2} className={`${style.aboutIconsContainer}`}>
                 <Box className={`${style.iconBody}`}>
                     <Avatar className={`${style.aboutIconContainer}`}>
-                        <MonitorIcon className={`${style.aboutIcon}`} />
+                        <TimelineIcon className={`${style.aboutIcon}`} />
                     </Avatar>
                     <h2>Monitorea</h2>
                     <p>

@@ -17,6 +17,7 @@ body {
   --primary-on-main: #e3f6fa;
   --secondary: #d1a961;
   --gradient: linear-gradient(45deg, var(--blue), var(--purple), var(--pink)) border-box;
+  --darker-gradient: linear-gradient(45deg, #1e165a, #95a9ff, #60225e);
 }
 
 #__next {

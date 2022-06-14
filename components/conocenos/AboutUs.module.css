@@ -14,7 +14,7 @@
     font-family: 'Source Sans Pro', sans-serif;
     padding: 0 4% 0 4%;
     background-color: var(--gradient);
-    color: white;
+    color: #1e165a;
     display: flex;
     flex-direction: column !important;
     justify-content: center;
@@ -23,7 +23,7 @@
 .aboutBackground {
     width: 100%;
     height: 100%;
-    background-color: rgb(219, 146, 11);
+    background-color: #95a9ff;
 }
 
 .aboutIconContainer {
@@ -79,10 +79,16 @@
 
 .iconBody:hover .aboutIcon,
 .iconBody:hover .aboutIconContainer {
-    width: 5em !important;
-    height: 5em !important;
+    width: 5.1em !important;
+    height: 5.1em !important;
     font-size: 1em !important;
-    transition: 0.3s;
+    transition: all 0.1s linear;
+    background: var(--darker-gradient);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
 }
 
 

@@ -3,8 +3,8 @@ import Grid from '@mui/material/Grid';
 
 const PROJECTS = [
   {
-    name: 'Indicadores de Chihuahua',
-    url: '/indicadores-chihuahua', 
+    name: 'Chihuahua en Datos',
+    url: '/chihuahua-en-datos', 
     image: '/01-Planeación_-estructura-urbana-y-territorio.webp'
   },
   {

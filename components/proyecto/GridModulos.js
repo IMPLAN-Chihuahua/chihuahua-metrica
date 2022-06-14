@@ -10,7 +10,7 @@ const Tema = ({ modulo }) => {
 
   return (
     <Grid item xs={12} md={6} lg={4} key={modulo.id}>
-      <NextLink href={`/indicadores-chihuahua/temas/${modulo.id}/indicadores`}>
+      <NextLink href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}>
         <div
           className={`${style.card}`}
           style={{ backgroundImage: `url(/01-01-Planeación_-estructura-urbana-y-territorio.webp)` }}

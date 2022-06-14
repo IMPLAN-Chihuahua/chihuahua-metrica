@@ -11,7 +11,7 @@ const slides = [
         name: "banner-02",
         description: "Proyecto de indicadores del municipio de Chihuahua",
         url: `${route}banner-02.png`,
-        projectURL: "http://localhost:3000/indicadores-chihuahua",
+        projectURL: "http://localhost:3000/chihuahua-en-datos",
     },
     {
         name: "banner-01",

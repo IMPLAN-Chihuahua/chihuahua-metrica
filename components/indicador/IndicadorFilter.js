@@ -13,7 +13,6 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import Title from '@components/commons/Title';
 
-
 const tendencyList = [
   { id: 1, value: 'Ascendente' },
   { id: 2, value: 'Descendente' },
@@ -58,7 +57,7 @@ const IndicadorFilter = (props) => {
           >
             <Grid item xs={12} md={4} lg={3}>
               <Controller
-                name='temaIndicador'
+                name='tema'
                 control={control}
                 defaultValue={null}
                 render={({ field: props }) => (

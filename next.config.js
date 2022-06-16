@@ -1,8 +1,6 @@
 const webpack = require('webpack');
 const { parsed: myEnv } = require('dotenv').config();
 
-
-
 module.exports = {
   reactStrictMode: true,
   webpack(config) {
@@ -12,4 +10,7 @@ module.exports = {
   experimental: {
     outputStandalone: true,
   },
+  images: {
+    domains: ['placeimg.com', 'images.unsplash.com']
+  }
 }

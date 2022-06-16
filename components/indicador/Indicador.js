@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import CardActionArea from '@mui/material/CardActionArea';
 import NextLink from 'next/link';
 import { numberWithCommas } from 'helpers/FormatNumbers';
+import { COBERTURA_GEOGRAFICA, UNIDAD_MEDIDA } from 'pages/chihuahua-en-datos/temas/[idTema]/indicadores';
 
 const Indicador = (props) => {
   const indicador = props.value;
@@ -21,15 +22,8 @@ const Indicador = (props) => {
                   variant='h6'
                   component='h3'
                   fontWeight='bold'
-                  textAlign='center'
                   mb={2}
-                  sx={
-                    theme => ({
-                      [theme.breakpoints.up('md')]: {
-                        textAlign: 'left'
-                      }
-                    })
-                  }
+                  textAlign={{ xs: 'center', md: 'left' }}
                 >
                   {indicador.nombre}
                 </Typography>
@@ -53,7 +47,7 @@ const Indicador = (props) => {
                   justifyContent='space-between'
                 >
                   <Typography
-                    color='var(--blue)'
+                    color={props.fontColor}
                     fontWeight='bold'
                     fontSize={25}
                   >{numberWithCommas(indicador.ultimoValorDisponible)}
@@ -81,7 +75,7 @@ const Indicador = (props) => {
                   <Typography
                     fontWeight='bold'
                   >
-                    {indicador.catalogos[1]?.nombre || 'NA'}
+                    {indicador.catalogos[UNIDAD_MEDIDA]?.nombre || 'NA'}
                   </Typography>
                   <Typography>
                     Unidad de Medida
@@ -134,7 +128,7 @@ const Indicador = (props) => {
                   <Typography
                     fontWeight='bold'
                   >
-                    {indicador.catalogos[2]?.nombre || 'NA'}
+                    {indicador.catalogos[COBERTURA_GEOGRAFICA]?.nombre || 'NA'}
                   </Typography>
                   <Typography>
                     Cobertura Geográfica

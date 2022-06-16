@@ -25,6 +25,7 @@
     "embla-carousel": "^6.0.2",
     "embla-carousel-autoplay": "^6.0.2",
     "embla-carousel-react": "^6.0.2",
+    "lodash": "^4.17.21",
     "next": "^12.0.7",
     "nprogress": "^0.2.0",
     "react": "17.0.2",
@@ -33,7 +34,8 @@
     "react-hook-form": "^7.31.1",
     "react-mathjax": "^1.0.1",
     "react-spinners": "^0.11.0",
-    "swr": "^1.1.2"
+    "swr": "^1.1.2",
+    "tinycolor2": "^1.4.2"
   },
   "devDependencies": {
     "@types/nprogress": "^0.2.0",

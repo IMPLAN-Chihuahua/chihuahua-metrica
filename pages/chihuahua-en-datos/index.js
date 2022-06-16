@@ -15,12 +15,12 @@ export default function Modulo(props) {
       <Container sx={{ marginTop: 3, marginBottom: 3 }}>
         <section>
           <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
-          <Typography textAlign='start' variant='body1' mt={3}>
+          <Typography textAlign='start' variant='body1'>
             Chihuahua en Datos ofrece a la ciudadanía los datos de la
             estructura urbana, económica y social con el fin de dar a conocer la dirección
             en la que se encuentra la ciudad y encontrar las áreas de oportunidad.
           </Typography>
-          <Typography textAlign='start' variant='body1' mt={2} mb={3}>
+          <Typography textAlign='start' variant='body1' mt={1}>
             La plataforma cuenta con una base de 152 de indicadores, 42 técnico-urbanos
             y 110 sociales, los cuales pueden ser usados de referencia para estudios y proyectos.
             Son fundamentados con la información que brindan los censos de INEGI, CONEVAL,
@@ -28,13 +28,10 @@ export default function Modulo(props) {
           </Typography>
         </section>
         <section>
-          <Title variant='h4' component='h2' mb={3} mt={3}>Temas de Interés</Title>
+          <Title variant='h4' component='h2'>Temas de Interés</Title>
           <Grid container rowSpacing={1} columnSpacing={1}>
             <TemaList modulos={data} />
           </Grid>
-        </section>
-        <section>
-          <Title variant='' component=''>Proyecto</Title>
         </section>
       </Container>
     </>

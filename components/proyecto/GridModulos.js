@@ -13,7 +13,7 @@ const Tema = ({ modulo }) => {
       <NextLink href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}>
         <div
           className={`${style.card}`}
-          style={{ backgroundImage: `url(/01-01-Planeación_-estructura-urbana-y-territorio.webp)` }}
+          style={{ backgroundImage: `url('${modulo.urlImagen}')` }}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >

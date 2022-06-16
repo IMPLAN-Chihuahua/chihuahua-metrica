@@ -8,28 +8,31 @@ import IndicadorSkeleton from "@components/indicador/IndicadorSkeleton";
 import Alert from "@mui/material/Alert";
 import Title from "@components/commons/Title";
 import { useForm, FormProvider } from "react-hook-form"
-import { isUndefined } from "helpers/ObjectUtils";
+import { isUndefined, pSBC } from "helpers/ObjectUtils";
 import { serialize } from "helpers/StringUtils";
-import { Typography } from "@mui/material";
+import { Typography, Box, Stack } from "@mui/material";
+import Image from "next/image";
+import tinycolor from 'tinycolor2';
 
-const ODS = 1;
-const UNIDAD_MEDIDA = 2;
-const COBERTURA_GEOGRAFICA = 3;
+export const ODS = 1;
+export const UNIDAD_MEDIDA = 2;
+export const COBERTURA_GEOGRAFICA = 3;
 
 export default function Modulo(props) {
   const [indicadores, setIndicadores] = useState({});
   const [isLoading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [modulo, setModulo] = useState(props.idTema);
   const [selectedTema, setSelectedTema] = useState(props.selectedTema);
+
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [filters, setFilters] = useState('');
 
-  const methods = useForm()
+  const methods = useForm();
+  const { watch } = methods;
   const fetchIndicadores = useCallback(() => {
     setLoading(true);
-    const url = `${process.env.INDICADORES_BASE_URL}/modulos/${modulo}/indicadores?page=${page}&${filters}`;
+    const url = `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${page}&${filters}`;
     fetch(url)
       .then(res => {
         if (res.ok) {
@@ -48,43 +51,28 @@ export default function Modulo(props) {
       .finally(() => {
         setLoading(false);
       });
-  }, [modulo, page, filters]);
-
-
-  const updateFilter = useCallback(() => {
-
-  }, []);
+  }, [selectedTema.id, page, filters]);
 
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      updateFilter();
       fetchIndicadores();
     }
     return () => {
       isMounted = false;
     }
-  }, [updateFilter, fetchIndicadores]);
+  }, [fetchIndicadores]);
 
-  const { watch } = methods
+
   useEffect(() => {
-    const subscription = watch((value) => {
-      const payload = {};
-      let updatedIdModulo = value?.temaIndicador?.id;
-      let updatedTema = value?.temaIndicador;
-      setModulo(isUndefined(updatedIdModulo) ? props.idTema : updatedIdModulo);
-      setSelectedTema(isUndefined(updatedTema) ? props.selectedTema : updatedTema);
-      payload.idOds = value?.ods?.id;
-      payload.idUnidadMedida = value?.medida?.id;
-      payload.idCobertura = value?.cobertura?.id;
-      payload.anioUltimoValorDisponible = value?.anio?.getFullYear();
-      payload.tendenciaActual = value?.tendencia?.value.toUpperCase();
-      setFilters(serialize(payload));
+    const subscription = watch(value => {
+      setSelectedTema(value.tema || props.selectedTema)
     });
     return () => subscription.unsubscribe();
   }, [watch]);
 
   const handlePagination = (_, value) => setPage(value);
+
   return (
     <>
       <Head>
@@ -93,10 +81,35 @@ export default function Modulo(props) {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container maxWidth="xl" sx={{ mb: 3, mt: 3 }}>
-        <section>
-          <Title variant='h3' component='h1'>{selectedTema.temaIndicador}</Title>
-          <Typography>Los indicadores que se presentan se refieren a los elementos de organización, administración de la estructura y territorio de la ciudad que favorecen a la toma de decisiones con relación al crecimiento urbano.</Typography>
-        </section>
+        <Stack direction='row' mb={3} flexWrap={{ xs: 'wrap', md: 'nowrap' }} justifyContent='center'>
+          <Box
+            sx={{
+              width: { xs: '100%' },
+              maxWidth: 400,
+              height: 250,
+              position: 'relative',
+            }}>
+            <Image
+              src={`${selectedTema.urlImagen}`}
+              layout='fill'
+              objectFit='cover'
+            />
+          </Box>
+          <Box
+            component='section'
+            sx={{
+              p: 2,
+              backgroundColor: tinycolor(selectedTema.color).lighten().lighten().toHexString(),
+              color: tinycolor(selectedTema.color).darken(60).toHexString(),
+              flexGrow: 1,
+              m: 1,
+              borderRadius: 2,
+              wordWrap: 'break-word'
+            }}>
+            <Title variant='h3' component='h1'>{selectedTema.temaIndicador}</Title>
+            <Typography>{selectedTema.descripcion}</Typography>
+          </Box>
+        </Stack>
         <section>
           <Title variant='h4' component='h2'>Indicadores</Title>
           <FormProvider {...methods}>
@@ -104,17 +117,15 @@ export default function Modulo(props) {
               odsList={[...props.ods.data]}
               unidadMedidaList={[...props.medidas.data]}
               coberturaList={[...props.coberturas.data]}
-              modulosList={[...props.modulos.data]}
+              modulosList={[...props.temas.data]}
             />
           </FormProvider>
           {isLoading ?
-            Array.from(new Array(3)).map((_, i) => <IndicadorSkeleton key={i} />)
+            Array.from(new Array(4)).map((_, i) => <IndicadorSkeleton key={i} />)
             :
             !hasError &&
             (<>
-              <IndicadorList
-                indicadores={indicadores}
-              />
+              <IndicadorList indicadores={indicadores} fontColor={tinycolor(selectedTema.color).darken(60).toHexString()} />
               <IndicadorPagination
                 page={page}
                 totalPages={totalPages}
@@ -132,29 +143,31 @@ export default function Modulo(props) {
 export async function getServerSideProps(context) {
   const baseUrl = process.env.INDICADORES_BASE_URL;
   const { idTema } = context.params;
-  const [odsRes, medidaRes, coberturaRes, modulosRes, moduloRes] = await Promise.all([
-    fetch(`${baseUrl}/catalogos/${ODS}`),
-    fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA}`),
-    fetch(`${baseUrl}/catalogos/${COBERTURA_GEOGRAFICA}`),
-    fetch(`${baseUrl}/modulos`),
-    fetch(`${baseUrl}/modulos/${idTema}`),
-  ]);
-  const [ods, medidas, coberturas, modulos, modulo] = await Promise.all([
+  const [odsRes,
+    medidaRes,
+    coberturaRes,
+    temasRes,
+    selectedTemaRes] = await Promise.all([
+      fetch(`${baseUrl}/catalogos/${ODS}`),
+      fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA}`),
+      fetch(`${baseUrl}/catalogos/${COBERTURA_GEOGRAFICA}`),
+      fetch(`${baseUrl}/modulos`),
+      fetch(`${baseUrl}/modulos/${idTema}`),
+    ]);
+  const [ods, medidas, coberturas, temas, selectedTema] = await Promise.all([
     odsRes.json(),
     medidaRes.json(),
     coberturaRes.json(),
-    modulosRes.json(),
-    moduloRes.json(),
-
+    temasRes.json(),
+    selectedTemaRes.json(),
   ]);
   return {
     props: {
-      idTema,
       ods,
       coberturas,
       medidas,
-      modulos,
-      selectedTema: { ...modulo.data },
+      temas,
+      selectedTema: { ...selectedTema.data },
     },
   };
 }

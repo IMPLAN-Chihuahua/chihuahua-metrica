@@ -1,22 +1,13 @@
 import VariableList from "@components/variable/VariableList";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MathJax from "react-mathjax";
 import style from './Formula.module.css'
 import { Typography } from "@mui/material";
 
 const Formula = ({ formula }) => {
-    if (formula === null) {
-        return <FormulaNotExists />
-    } else {
-        return <FormulaExists formula={formula} />
-    }
-}
-
-function FormulaExists({ formula }) {
-    return (
-        <div>
-            <style jsx>{`
+  return (
+    <>
+      <style jsx>{`
               .formulaText {
                 font-size: 2rem;
                 font-weight: bold;
@@ -58,69 +49,47 @@ function FormulaExists({ formula }) {
                 background: rgba(85, 85, 85, 0.4);
               }
             `}</style>
-            <Grid
-                sx={theme => (
-                    {
-                        borderRadius: '5px',
-                        backgroundImage: 'url("/rectangle_3.webp")',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        color: 'white',
-                        height: '96%',
-                        mt: '5%',
-                        ml: '5%',
-                        width: '95%',
-                        [theme.breakpoints.down('md')]: {
-                            width: '100%',
-                            ml: '0',
-                        },
-                    })}>
-                <Box sx={{ p: 3, borderRadius: '5px' }} className={style.overlay}>
-                    <Typography
-                        variant='h4'
-                        component='h2'
-                        textAlign='center'>
-                        Formula
-                    </Typography>
-                    <Typography variant='h5' mt={2} component='h3'>Descripcion</Typography>
-                    <Typography mb={2}>{formula.descripcion}</Typography>
-                    <MathJax.Provider>
-                        <Typography textAlign='center' variant='h3' mb={2} className='formulaText'><MathJax.Node inline formula={formula.ecuacion} /></Typography>
-                    </MathJax.Provider>
-                    <Typography variant='h5' component='h3'>Donde:</Typography>
-                    <div className='variableText'>
-                        <VariableList variables={formula.variables} />
-                    </div>
-                </Box>
-            </Grid>
-        </div>
-    )
-}
-
-function FormulaNotExists() {
-    return (
-        <>
-            <Grid sx={theme => (
-                {
-                    borderRadius: '5px',
-                    bgcolor: 'cardInformation.main',
-                    color: 'white',
-                    height: '96%',
-                    mt: '5%',
-                    textAlign: 'center',
-                    width: '95%',
-                    [theme.breakpoints.down('md')]: {
-                        width: '100%',
-                    },
-                })}>
-                <Box>
-                    <h1 className="formulaText">¡No hay fórmula disponible para este indicador!</h1>
-                    <h3>Fuente de consulta</h3>
-                    <p>TEST.INC</p>
-                </Box>
-            </Grid>
-        </>
-    )
+      <Box
+        sx={{
+          borderRadius: '5px',
+          backgroundImage: 'url("/rectangle_3.webp")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          color: 'white',
+          width: '100%',
+        }}>
+        <Box sx={{ p: 3, borderRadius: '5px' }} className={style.overlay}>
+          <Typography
+            variant='h4'
+            component='h2'
+            textAlign='center'>
+            Formula
+          </Typography>
+          {formula === null
+            ? (
+              <>No formula</>
+            )
+            : (
+              <section>
+                <Typography variant='h5' component='h3'>Descripcion</Typography>
+                <Typography mb={2}>{formula.descripcion}</Typography>
+                <MathJax.Provider>
+                  <Typography
+                    textAlign='center'
+                    variant='h4'
+                    mb={2}
+                    className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion}/></Typography>
+                </MathJax.Provider>
+                <Typography variant='h5' component='h3'>Donde:</Typography>
+                <div className='variableText'>
+                  <VariableList variables={formula.variables} />
+                </div>
+              </section>
+            )}
+        </Box>
+      </Box>
+    </>
+  )
 }
 
 export default Formula;

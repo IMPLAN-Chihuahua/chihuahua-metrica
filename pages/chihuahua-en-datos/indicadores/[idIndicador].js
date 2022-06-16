@@ -9,7 +9,7 @@ export default function FichaTecnica(props) {
 
   return (
     <>
-      <Container sx={{ mb: '2%', mt: '2%' }}>
+      <Container sx={{mb: 3, mt: 3}}>
         <TopData info={data} />
         <DataSheet datasheet={data} />
         <GraphBox history={data} />

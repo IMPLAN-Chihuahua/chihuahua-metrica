@@ -17,10 +17,8 @@ function HistoricalValuesExists(history) {
   const { history: data } = history;
   return (
     <>
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: '5%' }}>
-        <Title variant='h4'>Valores históricos</Title>
-      </Box>
-      <Grid container sx={{ mt: '2%' }} columnSpacing={4}>
+      <Title variant='h4' component='h2'>Valores históricos</Title>
+      <Grid container columnSpacing={1}>
         <Grid item xs={12} md={6}>
           <CustomTable data={data.historicos} />
         </Grid>

@@ -6,7 +6,10 @@ import Grid from '@mui/material/Grid';
 import CardActionArea from '@mui/material/CardActionArea';
 import NextLink from 'next/link';
 import { numberWithCommas } from 'helpers/FormatNumbers';
-import { COBERTURA_GEOGRAFICA, UNIDAD_MEDIDA } from 'pages/chihuahua-en-datos/temas/[idTema]/indicadores';
+
+export const ODS = 0;
+export const UNIDAD_MEDIDA = 1;
+export const COBERTURA_GEOGRAFICA = 2;
 
 const Indicador = (props) => {
   const indicador = props.value;

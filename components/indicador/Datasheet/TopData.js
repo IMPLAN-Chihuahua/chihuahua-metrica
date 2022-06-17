@@ -52,7 +52,6 @@ const TopData = (info) => {
       <Box component='section' sx={{ mb: 2 }}>
         <Title variant='h3' component='h1'>{data.nombre}</Title>
         <Typography mb={1}>Omnis neque vitae voluptas. Maiores nemo ullam qui ex molestiae doloribus hic. At cum perferendis nesciunt nulla est aut. Ea corrupti culpa rem in maiores aliquid quis. Excepturi pariatur error. Aspernatur repellat aspernatur pariatur quaerat provident.</Typography>
-        <Chip label={data.modulo?.temaIndicador} color='info' />
       </Box>
 
       <Title variant='h4' component='h2'>Datos abiertos</Title>

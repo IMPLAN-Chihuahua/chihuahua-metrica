@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import Title from "@components/commons/Title";
 import { numberWithCommas } from "helpers/FormatNumbers";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
-import { COBERTURA_GEOGRAFICA, UNIDAD_MEDIDA } from "pages/chihuahua-en-datos/temas/[idTema]/indicadores";
+import { UNIDAD_MEDIDA, COBERTURA_GEOGRAFICA } from "../Indicador";
 
 const DataSheet = (datasheet) => {
   const { datasheet: data } = datasheet;

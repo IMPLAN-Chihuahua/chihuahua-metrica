@@ -3,17 +3,31 @@ import MapButton from "@components/indicador/Datasheet/MapButton";
 import TopData from "@components/indicador/Datasheet/TopData";
 import DataSheet from "@components/indicador/Datasheet/DataSheet";
 import GraphBox from "@components/indicador/Datasheet/GraphBox";
+import NextBreadcrumbs from "@components/commons/NextBreadcrumbs";
+import PageBreadcrumb from "@components/commons/PageBreadcrumb";
+
 
 export default function FichaTecnica(props) {
-  const data = props.data;
+  const indicador = props.data;
+
+  const crumbs = [{
+    text: 'Chihuahua en Datos',
+    href: '/chihuahua-en-datos'
+  }, {
+    text: indicador.modulo.temaIndicador,
+    href: `/chihuahua-en-datos/temas/${indicador.modulo.id}/indicadores`
+  }, {
+    text: indicador.nombre
+  }];
 
   return (
     <>
-      <Container sx={{mb: 3, mt: 3}}>
-        <TopData info={data} />
-        <DataSheet datasheet={data} />
-        <GraphBox history={data} />
-        <MapButton mapa={data.mapa} />
+      <Container sx={{ mb: 3, mt: 3 }}>
+        <PageBreadcrumb crumbs={[...crumbs]} />
+        <TopData info={indicador} />
+        <DataSheet datasheet={indicador} />
+        <GraphBox history={indicador} />
+        <MapButton mapa={indicador.mapa} />
       </Container>
     </>
   );

@@ -2,6 +2,13 @@ import { Container, Grid, Typography } from '@mui/material';
 import Head from 'next/head';
 import TemaList from '@components/proyecto/GridModulos';
 import Title from '@components/commons/Title';
+import PageBreadcrumb from '@components/commons/PageBreadcrumb';
+
+const CRUMBS = [
+  {
+    text: 'Chihuahua en Datos'
+  }
+]
 
 export default function Modulo(props) {
   const data = props.data;
@@ -13,6 +20,7 @@ export default function Modulo(props) {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container sx={{ marginTop: 3, marginBottom: 3 }}>
+        <PageBreadcrumb crumbs={[...CRUMBS]} />
         <section>
           <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
           <Typography textAlign='start' variant='body1'>

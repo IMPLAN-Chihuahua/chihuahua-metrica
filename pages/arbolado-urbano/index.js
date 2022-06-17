@@ -1,3 +1,4 @@
+import PageBreadcrumb from '@components/commons/PageBreadcrumb';
 import Title from '@components/commons/Title';
 import { Android, GitHub, OpenInNew } from '@mui/icons-material';
 import { Container, Typography, Box, Button, Grid } from '@mui/material';
@@ -12,6 +13,7 @@ const ArboladoUrbano = () => {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container sx={{ marginTop: 3, marginBottom: 3 }}>
+        <PageBreadcrumb crumbs={[{ text: 'Arbolado Urbano' }]} />
         <section>
           <Title variant='h3' component='h1'>Arbolado Urbano</Title>
           <Typography mb={3}>

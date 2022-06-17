@@ -92,3 +92,7 @@ a {
 .text-shadow {
   text-shadow: #000 1px 0 10px;
 }
+
+.background {
+  background-color: red;
+}

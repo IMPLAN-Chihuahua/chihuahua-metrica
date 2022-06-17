@@ -11,7 +11,6 @@ import { useForm, FormProvider } from "react-hook-form"
 import { Typography, Box, Stack } from "@mui/material";
 import Image from "next/image";
 import tinycolor from 'tinycolor2';
-import NextBreadcrumbs from "@components/commons/NextBreadcrumbs";
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 
 const ODS_ID = 1;

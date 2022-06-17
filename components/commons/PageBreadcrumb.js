@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 const PageBreadcrumb = ({ crumbs = [] }) => {
 
   return (
-    <Breadcrumbs aria-label="breadcrumb">
+    <Breadcrumbs aria-label='breadcrumb' separator='›' sx={{display: {xs: 'none', lg: 'inline-block'}}}>
       <Crumb href='/' text='Inicio' />
       {
         crumbs.map((crumb, idx) => (

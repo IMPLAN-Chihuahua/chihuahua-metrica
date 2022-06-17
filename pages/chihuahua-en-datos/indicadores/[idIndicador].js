@@ -3,7 +3,6 @@ import MapButton from "@components/indicador/Datasheet/MapButton";
 import TopData from "@components/indicador/Datasheet/TopData";
 import DataSheet from "@components/indicador/Datasheet/DataSheet";
 import GraphBox from "@components/indicador/Datasheet/GraphBox";
-import NextBreadcrumbs from "@components/commons/NextBreadcrumbs";
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 
 

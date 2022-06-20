@@ -8,102 +8,122 @@ import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
 import Navbar from "./Navbar";
 import SideBar from "./SideBar";
 import BackToTop from "./BackToTop";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, IconButton } from "@mui/material";
 import NextLink from "next/link";
 
 import style from './Header.module.css'
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
+import { Box } from "@mui/system";
+import { ArrowBackIos, ArrowBackIosNew, ArrowBackIosOutlined } from "@mui/icons-material";
 
+const Offset = styled("div")();
 
 const navLinks = [
-    { title: 'Inicio', path: '/', cssName: 'inicio' },
-    { title: 'Proyectos', path: '#proyectos', cssName: 'proyectos' },
-    { title: 'Conocenos', path: '/conocenos', cssName: 'conocenos' },
-    { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
+  { title: 'Inicio', path: '/', cssName: 'inicio' },
+  { title: 'Proyectos', path: '#proyectos', cssName: 'proyectos' },
+  { title: 'Conocenos', path: '/conocenos', cssName: 'conocenos' },
+  { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
 ]
 
 const Header = () => {
-    const [scrollPosition, setScroll] = useState(0)
-    useEffect(() => {
-        const handleScroll = () => {
-            setScroll(window.scrollY);
-        };
+  const [scrollPosition, setScroll] = useState(0)
+  useEffect(() => {
+    const handleScroll = () => {
+      setScroll(window.scrollY);
+    };
 
-        handleScroll();
+    handleScroll();
 
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
 
-    }, []);
+  }, []);
 
-    const { pathname } = useRouter();
-    return (
-        <>
-            <Container className={`${style.topHeader}`}>
-
-            </Container>
-            <AppBar position="fixed" elevation={0} className={`${style.appbar}`} >
-                <Grid container direction='column'>
-                    {
-                        pathname === '/' ?
-                            <Grid
-                                item
-                                flexGrow={1}
-                                style={{ backgroundColor: 'white' }}
-                                className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`}
-                                md={2}
-                            >
-                                <NextLink href='/'>
-                                    <a>
-                                        <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
-                                    </a>
-                                </NextLink>
-                            </Grid>
-                            :
-                            <Grid item flexGrow={1} className={`${style.navbarCentered} ${style.scrolledDown}`} md={2}>
-                                <NextLink href='/'>
-                                    <a>
-                                        <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} alt="small Logo" />
-                                    </a>
-                                </NextLink>
-                            </Grid>
-                    }
-                    {
-                        pathname === '/' &&
-                        <Grid item xs justifyContent='flex-end' className={`${style.navbarCentered} ${style.navbarMenu} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`} md={10} >
-                            {
-                                scrollPosition > 100 &&
-                                <NextLink href='/'>
-                                    <a>
-                                        <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} alt="small Logo" />
-                                    </a>
-                                </NextLink>
-                            }
-                            <Navbar navLinks={navLinks} />
-                            <SideBar navLinks={navLinks} />
-                        </Grid>
-                    }
+  const router = useRouter();
+  const { pathname } = router;
+  return (
+    <>
+      <AppBar position="fixed" elevation={0} className={`${style.appbar}`} >
+        <Grid container direction='column'>
+          {
+            pathname === '/' ?
+              <Grid
+                item
+                flexGrow={1}
+                style={{ backgroundColor: 'white' }}
+                className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`}
+                md={2}
+              >
+                <NextLink href='/'>
+                  <a>
+                    <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
+                  </a>
+                </NextLink>
+              </Grid>
+              :
+              <>
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    height: '100%',
+                    display: { xs: 'flex', lg: 'none' },
+                    alignItems: 'center',
+                    ml: 2,
+                  }}>
+                  <IconButton onClick={() => router.back()}>
+                    <ArrowBackIosNew fontSize='large' htmlColor='white' />
+                  </IconButton>
+                </Box>
+                <Grid item flexGrow={1} className={`${style.navbarCentered} ${style.scrolledDown}`} md={2}>
+                  <NextLink href='/'>
+                    <a>
+                      <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} alt="small Logo" />
+                    </a>
+                  </NextLink>
                 </Grid>
-            </AppBar>
-            <div id="back-to-top" />
-            <BackToTop>
-                <Fab sx={{
-                    backgroundColor: "primary.subtleMain",
-                    color: "primary.contrastText",
-                    '&:hover': {
-                        color: "primary.main"
-                    }
-                }}
-                    size="large"
-                    aria- label="back to top">
-                    <KeyboardArrowUp />
-                </Fab>
-            </BackToTop>
-        </>
-    )
+              </>
+          }
+          {
+            pathname === '/' &&
+            <Grid
+              item
+              xs
+              justifyContent='flex-end'
+              className={`${style.navbarCentered} ${style.navbarMenu} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}
+              md={10} >
+              {
+                scrollPosition > 100 &&
+                <NextLink href='/'>
+                  <a>
+                    <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} alt="small Logo" />
+                  </a>
+                </NextLink>
+              }
+              <Navbar navLinks={navLinks} />
+              <SideBar navLinks={navLinks} />
+            </Grid>
+          }
+        </Grid>
+      </AppBar>
+      <Offset id="back-to-top" />
+      <BackToTop>
+        <Fab sx={{
+          backgroundColor: "primary.subtleMain",
+          color: "primary.contrastText",
+          '&:hover': {
+            color: "primary.main"
+          }
+        }}
+          size="large"
+          aria- label="back to top">
+          <KeyboardArrowUp />
+        </Fab>
+      </BackToTop>
+    </>
+  )
 }
 
 export default Header;

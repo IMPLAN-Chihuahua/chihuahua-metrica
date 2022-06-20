@@ -12,6 +12,7 @@ import { Typography, Box, Stack } from "@mui/material";
 import Image from "next/image";
 import tinycolor from 'tinycolor2';
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
+import { serialize } from "helpers/StringUtils";
 
 const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
@@ -65,10 +66,16 @@ export default function Modulo(props) {
 
   useEffect(() => {
     const subscription = watch(value => {
-      setSelectedTema(value.tema || props.selectedTema)
+      const { tema, ...data } = value;
+      setSelectedTema(tema || props.selectedTema)
+      const filterValues = {};
+      filterValues.idOds = data.ods?.id;
+      filterValues.idUnidadMedida = data.medida?.id;
+      filterValues.idCobertura = data.cobertura?.id;
+      setFilters(serialize(filterValues))
     });
     return () => subscription.unsubscribe();
-  }, [watch]);
+  }, [watch, setFilters]);
 
   const handlePagination = (_, value) => setPage(value);
 
@@ -86,7 +93,7 @@ export default function Modulo(props) {
         <meta name="description" content="Indicadores de un tema" />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Container maxWidth="xl" sx={{ mb: 3, mt: 3 }}>
+      <Container maxWidth="lg" sx={{ mb: 3, mt: 3 }}>
         <PageBreadcrumb crumbs={[...CRUMBS]} />
         <Stack direction='row' mb={3} flexWrap={{ xs: 'wrap', md: 'nowrap' }} justifyContent='center'>
           <Box

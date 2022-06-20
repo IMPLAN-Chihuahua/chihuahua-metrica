@@ -19,7 +19,7 @@ export default function Modulo(props) {
         <meta name="description" content="Proyecto Chihuahua en Datos para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Container sx={{ marginTop: 3, marginBottom: 3 }}>
+      <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
         <PageBreadcrumb crumbs={[...CRUMBS]} />
         <section>
           <Title variant='h3' component='h1'>Chihuahua en Datos</Title>

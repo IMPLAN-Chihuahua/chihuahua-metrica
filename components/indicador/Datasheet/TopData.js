@@ -51,7 +51,7 @@ const TopData = (info) => {
     <Box component='section' sx={{ mt: 3, mb: 3 }}>
       <Box component='section' sx={{ mb: 2 }}>
         <Title variant='h3' component='h1'>{data.nombre}</Title>
-        <Typography mb={1}>Omnis neque vitae voluptas. Maiores nemo ullam qui ex molestiae doloribus hic. At cum perferendis nesciunt nulla est aut. Ea corrupti culpa rem in maiores aliquid quis. Excepturi pariatur error. Aspernatur repellat aspernatur pariatur quaerat provident.</Typography>
+        <Typography mb={1}>{data.definicion}</Typography>
       </Box>
 
       <Title variant='h4' component='h2'>Datos abiertos</Title>

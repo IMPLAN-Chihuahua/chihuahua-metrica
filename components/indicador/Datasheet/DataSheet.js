@@ -47,7 +47,7 @@ const DataSheet = (datasheet) => {
           alignItems: 'stretch',
           height: 'auto',
         }}>
-          <Formula formula={data?.formula} />
+          <Formula formula={data?.formula} fuente={data?.fuente} />
         </Grid>
       </Grid>
     </>

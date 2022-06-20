@@ -4,7 +4,8 @@ import MathJax from "react-mathjax";
 import style from './Formula.module.css'
 import { Typography } from "@mui/material";
 
-const Formula = ({ formula }) => {
+const Formula = ({ formula, fuente }) => {
+  console.log(formula);
   return (
     <>
       <style jsx>{`
@@ -50,11 +51,25 @@ const Formula = ({ formula }) => {
               }
 
               .no-formula {
-                height: 100%;
+                height: 90%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+              }
+
+              .tost {
+                height: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+              }
+              
+              .test {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                height: 50%;
               }
             `}</style>
       <Box
@@ -73,10 +88,15 @@ const Formula = ({ formula }) => {
             textAlign='center'>
             Formula
           </Typography>
-          {formula === null
+          {formula === null || formula.ecuacion === 'Consultar fuente'
             ? (
               <div className='no-formula'>
-                <Typography variant='h4' component='h2'>No hay fórmula disponible</Typography>
+                <div className='tost'>
+                  <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más información.</Typography>
+                </div>
+                <div className="test">
+                  <Typography variant='caption' component='h2'><small>{fuente}</small></Typography>
+                </div>
               </div>
             )
             : (

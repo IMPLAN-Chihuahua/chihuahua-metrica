@@ -13,7 +13,9 @@ const Tema = ({ modulo }) => {
       <NextLink href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}>
         <div
           className={`${style.card}`}
-          style={{ backgroundImage: `url('${modulo.urlImagen}')` }}
+          style={{
+            backgroundImage: `url(http://localhost:8080${modulo.urlImagen})`
+          }}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >

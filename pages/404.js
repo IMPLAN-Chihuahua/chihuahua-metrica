@@ -1,4 +1,4 @@
-import NotFound from '@components/errors/NotFound'
+import NotFound from '@components/errors/404/NotFound'
 import { ImportantDevices } from '@mui/icons-material'
 import React from 'react'
 

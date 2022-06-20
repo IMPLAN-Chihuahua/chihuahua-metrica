@@ -15,7 +15,6 @@ import style from './Header.module.css'
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 
-const Offset = styled("div")();
 
 const navLinks = [
     { title: 'Inicio', path: '/', cssName: 'inicio' },
@@ -89,7 +88,7 @@ const Header = () => {
                     }
                 </Grid>
             </AppBar>
-            <Offset id="back-to-top" />
+            <div id="back-to-top" />
             <BackToTop>
                 <Fab sx={{
                     backgroundColor: "primary.subtleMain",

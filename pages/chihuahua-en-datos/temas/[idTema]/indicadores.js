@@ -12,6 +12,7 @@ import { Typography, Box, Stack } from "@mui/material";
 import Image from "next/image";
 import tinycolor from 'tinycolor2';
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
+import { serialize } from "helpers/StringUtils";
 
 const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
@@ -22,71 +23,77 @@ export default function Modulo(props) {
   const [isLoading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [selectedTema, setSelectedTema] = useState(props.selectedTema);
-  
+
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [filters, setFilters] = useState('');
-  
+
   const methods = useForm();
   const { watch } = methods;
   const fetchIndicadores = useCallback(() => {
     setLoading(true);
     const url = `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${page}&${filters}`;
     fetch(url)
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      throw new Error(res.error.text)
-    })
-    .then(indicadores => {
-      setTotalPages(indicadores.totalPages);
-      setIndicadores(indicadores.data);
-      setHasError(false);
-    })
-    .catch(() => {
-      setHasError(true)
-    })
-    .finally(() => {
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        throw new Error(res.error.text)
+      })
+      .then(indicadores => {
+        setTotalPages(indicadores.totalPages);
+        setIndicadores(indicadores.data);
+        setHasError(false);
+      })
+      .catch(() => {
+        setHasError(true)
+      })
+      .finally(() => {
         setLoading(false);
       });
-    }, [selectedTema.id, page, filters]);
-    
-    useEffect(() => {
-      let isMounted = true;
-      if (isMounted) {
-        fetchIndicadores();
-      }
-      return () => {
-        isMounted = false;
-      }
-    }, [fetchIndicadores]);
-    
-    
-    useEffect(() => {
-      const subscription = watch(value => {
-        setSelectedTema(value.tema || props.selectedTema)
-      });
-      return () => subscription.unsubscribe();
-    }, [watch]);
-    
-    const handlePagination = (_, value) => setPage(value);
+  }, [selectedTema.id, page, filters]);
 
-    const CRUMBS = [{
-      text: 'Chihuahua en Datos',
-      href: '/chihuahua-en-datos'
-    }, {
-      text: selectedTema.temaIndicador,
-    }];
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      fetchIndicadores();
+    }
+    return () => {
+      isMounted = false;
+    }
+  }, [fetchIndicadores]);
 
-    return (
-      <>
+
+  useEffect(() => {
+    const subscription = watch(value => {
+      const { tema, ...data } = value;
+      setSelectedTema(tema || props.selectedTema)
+      const filterValues = {};
+      filterValues.idOds = data.ods?.id;
+      filterValues.idUnidadMedida = data.medida?.id;
+      filterValues.idCobertura = data.cobertura?.id;
+      setFilters(serialize(filterValues))
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, setFilters]);
+
+  const handlePagination = (_, value) => setPage(value);
+
+  const CRUMBS = [{
+    text: 'Chihuahua en Datos',
+    href: '/chihuahua-en-datos'
+  }, {
+    text: selectedTema.temaIndicador,
+  }];
+
+  return (
+    <>
       <Head>
         <title>Indicadores de tema seleccionado</title>
         <meta name="description" content="Indicadores de un tema" />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Container maxWidth="xl" sx={{ mb: 3, mt: 3 }}>
+      <Container maxWidth="lg" sx={{ mb: 3, mt: 3 }}>
         <PageBreadcrumb crumbs={[...CRUMBS]} />
         <Stack direction='row' mb={3} flexWrap={{ xs: 'wrap', md: 'nowrap' }} justifyContent='center'>
           <Box

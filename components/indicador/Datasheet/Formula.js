@@ -4,7 +4,8 @@ import MathJax from "react-mathjax";
 import style from './Formula.module.css'
 import { Typography } from "@mui/material";
 
-const Formula = ({ formula }) => {
+const Formula = ({ formula, fuente }) => {
+  console.log(formula);
   return (
     <>
       <style jsx>{`
@@ -48,6 +49,28 @@ const Formula = ({ formula }) => {
               ::-webkit-scrollbar-thumb:hover {
                 background: rgba(85, 85, 85, 0.4);
               }
+
+              .no-formula {
+                height: 90%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+              }
+
+              .tost {
+                height: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+              }
+              
+              .test {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                height: 50%;
+              }
             `}</style>
       <Box
         sx={{
@@ -65,9 +88,16 @@ const Formula = ({ formula }) => {
             textAlign='center'>
             Formula
           </Typography>
-          {formula === null
+          {formula === null || formula.ecuacion === 'Consultar fuente'
             ? (
-              <>No formula</>
+              <div className='no-formula'>
+                <div className='tost'>
+                  <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más información.</Typography>
+                </div>
+                <div className="test">
+                  <Typography variant='caption' component='h2'><small>{fuente}</small></Typography>
+                </div>
+              </div>
             )
             : (
               <section>
@@ -78,7 +108,7 @@ const Formula = ({ formula }) => {
                     textAlign='center'
                     variant='h4'
                     mb={2}
-                    className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion}/></Typography>
+                    className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
                 </MathJax.Provider>
                 <Typography variant='h5' component='h3'>Donde:</Typography>
                 <div className='variableText'>

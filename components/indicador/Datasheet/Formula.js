@@ -48,6 +48,14 @@ const Formula = ({ formula }) => {
               ::-webkit-scrollbar-thumb:hover {
                 background: rgba(85, 85, 85, 0.4);
               }
+
+              .no-formula {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+              }
             `}</style>
       <Box
         sx={{
@@ -67,7 +75,9 @@ const Formula = ({ formula }) => {
           </Typography>
           {formula === null
             ? (
-              <>No formula</>
+              <div className='no-formula'>
+                <Typography variant='h4' component='h2'>No hay fórmula disponible</Typography>
+              </div>
             )
             : (
               <section>
@@ -78,7 +88,7 @@ const Formula = ({ formula }) => {
                     textAlign='center'
                     variant='h4'
                     mb={2}
-                    className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion}/></Typography>
+                    className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
                 </MathJax.Provider>
                 <Typography variant='h5' component='h3'>Donde:</Typography>
                 <div className='variableText'>

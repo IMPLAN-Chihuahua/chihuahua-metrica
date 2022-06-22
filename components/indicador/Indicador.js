@@ -7,13 +7,14 @@ import CardActionArea from '@mui/material/CardActionArea';
 import NextLink from 'next/link';
 import { numberWithCommas } from 'helpers/FormatNumbers';
 
-export const ODS = 0;
-export const UNIDAD_MEDIDA = 1;
-export const COBERTURA_GEOGRAFICA = 2;
+export const ODS = 2;
+export const UNIDAD_MEDIDA = 0;
+export const COBERTURA_GEOGRAFICA = 1;
 
 const Indicador = (props) => {
   const indicador = props.value;
   const updatedAt = indicador.updatedAt.split('T')[0];
+  console.log(indicador.catalogos);
   return (
     <Card variant='outlined'>
       <CardActionArea sx={{ padding: 2 }}>

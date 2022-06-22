@@ -4,6 +4,7 @@ import TopData from "@components/indicador/Datasheet/TopData";
 import DataSheet from "@components/indicador/Datasheet/DataSheet";
 import GraphBox from "@components/indicador/Datasheet/GraphBox";
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
+import IndicadorOwner from "@components/commons/IndicadorOwner";
 
 
 export default function FichaTecnica(props) {
@@ -27,6 +28,7 @@ export default function FichaTecnica(props) {
         <DataSheet datasheet={indicador} />
         <GraphBox history={indicador} />
         <MapButton mapa={indicador.mapa} />
+        <IndicadorOwner />
       </Container>
     </>
   );

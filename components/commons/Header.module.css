@@ -11,6 +11,16 @@
     max-width: 10px;
 }
 
+.play {
+    width: 70px;
+    filter: invert(100%);
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+}
+
+
 .appbar {
     background-color: transparent !important;
 }
@@ -61,4 +71,12 @@
 .contacto:hover>a>.dot {
     opacity: 1;
     transition: 1s;
+}
+
+.videoFrame:focus {
+    border: 0;
+}
+
+.videoFrame {
+    border: 0;
 }

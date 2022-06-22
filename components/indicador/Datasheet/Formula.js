@@ -70,6 +70,8 @@ const Formula = ({ formula, fuente }) => {
                 flex-direction: column;
                 justify-content: flex-end;
                 height: 50%;
+                padding-top: 10px;
+                padding-bottom: 20px;
               }
             `}</style>
       <Box
@@ -88,6 +90,7 @@ const Formula = ({ formula, fuente }) => {
             textAlign='center'>
             Formula
           </Typography>
+          <br />
           {formula === null || formula.ecuacion === 'Consultar fuente'
             ? (
               <div className='no-formula'>

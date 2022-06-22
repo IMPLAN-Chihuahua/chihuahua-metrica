@@ -13,7 +13,7 @@ const Information = ({ title, helperText, children }) => {
         className={styles.overlay}
         style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
-        <Typography color='white' m='auto' fontSize='2em' fontWeight='bold'>{children}</Typography>
+        <Typography color='white' m='auto' fontSize='2em' fontWeight='bold' align='center'>{children}</Typography>
         <CardContent sx={{ textAlign: 'center' }}>
           <Typography
             variant='h5'

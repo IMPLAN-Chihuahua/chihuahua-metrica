@@ -112,8 +112,8 @@ const ArboladoUrbano = () => {
                       width='100%'
                       src='https://geoportal.implanchihuahua.org/sigmun/apps/Styler/index.html?appid=4b73f84656264dba8b027d5fed38d6d2'
                       title='Green View'
-                      >
-                        Mapa
+                    >
+                      Mapa
                     </iframe>
                   </Box>
                 </Grid>

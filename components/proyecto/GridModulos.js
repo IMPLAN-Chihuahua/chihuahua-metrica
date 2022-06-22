@@ -5,7 +5,6 @@ import style from '../../styles/indicador.module.css'
 
 const Tema = ({ modulo }) => {
   const [isHover, setHover] = useState(false);
-
   return (
     <Grid item xs={12} md={6} lg={4} key={modulo.id}>
       <NextLink href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}>

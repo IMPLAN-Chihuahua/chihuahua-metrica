@@ -16,6 +16,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 import { Box } from "@mui/system";
 import { ArrowBackIos, ArrowBackIosNew, ArrowBackIosOutlined } from "@mui/icons-material";
+import Modal from '@mui/material/Modal';
 
 const Offset = styled("div")();
 
@@ -25,6 +26,13 @@ const navLinks = [
   { title: 'Conocenos', path: '/conocenos', cssName: 'conocenos' },
   { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
 ]
+
+const modalStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+};
 
 const Header = () => {
   const [scrollPosition, setScroll] = useState(0)
@@ -44,6 +52,11 @@ const Header = () => {
 
   const router = useRouter();
   const { pathname } = router;
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <>
       <AppBar position="fixed" elevation={0} className={`${style.appbar}`} >
@@ -62,6 +75,7 @@ const Header = () => {
                     <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
                   </a>
                 </NextLink>
+                <img onClick={handleOpen} className={`${style.play}`} src='/images/video/playbtn.png' alt="play button" />
               </Grid>
               :
               <>
@@ -83,6 +97,7 @@ const Header = () => {
                       <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} alt="small Logo" />
                     </a>
                   </NextLink>
+
                 </Grid>
               </>
           }
@@ -122,6 +137,18 @@ const Header = () => {
           <KeyboardArrowUp />
         </Fab>
       </BackToTop>
+
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <iframe width="1180" height="480" src="https://www.youtube.com/embed/5Jc6aMbJkAc" title="Métrica  Chihuahua" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </Box>
+      </Modal>
     </>
   )
 }

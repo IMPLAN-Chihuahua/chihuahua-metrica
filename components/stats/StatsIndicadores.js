@@ -32,20 +32,20 @@ const Stat = ({ indicador, indextest }) => {
 const StatsIndicadores = () => {
   const somearray = [{
     icon: '/stat_1.png',
-    value: '10%',
-    name: 'lorem'
-  }, {
-    icon: '/stat_2.png',
-    value: '50%',
-    name: 'ipsum'
+    value: '0.23',
+    name: 'Árboles por persona'
   }, {
     icon: '/stat_3.png',
+    value: '34',
+    name: 'Densidad de población urbana'
+  }, {
+    icon: '/stat_2.png',
     value: '60%',
-    name: 'dolor'
+    name: 'Población de la ciudad'
   }, {
     icon: '/stat_4.png',
-    value: '60%',
-    name: 'sit'
+    value: '111.9171096',
+    name: 'Densidad de población municipal'
   }];
 
   return (<>

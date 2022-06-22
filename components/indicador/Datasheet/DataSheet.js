@@ -3,13 +3,19 @@ import Formula from '@components/indicador/Datasheet/Formula';
 import Grid from "@mui/material/Grid";
 import Title from "@components/commons/Title";
 import { numberWithCommas } from "helpers/FormatNumbers";
-import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
+import { ArrowDownward, ArrowUpward, ErrorOutline } from "@mui/icons-material";
 import { UNIDAD_MEDIDA, COBERTURA_GEOGRAFICA } from "../Indicador";
 
 const DataSheet = (datasheet) => {
   const { datasheet: data } = datasheet;
-  const tendenciaIcon = data.tendenciaActual === 'ASCENDENTE'
-    ? <ArrowUpward sx={{ fontSize: '50px' }} /> : <ArrowDownward sx={{ fontSize: '50px' }} />;
+  console.log(data.tendenciaActual);
+
+  const tendenciaIcon = data.tendenciaActual === 'Ascendente'
+    ? <ArrowUpward sx={{ fontSize: '80px' }} />
+    : data.tendenciaActual === 'Descendente'
+      ? <ArrowDownward sx={{ fontSize: '80px' }} />
+      : <ErrorOutline sx={{ fontSize: '80px' }} />;
+
   const INDICADOR_FIELDS = [{
     title: 'Último valor disponible',
     value: numberWithCommas(data.ultimoValorDisponible),

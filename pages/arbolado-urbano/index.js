@@ -17,18 +17,13 @@ const ArboladoUrbano = () => {
         <section>
           <Title variant='h3' component='h1'>Arbolado Urbano</Title>
           <Typography mb={3}>
-            Reiciendis est ut quia ut. Id sint doloribus delectus dolorum.
-            Praesentium enim excepturi ullam ex omnis culpa blanditiis.
-            Ut velit ducimus dolor suscipit eos at praesentium voluptatem.
+            El arbolado urbano es el conjunto de árboles que se encuentran en las zonas urbanas, que a su vez proporcionan una variedad de beneficios ambientales, que generan efectos positivos en la mitigación del cambio climático. La presencia del arbolado forma parte de una infraestructura verde que impacta en el aspecto social, económico y cultural, mejorando la calidad de vida de la sociedad y mantener la resiliencia de las ciudades.
           </Typography>
         </section>
         <section>
           <Title variant='h4' component='h2'>Regla 3-30-300</Title>
           <Typography mb={3}>
-            Hic nobis quisquam nihil. Eveniet quam nisi eaque labore nihil ut repudiandae.
-            Possimus et qui quam recusandae qui ea quis officiis.
-            Dolorem nostrum itaque iure rerum rerum. Impedit voluptatibus voluptatem.
-            Alias architecto quas totam nobis minus.
+            Esta regla esta enfocada a mejorar la calidad del arbolado urbano contribuyendo a su vez en el bienestar y la salud humana. Lo primero consiste en observar 3 árboles desde casa de un tamaño considerable, tener como mínimo el 30% de cobertura vegetal en su colonia y vivir a menor distancia de 300 m de un espacio verde. Aunque el estado actual de las ciudades es diferente, utilizar esta regla aporta a la necesidad de tener un sistema arbóreo bien planificado y establecido en la ciudad.
           </Typography>
         </section>
         <section>

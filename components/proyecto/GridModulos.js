@@ -1,9 +1,7 @@
-import { Box, Card, CardActionArea, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import NextLink from 'next/link';
-import AdbIcon from '@mui/icons-material/Adb';
 import style from '../../styles/indicador.module.css'
-import Image from 'next/image';
 
 const Tema = ({ modulo }) => {
   const [isHover, setHover] = useState(false);
@@ -12,7 +10,7 @@ const Tema = ({ modulo }) => {
       <NextLink href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}>
         <div
           className={`${style.card}`}
-          style={{ backgroundImage: `url(${modulo.urlImagen})` }}
+          style={{ backgroundImage: `url('${modulo.urlImagen}')`, backgroundSize: 'cover' }}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >

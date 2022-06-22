@@ -17,13 +17,24 @@ const ArboladoUrbano = () => {
         <section>
           <Title variant='h3' component='h1'>Arbolado Urbano</Title>
           <Typography mb={3}>
-            El arbolado urbano es el conjunto de árboles que se encuentran en las zonas urbanas, que a su vez proporcionan una variedad de beneficios ambientales, que generan efectos positivos en la mitigación del cambio climático. La presencia del arbolado forma parte de una infraestructura verde que impacta en el aspecto social, económico y cultural, mejorando la calidad de vida de la sociedad y mantener la resiliencia de las ciudades.
+            El arbolado urbano es el conjunto de árboles que se encuentran en
+            las zonas urbanas, que a su vez proporcionan una variedad de beneficios
+            ambientales, que generan efectos positivos en la mitigación del cambio
+            climático. La presencia del arbolado forma parte de una infraestructura
+            verde que impacta en el aspecto social, económico y cultural,
+            mejorando la calidad de vida de la sociedad y mantener la resiliencia de las ciudades.
           </Typography>
         </section>
         <section>
           <Title variant='h4' component='h2'>Regla 3-30-300</Title>
           <Typography mb={3}>
-            Esta regla esta enfocada a mejorar la calidad del arbolado urbano contribuyendo a su vez en el bienestar y la salud humana. Lo primero consiste en observar 3 árboles desde casa de un tamaño considerable, tener como mínimo el 30% de cobertura vegetal en su colonia y vivir a menor distancia de 300 m de un espacio verde. Aunque el estado actual de las ciudades es diferente, utilizar esta regla aporta a la necesidad de tener un sistema arbóreo bien planificado y establecido en la ciudad.
+            Esta regla esta enfocada a mejorar la calidad del arbolado urbano
+            contribuyendo a su vez en el bienestar y la salud humana. Lo primero
+            consiste en observar <span style={{ fontWeight: 'bold' }}>3 árboles desde casa</span> de un tamaño considerable,
+            tener como <span style={{ fontWeight: 'bold' }}>mínimo el 30% de cobertura vegetal</span> en su colonia y
+            <span style={{ fontWeight: 'bold' }}> vivir a una distancia menor de 300 metros de un espacio verde</span>. Aunque el estado actual
+            de las ciudades es diferente, utilizar esta regla aporta a la
+            necesidad de tener un sistema arbóreo bien planificado y establecido en la ciudad.
           </Typography>
         </section>
         <section>
@@ -33,14 +44,18 @@ const ArboladoUrbano = () => {
               <Grid item container mb={{ xs: 2, md: 0 }}>
                 <Grid item xs={12} lg={8}>
                   <Box sx={{
-                    backgroundColor: 'lightslategray',
                     margin: 1,
-                    height: '300px',
+                    height: '500px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                    Mapa
+                    <iframe
+                      height='100%'
+                      width='100%'
+                      src='https://geoportal.implanchihuahua.org/sigmun/apps/webappviewer/index.html?id=842822f688c641ca90b69007fccc6b61'
+                      title='SADRE - Modelo de Reforestación urbana con sentido social'
+                    >Mapa</iframe>
                   </Box>
                 </Grid>
                 <Grid
@@ -86,14 +101,20 @@ const ArboladoUrbano = () => {
                 </Grid>
                 <Grid item xs={12} lg={8}>
                   <Box sx={{
-                    backgroundColor: 'lightslategray',
                     margin: 1,
-                    height: '300px',
+                    height: '500px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center'
                   }}>
-                    Mapa
+                    <iframe
+                      height='100%'
+                      width='100%'
+                      src='https://geoportal.implanchihuahua.org/sigmun/apps/Styler/index.html?appid=4b73f84656264dba8b027d5fed38d6d2'
+                      title='Green View'
+                    >
+                      Mapa
+                    </iframe>
                   </Box>
                 </Grid>
               </Grid>
@@ -102,7 +123,7 @@ const ArboladoUrbano = () => {
                   <Box sx={{
                     backgroundColor: 'lightslategray',
                     margin: 1,
-                    height: '300px',
+                    height: '500px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center'
@@ -146,26 +167,25 @@ const ArboladoUrbano = () => {
         </section>
         <section>
           <Title variant='h4' component='h2' mt={3}>Censo del Arbolado</Title>
-          <Typography>Magni architecto ea impedit eaque alias adipisci veritatis quos.</Typography>
+          <Typography>
+            El Instituto de Planeación Integral del Municipio de Chihuahua con
+            el propósito de contribuir a una ciudad resiliente y  sustentable,
+            desarrolló un proyecto como instrumento que ofrece información actual
+            de las condiciones y características en que se encuentra la estructura
+            del arbolado, así como de su función y los beneficios ambientales,
+            sociales y económicos que puede proveer los árboles para la ciudad
+            de Chihuahua, a través de un inventario forestal utilizando la
+            aplicación de Árbol mid y procesando datos a través de la
+            herramienta I-Tree Eco v6.
+          </Typography>
           <section>
-            <Title variant='h5' component='h3' mt={3}>Catalogo</Title>
+            <Title variant='h5' component='h3' mt={3}>Catálogo</Title>
             <ul>
               <li>synthesize extensible ROI</li>
               <li>strategize interactive networks</li>
               <li>monetize magnetic users</li>
               <li>reintermediate revolutionary channels</li>
             </ul>
-          </section>
-          <section>
-            <Title variant='h5' component='h3' mt={3}>Aplicación ArbolMid</Title>
-            <Typography>Quam et aut omnis reprehenderit exercitationem dolore. Eos animi aliquid amet iure sint. Autem quisquam omnis et quis qui.</Typography>
-            <Button
-              target='_blank'
-              rel='noreferrer noopener'
-              href='#'
-              size='lg'
-              variant='outlined'
-              endIcon={<Android />}>Aplicación</Button>
           </section>
         </section>
       </Container>

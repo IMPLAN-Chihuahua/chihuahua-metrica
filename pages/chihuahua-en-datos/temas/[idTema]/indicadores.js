@@ -104,7 +104,7 @@ export default function Modulo(props) {
               position: 'relative',
             }}>
             <Image
-              loader={() => `http://localhost:8080${selectedTema.urlImagen}`}
+              loader={() => selectedTema.urlImagen}
               src={selectedTema.urlImagen}
               layout='fill'
               objectFit='cover'

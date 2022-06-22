@@ -33,17 +33,15 @@ const Navbar = ({ navLinks }) => {
             {
               navLinks.map(
                 ({ title, path, cssName }, i) => (
-                  <>
-                    <Link href={path} key={i} passHref >
-                      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} key={i} className={`${style.pointer} ${style[cssName]}`}>
-                        <a key={i}>
-                          {title}
-                          <br />
-                          <span className={style.dot}></span>
-                        </a>
-                      </Box>
-                    </Link>
-                  </>
+                  <Link href={path} key={i} passHref >
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} key={i} className={`${style.pointer} ${style[cssName]}`}>
+                      <a key={i}>
+                        {title}
+                        <br />
+                        <span className={style.dot}></span>
+                      </a>
+                    </Box>
+                  </Link>
                 )
               )
             }

@@ -1,5 +1,5 @@
-.background {
-    background-image: url('./ejele.png');
+.background404 {
+    background-image: url('./error.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -43,6 +43,16 @@
     animation-direction: alternate;
 }
 
+.rocketGoesWuWu {
+    position: absolute;
+    left: 29%;
+    width: 40%;
+    animation-duration: 3s;
+    animation-name: RocketWuWu;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
 @keyframes RocketMovement {
     from {
         bottom: 2%;
@@ -52,6 +62,20 @@
 
     to {
         bottom: 15%;
+        transform: rotate(-1deg);
+        /* margin-left: -25%; */
+    }
+}
+
+@keyframes RocketWuWu {
+    from {
+        bottom: 15%;
+        transform: rotate(1deg);
+        /* margin-left: 25%; */
+    }
+
+    to {
+        bottom: 100%;
         transform: rotate(-1deg);
         /* margin-left: -25%; */
     }

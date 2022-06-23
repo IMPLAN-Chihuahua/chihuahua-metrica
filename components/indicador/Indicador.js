@@ -16,6 +16,7 @@ const Indicador = (props) => {
   const updatedAt = indicador.updatedAt.split('T')[0];
   return (
     <Card variant='outlined'>
+      {JSON.stringify(indicador.catalogos)}
       <CardActionArea sx={{ padding: 2 }}>
         <NextLink href={`/chihuahua-en-datos/indicadores/${indicador.id}`} >
           <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2}>

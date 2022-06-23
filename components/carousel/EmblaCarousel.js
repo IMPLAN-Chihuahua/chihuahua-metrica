@@ -1,19 +1,127 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { DotButton, PrevButton, NextButton } from "./EmblaCarouselButtons";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from 'embla-carousel-autoplay'
-import slides from '../../helpers/CarouselImages'
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import style from '../../styles/EmblaCarousel.module.css'
 import Image from "next/image";
 
+const SLIDES = [
+  {
+    name: "banner-01",
+    url: `/banner-01-828w.webp`,
+    projectURL: "NaN",
+  },
+  {
+    name: "banner-03",
+    description: "Arbolado Banner",
+    url: `/banner-03-828w.webp`,
+    projectURL: "#proyectos",
+  },
+  {
+    name: "banner-02",
+    description: "Proyecto de indicadores del municipio de Chihuahua",
+    url: `/banner-02-828w.webp`,
+    projectURL: "http://localhost:3000/chihuahua-en-datos",
+  },
+]
+
+const Description = React.memo(({ name }) => {
+  switch (name) {
+    case 'banner-01':
+      return (
+        <Box sx={{
+          position: 'absolute',
+          maxWidth: 750,
+          left: { xs: '', md: '5%' },
+          top: { xs: '23%', sm: '43%' }
+        }}>
+          <Typography
+            fontSize={32}
+            fontWeight={300}
+            textAlign='center'
+            color='white'
+            sx={{
+              textShadow: '1px 2px rgba(0, 0, 0, 0.8)'
+            }}>
+            <span className="highlight-text">Chihuahua Métrica </span>
+            es una plataforma digital para <span className='highlight-text'>informar, monitorear
+              y evaluar</span> su transformación en el ámbito de la planeación urbana y territorial
+          </Typography>
+        </Box>
+      )
+    case 'banner-02':
+      return (
+        <Box
+          sx={{
+            position: 'absolute',
+            maxWidth: 900,
+            right: { xs: '', md: '5%' },
+            top: { xs: '23%', sm: '43%' }
+          }}>
+          <Typography
+            fontSize={32}
+            fontWeight={300}
+            textAlign='center'
+            color='white'
+            sx={{
+              textShadow: '1px 2px rgba(0, 0, 0, 0.8)'
+            }}>
+            <span className='highlight-text'>Sistema de indicadores del municipio de Chihuahua</span> <br />
+            Es una herramienta que transforma información compleja
+            en información simple, presentada en indicadores y mapas
+          </Typography>
+        </Box>
+      )
+    case 'banner-03':
+      return (<Box
+        sx={{
+          position: 'absolute',
+          width: { sm: '100%', md: '80%' },
+          top: { xs: '10%', md: '50%' },
+          left: { md: '50%' },
+          transform: { md: 'translate(-50%, -50%)' },
+        }}>
+        <Typography
+          fontSize={32}
+          fontWeight={300}
+          textAlign='center'
+          height='auto'
+          color='white'
+          sx={{
+            textShadow: '1px 3px rgba(0, 0, 0, 0.8)'
+          }}>
+          <span className="highlight-text">Plantar un árbol construye la infraestructura verde de la ciudad </span><br />
+          mitigando el cambio climático y acercando los servicios ambientales <br />
+          a las personas, además de apropiarse del espacio público y de las áreas verdes
+        </Typography>
+      </Box>);
+    default:
+      return (<>invalid</>)
+  }
+});
+
+const Slide = ({ slide }) => {
+  return (
+    <Box className={style.embla__slide} key={slide.name}>
+      <Image src={slide.url} layout='fill' objectFit='cover' objectPosition='center' />
+      <Description name={slide.name} />
+    </Box>
+  );
+}
+
 const EmblaCarousel = () => {
-  const options = { delay: 15000 } // Options
-  const autoplayRoot = (emblaRoot) => emblaRoot.parentElement // Root node
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false, loop: true, startIndex: 0, draggable: false }, [Autoplay(options, autoplayRoot)]);
+  const options = { delay: 15000 };
+  const autoplayRoot = (emblaRoot) => emblaRoot.parentElement;
+  const [viewportRef, embla] = useEmblaCarousel({
+    kipSnaps: false,
+    loop: true,
+    startIndex: 0,
+    draggable: true
+  }, [Autoplay(options, autoplayRoot)]);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedSlide, setSelectedSlide] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
@@ -24,10 +132,10 @@ const EmblaCarousel = () => {
 
   const onSelect = useCallback(() => {
     if (!embla) return;
-    setSelectedIndex(embla.selectedScrollSnap());
+    setSelectedSlide(embla.selectedScrollSnap());
     setPrevBtnEnabled(embla.canScrollPrev());
     setNextBtnEnabled(embla.canScrollNext());
-  }, [embla, setSelectedIndex]);
+  }, [embla, setSelectedSlide]);
 
   useEffect(() => {
     if (!embla) return;
@@ -35,30 +143,14 @@ const EmblaCarousel = () => {
     setScrollSnaps(embla.scrollSnapList());
     embla.on("select", onSelect);
   }, [embla, setScrollSnaps, onSelect]);
+
   return (
     <>
-      <Box className={style.embla} >
+      <Box className={style.embla} style={{ marginTop: '5vh' }} >
         <Box className={style.embla__viewport} ref={viewportRef}>
           <Box className={style.embla__container}>
-            {slides.map((index) => (
-              <Box className={style.embla__slide} key={index.name}>
-                <Box className={style.embla__slide__inner}>
-                  <a href={index.projectURL}>
-                    <Image
-                      src={index.url}
-                      blurDataURL={index.url}
-                      placeholder="blur"
-                      id={index.name}
-                      alt={`Fotografía banner de: ${index.description}`}
-                      title={index.description}
-                      width='100%'
-                      height='50px'
-                      layout="responsive"
-                      priority
-                    />
-                  </a>
-                </Box>
-              </Box>
+            {SLIDES.map((slide, idx) => (
+              <Slide slide={slide} key={idx} />
             ))}
           </Box>
         </Box>
@@ -69,7 +161,7 @@ const EmblaCarousel = () => {
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}
-            selected={index === selectedIndex}
+            selected={index === selectedSlide}
             onClick={() => scrollTo(index)}
           />
         ))}

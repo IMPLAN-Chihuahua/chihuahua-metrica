@@ -6,12 +6,11 @@
 .aboutUs {
     text-align: center;
     padding: 0 200px 0 200px !important;
-
 }
 
 .aboutBody {
     background-color: aquamarine;
-
+    padding: 20px;
     margin-top: 2%;
 }
 
@@ -21,7 +20,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 10px;
+    padding: 0 100px 0 100px !important;
 }
 
 .infoContainer {
@@ -33,12 +32,16 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: rgb(32, 107, 82);
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
 }
 
 .aboutIconContainer {
     height: 100px !important;
     width: 100px !important;
-    background-color: rgb(32, 107, 82);
+    transition: 1s;
 }
 
 .aboutIcon {
@@ -46,7 +49,48 @@
     height: 80% !important;
 }
 
-.information {}
+.infoContainer:hover .aboutIconContainer {
+    transition: 1s;
+    background: var(--gradient);
+    background-size: 600% 600%;
+    height: 90px !important;
+    width: 90px !important;
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
+
+}
+
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+
 
 /* .aboutBody {
     height: 100%;

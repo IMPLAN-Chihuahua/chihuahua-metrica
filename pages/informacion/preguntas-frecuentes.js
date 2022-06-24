@@ -7,6 +7,7 @@ const questions = () => {
 
   return (
     <Container>
+      <br />
       <Title variant={'h4'}>Preguntas frecuentes</Title>
       <QuestionsContent />
     </Container>

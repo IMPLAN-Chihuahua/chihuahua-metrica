@@ -5,24 +5,25 @@ import Autoplay from 'embla-carousel-autoplay'
 import { Box, Typography } from "@mui/material";
 import style from '../../styles/EmblaCarousel.module.css'
 import Image from "next/image";
+import NextLink from "next/link";
 
 const SLIDES = [
   {
     name: "banner-01",
-    url: `/banner-01-828w.webp`,
-    projectURL: "NaN",
+    imgSrc: `/banner-01-828w.webp`,
+    href: "NaN",
   },
   {
     name: "banner-03",
     description: "Arbolado Banner",
-    url: `/banner-03-828w.webp`,
-    projectURL: "#proyectos",
+    imgSrc: `/banner-03-828w.webp`,
+    href: "/arbolado-urbano",
   },
   {
     name: "banner-02",
     description: "Proyecto de indicadores del municipio de Chihuahua",
-    url: `/banner-02-828w.webp`,
-    projectURL: "http://localhost:3000/chihuahua-en-datos",
+    imgSrc: `/banner-02-828w.webp`,
+    href: "/chihuahua-en-datos",
   },
 ]
 
@@ -103,10 +104,12 @@ const Description = React.memo(({ name }) => {
 
 const Slide = ({ slide }) => {
   return (
-    <Box className={style.embla__slide} key={slide.name}>
-      <Image src={slide.url} layout='fill' objectFit='cover' objectPosition='center' />
-      <Description name={slide.name} />
-    </Box>
+    <NextLink href={slide.href}>
+      <Box className={style.embla__slide} key={slide.name}>
+        <Image src={slide.imgSrc} layout='fill' objectFit='cover' objectPosition='center' />
+        <Description name={slide.name} />
+      </Box>
+    </NextLink>
   );
 }
 

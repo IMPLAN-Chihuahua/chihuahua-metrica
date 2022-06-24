@@ -39,7 +39,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Lobster;
+  font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
   overflow: visible !important;
 }
 
@@ -49,7 +49,7 @@ a {
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   position: relative;
   height: 100%;
   width: 100%;
@@ -57,7 +57,7 @@ a {
 }
 
 .overlay:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .center-content {
@@ -96,4 +96,8 @@ a {
 
 .background {
   background-color: red;
+}
+
+.highlight-text {
+  font-weight: bold;
 }

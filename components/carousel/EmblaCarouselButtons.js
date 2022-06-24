@@ -16,6 +16,7 @@ export const DotButton = ({ selected, onClick }) => (
 export const PrevButton = ({ enabled, onClick }) => (
   <>
     <button
+      style={{ width: 100 }}
       className={`${style.embla__button} ${style['embla__button--prev']}`}
       onClick={onClick}
       disabled={!enabled}

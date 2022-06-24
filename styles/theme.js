@@ -2,6 +2,13 @@ import { createTheme } from "@mui/material/styles";
 import { responsiveFontSizes } from "@mui/material/styles";
 
 let theme = createTheme({
+    typography: {
+        fontFamily: [
+            'Segoe UI',
+            'Helvetica Neue',
+            'sans-serif'
+        ].join(',')
+    },
     palette: {
         primary: {
             main: '#000000',

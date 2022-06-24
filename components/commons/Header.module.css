@@ -27,7 +27,7 @@
 
 .disappear {
     overflow: hidden;
-    height: -70px !important;
+    height: -5vh !important;
     display: none !important;
 }
 

@@ -5,12 +5,12 @@ const PROJECTS = [
   {
     name: 'Chihuahua en Datos',
     url: '/chihuahua-en-datos', 
-    image: '/01-Planeación_-estructura-urbana-y-territorio.webp'
+    image: '/chihuahua-en-datos.webp'
   },
   {
     name: 'Arbolado Urbano',
     url: '/arbolado-urbano',
-    image: '/09-Medio-ambiente-y-recursos-naturales.webp'
+    image: '/arbolado-urbano.webp'
   },
 ]
 

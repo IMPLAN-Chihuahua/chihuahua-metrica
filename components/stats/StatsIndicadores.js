@@ -36,15 +36,15 @@ const StatsIndicadores = () => {
     name: 'Árboles por persona'
   }, {
     icon: '/stat_3.png',
-    value: '34',
+    value: '34 habitantes',
     name: 'Densidad de población urbana'
   }, {
     icon: '/stat_2.png',
-    value: '60%',
+    value: 'NN habitantes',
     name: 'Población de la ciudad'
   }, {
     icon: '/stat_4.png',
-    value: '111.9171096',
+    value: '111.91 habitantes',
     name: 'Densidad de población municipal'
   }];
 

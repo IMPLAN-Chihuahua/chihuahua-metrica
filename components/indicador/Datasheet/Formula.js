@@ -5,7 +5,6 @@ import style from './Formula.module.css'
 import { Typography } from "@mui/material";
 
 const Formula = ({ formula, fuente }) => {
-  console.log(formula);
   return (
     <>
       <style jsx>{`

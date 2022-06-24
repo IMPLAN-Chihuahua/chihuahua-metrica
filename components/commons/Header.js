@@ -18,8 +18,6 @@ import { Box } from "@mui/system";
 import { ArrowBackIos, ArrowBackIosNew, ArrowBackIosOutlined } from "@mui/icons-material";
 import Modal from '@mui/material/Modal';
 
-const Offset = styled("div")();
-
 const navLinks = [
   { title: 'Inicio', path: '/', cssName: 'inicio' },
   { title: 'Proyectos', path: '#proyectos', cssName: 'proyectos' },
@@ -123,7 +121,7 @@ const Header = () => {
           }
         </Grid>
       </AppBar>
-      <Offset id="back-to-top" />
+      <div id="back-to-top" />
       <BackToTop>
         <Fab sx={{
           backgroundColor: "primary.subtleMain",
@@ -133,7 +131,7 @@ const Header = () => {
           }
         }}
           size="large"
-          aria- label="back to top">
+        >
           <KeyboardArrowUp />
         </Fab>
       </BackToTop>
@@ -142,8 +140,6 @@ const Header = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
           <iframe width="1180" height="480" src="https://www.youtube.com/embed/5Jc6aMbJkAc" title="Métrica  Chihuahua" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

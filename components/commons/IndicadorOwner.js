@@ -7,12 +7,13 @@ import MailIcon from '@mui/icons-material/Mail';
 import Title from './Title'
 
 const IndicadorOwner = ({ authorID, indicadorDate }) => {
+
     return (
         <>
             <Title variant='h4' component='h2'>Responsable</Title>
             <Grid container className={`${style.indicadorOwner}`}>
 
-                <Grid item xs={12} sm={12} md={8} lg={6} xl={6} className={`${style.cardBody}`}>
+                <Grid item sm={12} md={8} lg={6} xl={6} className={`${style.cardBody}`}>
                     <Box className={`${style.cardContainer}`}>
                         <Box className={`${style.imageContainer}`}>
                             <Avatar alt='Bobby P.' src='https://media.gq.com.mx/photos/61f8318a45749103d307bf61/2:3/w_1124,h_1686,c_limit/robert%20pattinson.jpg' sx={{ width: 100, height: 100 }}>
@@ -42,6 +43,26 @@ const IndicadorOwner = ({ authorID, indicadorDate }) => {
             </Grid>
         </>
     )
+}
+
+export async function getServerSideProps(context) {
+    const idUsuario = context.params.idUsuario;
+    const rest = await fetch(
+        `${process.env.INDICADORES_BASE_URL}/usuarios/${idUsuario}/profile`
+    );
+
+    const data = await res.json();
+    if (res.status === 200) {
+        return {
+            props: { ...data },
+        };
+    } else {
+        return {
+            props: {
+                data: [],
+            }
+        }
+    }
 }
 
 export default IndicadorOwner

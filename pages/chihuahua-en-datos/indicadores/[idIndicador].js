@@ -9,7 +9,6 @@ import IndicadorOwner from "@components/commons/IndicadorOwner";
 
 export default function FichaTecnica(props) {
   const indicador = props.data;
-
   const crumbs = [{
     text: 'Chihuahua en Datos',
     href: '/chihuahua-en-datos'
@@ -28,7 +27,7 @@ export default function FichaTecnica(props) {
         <DataSheet datasheet={indicador} />
         <GraphBox history={indicador} />
         <MapButton mapa={indicador.mapa} />
-        <IndicadorOwner />
+        <IndicadorOwner authorID={indicador.createdBy} indicadorDate={indicador.updatedAt} />
       </Container>
     </>
   );

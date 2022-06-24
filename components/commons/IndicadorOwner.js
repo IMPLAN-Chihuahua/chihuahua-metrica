@@ -6,8 +6,7 @@ import style from './IndicadorOwner.module.css'
 import MailIcon from '@mui/icons-material/Mail';
 import Title from './Title'
 
-const IndicadorOwner = ({ authorID, indicadorDate }) => {
-
+const IndicadorOwner = ({ authorID, indicadorDate }, props) => {
     return (
         <>
             <Title variant='h4' component='h2'>Responsable</Title>
@@ -47,7 +46,8 @@ const IndicadorOwner = ({ authorID, indicadorDate }) => {
 
 export async function getServerSideProps(context) {
     const idUsuario = context.params.idUsuario;
-    const rest = await fetch(
+
+    const res = await fetch(
         `${process.env.INDICADORES_BASE_URL}/usuarios/${idUsuario}/profile`
     );
 

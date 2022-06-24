@@ -8,7 +8,6 @@ import { UNIDAD_MEDIDA, COBERTURA_GEOGRAFICA } from "../Indicador";
 
 const DataSheet = (datasheet) => {
   const { datasheet: data } = datasheet;
-  console.log(data.tendenciaActual);
 
   const tendenciaIcon = data.tendenciaActual === 'Ascendente'
     ? <ArrowUpward sx={{ fontSize: '80px' }} />
@@ -37,10 +36,10 @@ const DataSheet = (datasheet) => {
   return (
     <>
       <Title variant='h4' component='h2'>Ficha técnica</Title>
-      <Grid container xs={12} spacing={1}>
+      <Grid container spacing={1}>
         <Grid item container xs={12} md={6} spacing={1}>
           {INDICADOR_FIELDS.map(field => (
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} key={field.value}>
               <Information title={field.title} helperText={field?.helperText}>
                 {field.value}
               </Information>

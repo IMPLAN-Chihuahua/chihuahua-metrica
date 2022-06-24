@@ -33,7 +33,9 @@ const Tema = ({ modulo }) => {
 
 
 const TemaList = ({ modulos }) => {
-  return modulos.map((modulo) => (<Tema key={modulo.id} modulo={modulo} />))
+  return modulos.map((modulo) => (
+    parseInt(modulo.indicadoresCount) > 0 && <Tema key={modulo.id} modulo={modulo} />
+  ))
 };
 
 export default TemaList;

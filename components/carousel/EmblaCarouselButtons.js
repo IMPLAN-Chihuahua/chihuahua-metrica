@@ -8,7 +8,6 @@ export const DotButton = ({ selected, onClick }) => (
       type="button"
       onClick={onClick}
       title="Botón de selección de imagen"
-      aria-label="Botón que permite desplazarse entre imágenes"
     />
   </>
 );
@@ -21,7 +20,6 @@ export const PrevButton = ({ enabled, onClick }) => (
       onClick={onClick}
       disabled={!enabled}
       title="Imagen previa"
-      aria-label="Botón que permite desplazarse a la imagen anterior"
     >
       <div>
         <svg className={`${style.embla__button__svg}`} viewBox="137.718 -1.001 366.563 644">
@@ -39,7 +37,6 @@ export const NextButton = ({ enabled, onClick }) => (
       onClick={onClick}
       disabled={!enabled}
       title="Imagen siguiente"
-      aria-label="Botón que permite desplazarse a la imagen siguiente"
     >
       <div>
         <svg className={`${style.embla__button__svg}`} viewBox="0 0 238.003 238.003">

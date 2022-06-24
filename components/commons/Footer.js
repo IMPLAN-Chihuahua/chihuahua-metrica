@@ -90,39 +90,35 @@ const Footer = () => {
                                 <a
                                     alt="Ícono de Facebook que redirecciona hacia el perfil del IMPLAN"
                                     title='¡Síguenos en Facebook!'
-                                    aria-label="Ícono de Facebook"
                                     target='_blank'
                                     rel='noreferrer noopener'
                                     className={styles.underline}>
                                     <Facebook fontSize='large' style={{ color: '#4267B2' }} />
                                 </a>
                             </NextLink>
-                            <NextLink aria-label="Ícono de Twitter" href='https://twitter.com/IMPLANChih?s=08' passHref={true}>
+                            <NextLink href='https://twitter.com/IMPLANChih?s=08' passHref={true}>
                                 <a
                                     alt="Ícono de Twitter que redirecciona hacia al perfil del IMPLAN"
                                     title='¡Síguenos en Twitter!'
-                                    aria-label="Ícono de Twitter"
                                     target='_blank'
                                     rel='noreferrer noopener'
                                     className={styles.underline}>
                                     <Twitter fontSize='large' style={{ color: '#1DA1F2' }} />
                                 </a>
                             </NextLink>
-                            <NextLink aria-label="Ícono de Instagram" href='https://www.instagram.com/implanchihuahua/' passHref={true}>
+                            <NextLink href='https://www.instagram.com/implanchihuahua/' passHref={true}>
                                 <a alt='Ícono de Instagram que redirecciona al perfil del IMPLAN'
                                     title='¡Síguenos en Instagram!'
-                                    aria-label='Ícono de Instagram'
                                     target='_blank'
                                     rel='noreferrer noopener'
                                     className={styles.underline}>
                                     <Instagram fontSize='large' style={{ color: '#E1306C' }} />
                                 </a>
                             </NextLink>
-                            <NextLink aria-label="Ícono de Instagram" href='https://www.youtube.com/channel/UCOVGOuYfPdbttVLNz0yjGSg' passHref={true}>
+                            <NextLink href='https://www.youtube.com/channel/UCOVGOuYfPdbttVLNz0yjGSg' passHref={true}>
                                 <a
                                     alt='Ícono de Instagram que redirecciona al perfil del IMPLAN'
                                     title='¡Síguenos en Instagram!'
-                                    aria-label='Ícono de Instagram'
                                     target='_blank'
                                     rel='noreferrer noopener'
                                     className={styles.underline}>

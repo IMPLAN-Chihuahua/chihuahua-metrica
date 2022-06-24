@@ -64,7 +64,7 @@ const TopData = (info) => {
             icon={<Image src={getDocumentIconSrc('xlsx')} height={40} width={40} />} />
         </Grid>
         {DOC_FORMATS.map(format => (
-          <Grid item xs={6} ml={1} mr={1}>
+          <Grid item xs={6} ml={1} mr={1} key={format}>
             <DocumentButton
               format={format}
               indicadorId={data.id}

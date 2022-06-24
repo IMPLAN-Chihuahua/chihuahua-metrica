@@ -97,7 +97,12 @@ const Formula = ({ formula, fuente }) => {
                   <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más información.</Typography>
                 </div>
                 <div className="test">
-                  <Typography variant='caption' component='h2'><small>{fuente}</small></Typography>
+                  <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-all' }}>
+                    <small>
+                      {fuente}
+
+                    </small>
+                  </Typography>
                 </div>
               </div>
             )

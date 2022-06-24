@@ -9,6 +9,7 @@ import IndicadorOwner from "@components/commons/IndicadorOwner";
 
 export default function FichaTecnica(props) {
   const indicador = props.data;
+
   const crumbs = [{
     text: 'Chihuahua en Datos',
     href: '/chihuahua-en-datos'
@@ -40,6 +41,7 @@ export async function getServerSideProps(context) {
   );
 
   const data = await res.json();
+
   if (res.status === 200) {
     return {
       props: { ...data },

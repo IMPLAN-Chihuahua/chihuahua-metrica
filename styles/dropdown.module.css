@@ -33,7 +33,7 @@
 .conocenos:hover>a>.dot,
 .contacto:hover>a>.dot {
   opacity: 1;
-  transition: 1s;
+  transition: 0.5s;
 }
 
 .dropdown {

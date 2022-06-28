@@ -121,14 +121,20 @@ const ArboladoUrbano = () => {
               <Grid item container mb={{ xs: 2, md: 0 }}>
                 <Grid item xs={12} lg={8}>
                   <Box sx={{
-                    backgroundColor: 'lightslategray',
                     margin: 1,
                     height: '500px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center'
                   }}>
-                    Mapa
+                    <iframe
+                      height='100%'
+                      width='100%'
+                      src='https://geoportal.implanchihuahua.org/sigmun/apps/instant/media/index.html?appid=25d7bf6eebb545e0b5205de75bb8ad6f'
+                      title='GVI'
+                    >
+                      Mapa
+                    </iframe>
                   </Box>
                 </Grid>
                 <Grid
@@ -148,19 +154,18 @@ const ArboladoUrbano = () => {
                     }}
                   >
                     <Typography fontWeight='bold' textAlign='center' fontSize={30}>60%</Typography>
-                    <Typography fontWeight='500' textAlign='center'>De la población vive</Typography>
-                    <Typography fontWeight='500' textAlign='center'>cerca de un parque</Typography>
+                    <Typography fontWeight='500' textAlign='center'>De la población vive <br /> cerca de un parque</Typography>
                   </Box>
                 </Grid>
               </Grid>
             </Grid>
           </section>
           <Title variant='h5' component='h3'>Fuente</Title>
-          <Typography mb={1}>Et quod magni cumque. Eaque fugit ducimus mollitia est. Debitis cumque impedit magnam molestias voluptatem. Consequatur commodi doloribus aspernatur dolor.</Typography>
+          <Typography mb={1}>Para calcular el GVI, se utilizó una herramienta desarrollada por el <b>Senseable City Lab del MIT</b>. El código fuente se encuentra en el siguiente enlace. </Typography>
           <Button
             target='_blank'
             rel='noreferrer noopener'
-            href='#'
+            href='https://github.com/mittrees/Treepedia_Public'
             size='lg'
             variant='outlined'
             endIcon={<GitHub />}>Repositorio Github</Button>

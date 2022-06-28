@@ -56,40 +56,7 @@ const SideBar = ({ navLinks }) => {
                     </Link>
                 </Typography>
             ))}
-            <Typography
-                onClick={handleItemsSubMenu}
-                sx={{
-                    ml: 5,
-                    my: 2,
-                    textTransform: 'uppercase',
-                    color: 'common.white',
 
-                }}
-            >
-                Proyectos
-            </Typography>
-
-
-            {itemsSubMenu.map(({ title, path }, i) => (
-                <Typography
-                    variannt='button'
-                    key={`${title}ID${i}`}
-                    onClick={toggleBar(anchor, false)}
-                    sx={{
-                        ml: 5,
-                        my: 2,
-                        textTransform: 'uppercase',
-                        color: 'common.white',
-                    }}
-                >
-
-                    <Link href={path} key={title} >
-                        <a>
-                            • {title}
-                        </a>
-                    </Link>
-                </Typography>
-            ))}
         </Box>
     );
     return (

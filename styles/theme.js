@@ -28,7 +28,7 @@ let theme = createTheme({
         },
 
         info: {
-            main: '#E3F6FA',
+            main: '#caf0f8',
             outline: '#D7D0D8',
         },
 

@@ -74,33 +74,12 @@ const Description = React.memo(({ name }) => {
           </Typography>
         </Box>
       )
-    case 'banner-03':
-      return (<Box
-        sx={{
-          position: 'absolute',
-          width: { sm: '100%', md: '80%' },
-          top: { xs: '10%', md: '50%' },
-          left: { md: '50%' },
-          transform: { md: 'translate(-50%, -50%)' },
-        }}>
-        <Typography
-          fontSize={32}
-          fontWeight={300}
-          textAlign='center'
-          height='auto'
-          color='white'
-          sx={{
-            textShadow: '1px 3px rgba(0, 0, 0, 0.8)'
-          }}>
-          <span className="highlight-text">Plantar un árbol construye la infraestructura verde de la ciudad </span><br />
-          mitigando el cambio climático y acercando los servicios ambientales <br />
-          a las personas, además de apropiarse del espacio público y de las áreas verdes
-        </Typography>
-      </Box>);
     default:
-      return (<>invalid</>)
+      return null;
   }
 });
+
+Description.displayName = 'Description';
 
 const Slide = ({ slide }) => {
   return (

@@ -5,6 +5,10 @@
   color: #bbddde;
 }
 
+.footerList li {
+  margin-bottom: 5px;
+}
+
 .footerContainer {
   text-align: center;
 }

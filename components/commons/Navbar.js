@@ -5,6 +5,34 @@ import NextLink from 'next/link';
 import style from '../../styles/dropdown.module.css'
 import { useState, useEffect } from "react";
 
+const NavLink = ({ title, path, cssName }) => {
+  return (
+    <>
+      <NextLink href={path} passHref >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+          className={`${style.pointer} ${style[cssName]}`}
+        >
+          <a
+            style={{
+              fontWeight: 500,
+              fontSize: '1.2rem',
+            }}
+          >
+            {title}
+            <br />
+            <span className={style.dot}></span>
+          </a>
+        </Box>
+      </NextLink>
+    </>
+  );
+}
+
 const Navbar = ({ navLinks }) => {
 
   const [scrollPosition, setScroll] = useState(0)
@@ -33,30 +61,17 @@ const Navbar = ({ navLinks }) => {
             direction="row"
             style={{ borderBottom: scrollPosition > 100 ? '' : '1px solid white' }}
             spacing={3}
-            className={`${style.navbar} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}>
-            {
-              navLinks.map(
-                ({ title, path, cssName }, i) => (
-                  <NextLink href={path} key={i} passHref >
-                    <Box sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center'
-                    }} key={i} className={`${style.pointer} ${style[cssName]}`}>
-                      <a key={i} style={{
-                        fontWeight: 500,
-                        fontSize: '1.2rem',
-                      }}
-                      >
-                        {title}
-                        <br />
-                        <span className={style.dot}></span>
-                      </a>
-                    </Box>
-                  </NextLink>
-                )
+            className={`${style.navbar} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}
+          >
+            {navLinks.map(
+              ({ title, path, cssName }, i) => (
+                <NavLink
+                  title={title}
+                  path={path}
+                  cssName={cssName}
+                  key={i} />
               )
-            }
+            )}
           </Stack>
         </Toolbar>
       </Box>

@@ -70,7 +70,7 @@ const Header = () => {
               >
                 <NextLink href='/'>
                   <a>
-                    <Image src='/images/small-logo.png' width={210} height={60} alt="small Logo" />
+                    <Image src='/images/small-logo.png' width={210} height={60} objectFit='contain' alt="small Logo" />
                   </a>
                 </NextLink>
                 <img onClick={handleOpen} className={`${style.play}`} src='/images/video/playbtn.png' alt="play button" />
@@ -92,7 +92,7 @@ const Header = () => {
                 <Grid item flexGrow={1} className={`${style.navbarCentered} ${style.scrolledDown}`} md={2}>
                   <NextLink href='/'>
                     <a>
-                      <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} alt="small Logo" />
+                      <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} objectFit='contain' alt="small Logo" />
                     </a>
                   </NextLink>
 
@@ -111,7 +111,7 @@ const Header = () => {
                 scrollPosition > 100 &&
                 <NextLink href='/'>
                   <a>
-                    <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} alt="small Logo" />
+                    <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} objectFit='contain' alt="small Logo" />
                   </a>
                 </NextLink>
               }
@@ -142,7 +142,7 @@ const Header = () => {
         onClose={handleClose}
       >
         <Box sx={modalStyle}>
-          <iframe width="1180" height="480" src="https://www.youtube.com/embed/5Jc6aMbJkAc" title="Métrica  Chihuahua" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="1180" height="480" src="https://www.youtube.com/embed/5Jc6aMbJkAc" title="Métrica  Chihuahua" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
         </Box>
       </Modal>
     </>

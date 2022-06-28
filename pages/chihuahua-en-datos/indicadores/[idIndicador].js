@@ -9,6 +9,7 @@ import IndicadorOwner from "@components/commons/IndicadorOwner";
 
 export default function FichaTecnica(props) {
   const indicador = props.data;
+  const responsible = props.responsible;
 
   const crumbs = [{
     text: 'Chihuahua en Datos',
@@ -28,7 +29,7 @@ export default function FichaTecnica(props) {
         <DataSheet datasheet={indicador} />
         <GraphBox history={indicador} />
         <MapButton mapa={indicador.mapa} />
-        <IndicadorOwner authorID={indicador.createdBy} indicadorDate={indicador.updatedAt} />
+        <IndicadorOwner responsible={responsible.data} indicadorDate={indicador.updatedAt} />
       </Container>
     </>
   );
@@ -43,8 +44,21 @@ export async function getServerSideProps(context) {
   const data = await res.json();
 
   if (res.status === 200) {
+
+    const idUser = data.data.createdBy;
+
+    const [responsibleRes] = await Promise.all([
+      fetch(
+        `${process.env.INDICADORES_BASE_URL}/usuarios/${idUser}/profile`
+      ),
+    ]);
+
+    const [responsible] = await Promise.all([
+      responsibleRes.json(),
+    ]);
+
     return {
-      props: { ...data },
+      props: { ...data, responsible },
     };
   } else {
     return {

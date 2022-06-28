@@ -32,19 +32,19 @@ const Stat = ({ indicador, indextest }) => {
 const StatsIndicadores = () => {
   const somearray = [{
     icon: '/stat_1.png',
-    value: '0.23',
-    name: 'Árboles por persona'
+    value: '215,940 árboles',
+    name: 'Árboles en la ciudad'
   }, {
     icon: '/stat_3.png',
-    value: '34 habitantes',
+    value: '34 hab/ha',
     name: 'Densidad de población urbana'
   }, {
     icon: '/stat_2.png',
-    value: 'NN habitantes',
+    value: '925,762 hab',
     name: 'Población de la ciudad'
   }, {
     icon: '/stat_4.png',
-    value: '111.91 habitantes',
+    value: '111.91 hab/km',
     name: 'Densidad de población municipal'
   }];
 

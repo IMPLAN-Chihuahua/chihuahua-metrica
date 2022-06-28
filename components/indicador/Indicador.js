@@ -7,12 +7,21 @@ import CardActionArea from '@mui/material/CardActionArea';
 import NextLink from 'next/link';
 import { numberWithCommas } from 'helpers/FormatNumbers';
 
-export const ODS = 2;
-export const UNIDAD_MEDIDA = 0;
-export const COBERTURA_GEOGRAFICA = 1;
+export const ODS = 1;
+export const UNIDAD_MEDIDA = 2;
+export const COBERTURA_GEOGRAFICA = 3;
+
+const compareIds = (a, b) => {
+  if (a.idCatalogo > b.idCatalogo) {
+    return 1;
+  } else {
+    return -1;
+  }
+}
 
 const Indicador = (props) => {
   const indicador = props.value;
+  console.log(indicador.catalogos)
   const updatedAt = indicador.updatedAt.split('T')[0];
   return (
     <Card variant='outlined'>
@@ -65,34 +74,7 @@ const Indicador = (props) => {
                   flexItem
                   sx={{ borderRightWidth: 3 }}
                 />
-                <Grid
-                  item
-                  xs={4}
-                  md={2}
-                  container
-                  textAlign='center'
-                  display='flex'
-                  flexDirection='column'
-                  justifyContent='space-between'
-                >
-                  <Typography
-                    fontWeight='bold'
-                  >
-                    {indicador.catalogos[UNIDAD_MEDIDA]?.nombre || 'NA'}
-                  </Typography>
-                  <Typography>
-                    Unidad de Medida
-                  </Typography>
-                </Grid>
-                <Divider
-                  orientation='vertical'
-                  variant='middle'
-                  flexItem
-                  sx={{
-                    borderRightWidth: 3,
-                    display: { xs: 'none', md: 'block' }
-                  }}
-                />
+
                 <Grid
                   item
                   xs={4}
@@ -118,25 +100,71 @@ const Indicador = (props) => {
                   flexItem
                   sx={{ borderRightWidth: 3 }}
                 />
-                <Grid
-                  item
-                  xs={4}
-                  md={2}
-                  container
-                  textAlign='center'
-                  display='flex'
-                  flexDirection='column'
-                  justifyContent='space-between'
-                >
-                  <Typography
-                    fontWeight='bold'
-                  >
-                    {indicador.catalogos[COBERTURA_GEOGRAFICA]?.nombre || 'NA'}
-                  </Typography>
-                  <Typography>
-                    Cobertura Geográfica
-                  </Typography>
-                </Grid>
+
+                {
+                  indicador.catalogos.sort(compareIds).map((catalogo, index) => {
+                    if (catalogo.idCatalogo !== ODS) {
+                      if (catalogo.idCatalogo === UNIDAD_MEDIDA) {
+                        return (
+                          <>
+                            <Grid
+                              item
+                              xs={4}
+                              md={2}
+                              container
+                              textAlign='center'
+                              display='flex'
+                              flexDirection='column'
+                              justifyContent='space-between'
+                              key={index}
+                            >
+                              <Typography
+                                fontWeight='bold'
+                              >
+                                {catalogo.nombre || 'NA'}
+                              </Typography>
+                              <Typography>
+                                Unidad de Medida
+                              </Typography>
+                            </Grid>
+                            <Divider
+                              orientation='vertical'
+                              variant='middle'
+                              flexItem
+                              sx={{
+                                borderRightWidth: 3,
+                                display: { xs: 'none', md: 'block' }
+                              }}
+                            />
+                          </>
+                        )
+                      } else {
+                        return (
+                          <Grid
+                            item
+                            xs={4}
+                            md={2}
+                            container
+                            textAlign='center'
+                            display='flex'
+                            flexDirection='column'
+                            justifyContent='space-between'
+                            key={index}
+                          >
+                            <Typography
+                              fontWeight='bold'
+                            >
+                              {catalogo.nombre || 'NA'}
+                            </Typography>
+                            <Typography>
+                              Cobertura Geográfica
+                            </Typography>
+                          </Grid>
+                        )
+                      }
+                    }
+                  })
+                }
               </Grid>
             </Grid>
           </Grid>

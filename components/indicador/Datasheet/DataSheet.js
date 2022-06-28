@@ -6,6 +6,11 @@ import { numberWithCommas } from "helpers/FormatNumbers";
 import { ArrowDownward, ArrowUpward, ErrorOutline } from "@mui/icons-material";
 import { UNIDAD_MEDIDA, COBERTURA_GEOGRAFICA } from "../Indicador";
 
+const getCatalogo = (catalogos, idCatalogo) => {
+  const catalogo = catalogos.find(catalogo => catalogo.idCatalogo === idCatalogo);
+  return catalogo?.nombre;
+}
+
 const DataSheet = (datasheet) => {
   const { datasheet: data } = datasheet;
 
@@ -18,7 +23,7 @@ const DataSheet = (datasheet) => {
   const INDICADOR_FIELDS = [{
     title: 'Último valor disponible',
     value: numberWithCommas(data.ultimoValorDisponible),
-    helperText: `Unidad de medida: ${data.catalogos[UNIDAD_MEDIDA]?.nombre}`
+    helperText: getCatalogo(data.catalogos, UNIDAD_MEDIDA),
   }, {
     title: 'Tendencia actual',
     value: tendenciaIcon,
@@ -29,7 +34,7 @@ const DataSheet = (datasheet) => {
     helperText: 'Año al que se refiere el último valor disponible'
   }, {
     title: 'Cobertura geográfica',
-    value: data.catalogos[COBERTURA_GEOGRAFICA]?.nombre,
+    value: getCatalogo(data.catalogos, COBERTURA_GEOGRAFICA),
     helperText: 'Territorio al que se refiere la captación de datos'
   }]
 

@@ -48,10 +48,7 @@ function MyApp(props) {
           <CssBaseline />
           {
             pathname !== '/' &&
-            <Box id='ghostly-div' sx={{ height: '50px' }}>
-              <br />
-              <br />
-            </Box>
+            <Box id='ghostly-div' marginTop='66px'></Box>
           }
           <Header />
           <main>

@@ -7,9 +7,6 @@ module.exports = {
     config.plugins.push(new webpack.EnvironmentPlugin(myEnv))
     return config
   },
-  experimental: {
-    outputStandalone: true,
-  },
   images: {
     domains: ['placeimg.com', 'images.unsplash.com']
   }

@@ -88,8 +88,6 @@ const ArboladoUrbano = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    bgcolor: 'var(--green)',
-                    borderRadius: '5px'
                   }}>
                     <iframe
                       height='80%'
@@ -133,8 +131,6 @@ const ArboladoUrbano = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    bgcolor: 'var(--green)',
-                    borderRadius: '5px'
                   }}>
                     <iframe
                       height='80%'
@@ -178,8 +174,6 @@ const ArboladoUrbano = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    bgcolor: 'var(--green)',
-                    borderRadius: '5px'
                   }}>
                     <iframe
                       height='80%'

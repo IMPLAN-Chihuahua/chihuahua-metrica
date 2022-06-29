@@ -44,7 +44,7 @@ const ArboladoUrbano = () => {
           </Typography>
         </Box>
         <section>
-          <Title variant='h3' component='h1'>Arbolado Urbano</Title>
+          <Title variant='h3' component='h1' color='var(--green)'>Arbolado Urbano</Title>
           <Typography mb={3} fontSize='1.3rem'>
             El arbolado urbano es el conjunto de árboles que se encuentran en
             las zonas urbanas, que a su vez proporcionan una variedad de beneficios
@@ -59,13 +59,13 @@ const ArboladoUrbano = () => {
         component='section'
         sx={{
           position: 'relative',
-          height: '300px'
+          height: '300px',
         }}>
         <Image src='/regla-300-828w.webp' layout='fill' objectFit='cover' />
       </Box>
       <Container sx={{ marginTop: 3 }}>
         <section>
-          <Title variant='h4' component='h2'>Regla 3-30-300</Title>
+          <Title variant='h4' component='h2' color='var(--green)'>Regla 3-30-300</Title>
           <Typography mb={3} fontSize='1.3rem'>
             Esta regla esta enfocada a mejorar la calidad del arbolado urbano
             contribuyendo a su vez en el bienestar y la salud humana. Lo primero
@@ -77,26 +77,29 @@ const ArboladoUrbano = () => {
           </Typography>
         </section>
         <section>
-          <Title variant='h4' component='h2'>En nuestra ciudad...</Title>
+          <Title variant='h5' component='h5' color='var(--green)' sx={{ mt: 4, ml: 1 }}>En nuestra ciudad...</Title>
           <section>
             <Grid container>
               <Grid item container mb={{ xs: 2, md: 0 }}>
                 <Grid item xs={12} lg={8}>
                   <Box sx={{
                     margin: 1,
-                    height: '500px',
+                    height: '300px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
+                    bgcolor: 'var(--green)',
+                    borderRadius: '5px'
                   }}>
                     <iframe
-                      height='100%'
+                      height='80%'
                       width='100%'
                       src='https://geoportal.implanchihuahua.org/sigmun/apps/webappviewer/index.html?id=842822f688c641ca90b69007fccc6b61'
                       title='SADRE - Modelo de Reforestación urbana con sentido social'
                     >Mapa</iframe>
                   </Box>
                 </Grid>
+
                 <Grid
                   item
                   xs={12}
@@ -110,25 +113,31 @@ const ArboladoUrbano = () => {
                       backgroundColor: '#ecf8f8',
                       padding: 5,
                       borderRadius: 5,
-                      color: '#22577a'
+                      color: 'white',
+                      bgcolor: 'var(--green)',
+                      borderRadius: '5px'
                     }}
                   >
                     <Typography fontWeight='bold' textAlign='center' fontSize={30}>0.23</Typography>
-                    <Typography fontWeight='500'>Arboles</Typography>
+                    <Typography fontWeight='500' >Arboles</Typography>
                   </Box>
                 </Grid>
               </Grid>
+
               <Grid item container mb={{ xs: 2, md: 0 }}>
                 <Grid item xs={12} lg={8}>
                   <Box sx={{
                     margin: 1,
-                    height: '500px',
+                    marginTop: 5,
+                    height: '300px',
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    bgcolor: 'var(--green)',
+                    borderRadius: '5px'
                   }}>
                     <iframe
-                      height='100%'
+                      height='80%'
                       width='100%'
                       src='https://geoportal.implanchihuahua.org/sigmun/apps/Styler/index.html?appid=4b73f84656264dba8b027d5fed38d6d2'
                       title='Green View'
@@ -149,7 +158,9 @@ const ArboladoUrbano = () => {
                       backgroundColor: '#ecf8f8',
                       padding: 5,
                       borderRadius: 5,
-                      color: '#22577a'
+                      color: 'white',
+                      bgcolor: 'var(--green)',
+                      borderRadius: '5px'
                     }}
                   >
                     <Typography fontWeight='bold' textAlign='center' fontSize={30}>30</Typography>
@@ -157,17 +168,21 @@ const ArboladoUrbano = () => {
                   </Box>
                 </Grid>
               </Grid>
+              <Title variant='h5' component='h5' color='var(--green)' sx={{ mt: 4, ml: 1 }}>Este mapa muestra la cubierta de dosel en la ciudad de 1000 puntos muestra.</Title>
+
               <Grid item container mb={{ xs: 2, md: 0 }}>
                 <Grid item xs={12} lg={8}>
                   <Box sx={{
                     margin: 1,
-                    height: '500px',
+                    height: '300px',
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    bgcolor: 'var(--green)',
+                    borderRadius: '5px'
                   }}>
                     <iframe
-                      height='100%'
+                      height='80%'
                       width='100%'
                       src='https://geoportal.implanchihuahua.org/sigmun/apps/instant/media/index.html?appid=25d7bf6eebb545e0b5205de75bb8ad6f'
                       title='GVI'
@@ -186,10 +201,11 @@ const ArboladoUrbano = () => {
                   sx={{ order: { xs: -1, lg: 1 } }}>
                   <Box
                     sx={{
-                      backgroundColor: '#ecf8f8',
                       padding: 5,
                       borderRadius: 5,
-                      color: '#22577a'
+                      color: 'white',
+                      bgcolor: 'var(--green)',
+                      borderRadius: '5px'
                     }}
                   >
                     <Typography fontWeight='bold' textAlign='center' fontSize={30}>60%</Typography>
@@ -199,7 +215,7 @@ const ArboladoUrbano = () => {
               </Grid>
             </Grid>
           </section>
-          <Title variant='h5' component='h3'>Fuente</Title>
+          <Title variant='h5' component='h3' sx={{ mt: 4 }}>Fuente</Title>
           <Typography mb={1} fontSize='1.3rem'>Para calcular el GVI, se utilizó una herramienta desarrollada por el <b>Senseable City Lab del MIT</b>. El código fuente se encuentra en el siguiente enlace. </Typography>
           <Button
             target='_blank'
@@ -211,7 +227,7 @@ const ArboladoUrbano = () => {
         </section>
         <section>
           <Title variant='h4' component='h2' mt={3}>Censo del Arbolado</Title>
-          <Typography fontSize='1.3rem'>
+          <Typography fontSize='1.3rem' sx={{ mb: '10vh' }}>
             El Instituto de Planeación Integral del Municipio de Chihuahua con
             el propósito de contribuir a una ciudad resiliente y  sustentable,
             desarrolló un proyecto como instrumento que ofrece información actual

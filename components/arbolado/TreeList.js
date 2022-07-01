@@ -3,6 +3,7 @@ import StarTree from './StarTree'
 
 const trees = [
     {
+        id: 1,
         avatar: '/images/arbolado/mezquite_C.png',
         arbol: '/images/arbolado/mezquite_A.png',
         nombre: '<b>Mezquite/</b> Proposis Glandulosa',
@@ -12,6 +13,7 @@ const trees = [
         distancia: '7',
     },
     {
+        id: 2,
         avatar: '/images/arbolado/huizache_C.png',
         arbol: '/images/arbolado/huizache_A.png',
         nombre: '<b>Huizache/</b> Vachellia Farnesiana',
@@ -21,6 +23,7 @@ const trees = [
         distancia: '7',
     },
     {
+        id: 3,
         avatar: '/images/arbolado/huizache_C.png',
         arbol: '/images/arbolado/huizache_A.png',
         nombre: '<b>Huizache Chino/</b> Vachellia Schaffneri',
@@ -30,6 +33,7 @@ const trees = [
         distancia: '7',
     },
     {
+        id: 4,
         avatar: '/images/arbolado/miembre_C.png',
         arbol: '/images/arbolado/miembre_A.png',
         nombre: '<b>Miembre/</b> Chilopsis Linearis',

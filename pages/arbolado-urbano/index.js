@@ -4,6 +4,7 @@ import { Container, Typography, Box, Button, Grid } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
 import StarTree from '@components/arbolado/StarTree';
+import TreeList from '@components/arbolado/TreeList';
 
 
 const MapSection = ({ src, description, title }) => {
@@ -188,12 +189,7 @@ const ArboladoUrbano = () => {
 
       <Box sx={{ bgcolor: '#f1faee', pt: 10 }}>
         <section >
-          <StarTree />
-          <StarTree />
-          <StarTree />
-          <StarTree />
-          <StarTree />
-          <StarTree />
+          <TreeList />
         </section>
       </Box>
     </>

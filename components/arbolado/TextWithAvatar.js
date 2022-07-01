@@ -12,7 +12,7 @@ const TextWithAvatar = ({ children, flexDirection, avatar, subtext }) => {
             <Avatar src={avatar} className={`${style.imageContainer}`} sx={{ width: 100, height: 100 }} />
             <Box className={`${style.bodyText}`}>
                 <Title variant='h5' component='h5' color='var(--darker-green)'>{children}</Title>
-                <Typography variant='body' component='p' color='var(--soft-black)'>
+                <Typography variant='h6' component='p' color='var(--soft-black)'>
                     <b>
                         {subtext}
                     </b>

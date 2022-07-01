@@ -1,27 +1,24 @@
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
 import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import Image from 'next/image';
-import styled from "@mui/system/styled";
 import Fab from "@mui/material/Fab";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
-
 import Navbar from "./Navbar";
 import SideBar from "./SideBar";
 import BackToTop from "./BackToTop";
-import { Container, Grid, IconButton } from "@mui/material";
+import { Grid, IconButton } from "@mui/material";
 import NextLink from "next/link";
+import { Box } from "@mui/system";
+import { ArrowBackIosNew } from "@mui/icons-material";
+import Modal from '@mui/material/Modal';
 
 import style from './Header.module.css'
-import { useState, useEffect } from "react";
-import { useRouter } from 'next/router'
-import { Box } from "@mui/system";
-import { ArrowBackIos, ArrowBackIosNew, ArrowBackIosOutlined } from "@mui/icons-material";
-import Modal from '@mui/material/Modal';
 
 const navLinks = [
   { title: 'Inicio', path: '/', cssName: 'inicio' },
   { title: 'Proyectos', path: '#proyectos', cssName: 'proyectos' },
-  { title: 'Conocenos', path: '/conocenos', cssName: 'conocenos' },
+  { title: 'Conócenos', path: '/conocenos', cssName: 'conocenos' },
   { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
 ]
 

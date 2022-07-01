@@ -4,6 +4,8 @@ import { Android, GitHub, OpenInNew } from '@mui/icons-material';
 import { Container, Typography, Box, Button, Grid } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
+import StarTree from '@components/arbolado/StarTree';
+
 
 const ArboladoUrbano = () => {
   return (
@@ -221,7 +223,7 @@ const ArboladoUrbano = () => {
         </section>
         <section>
           <Title variant='h4' component='h2' mt={3}>Censo del Arbolado</Title>
-          <Typography fontSize='1.3rem' sx={{ mb: '10vh' }}>
+          <Typography fontSize='1.3rem' sx={{ mb: '5vh' }}>
             El Instituto de Planeación Integral del Municipio de Chihuahua con
             el propósito de contribuir a una ciudad resiliente y  sustentable,
             desarrolló un proyecto como instrumento que ofrece información actual
@@ -233,7 +235,19 @@ const ArboladoUrbano = () => {
             herramienta I-Tree Eco v6.
           </Typography>
         </section>
+
       </Container>
+
+      <Box sx={{ bgcolor: '#f1faee', pt: 10 }}>
+        <section >
+          <StarTree />
+          <StarTree />
+          <StarTree />
+          <StarTree />
+          <StarTree />
+          <StarTree />
+        </section>
+      </Box>
     </>
   );
 };

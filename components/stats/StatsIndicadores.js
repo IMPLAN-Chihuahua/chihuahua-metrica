@@ -11,12 +11,12 @@ const Stat = ({ indicador, indextest }) => {
       <div className={style.statsContainer}>
         <div
           className={`${style.circle}`}
-          style={{ backgroundImage: isHovering ? `url('/images/stats/rounded-images/${indextest + 1}.png')` : '' }}
+          style={{ backgroundImage: isHovering ? `url('/images/stats/rounded-images/${indextest + 1}.png')` : undefined }}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
-          <div className={isHovering && style.overlay}>
-            <Box className={`${style.circleStats}`} style={{ filter: isHovering ? 'invert(100%)' : '' }}>
+          <div className={isHovering ? style.overlay : undefined}>
+            <Box className={`${style.circleStats}`} style={{ filter: isHovering ? 'invert(100%)' : undefined }}>
               <Image src={indicador.icon} width={100} height={100} />
             </Box>
             <Typography textAlign='center' className={`${style.circleStatsDescription}`}>{indicador.value}</Typography>

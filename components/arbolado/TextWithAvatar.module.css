@@ -1,0 +1,23 @@
+.bodyContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    border: 2px solid green;
+    border-radius: 30px;
+    padding: 10px;
+    width: 100%;
+}
+
+.imageContainer {
+    border: 2px solid green;
+}
+
+.bodyText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}

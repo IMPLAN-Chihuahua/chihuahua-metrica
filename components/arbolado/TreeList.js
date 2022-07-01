@@ -1,41 +1,56 @@
 import React from 'react'
+import StarTree from './StarTree'
 
 const trees = [
     {
-        'text': '<b>Mezquite/</b> Proposis Glandulosa',
-        'subtext': '',
-        'avatar': '/images/arbolado/mezquite_C.png',
-        'direction': 'column',
+        avatar: '/images/arbolado/mezquite_C.png',
+        arbol: '/images/arbolado/mezquite_A.png',
+        nombre: '<b>Mezquite/</b> Proposis Glandulosa',
+        sistema: 'Profundo (>1.5m)',
+        riego: 'Baja',
+        follaje: 'Perennifolio',
+        distancia: '7',
     },
     {
-        'text': 'Sistema radicular',
-        'subtext': 'Profundo (>1.5m)',
-        'avatar': '/images/arbolado/sistema-radicular.png',
-        'direction': 'row',
+        avatar: '/images/arbolado/huizache_C.png',
+        arbol: '/images/arbolado/huizache_A.png',
+        nombre: '<b>Huizache/</b> Vachellia Farnesiana',
+        sistema: 'Profundo (>1.5m)',
+        riego: 'Baja',
+        follaje: 'Perennifolio',
+        distancia: '7',
     },
     {
-        'text': 'Necesidad de riego',
-        'subtext': 'Baja',
-        'avatar': '/images/arbolado/riego.png',
-        'direction': 'row-reverse',
+        avatar: '/images/arbolado/huizache_C.png',
+        arbol: '/images/arbolado/huizache_A.png',
+        nombre: '<b>Huizache Chino/</b> Vachellia Schaffneri',
+        sistema: 'Profundo (>1.5m)',
+        riego: 'Baja',
+        follaje: 'Perennifolio',
+        distancia: '7',
     },
     {
-        'text': 'Follaje',
-        'subtext': 'Perennifolio',
-        'avatar': '/images/arbolado/follaje.png',
-        'direction': 'row',
-    },
-    {
-        'text': 'Distancia óptima',
-        'subtext': '7',
-        'avatar': '/images/arbolado/espacio.png',
-        'direction': 'row-reverse',
+        avatar: '/images/arbolado/miembre_C.png',
+        arbol: '/images/arbolado/miembre_A.png',
+        nombre: '<b>Miembre/</b> Chilopsis Linearis',
+        sistema: 'Profundo (>1.5m)',
+        riego: 'Baja',
+        follaje: 'Caducifolio',
+        distancia: '7',
     },
 ]
 
 const TreeList = () => {
     return (
-        <div>TreeList</div>
+        <>
+            {
+                trees.map((tree, index) => {
+                    return (
+                        <StarTree tree={tree} />
+                    )
+                })
+            }
+        </>
     )
 }
 

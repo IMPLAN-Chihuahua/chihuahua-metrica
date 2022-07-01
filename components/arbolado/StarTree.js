@@ -1,10 +1,10 @@
 import { Container, Grid } from '@mui/material'
 import { Box } from '@mui/system'
 import Image from 'next/image'
-import React from 'react'
+import React from 'react';
 
-import style from './StarTree.module.css'
-import TextWithAvatar from './TextWithAvatar'
+import style from './StarTree.module.css';
+import TextWithAvatar from './TextWithAvatar';
 
 const trees = [
     {
@@ -39,7 +39,7 @@ const trees = [
     },
 ]
 
-const StarTree = () => {
+const StarTree = ({ tree }) => {
     return (
         <Container className={style.StarTree}>
             {/*Star head*/}
@@ -47,8 +47,8 @@ const StarTree = () => {
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
-                    <TextWithAvatar flexDirection={trees[0].direction} avatar={trees[0].avatar}>
-                        <div dangerouslySetInnerHTML={{ __html: trees[0].text }} />
+                    <TextWithAvatar flexDirection={'column'} avatar={tree.avatar}>
+                        <div dangerouslySetInnerHTML={{ __html: tree.nombre }} />
                     </TextWithAvatar>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
@@ -58,15 +58,15 @@ const StarTree = () => {
             {/* Star body 1 */}
             <Grid container>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
-                    <TextWithAvatar flexDirection={trees[1].direction} avatar={trees[1].avatar} subtext={trees[1].subtext}>
-                        <div dangerouslySetInnerHTML={{ __html: trees[1].text }} />
+                    <TextWithAvatar flexDirection={'row'} avatar={'/images/arbolado/sistema-radicular.png'} subtext={'Sistema radicular'}>
+                        <div dangerouslySetInnerHTML={{ __html: tree.sistema }} />
                     </TextWithAvatar>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
-                    <TextWithAvatar flexDirection={trees[2].direction} avatar={trees[2].avatar} subtext={trees[2].subtext}>
-                        <div dangerouslySetInnerHTML={{ __html: trees[2].text }} />
+                    <TextWithAvatar flexDirection={trees[2].direction} avatar={'/images/arbolado/sistema-radicular.png'} subtext={tree.riego}>
+                        <div dangerouslySetInnerHTML={{ __html: 'Necesidad de riego' }} />
                     </TextWithAvatar>
                 </Grid>
             </Grid>
@@ -76,7 +76,7 @@ const StarTree = () => {
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText} ${style.tree}`}>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} sx={{ position: 'relative' }}>
-                    <Image src={'/images/arbolado/huizache_A.png'} layout='fill' objectFit='contain' />
+                    <Image src={tree.arbol} layout='fill' objectFit='contain' />
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
                 </Grid>
@@ -85,15 +85,15 @@ const StarTree = () => {
             {/* Star feet */}
             <Grid container>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
-                    <TextWithAvatar flexDirection={trees[3].direction} avatar={trees[3].avatar} subtext={trees[3].subtext}>
-                        <div dangerouslySetInnerHTML={{ __html: trees[3].text }} />
+                    <TextWithAvatar flexDirection={'row'} avatar={'/images/arbolado/follaje.png'} subtext={tree.follaje}>
+                        <div dangerouslySetInnerHTML={{ __html: 'Follaje' }} />
                     </TextWithAvatar>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
-                    <TextWithAvatar flexDirection={trees[4].direction} avatar={trees[4].avatar} subtext={trees[4].subtext}>
-                        <div dangerouslySetInnerHTML={{ __html: trees[4].text }} />
+                    <TextWithAvatar flexDirection={'row-reverse'} avatar={'/images/arbolado/espacio.png'} subtext={tree.distancia}>
+                        <div dangerouslySetInnerHTML={{ __html: 'Distancia óptima' }} />
                     </TextWithAvatar>
                 </Grid>
             </Grid>

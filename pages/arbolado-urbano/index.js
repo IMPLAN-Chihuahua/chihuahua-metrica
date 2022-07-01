@@ -4,11 +4,7 @@ import { Container, Typography, Box, Button, Grid, Chip } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
 import StarTree from '@components/arbolado/StarTree';
-import {
-  Timeline, TimelineItem, TimelineSeparator,
-  TimelineDot, TimelineConnector, TimelineContent
-} from '@mui/lab';
-import { borderRadius } from '@mui/system';
+import TreeList from '@components/arbolado/TreeList';
 
 const BENEFICIOS = [
   'Mitigación de las altas temperaturas',
@@ -221,12 +217,7 @@ const ArboladoUrbano = () => {
 
       <Box sx={{ bgcolor: '#f1faee', pt: 10 }}>
         <section >
-          <StarTree />
-          <StarTree />
-          <StarTree />
-          <StarTree />
-          <StarTree />
-          <StarTree />
+          <TreeList />
         </section>
       </Box>
     </>

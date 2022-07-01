@@ -1,45 +1,32 @@
 import { Container, Grid } from '@mui/material'
 import { Box } from '@mui/system'
 import Image from 'next/image'
-import React from 'react';
+import React, { useState } from 'react';
 
 import style from './StarTree.module.css';
 import TextWithAvatar from './TextWithAvatar';
-
-const trees = [
-    {
-        'text': '<b>Mezquite/</b> Proposis Glandulosa',
-        'subtext': '',
-        'avatar': '/images/arbolado/mezquite_C.png',
-        'direction': 'column',
-    },
-    {
-        'text': 'Sistema radicular',
-        'subtext': 'Profundo (>1.5m)',
-        'avatar': '/images/arbolado/sistema-radicular.png',
-        'direction': 'row',
-    },
-    {
-        'text': 'Necesidad de riego',
-        'subtext': 'Baja',
-        'avatar': '/images/arbolado/riego.png',
-        'direction': 'row-reverse',
-    },
-    {
-        'text': 'Follaje',
-        'subtext': 'Perennifolio',
-        'avatar': '/images/arbolado/follaje.png',
-        'direction': 'row',
-    },
-    {
-        'text': 'Distancia óptima',
-        'subtext': '7',
-        'avatar': '/images/arbolado/espacio.png',
-        'direction': 'row-reverse',
-    },
-]
-
+function myFunction(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = (mouseX - 55) + "px";
+    cursor.style.top = (mouseY - 55) + "px";
+}
 const StarTree = ({ tree }) => {
+    const [isHovering, setIsHovering] = useState(false);
+    const [hoveredTree, setHoveredTree] = useState(null);
+
+    const onMouseEnter = (id) => {
+        setIsHovering(true);
+        setHoveredTree(id);
+        console.log('ekek');
+    }
+
+    const onMouseLeave = (id) => {
+        setIsHovering(false);
+        setHoveredTree(null);
+        console.log('may god help us');
+    }
+
     return (
         <Container className={style.StarTree}>
             {/*Star head*/}
@@ -47,7 +34,7 @@ const StarTree = ({ tree }) => {
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
-                    <TextWithAvatar flexDirection={'column'} avatar={tree.avatar}>
+                    <TextWithAvatar flexDirection={'column'} avatar={tree.avatar} header={true}>
                         <div dangerouslySetInnerHTML={{ __html: tree.nombre }} />
                     </TextWithAvatar>
                 </Grid>
@@ -58,24 +45,24 @@ const StarTree = ({ tree }) => {
             {/* Star body 1 */}
             <Grid container>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
-                    <TextWithAvatar flexDirection={'row'} avatar={'/images/arbolado/sistema-radicular.png'} subtext={'Sistema radicular'}>
-                        <div dangerouslySetInnerHTML={{ __html: tree.sistema }} />
+                    <TextWithAvatar flexDirection={'row'} avatar={'/images/arbolado/sistema-radicular.png'} subtext={tree.sistema}>
+                        <div dangerouslySetInnerHTML={{ __html: 'Sistema radicular' }} />
                     </TextWithAvatar>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
-                    <TextWithAvatar flexDirection={trees[2].direction} avatar={'/images/arbolado/sistema-radicular.png'} subtext={tree.riego}>
+                    <TextWithAvatar flexDirection={'row-reverse'} avatar={'/images/arbolado/riego.png'} subtext={tree.riego}>
                         <div dangerouslySetInnerHTML={{ __html: 'Necesidad de riego' }} />
                     </TextWithAvatar>
                 </Grid>
             </Grid>
 
-            {/* Star body 2 */}
+            {/* Star body 2: Tree */}
             <Grid container>
-                <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText} ${style.tree}`}>
+                <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
                 </Grid>
-                <Grid item xs={12} md={4} lg={4} xl={4} sx={{ position: 'relative' }}>
+                <Grid item xs={12} md={4} lg={4} xl={4} sx={{ position: 'relative' }} className={` ${style.tree} ${isHovering ? style.treeHovered : undefined}`} onMouseEnter={(e) => onMouseEnter(tree.id)} onMouseLeave={(e) => onMouseLeave(tree.id)}>
                     <Image src={tree.arbol} layout='fill' objectFit='contain' />
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>

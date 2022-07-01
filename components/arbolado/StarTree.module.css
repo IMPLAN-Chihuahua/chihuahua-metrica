@@ -14,4 +14,9 @@
 
 .tree {
     height: 40vh;
+    background-color: aquamarine;
+}
+
+.treeHovered {
+    background-color: salmon;
 }

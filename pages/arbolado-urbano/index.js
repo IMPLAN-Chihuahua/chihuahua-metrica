@@ -1,10 +1,60 @@
-import PageBreadcrumb from '@components/commons/PageBreadcrumb';
 import Title from '@components/commons/Title';
-import { Android, GitHub, OpenInNew } from '@mui/icons-material';
+import { GitHub } from '@mui/icons-material';
 import { Container, Typography, Box, Button, Grid } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
 import StarTree from '@components/arbolado/StarTree';
+
+
+const MapSection = ({ src, description, title }) => {
+  return (<Grid item container>
+    <Grid item xs={12}>
+      <Title variant='h5' component='h5' mt={3}>{title}</Title>
+    </Grid>
+    <Grid item xs={12} lg={8} sx={{ alignItems: 'stretch' }}>
+      <Box sx={{
+        height: '350px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        mb: { xs: 1, lg: 0 }
+      }}>
+        <iframe
+          height='100%'
+          width='100%'
+          src={src}
+          title='SADRE - Modelo de Reforestación urbana con sentido social'
+        >Mapa</iframe>
+      </Box>
+    </Grid>
+    <Grid
+      item
+      xs={12}
+      display='flex'
+      justifyContent='center'
+      alignItems='center'
+      lg={4}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          bgcolor: '#dde5b6',
+          width: { xs: '100%', sm: '300px' },
+          height: '150px',
+          padding: 5,
+          borderRadius: 5,
+          color: '#344e41',
+          borderRadius: '5px'
+        }}
+      >
+        <div>
+          {description}
+        </div>
+      </Box>
+    </Grid>
+  </Grid>)
+};
 
 
 const ArboladoUrbano = () => {
@@ -25,7 +75,6 @@ const ArboladoUrbano = () => {
       <Container>
         <Box component='section' marginTop={3} marginBottom={3}>
           <Typography
-            color='var(--green)'
             fontWeight='bold'
             textAlign='center'
             fontSize={24}
@@ -46,7 +95,7 @@ const ArboladoUrbano = () => {
           </Typography>
         </Box>
         <section>
-          <Title variant='h3' component='h1' color='var(--green)'>Arbolado Urbano</Title>
+          <Title variant='h3' component='h1'>Arbolado Urbano</Title>
           <Typography mb={3} fontSize='1.3rem'>
             El arbolado urbano es el conjunto de árboles que se encuentran en
             las zonas urbanas, que a su vez proporcionan una variedad de beneficios
@@ -59,15 +108,12 @@ const ArboladoUrbano = () => {
       </Container>
       <Box
         component='section'
-        sx={{
-          position: 'relative',
-          height: '300px',
-        }}>
+        sx={{ position: 'relative', height: '300px' }}>
         <Image src='/regla-300-828w.webp' layout='fill' objectFit='cover' />
       </Box>
       <Container sx={{ marginTop: 3 }}>
         <section>
-          <Title variant='h4' component='h2' color='var(--green)'>Regla 3-30-300</Title>
+          <Title variant='h4' component='h2'>Regla 3-30-300</Title>
           <Typography mb={3} fontSize='1.3rem'>
             Esta regla esta enfocada a mejorar la calidad del arbolado urbano
             contribuyendo a su vez en el bienestar y la salud humana. Lo primero
@@ -79,136 +125,38 @@ const ArboladoUrbano = () => {
           </Typography>
         </section>
         <section>
-          <Title variant='h5' component='h5' color='var(--green)' sx={{ mt: 4, ml: 1 }}>En nuestra ciudad...</Title>
           <section>
             <Grid container>
-              <Grid item container mb={{ xs: 2, md: 0 }}>
-                <Grid item xs={12} lg={8}>
-                  <Box sx={{
-                    margin: 1,
-                    height: '300px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                    <iframe
-                      height='80%'
-                      width='100%'
-                      src='https://geoportal.implanchihuahua.org/sigmun/apps/webappviewer/index.html?id=842822f688c641ca90b69007fccc6b61'
-                      title='SADRE - Modelo de Reforestación urbana con sentido social'
-                    >Mapa</iframe>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  xs={12}
-                  display='flex'
-                  justifyContent='center'
-                  alignItems='center'
-                  lg={4}
-                  sx={{ order: { xs: -1, lg: 1 } }}>
-                  <Box
-                    sx={{
-                      backgroundColor: '#ecf8f8',
-                      padding: 5,
-                      borderRadius: 5,
-                      color: 'white',
-                      bgcolor: 'var(--green)',
-                      borderRadius: '5px'
-                    }}
-                  >
-                    <Typography fontWeight='bold' textAlign='center' fontSize={30}>0.23</Typography>
-                    <Typography fontWeight='500' >Arboles</Typography>
-                  </Box>
-                </Grid>
-              </Grid>
-
-              <Grid item container mb={{ xs: 2, md: 0 }}>
-                <Grid item xs={12} lg={8}>
-                  <Box sx={{
-                    margin: 1,
-                    marginTop: 5,
-                    height: '300px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                    <iframe
-                      height='80%'
-                      width='100%'
-                      src='https://geoportal.implanchihuahua.org/sigmun/apps/Styler/index.html?appid=4b73f84656264dba8b027d5fed38d6d2'
-                      title='Green View'
-                    >
-                      Mapa
-                    </iframe>
-                  </Box>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  lg={4}
-                  display='flex'
-                  justifyContent='center'
-                  alignItems='center'>
-                  <Box
-                    sx={{
-                      backgroundColor: '#ecf8f8',
-                      padding: 5,
-                      borderRadius: 5,
-                      color: 'white',
-                      bgcolor: 'var(--green)',
-                      borderRadius: '5px'
-                    }}
-                  >
-                    <Typography fontWeight='bold' textAlign='center' fontSize={30}>30</Typography>
-                    <Typography fontWeight='500'>Areás verdes por persona</Typography>
-                  </Box>
-                </Grid>
-              </Grid>
-              <Title variant='h5' component='h5' color='var(--green)' sx={{ mt: 4, ml: 1 }}>Este mapa muestra la cubierta de dosel en la ciudad de 1000 puntos muestra.</Title>
-
-              <Grid item container mb={{ xs: 2, md: 0 }}>
-                <Grid item xs={12} lg={8}>
-                  <Box sx={{
-                    margin: 1,
-                    height: '300px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                    <iframe
-                      height='80%'
-                      width='100%'
-                      src='https://geoportal.implanchihuahua.org/sigmun/apps/instant/media/index.html?appid=25d7bf6eebb545e0b5205de75bb8ad6f'
-                      title='GVI'
-                    >
-                      Mapa
-                    </iframe>
-                  </Box>
-                </Grid>
-                <Grid
-                  item
-                  display='flex'
-                  justifyContent='center'
-                  alignItems='center'
-                  xs={12}
-                  lg={4}
-                  sx={{ order: { xs: -1, lg: 1 } }}>
-                  <Box
-                    sx={{
-                      padding: 5,
-                      borderRadius: 5,
-                      color: 'white',
-                      bgcolor: 'var(--green)',
-                      borderRadius: '5px'
-                    }}
-                  >
-                    <Typography fontWeight='bold' textAlign='center' fontSize={30}>60%</Typography>
+              <MapSection
+                title='Inventario del Arbolado Urbano'
+                src='https://geoportal.implanchihuahua.org/sigmun/apps/webappviewer/index.html?id=842822f688c641ca90b69007fccc6b61'
+                description={(
+                  <>
+                    <Typography fontWeight='bold' textAlign='center' fontSize={30}>~0.23</Typography>
+                    <Typography fontWeight='500' textAlign='center'>Árboles por persona</Typography>
+                  </>
+                )}
+              />
+              <MapSection
+                title='Muestra de la Vista Verde en la Ciudad'
+                src='https://geoportal.implanchihuahua.org/sigmun/apps/Styler/index.html?appid=4b73f84656264dba8b027d5fed38d6d2'
+                description={(
+                  <>
+                    <Typography fontWeight='bold' textAlign='center' fontSize={30}>~11.76%</Typography>
+                    <Typography fontWeight='500' textAlign='center'>Areás verdes por persona</Typography>
+                  </>
+                )}
+              />
+              <MapSection
+                title='Proximidad a espacios verdes con más de 10 árboles para uso recreativo'
+                src='https://geoportal.implanchihuahua.org/sigmun/apps/instant/media/index.html?appid=25d7bf6eebb545e0b5205de75bb8ad6f'
+                description={(
+                  <>
+                    <Typography fontWeight='bold' textAlign='center' fontSize={30}>~60%</Typography>
                     <Typography fontWeight='500' textAlign='center'>De la población vive <br /> cerca de un parque</Typography>
-                  </Box>
-                </Grid>
-              </Grid>
+                  </>
+                )}
+              />
             </Grid>
           </section>
           <Title variant='h5' component='h3' sx={{ mt: 4 }}>Fuente</Title>

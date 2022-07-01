@@ -11,7 +11,7 @@ const SLIDES = [
   {
     name: "banner-01",
     imgSrc: `/banner-01-828w.webp`,
-    href: "NaN",
+    href: "/conocenos",
   },
   {
     name: "banner-03",
@@ -34,11 +34,11 @@ const Description = React.memo(({ name }) => {
         <Box sx={{
           position: 'absolute',
           maxWidth: 750,
-          left: { xs: '', md: '5%' },
+          left: { md: '5%' },
           top: { xs: '23%', sm: '43%' }
         }}>
           <Typography
-            fontSize={32}
+            fontSize={{ xs: 24, md: 32 }}
             fontWeight={300}
             textAlign='center'
             color='white'
@@ -57,11 +57,12 @@ const Description = React.memo(({ name }) => {
           sx={{
             position: 'absolute',
             maxWidth: 900,
-            right: { xs: '', md: '5%' },
+            padding: 1,
+            right: { md: '5%' },
             top: { xs: '23%', sm: '43%' }
           }}>
           <Typography
-            fontSize={32}
+            fontSize={{ xs: 24, md: 32 }}
             fontWeight={300}
             textAlign='center'
             color='white'
@@ -84,7 +85,7 @@ Description.displayName = 'Description';
 const Slide = ({ slide }) => {
   return (
     <NextLink href={slide.href}>
-      <Box className={style.embla__slide} key={slide.name}>
+      <Box className={style.embla__slide} key={slide.name} sx={{ height: {xs: '60vh', md: '90vh'} }}>
         <Image src={slide.imgSrc} layout='fill' objectFit='cover' objectPosition='center' />
         <Description name={slide.name} />
       </Box>
@@ -95,8 +96,8 @@ const Slide = ({ slide }) => {
 const EmblaCarousel = () => {
   const options = { delay: 15000 };
   const autoplayRoot = (emblaRoot) => emblaRoot.parentElement;
-  const [viewportRef, embla] = useEmblaCarousel({
-    kipSnaps: false,
+  const [emblaRef, embla] = useEmblaCarousel({
+    skipSnaps: true,
     loop: true,
     startIndex: 0,
     draggable: true
@@ -108,9 +109,7 @@ const EmblaCarousel = () => {
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
-  const scrollTo = useCallback((index) => embla && embla.scrollTo(index), [
-    embla
-  ]);
+  const scrollTo = useCallback((index) => embla && embla.scrollTo(index), [embla]);
 
   const onSelect = useCallback(() => {
     if (!embla) return;
@@ -129,7 +128,7 @@ const EmblaCarousel = () => {
   return (
     <>
       <Box className={style.embla} style={{ marginTop: '5vh' }} >
-        <Box className={style.embla__viewport} ref={viewportRef}>
+        <Box className={style.embla__viewport} ref={emblaRef}>
           <Box className={style.embla__container}>
             {SLIDES.map((slide, idx) => (
               <Slide slide={slide} key={idx} />

@@ -33,6 +33,7 @@ export const PrevButton = ({ enabled, onClick }) => (
 export const NextButton = ({ enabled, onClick }) => (
   <>
     <button
+      style={{ width: 100 }}
       className={`${style.embla__button} ${style['embla__button--next']}`}
       onClick={onClick}
       disabled={!enabled}

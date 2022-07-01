@@ -1,15 +1,31 @@
 import Title from '@components/commons/Title';
 import { GitHub } from '@mui/icons-material';
-import { Container, Typography, Box, Button, Grid } from '@mui/material';
+import { Container, Typography, Box, Button, Grid, Chip } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
 import StarTree from '@components/arbolado/StarTree';
+import {
+  Timeline, TimelineItem, TimelineSeparator,
+  TimelineDot, TimelineConnector, TimelineContent
+} from '@mui/lab';
+import { borderRadius } from '@mui/system';
 
+const BENEFICIOS = [
+  'Mitigación de las altas temperaturas',
+  'Mitigación de inundaciones',
+  'Mejor salud mental',
+  'Mejor desarrollo cerebral y función cognitiva',
+  'Reducción del riesgo de enfermedades no transmisibles',
+  'Reducción de la mortalidad prematura',
+  'Mejores resultados del embarazo',
+  'Mejor percepción de la salud general',
+  'Reducción del tiempo de hospitalización y recuperación'
+]
 
 const MapSection = ({ src, description, title }) => {
   return (<Grid item container>
     <Grid item xs={12}>
-      <Title variant='h5' component='h5' mt={3}>{title}</Title>
+      <Title variant='h5' component='h3' mt={3}>{title}</Title>
     </Grid>
     <Grid item xs={12} lg={8} sx={{ alignItems: 'stretch' }}>
       <Box sx={{
@@ -23,7 +39,7 @@ const MapSection = ({ src, description, title }) => {
           height='100%'
           width='100%'
           src={src}
-          title='SADRE - Modelo de Reforestación urbana con sentido social'
+          title={title}
         >Mapa</iframe>
       </Box>
     </Grid>
@@ -39,13 +55,12 @@ const MapSection = ({ src, description, title }) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          bgcolor: '#dde5b6',
+          border: '2px solid var(--darker-green)',
+          color: 'var(--soft-black)',
           width: { xs: '100%', sm: '300px' },
           height: '150px',
           padding: 5,
-          borderRadius: 5,
-          color: '#344e41',
-          borderRadius: '5px'
+          borderRadius: '30px'
         }}
       >
         <div>
@@ -123,6 +138,24 @@ const ArboladoUrbano = () => {
             de las ciudades es diferente, utilizar esta regla aporta a la
             necesidad de tener un sistema arbóreo bien planificado y establecido en la ciudad.
           </Typography>
+        </section>
+        <section>
+          <Title variant='h5' component='h3' mt={3}>Beneficios de estar en contacto con zonas verdes</Title>
+          <Box display='flex' flexWrap='wrap' >
+            {
+              BENEFICIOS.map((b, idx) => (
+                <Box sx={{
+                  backgroundColor: '#f1faee',
+                  borderRadius: 5,
+                  padding: 1,
+                  margin: 1,
+                  wordBreak: 'break-all',
+                }}>
+                  <Typography fontWeight={500} fontSize='1.1rem'>{b}</Typography>
+                </Box>
+              ))
+            }
+          </Box>
         </section>
         <section>
           <section>

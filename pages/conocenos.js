@@ -10,7 +10,7 @@ const Conocenos = () => {
   return (
     <>
       <Head>
-        <title>Conocenos</title>
+        <title>Conócenos</title>
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Splashscreen />

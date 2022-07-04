@@ -1,6 +1,6 @@
 import Title from '@components/commons/Title';
 import { GitHub } from '@mui/icons-material';
-import { Container, Typography, Box, Button, Grid, Chip } from '@mui/material';
+import { Container, Typography, Box, Button, Grid, Link as MUILink } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
 import StarTree from '@components/arbolado/StarTree';
@@ -137,7 +137,7 @@ const ArboladoUrbano = () => {
           </Typography>
         </section>
         <section>
-          <Title variant='h5' component='h3' mt={3}>Beneficios de estar en contacto con zonas verdes</Title>
+          <Title variant='h5' component='h4' mt={3}>Beneficios de estar en contacto con zonas verdes</Title>
           <Box display='flex' flexWrap='wrap' >
             {
               BENEFICIOS.map((b, idx) => (
@@ -153,11 +153,16 @@ const ArboladoUrbano = () => {
               ))
             }
           </Box>
+          <Title variant='h6' component='h5'>Fuente</Title>
           <cite>
-            <NextLink 
-            target='_blank'
-            rel='noreferrer noopener'
-            href='https://es.greenpeace.org/es/noticias/regla-3-30-300-ciudades-verdes/'>Alba Garcia, La regla 3-30-300 o cómo una ciudad verde te ayuda a vivir mejor. Greenpeace España</NextLink>
+            Alba Garcia (2021). <NextLink
+              href='https://es.greenpeace.org/es/noticias/regla-3-30-300-ciudades-verdes/'
+              passHref>
+              <MUILink
+                rel='noreferrer noopener'
+                target='_blank'
+              >La regla 3-30-300 o cómo una ciudad verde te ayuda a vivir mejor.</MUILink>
+            </NextLink> Greenpeace España
           </cite>
         </section>
         <section>

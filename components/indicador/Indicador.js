@@ -56,8 +56,9 @@ const Indicador = (props) => {
                   display='flex'
                   flexDirection='column'
                   justifyContent='space-between'
-                >
+                  >
                   <Typography
+                  fontWeight='bold'
                   >
                     Último Valor Disponible
                   </Typography>
@@ -85,7 +86,7 @@ const Indicador = (props) => {
                   justifyContent='space-between'
                 >
                   <Typography
-                  fontWeight='bold'
+                    fontWeight='bold'
                   >
                     Fecha de Referencia
                   </Typography>
@@ -100,7 +101,7 @@ const Indicador = (props) => {
                   orientation='vertical'
                   variant='middle'
                   flexItem
-                  sx={{ borderRightWidth: 3 }}
+                  sx={{ borderRightWidth: 3, display: { xs: 'none', md: 'block' } }}
                 />
 
                 {
@@ -121,7 +122,7 @@ const Indicador = (props) => {
                               key={index}
                             >
                               <Typography
-                              fontWeight='bold'
+                                fontWeight='bold'
                               >
                                 Unidad de Medida
                               </Typography>
@@ -134,10 +135,7 @@ const Indicador = (props) => {
                               orientation='vertical'
                               variant='middle'
                               flexItem
-                              sx={{
-                                borderRightWidth: 3,
-                                display: { xs: 'none', md: 'block' }
-                              }}
+                              sx={{ borderRightWidth: 3 }}
                             />
                           </>
                         )

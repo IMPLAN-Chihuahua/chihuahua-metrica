@@ -21,7 +21,6 @@ const compareIds = (a, b) => {
 
 const Indicador = (props) => {
   const indicador = props.value;
-  console.log(indicador.catalogos)
   const updatedAt = indicador.updatedAt.split('T')[0];
   return (
     <Card variant='outlined'>
@@ -59,13 +58,14 @@ const Indicador = (props) => {
                   justifyContent='space-between'
                 >
                   <Typography
+                  >
+                    Último Valor Disponible
+                  </Typography>
+                  <Typography
                     color={props.fontColor}
                     fontWeight='bold'
                     fontSize={25}
                   >{numberWithCommas(indicador.ultimoValorDisponible)}
-                  </Typography>
-                  <Typography>
-                    Último Valor Disponible
                   </Typography>
                 </Grid>
                 <Divider
@@ -74,7 +74,6 @@ const Indicador = (props) => {
                   flexItem
                   sx={{ borderRightWidth: 3 }}
                 />
-
                 <Grid
                   item
                   xs={4}
@@ -86,13 +85,16 @@ const Indicador = (props) => {
                   justifyContent='space-between'
                 >
                   <Typography
-                    fontWeight='bold'
+                  fontWeight='bold'
+                  >
+                    Fecha de Referencia
+                  </Typography>
+                  <Typography
                   >
                     {updatedAt}
                   </Typography>
-                  <Typography>
-                    Fecha de Referencia
-                  </Typography>
+
+
                 </Grid>
                 <Divider
                   orientation='vertical'
@@ -119,12 +121,13 @@ const Indicador = (props) => {
                               key={index}
                             >
                               <Typography
-                                fontWeight='bold'
+                              fontWeight='bold'
+                              >
+                                Unidad de Medida
+                              </Typography>
+                              <Typography
                               >
                                 {catalogo.nombre || 'NA'}
-                              </Typography>
-                              <Typography>
-                                Unidad de Medida
                               </Typography>
                             </Grid>
                             <Divider
@@ -152,12 +155,13 @@ const Indicador = (props) => {
                             key={index}
                           >
                             <Typography
-                              fontWeight='bold'
+                              fontWeight={'bold'}
+                            >
+                              Cobertura Geográfica
+                            </Typography>
+                            <Typography
                             >
                               {catalogo.nombre || 'NA'}
-                            </Typography>
-                            <Typography>
-                              Cobertura Geográfica
                             </Typography>
                           </Grid>
                         )

@@ -57,7 +57,6 @@ const Description = React.memo(({ name }) => {
           sx={{
             position: 'absolute',
             maxWidth: 900,
-            padding: 1,
             right: { md: '5%' },
             top: { xs: '23%', sm: '43%' }
           }}>

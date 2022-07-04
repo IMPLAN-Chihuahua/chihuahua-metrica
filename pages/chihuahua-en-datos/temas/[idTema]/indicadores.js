@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Container from "@mui/material/Container";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import IndicadorFilter from "@components/indicador/IndicadorFilter";
 import IndicadorList from "@components/indicador/IndicadorList";
 import IndicadorPagination from "@components/indicador/IndicadorPagination";
@@ -86,6 +86,9 @@ export default function Modulo(props) {
     text: selectedTema.temaIndicador,
   }];
 
+  const backgroundColor = useMemo(() => tinycolor(selectedTema.color).lighten().lighten().toHexString(), [selectedTema]);
+  const foregroundColor = useMemo(() => tinycolor(selectedTema.color).darken(60).toHexString(), [selectedTema]);
+
   return (
     <>
       <Head>
@@ -114,11 +117,11 @@ export default function Modulo(props) {
             component='section'
             sx={{
               p: 2,
-              backgroundColor: tinycolor(selectedTema.color).lighten().lighten().toHexString(),
-              color: tinycolor(selectedTema.color).darken(60).toHexString(),
+              backgroundColor: backgroundColor,
+              color: foregroundColor,
+              border: `1px solid ${foregroundColor}`,
               flexGrow: 1,
-              m: 1,
-              borderRadius: 2,
+              ml: 1,
               wordWrap: 'break-word'
             }}>
             <Title variant='h3' component='h1'>{selectedTema.temaIndicador}</Title>

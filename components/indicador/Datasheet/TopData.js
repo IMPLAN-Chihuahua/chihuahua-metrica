@@ -48,7 +48,7 @@ const TopData = (info) => {
   }, [])
 
   return (
-    <Box component='section' sx={{ mt: 3, mb: 3 }}>
+    <Box component='section' sx={{ mb: 3 }}>
       <Box component='section' sx={{ mb: 2 }}>
         <Title variant='h3' component='h1'>{data.nombre}</Title>
         <Typography mb={1}>{data.definicion}</Typography>

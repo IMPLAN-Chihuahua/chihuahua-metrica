@@ -23,9 +23,9 @@ const tendencyList = [
 const IndicadorFilter = (props) => {
   const { odsList, unidadMedidaList,
     coberturaList, modulosList } = props;
-  const minDate = subYears(21, new Date());
+  const minDate = subYears(20, new Date());
   const maxDate = new Date();
-  const { control } = useFormContext();
+  const { control, setError } = useFormContext();
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -196,29 +196,29 @@ const IndicadorFilter = (props) => {
                 name='anio'
                 control={control}
                 defaultValue={null}
-                render={({ field: props, fieldState: { error } }) => (
-                  <>
-                    <DatePicker
-                      views={['year']}
-                      label="Año"
-                      inputFormat='yyyy'
-                      onChange={debounce((val) => {
-                        if (val > minDate && val < maxDate) {
-                          props.onChange(val)
-                        }
-                      }, 500)}
-                      value={props.value}
-                      minDate={minDate}
-                      maxDate={maxDate}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          fullWidth
-                          helperText='Año del último valor disponible'
-                        />
-                      )}
-                    />
-                  </>
+                render={({ field: props }) => (
+                  <DatePicker
+                    views={['year']}
+                    label="Año"
+                    inputFormat='yyyy'
+                    onChange={debounce((val) => {
+                      if (val >= minDate && val <= maxDate) {
+                        props.onChange(val)
+                      } else {
+                        props.onChange(undefined)
+                      }
+                    }, 500)}
+                    value={props.value}
+                    minDate={minDate}
+                    maxDate={maxDate}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        fullWidth
+                        helperText='Año del último valor disponible'
+                      />
+                    )}
+                  />
                 )}
               />
             </Grid>

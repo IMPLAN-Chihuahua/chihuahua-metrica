@@ -12,6 +12,7 @@ import { Controller, useFormContext } from 'react-hook-form'
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import Title from '@components/commons/Title';
+import { debounce } from 'lodash';
 
 const tendencyList = [
   { id: 1, value: 'Ascendente' },
@@ -22,7 +23,7 @@ const tendencyList = [
 const IndicadorFilter = (props) => {
   const { odsList, unidadMedidaList,
     coberturaList, modulosList } = props;
-  const minDate = subYears(20, new Date());
+  const minDate = subYears(21, new Date());
   const maxDate = new Date();
   const { control } = useFormContext();
 
@@ -195,22 +196,29 @@ const IndicadorFilter = (props) => {
                 name='anio'
                 control={control}
                 defaultValue={null}
-                render={({ field: props }) => (
-                  <DatePicker
-                    views={['year']}
-                    label="Año"
-                    onChange={props.onChange}
-                    value={props.value}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        helperText={null}
-                        fullWidth
-                      />
-                    )}
-                  />
+                render={({ field: props, fieldState: { error } }) => (
+                  <>
+                    <DatePicker
+                      views={['year']}
+                      label="Año"
+                      inputFormat='yyyy'
+                      onChange={debounce((val) => {
+                        if (val > minDate && val < maxDate) {
+                          props.onChange(val)
+                        }
+                      }, 500)}
+                      value={props.value}
+                      minDate={minDate}
+                      maxDate={maxDate}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          fullWidth
+                          helperText='Año del último valor disponible'
+                        />
+                      )}
+                    />
+                  </>
                 )}
               />
             </Grid>
@@ -261,7 +269,7 @@ const IndicadorFilter = (props) => {
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Controller
-                name='tendencia'
+                name='tendenciaActual'
                 control={control}
                 defaultValue={null}
                 render={({ field: props }) => (

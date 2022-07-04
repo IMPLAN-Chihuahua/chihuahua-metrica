@@ -68,10 +68,13 @@ export default function Modulo(props) {
     const subscription = watch(value => {
       const { tema, ...data } = value;
       setSelectedTema(tema || props.selectedTema)
+      console.log(data?.anio?.getFullYear())
       const filterValues = {};
       filterValues.idOds = data.ods?.id;
       filterValues.idUnidadMedida = data.medida?.id;
       filterValues.idCobertura = data.cobertura?.id;
+      filterValues.tendenciaActual = data?.tendenciaActual?.value;
+      filterValues.anioUltimoValorDisponible = data?.anio?.getFullYear();
       setFilters(serialize(filterValues))
     });
     return () => subscription.unsubscribe();
@@ -92,8 +95,8 @@ export default function Modulo(props) {
   return (
     <>
       <Head>
-        <title>Indicadores de tema seleccionado</title>
-        <meta name="description" content="Indicadores de un tema" />
+        <title>{selectedTema?.temaIndicador} - Indicadores</title>
+        <meta name="description" content={selectedTema?.descripcion} />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container maxWidth="lg" sx={{ mb: 3, mt: 3 }}>

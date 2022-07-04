@@ -5,6 +5,7 @@ import DataSheet from "@components/indicador/Datasheet/DataSheet";
 import GraphBox from "@components/indicador/Datasheet/GraphBox";
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import IndicadorOwner from "@components/commons/IndicadorOwner";
+import Head from "next/head";
 
 
 export default function FichaTecnica(props) {
@@ -23,6 +24,11 @@ export default function FichaTecnica(props) {
 
   return (
     <>
+      <Head>
+        <title>{indicador?.nombre}</title>
+        <meta name="description" content={indicador?.descripcion} />
+        <link rel="icon" href="/icon.ico" />
+      </Head>
       <Container sx={{ mb: 3, mt: 3 }}>
         <PageBreadcrumb crumbs={[...crumbs]} />
         <TopData info={indicador} />

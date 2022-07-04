@@ -1,24 +1,21 @@
 import { Container, Grid } from '@mui/material'
 import { Box } from '@mui/system'
 import Image from 'next/image'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import style from './StarTree.module.css';
 import TextWithAvatar from './TextWithAvatar';
-function myFunction(e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = (mouseX - 55) + "px";
-    cursor.style.top = (mouseY - 55) + "px";
-}
+
 const StarTree = ({ tree }) => {
     const [isHovering, setIsHovering] = useState(false);
     const [hoveredTree, setHoveredTree] = useState(null);
+    const [coords, setCoords] = useState({ x: 0, y: 0 });
+
 
     const onMouseEnter = (id) => {
         setIsHovering(true);
         setHoveredTree(id);
-        console.log('ekek');
+        // setCoords({ x: mouseX, y: mouseY });
     }
 
     const onMouseLeave = (id) => {
@@ -62,10 +59,11 @@ const StarTree = ({ tree }) => {
             <Grid container>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
                 </Grid>
-                <Grid item xs={12} md={4} lg={4} xl={4} sx={{ position: 'relative' }} className={` ${style.tree} ${isHovering ? style.treeHovered : undefined}`} onMouseEnter={(e) => onMouseEnter(tree.id)} onMouseLeave={(e) => onMouseLeave(tree.id)}>
-                    <Image src={tree.arbol} layout='fill' objectFit='contain' />
+                <Grid item xs={12} md={4} lg={4} xl={4} sx={{ position: 'relative' }} className={` ${style.tree}`} onMouseEnter={(e) => onMouseEnter(tree.id)} onMouseLeave={(e) => onMouseLeave(tree.id)}>
+                    <Image src={tree.arbol} className={style.arbol} layout='fill' objectFit='contain' />
                 </Grid>
-                <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.centeredText}`}>
+                <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.treeDatasheet} ${isHovering ? style.treeHovered : style.treeUnhovered}`} sx={{ position: 'relative' }}>
+                    <Image src={tree.ficha} height='500px' width='500px' objectFit='contain' className={style.treeFicha} />
                 </Grid>
             </Grid>
 

@@ -1,7 +1,7 @@
 .card {
   height: 200px;
   color: white;
-  transition: font-size .2s linear;
+  transition: font-size 0.2s linear;
   cursor: pointer;
 }
 
@@ -9,16 +9,14 @@
   border: none;
   width: 5px;
   height: 5px;
-  border-radius: 25px;
   margin-left: 0;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
 
 @media only screen and (max-width: 810px) {
   .divider {
     width: 15px;
     height: 15px;
-    border-radius: 25px;
     margin-left: 0;
   }
 }

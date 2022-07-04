@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import StarTree from '@components/arbolado/StarTree';
 import TreeList from '@components/arbolado/TreeList';
+import NextLink from 'next/link';
 
 const BENEFICIOS = [
   'Mitigación de las altas temperaturas',
@@ -152,6 +153,12 @@ const ArboladoUrbano = () => {
               ))
             }
           </Box>
+          <cite>
+            <NextLink 
+            target='_blank'
+            rel='noreferrer noopener'
+            href='https://es.greenpeace.org/es/noticias/regla-3-30-300-ciudades-verdes/'>Alba Garcia, La regla 3-30-300 o cómo una ciudad verde te ayuda a vivir mejor. Greenpeace España</NextLink>
+          </cite>
         </section>
         <section>
           <section>

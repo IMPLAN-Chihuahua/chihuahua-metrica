@@ -5,12 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 import style from './StarTree.module.css';
 import TextWithAvatar from './TextWithAvatar';
-function myFunction(e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = (mouseX - 55) + "px";
-    cursor.style.top = (mouseY - 55) + "px";
-}
+
 const StarTree = ({ tree }) => {
     const [isHovering, setIsHovering] = useState(false);
     const [hoveredTree, setHoveredTree] = useState(null);
@@ -20,7 +15,6 @@ const StarTree = ({ tree }) => {
     const onMouseEnter = (id) => {
         setIsHovering(true);
         setHoveredTree(id);
-        console.log('ekek');
         // setCoords({ x: mouseX, y: mouseY });
     }
 

@@ -21,7 +21,6 @@ const compareIds = (a, b) => {
 
 const Indicador = (props) => {
   const indicador = props.value;
-  console.log(indicador.catalogos)
   const updatedAt = indicador.updatedAt.split('T')[0];
   return (
     <Card variant='outlined'>

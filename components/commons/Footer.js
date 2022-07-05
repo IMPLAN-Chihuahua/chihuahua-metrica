@@ -81,7 +81,12 @@ const Footer = () => {
               </li>
               <li>
                 <NextLink href='/informacion/aviso-de-privacidad-integral' passHref>
-                  <MUILink variant='body2' underline='hover' color='#fff'>
+                  <MUILink
+                    variant='body2'
+                    underline='hover'
+                    color='#fff'
+                    rel='noreferrer noopener'
+                    target='_blank'>
                     Aviso de privacidad integral
                   </MUILink>
                 </NextLink>

@@ -25,7 +25,7 @@ export default function Home() {
         </Container>
         <StatsIndicadores />
         <SatisfactionSurvey />
-        <PartnersStrip />
+        {/* <PartnersStrip /> */}
       </body>
     </>
   )

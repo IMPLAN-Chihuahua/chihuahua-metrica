@@ -14,9 +14,27 @@
 
 .tree {
     height: 40vh;
-    background-color: aquamarine;
 }
 
+
+.treeDatasheet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+
 .treeHovered {
-    background-color: salmon;
+    opacity: 1;
+    transition: 0.5s;
+    z-index: 30;
+}
+
+.treeUnhovered {
+    opacity: 0;
+    transition: 0.5s;
+    z-index: -1;
 }

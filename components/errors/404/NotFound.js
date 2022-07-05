@@ -1,13 +1,20 @@
 import { Button } from '@mui/material'
+import { Box } from '@mui/system'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import style from './error404.module.css'
+import { useRouter } from 'next/router'
 // import rocket from './rocket.png'
 
 const NotFound = () => {
     const [goingHome, setGoingHome] = useState(false)
+    const router = useRouter();
 
     const handleClick = () => {
         setGoingHome(!goingHome)
+        setTimeout(() => {
+            router.push('/')
+        }, 2500)
     };
 
     return (
@@ -20,9 +27,10 @@ const NotFound = () => {
                 <span className={style.span}></span>
                 <span className={style.span}></span>
             </section>
+
             <div className={`${style.rocketContainer}`}>
-                <Button variant='contained' onClick={handleClick}>
-                    {goingHome.toString()}
+                <Button variant='outlined' onClick={handleClick} className={style.goHome}>
+                    Ir a casa
                 </Button>
                 <div className={`${goingHome ? style.rocketGoesWuWu : style.rocket}`}>
                     <div className={`${style.rocketBackground}`}></div>

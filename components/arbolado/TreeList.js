@@ -54,7 +54,7 @@ const TreeList = () => {
             {
                 trees.map((tree, index) => {
                     return (
-                        <StarTree tree={tree} />
+                        <StarTree key={index} tree={tree} />
                     )
                 })
             }

@@ -141,7 +141,7 @@ const ArboladoUrbano = () => {
           <Box display='flex' flexWrap='wrap' >
             {
               BENEFICIOS.map((b, idx) => (
-                <Box sx={{
+                <Box key={idx} sx={{
                   backgroundColor: '#f1faee',
                   borderRadius: 5,
                   padding: 1,

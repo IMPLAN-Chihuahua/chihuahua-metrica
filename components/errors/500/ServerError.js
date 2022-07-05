@@ -26,11 +26,11 @@ const ServerError = () => {
             Lo sentimos, intenta recargar la página o vuelve más tarde
           </Typography>
         </Grid>
-        <Grid item xs={12} position='relative' height='300px'>
+        <Grid item xs={12} position='relative' height={{ xs: '200px', md: '300px' }}>
           <Image src='/error.png' layout='fill' objectFit='contain' />
         </Grid>
       </Grid>
-      <Grid item xs={12} md={6} position='relative' height='500px'>
+      <Grid item xs={12} md={6} position='relative' height={{ xs: '400px', md: '500px' }}>
         <Image src='/LAP01.png' layout='fill' objectFit='contain' />
       </Grid>
     </Grid>

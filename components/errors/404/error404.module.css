@@ -272,3 +272,25 @@
     }
 
 }
+
+@media screen and (max-width: 1300px) {
+    .rocket {
+        position: absolute;
+        left: 15vw;
+        animation-duration: 3s;
+        animation-name: RocketMovement;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        width: 70vw;
+    }
+
+    .rocketGoesWuWu {
+        position: absolute;
+        left: 8vw;
+        width: 85vw;
+        animation-duration: 4s;
+        animation-name: RocketWuWu;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+}

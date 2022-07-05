@@ -6,6 +6,7 @@ import { Container } from '@mui/material';
 import StatsIndicadores from '@components/stats/StatsIndicadores';
 import SatisfactionSurvey from '@components/stats/SatisfactionSurvey';
 import Splashscreen from '@components/commons/Splashscreen';
+import PartnersStrip from '@components/commons/PartnersStrip';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         </Container>
         <StatsIndicadores />
         <SatisfactionSurvey />
+        {/* <PartnersStrip /> */}
       </body>
     </>
   )

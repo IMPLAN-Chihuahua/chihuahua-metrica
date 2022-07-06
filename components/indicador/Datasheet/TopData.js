@@ -1,47 +1,54 @@
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import DownloadIcon from "@mui/icons-material/Download";
 import Typography from '@mui/material/Typography';
 import Title from "@components/commons/Title";
-import NextLink from 'next/link';
 import Image from 'next/image';
-import { useCallback } from 'react';
-import { Chip, Stack } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton'
+import { useCallback, useState } from 'react';
+import { Chip } from '@mui/material';
+import JsFileDownloader from 'js-file-downloader';
 
-const DOC_FORMATS = [
-  'csv',
-  'pdf',
-  'json'];
+const DOC_FORMATS = ['csv', 'pdf', 'json'];
 
 const DocumentButton = ({ indicadorId, format, icon, ...props }) => {
+  const [isLoading, setLoading] = useState(false);
+  const fetchDocument = useCallback(() => {
+    setLoading(true)
+    new JsFileDownloader({
+      url: `${process.env.INDICADORES_BASE_URL}/documentos/${indicadorId}/${format}`,
+      nameCallback: () => `indicador-${indicadorId}.${format}`
+    })
+      .finally(_ => setLoading(false))
+  }, [])
+
   return (
-    <NextLink href={`${process.env.INDICADORES_BASE_URL}/documentos/${indicadorId}/${format}`} >
-      <a download>
-        <Button
-          variant="outlined"
-          color="primary"
-          fullWidth
-          {...props}
-        >{icon || (<DownloadIcon />)}</Button>
-      </a>
-    </NextLink>
+    <LoadingButton
+      loading={isLoading}
+      variant="outlined"
+      color="primary"
+      startIcon={icon || <DownloadIcon />}
+      fullWidth
+      loadingPosition='start'
+      onClick={fetchDocument}
+      {...props}
+    >{format}</LoadingButton>
   );
 };
 
 
 const TopData = (info) => {
-  const { info: data } = info;
+  const { info: indicador } = info;
   const getDocumentIconSrc = useCallback((format) => {
     switch (format) {
       case 'csv':
-        return '/csv_icon.png';
+        return '/csv_icon.svg';
       case 'pdf':
-        return '/pdf_icon.png';
+        return '/pdf_icon.svg';
       case 'json':
-        return '/json_icon.png';
+        return '/json_icon.svg';
       case 'xlsx':
-        return '/xlsx_icon.png';
+        return '/xlsx_icon.svg';
       default:
         throw new Error('Invalid document format');
     }
@@ -50,9 +57,9 @@ const TopData = (info) => {
   return (
     <Box component='section' sx={{ mb: 3 }}>
       <Box component='section' sx={{ mb: 2 }}>
-        <Title variant='h3' component='h1'>{data.nombre}</Title>
-        <Typography mb={1}>{data.definicion}</Typography>
-        <Chip label={data.modulo?.temaIndicador} color='info' />
+        <Title variant='h3' component='h1'>{indicador.nombre}</Title>
+        <Typography mb={1}>{indicador.definicion}</Typography>
+        <Chip label={indicador.modulo?.temaIndicador} color='info' />
       </Box>
 
       <Title variant='h4' component='h2'>Datos abiertos</Title>
@@ -60,14 +67,14 @@ const TopData = (info) => {
         <Grid item xs={6} ml={1} mr={1}>
           <DocumentButton
             format='xlsx'
-            indicadorId={data.id}
+            indicadorId={indicador.id}
             icon={<Image src={getDocumentIconSrc('xlsx')} height={40} width={40} />} />
         </Grid>
         {DOC_FORMATS.map(format => (
           <Grid item xs={6} ml={1} mr={1} key={format}>
             <DocumentButton
               format={format}
-              indicadorId={data.id}
+              indicadorId={indicador.id}
               icon={<Image src={getDocumentIconSrc(format)} height={40} width={40} />}
             />
           </Grid>

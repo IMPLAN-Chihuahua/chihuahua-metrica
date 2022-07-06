@@ -119,11 +119,12 @@ export default function Modulo(props) {
             component='section'
             sx={{
               p: 2,
-              backgroundColor: backgroundColor,
+              backgroundColor,
               color: foregroundColor,
               border: `1px solid ${foregroundColor}`,
               flexGrow: 1,
-              ml: 1,
+              ml: { xs: 0, md: 1 },
+              mt: { xs: 1, md: 0 },
               wordWrap: 'break-word'
             }}>
             <Title variant='h3' component='h1'>{selectedTema.temaIndicador}</Title>

@@ -41,8 +41,9 @@ function MyApp(props) {
     <>
       <CacheProvider value={emotionCache}>
         <Head>
-          <title>Observatorio Urbano</title>
+          <title>Chihuahua Metrica</title>
           <meta lang='es' name='viewport' content='initial-scale=1, width=device-width' />
+          <link rel="icon" href="/icon.ico" />
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />

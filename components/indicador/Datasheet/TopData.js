@@ -19,6 +19,7 @@ const DocumentButton = ({ indicadorId, format, icon, ...props }) => {
       url: `${process.env.INDICADORES_BASE_URL}/documentos/${indicadorId}/${format}`,
       nameCallback: () => `indicador-${indicadorId}.${format}`
     })
+      .catch(err => console.log(err))
       .finally(_ => setLoading(false))
   }, [])
 

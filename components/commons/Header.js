@@ -7,9 +7,8 @@ import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
 import Navbar from "./Navbar";
 import SideBar from "./SideBar";
 import BackToTop from "./BackToTop";
-import { Grid, IconButton } from "@mui/material";
+import { Grid, IconButton, Box } from "@mui/material";
 import NextLink from "next/link";
-import { Box } from "@mui/system";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import Modal from '@mui/material/Modal';
 

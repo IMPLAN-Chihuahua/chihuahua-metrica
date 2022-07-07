@@ -9,6 +9,7 @@ const PartnersStrip = () => {
 
     return (
         <Container className={`${style.partnerContainer}`}>
+            <h1>Involucrados</h1>
             <Grid container>
                 {partnerList.map((partner, index) => (
                     <Grid item xs={6} sm={6} md={4} key={index} className={`${style.partnerImagesContainer}`}>

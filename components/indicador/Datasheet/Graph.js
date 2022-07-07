@@ -9,8 +9,7 @@ import {
   BarElement,
 } from "chart.js";
 import theme from "styles/theme";
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Typography } from "@mui/material";
 
 ChartJS.register(
   CategoryScale,
@@ -45,17 +44,17 @@ const Graph = ({ data }) => {
 
   return (
     <>
-      <Box sx={{textAlign: 'center', width:'auto', height: 'auto'}}>
+      <Box sx={{ textAlign: 'center', width: 'auto', height: 'auto' }}>
         <Bar
           data={state}
           options={options}
           width={'auto'}
           height={'165%'}
         />
-        <Box sx={{mt:'1.6%'}}>
-        <Typography variant="p" sx={{fontSize: '14px', fontWeight: 'bold', color: theme.palette.primary.subtleMain, pt: 10}}>
-          Gráfica de barras representativa del valor en los últimos años disponibles
-        </Typography>
+        <Box sx={{ mt: '1.6%' }}>
+          <Typography variant="p" sx={{ fontSize: '14px', fontWeight: 'bold', color: theme.palette.primary.subtleMain, pt: 10 }}>
+            Gráfica de barras representativa del valor en los últimos años disponibles
+          </Typography>
         </Box>
       </Box>
     </>

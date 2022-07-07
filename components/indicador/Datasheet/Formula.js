@@ -71,7 +71,6 @@ const Formula = ({ formula, fuente }) => {
                 height: 50%;
                 padding-top: 10px;
                 padding-bottom: 20px;
-                background-color: red;
               }
 
             `}</style>

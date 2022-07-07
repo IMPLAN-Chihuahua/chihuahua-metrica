@@ -71,7 +71,9 @@ const Formula = ({ formula, fuente }) => {
                 height: 50%;
                 padding-top: 10px;
                 padding-bottom: 20px;
+                background-color: red;
               }
+
             `}</style>
       <Box
         sx={{
@@ -96,32 +98,48 @@ const Formula = ({ formula, fuente }) => {
                 <div className='tost'>
                   <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más información.</Typography>
                 </div>
+
                 <div className="test">
                   <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-all' }}>
                     <small>
                       {fuente}
-
                     </small>
                   </Typography>
                 </div>
               </div>
             )
             : (
-              <section>
-                <Typography variant='h5' component='h3'>Descripcion</Typography>
-                <Typography mb={2}>{formula.descripcion}</Typography>
-                <MathJax.Provider>
-                  <Typography
-                    textAlign='center'
-                    variant='h4'
-                    mb={2}
-                    className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
-                </MathJax.Provider>
-                <Typography variant='h5' component='h3'>Donde:</Typography>
+              <div classname='formula-section'>
+                <div className='formula-data'>
+                  <Typography variant='h5' component='h3'>Descripcion</Typography>
+                  <Typography mb={2}>{formula.descripcion}</Typography>
+                  <MathJax.Provider>
+                    <Typography
+                      textAlign='center'
+                      variant='h4'
+                      mb={2}
+                      className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
+                  </MathJax.Provider>
+                  <Typography variant='h5' component='h3'>Donde:</Typography>
+                </div>
                 <div className='variableText'>
                   <VariableList variables={formula.variables} />
                 </div>
-              </section>
+                <div className="formula-exists">
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-all' }}>
+                    <small>
+                      {fuente}
+                    </small>
+                  </Typography>
+                </div>
+              </div>
             )}
         </Box>
       </Box>

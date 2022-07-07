@@ -1,5 +1,4 @@
-import { Avatar, Container, Grid, Typography } from '@mui/material'
-import { Box } from '@mui/system'
+import { Avatar, Box, Container, Grid, Typography } from '@mui/material'
 import React from 'react'
 import FlagIcon from '@mui/icons-material/Flag';
 import VisibilityIcon from '@mui/icons-material/Visibility';

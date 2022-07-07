@@ -5,6 +5,7 @@ import Title from "@components/commons/Title";
 import { numberWithCommas } from "helpers/FormatNumbers";
 import { ArrowDownward, ArrowUpward, ErrorOutline } from "@mui/icons-material";
 import { UNIDAD_MEDIDA, COBERTURA_GEOGRAFICA } from "../Indicador";
+import { Typography } from "@mui/material";
 
 const getCatalogo = (catalogos, idCatalogo) => {
   const catalogo = catalogos.find(catalogo => catalogo.idCatalogo === idCatalogo);

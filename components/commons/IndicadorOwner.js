@@ -1,5 +1,4 @@
-import { Avatar, AvatarGroup, Button, Grid, Link, Typography } from '@mui/material'
-import { Box } from '@mui/system'
+import { Avatar, AvatarGroup, Box, Button, Grid, Link, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 import style from './IndicadorOwner.module.css'

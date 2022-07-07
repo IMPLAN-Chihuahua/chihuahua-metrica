@@ -1,5 +1,4 @@
 import { Button } from '@mui/material'
-import { Box } from '@mui/system'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import style from './error404.module.css'

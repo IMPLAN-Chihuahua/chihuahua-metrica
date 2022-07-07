@@ -1,5 +1,4 @@
-import { Grid, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';

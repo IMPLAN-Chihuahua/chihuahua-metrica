@@ -1,6 +1,5 @@
 import Title from '@components/commons/Title'
-import { Avatar, Typography } from '@mui/material'
-import { Box } from '@mui/system'
+import { Avatar, Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 

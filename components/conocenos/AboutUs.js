@@ -7,7 +7,6 @@ import TimelineIcon from '@mui/icons-material/Timeline';
 import Image from "next/image";
 
 import style from './AboutUs.module.css'
-import Title from '@components/commons/Title';
 
 const AboutUs = () => {
     return (
@@ -27,7 +26,7 @@ const AboutUs = () => {
             <Box className={`${style.aboutUsContainer}`}>
                 <Container className={style.aboutUs}>
                     {/* <Title variant='h2' component='h1'>¿Qué es?</Title> */}
-                    <Typography variant='h5' component='h4' >Chihuahua Métrica es una plataforma digital innovadora impulsada por el Instituto de Planeación Integral del Municipio de Chihuahua para informar, monitorear y evaluar su transformación en el ámbito de la planeación   urbana y territorial, a través de proyectos y herramientas fáciles de utilizar, entender e interpretar para que cualquier usuario que tome decisiones.</Typography>
+                    <Typography variant='h5' component='h4' >Chihuahua Métrica es una plataforma digital innovadora impulsada por el Instituto de Planeación Integral del Municipio de Chihuahua para informar, monitorear y evaluar la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial, a través de proyectos y herramientas fáciles de utilizar, entender e interpretar para cualquier usuario que tome decisiones.</Typography>
                 </Container>
 
                 <Grid container className={`${style.aboutBody}`}>
@@ -39,7 +38,7 @@ const AboutUs = () => {
                             <Box className={`${style.information}`}>
                                 <h2>Informa</h2>
                                 <p>
-                                    Datos de alta prioridad y relevancia para la toma de decisiones en temas de desarrollo socioeconómico, urbano y ambiental del municipio de Chihuahua
+                                    Datos de alta prioridad y relevancia para la toma de decisiones en temas de desarrollo socioeconómico, urbano y ambiental.
                                 </p>
                             </Box>
                         </Box>
@@ -51,7 +50,7 @@ const AboutUs = () => {
                             </Avatar>
                             <h2>Evalúa </h2>
                             <p>
-                                Las políticas públicas referentes a al desarrollo y competitividad del municipio de Chihuahua.
+                                Las políticas públicas referentes a al desarrollo y competitividad.
                             </p>
                         </Box>
                     </Grid>
@@ -62,7 +61,7 @@ const AboutUs = () => {
                             </Avatar>
                             <h2>Monitorea</h2>
                             <p>
-                                Indicadores en temas de desarrollo socioeconómico, urbano y ambiental del municipio de Chihuahua.
+                                Indicadores en temas de desarrollo socioeconómico, urbano y ambiental.
                             </p>
                         </Box>
                     </Grid>

@@ -47,7 +47,7 @@ const Description = React.memo(({ name }) => {
             }}>
             <span className="highlight-text">Chihuahua Métrica </span>
             es una plataforma digital para <span className='highlight-text'>informar, monitorear
-              y evaluar</span> su transformación en el ámbito de la planeación urbana y territorial
+              y evaluar</span> la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial
           </Typography>
         </Box>
       )
@@ -84,7 +84,7 @@ Description.displayName = 'Description';
 const Slide = ({ slide }) => {
   return (
     <NextLink href={slide.href}>
-      <Box className={style.embla__slide} key={slide.name} sx={{ height: {xs: '60vh', md: '90vh'} }}>
+      <Box className={style.embla__slide} key={slide.name} sx={{ height: { xs: '60vh', md: '90vh' } }}>
         <Image src={slide.imgSrc} layout='fill' objectFit='cover' objectPosition='center' />
         <Description name={slide.name} />
       </Box>

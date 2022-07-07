@@ -139,7 +139,7 @@ const Footer = () => {
             <Box
               sx={{
                 width: 280,
-                height: 90,
+                height: 10,
                 fontWeight: 'bold',
                 display: 'flex',
                 justifyContent: 'center',
@@ -148,20 +148,6 @@ const Footer = () => {
                 position: 'relative'
               }}
             >
-              <NextLink href='https://www.implanchihuahua.org/' passHref={true}>
-                <a
-                  alt='Ícono del IMPLAN'
-                  title='¡Visita nuestra sitio!'
-                  target='_blank'
-                  rel='noreferrer noopener'
-                >
-                  <Image
-                    src='/logo_implan_light.webp'
-                    layout='fill'
-                    objectFit='contain' />
-
-                </a>
-              </NextLink>
             </Box>
           </Box>
         </Stack>

@@ -1,18 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900);
 
-.container {}
-
 .aboutUsContainer {
     background:
         linear-gradient(rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)), url('/images/Banner/presa.jpg');
     background-size: cover;
-    margin: 0 !important;
 }
 
 .aboutUs {
     text-align: center;
-    padding: 10vh 10vw 10vh 10vw !important;
+    padding: 2vh 10vw 0 10vw !important;
     background-color: #00000005;
 }
 
@@ -21,10 +18,6 @@
     color: white;
 }
 
-.aboutBody {
-    padding: 20px;
-    margin-top: 2%;
-}
 
 .infoColumn {
     display: flex;

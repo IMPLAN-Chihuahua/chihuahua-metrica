@@ -108,7 +108,7 @@ const Formula = ({ formula, fuente }) => {
               </div>
             )
             : (
-              <div classname='formula-section'>
+              <div>
                 <div className='formula-data'>
                   <Typography variant='h5' component='h3'>Descripcion</Typography>
                   <Typography mb={2}>{formula.descripcion}</Typography>

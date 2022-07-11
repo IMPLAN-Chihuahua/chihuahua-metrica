@@ -95,7 +95,7 @@ const Formula = ({ formula, fuente }) => {
             ? (
               <div className='no-formula'>
                 <div className='tost'>
-                  <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más información.</Typography>
+                  <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más detalles.</Typography>
                 </div>
 
                 <div className="test">

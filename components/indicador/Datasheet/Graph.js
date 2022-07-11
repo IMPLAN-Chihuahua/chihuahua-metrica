@@ -31,7 +31,7 @@ const Graph = ({ data }) => {
         hoverBackgroundColor: `${theme.palette.primary.darkerMain}`,
         borderColor: `${theme.palette.primary.main}`,
         borderWidth: 1,
-        data: data.reverse().map((historico) => historico.valor),
+        data: data.map((historico) => historico.valor),
         barPercentage: 0.6,
         borderRadius: 2,
       },

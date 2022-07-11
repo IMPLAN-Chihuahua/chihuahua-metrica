@@ -6,8 +6,6 @@ import MailIcon from '@mui/icons-material/Mail';
 import Title from './Title'
 
 const IndicadorOwner = ({ responsible, indicadorDate }, props) => {
-    console.log('ekeke');
-    console.log(responsible);
     return (
         <>
             <Title variant='h4' component='h2'>Responsable</Title>

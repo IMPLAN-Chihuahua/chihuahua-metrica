@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import theme from "styles/theme";
 import { Box, Typography } from "@mui/material";
+import { useEffect } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -20,7 +21,7 @@ ChartJS.register(
   BarElement
 );
 
-const Graph = ({ data }) => {
+const Graph = ({ data, lastValue, lastYear }) => {
 
   const state = {
     labels: data.reverse().map((historico) => historico.anio),
@@ -37,6 +38,9 @@ const Graph = ({ data }) => {
       },
     ],
   };
+
+  state.labels.push(lastYear);
+  state.datasets[0].data.push(lastValue);
 
   const options = {
     responsive: true,

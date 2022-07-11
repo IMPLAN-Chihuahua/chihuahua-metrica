@@ -30,38 +30,17 @@ const IndicadorOwner = ({ responsible, indicadorDate }, props) => {
                             <br />
                         </Box>
                         <Box className={`${style.contact}`}>
-                            <Link href={`${responsible.correo}`} className={`${style.link}`}>
+                            <a href={`mailto:${responsible.correo}`} className={`${style.link}`}>
                                 <Avatar sx={{ width: 30, height: 30 }} className={`${style.emailIcon}`}>
                                     <MailIcon />
                                 </Avatar>
-                            </Link>
+                            </a>
                         </Box>
                     </Box>
                 </Grid>
             </Grid>
         </>
     )
-}
-
-export async function getServerSideProps(context) {
-    const idUsuario = context.params.idUsuario;
-
-    const res = await fetch(
-        `${process.env.INDICADORES_BASE_URL}/usuarios/${idUsuario}/profile`
-    );
-
-    const data = await res.json();
-    if (res.status === 200) {
-        return {
-            props: { ...data },
-        };
-    } else {
-        return {
-            props: {
-                data: [],
-            }
-        }
-    }
 }
 
 export default IndicadorOwner

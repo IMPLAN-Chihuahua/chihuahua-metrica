@@ -16,19 +16,17 @@ const GraphBox = (history) => {
 function HistoricalValuesExists(history) {
   const { history: data } = history;
   return (
-    <>
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: '5%' }}>
-        <Title variant='h4'>Valores históricos</Title>
-      </Box>
-      <Grid container sx={{ mt: '2%' }} columnSpacing={4}>
+    <Box sx={{ mt: 3, mb: 3 }}>
+      <Title variant='h4' component='h2'>Valores históricos</Title>
+      <Grid container columnSpacing={1}>
         <Grid item xs={12} md={6}>
-          <CustomTable data={data.historicos} />
+          <CustomTable data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Graph data={data.historicos} />
+          <Graph data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 
@@ -39,8 +37,6 @@ function HistoricalValuesNotExists() {
         <Grid sx={theme => (
           {
             borderRadius: '5px',
-            bgcolor: 'cardInformation.main',
-            color: 'white',
             height: '96%',
             mt: '5%',
             textAlign: 'center',

@@ -1,0 +1,71 @@
+.embla__button {
+  outline: 0;
+  cursor: pointer;
+  background-color: transparent;
+  touch-action: manipulation;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  width: 50px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  fill: white;
+  padding: 0;
+  opacity: 0.6;
+  transition: opacity .1s linear;
+}
+
+.embla__button:hover {
+  opacity: 1;
+}
+
+.embla__button:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.embla__button__svg {
+  width: 50px;
+  height: 50px;
+}
+
+.embla__button--prev {
+  padding-left: 10px;
+  left: 0px;
+}
+
+.embla__button--next {
+  padding-right: 10px;
+  right: 0px;
+}
+
+.embla__dot {
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 7.5px;
+  margin-left: 7.5px;
+  display: flex;
+  align-items: center;
+}
+
+.embla__dot:after {
+  background-color: lightgray;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  content: "";
+}
+
+.embla__dot.is-selected:after {
+  background-color: var(--blue);
+  opacity: 1;
+}

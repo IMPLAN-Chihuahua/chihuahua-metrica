@@ -1,0 +1,296 @@
+.background404 {
+    background-image: url('./error.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 155vh;
+
+}
+
+.rocketContainer {
+    height: 100%;
+    /* background-color: rgba(189, 16, 16, 0.336); */
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.rocket {
+    position: absolute;
+    left: 29%;
+    animation-duration: 3s;
+    animation-name: RocketMovement;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    width: 40vw;
+}
+
+.rocketMan {
+    width: 100%;
+}
+
+.rocketBackground {
+    height: 100%;
+}
+
+.rocketBase {
+    width: 40%;
+    position: absolute;
+    left: 29%;
+    bottom: 0%;
+    animation-duration: 3s;
+    animation-name: BaseOpacity;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.rocketGoesWuWu {
+    position: absolute;
+    left: 29%;
+    width: 40%;
+    animation-duration: 3s;
+    animation-name: RocketWuWu;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.goHome {
+    color: white !important;
+    border: 2px solid white !important;
+    border-radius: 200px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.9em !important;
+    width: 150px !important;
+    height: 50px !important;
+    position: absolute !important;
+    margin-top: 15vh !important;
+}
+
+
+@keyframes RocketMovement {
+    from {
+        bottom: 2%;
+        transform: rotate(1deg);
+        /* margin-left: 25%; */
+    }
+
+    to {
+        bottom: 15%;
+        transform: rotate(-1deg);
+        /* margin-left: -25%; */
+    }
+}
+
+@keyframes RocketWuWu {
+    from {
+        bottom: 15%;
+        transform: rotate(1deg);
+        /* margin-left: 25%; */
+    }
+
+    to {
+        bottom: 100%;
+        transform: rotate(-1deg);
+        /* margin-left: -25%; */
+    }
+}
+
+@keyframes BaseOpacity {
+    from {
+        opacity: 100%;
+        /* margin-left: 25%; */
+    }
+
+    to {
+        opacity: 0%;
+        /* margin-left: -25%; */
+    }
+}
+
+
+/** Fallin skies section */
+.section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100vh;
+    background-position-x: center;
+    background-size: cover;
+    animation: animateBg 50s linear infinite;
+}
+
+@keyframes animateBg {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1);
+    animation: animate 3s linear infinite;
+}
+
+.span::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, #fff, transparent);
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(315deg) translateX(0);
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+
+    }
+
+    100% {
+        transform: rotate(315deg) translateX(-1500px);
+        opacity: 0;
+
+    }
+
+}
+
+.span:nth-child(1) {
+    top: 0;
+    right: 0;
+    left: initial;
+    animation-delay: 0;
+    animation-duration: 1s;
+}
+
+.span:nth-child(2) {
+    top: 0;
+    right: 80px;
+    left: initial;
+    animation-delay: 0.2s;
+    animation-duration: 3s;
+}
+
+.span:nth-child(3) {
+    top: 80px;
+    right: 0px;
+    left: initial;
+    animation-delay: 0.4s;
+    animation-duration: 2s;
+}
+
+.span:nth-child(4) {
+    top: 0;
+    right: 180px;
+    left: initial;
+    animation-delay: 0.6s;
+    animation-duration: 1.5s;
+}
+
+@media screen and (max-width: 500px) {
+    .background404 {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 50vh;
+        width: 100vw;
+    }
+
+    .rocket {
+        position: absolute;
+        left: 15vw;
+        animation-duration: 3s;
+        animation-name: RocketMovement;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        width: 70vw;
+    }
+
+    .rocketGoesWuWu {
+        position: absolute;
+        left: 15vw;
+        width: 100vw;
+        animation-duration: 4s;
+        animation-name: RocketWuWu;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+
+    .goHome {
+        color: white !important;
+        border: 2px solid white !important;
+        border-radius: 200px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.6em !important;
+        width: 100px !important;
+        height: 40px !important;
+        position: absolute !important;
+        margin-top: 2vh !important;
+    }
+
+
+    .span:nth-child(1) {
+        display: none;
+    }
+
+    .span:nth-child(2) {
+        top: 0;
+        right: 80px;
+        left: initial;
+        animation-delay: 0.2s;
+        animation-duration: 3s;
+    }
+
+    .span:nth-child(3) {
+        display: none;
+    }
+
+    .span:nth-child(4) {
+        top: 0;
+        right: 180px;
+        left: initial;
+        animation-delay: 0.6s;
+        animation-duration: 1.5s;
+    }
+
+}
+
+@media screen and (max-width: 1300px) {
+    .rocket {
+        position: absolute;
+        left: 15vw;
+        animation-duration: 3s;
+        animation-name: RocketMovement;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        width: 70vw;
+    }
+
+    .rocketGoesWuWu {
+        position: absolute;
+        left: 8vw;
+        width: 85vw;
+        animation-duration: 4s;
+        animation-name: RocketWuWu;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+}

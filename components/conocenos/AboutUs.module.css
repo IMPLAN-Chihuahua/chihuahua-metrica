@@ -1,0 +1,92 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900);
+
+.aboutUsContainer {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)), url('/images/Banner/presa.jpg');
+    background-size: cover;
+}
+
+.aboutUs {
+    text-align: center;
+    padding: 2vh 10vw 0 10vw !important;
+    background-color: #00000005;
+}
+
+.aboutUs h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+}
+
+
+.infoColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 80px 0 80px !important;
+}
+
+.infoContainer {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-attachment: fixed;
+    backdrop-filter: blur(1px);
+}
+
+
+.aboutIconContainer {
+    height: 100px !important;
+    width: 100px !important;
+    transition: 0.5s;
+}
+
+.aboutIcon {
+    width: 80% !important;
+    height: 80% !important;
+}
+
+.infoContainer:hover .aboutIconContainer {
+    transition: 0.3s;
+    background: var(--gradient);
+    background-size: 600% 600%;
+    height: 90px !important;
+    width: 90px !important;
+    -moz-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}

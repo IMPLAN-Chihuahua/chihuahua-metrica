@@ -1,18 +1,19 @@
 import React from 'react';
-import {Box, Container} from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import Title from '@components/commons/Title';
 
 const AboutDescription = () => {
   return (
-    <Box >
-    <Container sx={{mt:'3%',mb:'3%' }}>
-      <Title variant='h3' component='h1'>What really happened with Aaron Swartz?</Title>
-      <Box sx={{mt:'3%'}}>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </Box>
-    </Container>
-    </Box>
+    <>
+      <Title variant='h3' component='h1'>¿Qué es?</Title>
+      <Typography variant='body1' fontSize="1.3rem" mb={3}>
+        Chihuahua Métrica es una plataforma digital innovadora impulsada por
+        el Instituto de Planeación Integral del Municipio de Chihuahua para informar,
+        monitorear y evaluar su transformación en el ámbito de la planeación urbana
+        y territorial, a través de proyectos y herramientas fáciles de utilizar, entender
+        e interpretar para que cualquier usuario que tome decisiones.
+      </Typography>
+    </>
   );
 };
 

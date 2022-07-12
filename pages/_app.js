@@ -12,7 +12,8 @@ import Header from '@components/commons/Header';
 import Footer from '@components/commons/Footer';
 import NProgress from 'nprogress';
 import '../styles/nprogress.css';
-
+import { Box } from '@mui/material';
+import { useRouter } from 'next/router'
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -33,21 +34,28 @@ function MyApp(props) {
     };
   }, []);
 
+  const { pathname } = useRouter();
+
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
     <>
       <CacheProvider value={emotionCache}>
         <Head>
-          <title>Observatorio Urbano</title>
+          <title>Chihuahua Metrica</title>
           <meta lang='es' name='viewport' content='initial-scale=1, width=device-width' />
+          <link rel="icon" href="/icon.ico" />
         </Head>
         <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Header />
-            <main>
-              <Component {...pageProps} />
-            </main>
-            <Footer />
+          <CssBaseline />
+          {
+            pathname !== '/' &&
+            <Box id='ghostly-div' marginTop='66px'></Box>
+          }
+          <Header />
+          <main>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
         </ThemeProvider>
       </CacheProvider>
 

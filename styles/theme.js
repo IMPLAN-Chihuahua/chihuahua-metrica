@@ -2,15 +2,24 @@ import { createTheme } from "@mui/material/styles";
 import { responsiveFontSizes } from "@mui/material/styles";
 
 let theme = createTheme({
+    typography: {
+        fontFamily: [
+            'Segoe UI',
+            'Helvetica Neue',
+            'sans-serif'
+        ].join(',')
+    },
     palette: {
-        // Change color after checking MUI
         primary: {
-            main: '#263044',
-            subtleMain: '#46587C',
+            main: '#000000',
+            subtleMain: '#3F3F3F',
             darkerMain: '#1C2331',
             contrastText: '#FFFFFF',
             buttonColor: '#EEEEEE',
             white: '#FFFFFF',
+            blue: '#2043db',
+            pink: '#ee59e9',
+            purple: '#7b1ee3'
         },
 
         secondary: {
@@ -19,7 +28,7 @@ let theme = createTheme({
         },
 
         info: {
-            main: '#E3F6FA',
+            main: '#caf0f8',
             outline: '#D7D0D8',
         },
 

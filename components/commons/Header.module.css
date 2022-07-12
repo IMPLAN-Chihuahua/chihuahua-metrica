@@ -1,0 +1,82 @@
+.topHeader {
+    background-color: red;
+    margin-bottom: 10px;
+}
+
+.navbarCentered {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    transition: 1.5s;
+    max-width: 10px;
+}
+
+.play {
+    width: 70px;
+    filter: invert(100%);
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+}
+
+
+.appbar {
+    background-color: transparent !important;
+}
+
+.disappear {
+    overflow: hidden;
+    height: -5vh !important;
+    display: none !important;
+}
+
+.exists {
+    display: none;
+}
+
+.scrolledDown {
+    transition: 3s;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.scrolledUp {
+    transition: 1.5s;
+    background-color: transparent;
+}
+
+.scrolledUp>div>nav>div>div>a:hover {
+    transition: 1.5s;
+    background-color: rgba(0, 0, 0, 0.081);
+    border-radius: 20%;
+}
+
+.scrolledDown>div>nav>div>div>a:hover {
+    transition: 1.5s;
+    border-radius: 10%;
+}
+
+.dot {
+    opacity: 0;
+    height: 8px;
+    width: 8px;
+    margin-top: 11%;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.inicio:hover>a>.dot,
+.proyectos:hover>a>.dot,
+.conocenos:hover>a>.dot,
+.contacto:hover>a>.dot {
+    opacity: 1;
+    transition: 1s;
+}
+
+.videoFrame:focus {
+    border: 0;
+}
+
+.videoFrame {
+    border: 0;
+}

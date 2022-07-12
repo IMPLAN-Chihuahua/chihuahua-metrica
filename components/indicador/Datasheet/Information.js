@@ -1,40 +1,36 @@
-const { Card, Grid, CardContent, Typography, Box, CardHeader, Avatar} = require("@mui/material");
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+const { Card, CardContent, Typography, Box } = require("@mui/material");
 import styles from './Information.module.css';
-import { numberWithCommas } from 'helpers/FormatNumbers';
 
-const Information = ({header, title, body}) => {
-
-    typeof header === 'object' ? header = header.nombre : header;
-
-    const processedHeader = header === 'ASCENDENTE' ? <ArrowUpwardIcon sx={{fontSize: '120px'}}/>
-    : header === 'DESCENDENTE' ? <ArrowDownwardIcon sx={{fontSize: '120px'}}/>
-    : header ;
-
-    header = processedHeader;
-
-    return (
-        <>
-        <Grid item xs={12} md={6}>
-            <Card sx={{bgcolor: 'cardInformation.main',  textAlign: 'center', minHeight: '310px'}}>
-                 <Box display="flex">
-                    <Avatar className={styles.circleInfo} sx={{m: 'auto', mt: 2, width: '150px', height: '150px', bgcolor: 'primary.white', color: 'primary.main', fontWeight: 'bold', fontSize:'2em'}}>
-                    {numberWithCommas(header)}
-                    </Avatar>
-                </Box>
-                <CardContent sx={{ textAlign: 'center'}}>
-                    <Typography variant='h5' sx={{color: 'primary.contrastText', fontWeight: 'bold',}}>
-                        {title}
-                    </Typography>
-                    <Typography variant='body' sx={{color: 'primary.contrastText'}}>
-                        {body}
-                    </Typography>
-                </CardContent>
-            </Card>
-            </Grid>
-        </>
-    )
+const Information = ({ title, helperText, children }) => {
+  return (
+    <Card sx={{
+      backgroundImage: `url(${'/rectangle_1.webp'})`,
+      backgroundSize: 'cover',
+      minHeight: '310px',
+      height: '100%',
+    }}>
+      <Box
+        className={styles.overlay}
+        style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+      >
+        <Typography color='white' m='auto' fontSize='2em' fontWeight='bold' align='center'>{children}</Typography>
+        <CardContent sx={{ textAlign: 'center' }}>
+          <Typography
+            variant='h5'
+            component='h3'
+            sx={{
+              color: 'primary.contrastText',
+              wordBreak: 'break-word'
+            }}>
+            {title}
+          </Typography>
+          <Typography variant='body2' sx={{ color: 'primary.contrastText' }}>
+            {helperText}
+          </Typography>
+        </CardContent>
+      </Box>
+    </Card>
+  )
 };
 
 export default Information;

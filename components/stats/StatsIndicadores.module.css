@@ -1,0 +1,90 @@
+.test {
+    background-color: rgb(14, 3, 37);
+    margin-top: 5%;
+    margin-bottom: 2%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+}
+
+.statsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    border: 1px solid #f5f5f5;
+    transition: all 0.3s ease-in-out;
+}
+
+.circle:hover {
+    color: white;
+    width: 180px;
+    height: 180px;
+    cursor: pointer;
+    background-size: cover;
+}
+
+.indicador {
+    font-size: 2.5vh;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    transition: 1s;
+}
+
+.circleStats {
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    transition: 1s;
+    text-align: center;
+}
+
+.circle:hover .circleStats {
+    color: white;
+    transition: 1s;
+}
+
+.circleStatsDescription {
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    position: fixed;
+    color: white !important;
+    font-size: 1.3rem !important;
+    font-weight: bold;
+}
+
+.circle:hover .circleStatsDescription {
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    position: static;
+    color: black;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.38);
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}

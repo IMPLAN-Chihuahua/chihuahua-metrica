@@ -1,42 +1,80 @@
 import { Box, styled } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
-import Link from 'next/link';
+import NextLink from 'next/link';
 import style from '../../styles/dropdown.module.css'
+import { useState, useEffect } from "react";
 
-const Navbar = ({ navLinks }) => {
+const NavLink = ({ title, path, cssName }) => {
   return (
     <>
-      <Toolbar
-        component="nav"
-        sx={{ display: { xs: 'none', md: 'flex' }, }}
-      >
-        <Stack direction="row" spacing={3} className={style.navbar}>
-          {
-            navLinks.map(
-              ({ title, path }, i) => (
-                <Link href={path} key={title} passHref >
-                  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className={style.pointer}>
-                    <a >
-                      {title}
-                    </a>
-                  </Box>
-                </Link>
+      <NextLink href={path} passHref >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+          className={`${style.pointer} ${style[cssName]}`}
+        >
+          <a
+            style={{
+              fontWeight: 500,
+              fontSize: '1.2rem',
+            }}
+          >
+            {title}
+            <br />
+            <span className={style.dot}></span>
+          </a>
+        </Box>
+      </NextLink>
+    </>
+  );
+}
+
+const Navbar = ({ navLinks }) => {
+
+  const [scrollPosition, setScroll] = useState(0)
+  useEffect(() => {
+    const handleScroll = () => {
+      setScroll(window.scrollY);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+
+  }, []);
+
+  return (
+    <>
+      <Box className={style.menu}>
+        <Toolbar
+          component="nav"
+          sx={{ display: { xs: 'none', md: 'flex' }, }}
+        >
+          <Stack
+            direction="row"
+            style={{ borderBottom: scrollPosition > 100 ? '' : '1px solid white' }}
+            spacing={3}
+            className={`${style.navbar} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}
+          >
+            {navLinks.map(
+              ({ title, path, cssName }, i) => (
+                <NavLink
+                  title={title}
+                  path={path}
+                  cssName={cssName}
+                  key={i} />
               )
-            )
-          }
-          <Box className={style.dropdown}>
-            <p className={style.dropbtn}>Proyectos</p>
-            <Box className={style.dropdown_content}>
-              <Link href="/proyecto-indicadores" passHref>
-                <a>Indicadores</a>
-              </Link>
-              <a href="#">Proyecto 2</a>
-              <a href="#">Proyecto 3</a>
-            </Box>
-          </Box>
-        </Stack>
-      </Toolbar>
+            )}
+          </Stack>
+        </Toolbar>
+      </Box>
     </>
   );
 };

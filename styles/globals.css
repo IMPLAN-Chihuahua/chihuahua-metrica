@@ -1,37 +1,48 @@
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-:root, body {
-  height:100%;
+:root,
+body {
+  height: 100%;
   margin: 0;
-  padding:0;
+  padding: 0;
   width: 100%;
 
+  --blue: #2043db;
+  --purple: #7b1ee3;
+  --pink: #ee59e9;
   --primary-main: #263044;
-  --primary-on-main: #E3F6FA;
-  --secondary: #d1a961; 
- }
- 
- #__next {
+  --primary-on-main: #e3f6fa;
+  --secondary: #d1a961;
+  --soft-black: #1f2d3d;
+  --green: #88c000;
+  --darker-green: #053d13;
+  --gradient: linear-gradient(45deg, var(--blue), var(--purple), var(--pink)) border-box;
+  --darker-gradient: linear-gradient(45deg, #1e165a, #95a9ff, #60225e);
+  --really-darker-gradient: linear-gradient(45deg, #251a75, #4c138e, #60225e);
+}
+
+#__next {
   display: flex;
   flex: 1;
   flex-direction: column;
   height: 100%;
   width: 100%;
- }
- 
- main {
+}
+
+main {
   display: flex;
   flex: 1;
   flex-direction: column;
- } 
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Lobster;
+  font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
   overflow: visible !important;
 }
 
@@ -40,3 +51,56 @@ a {
   text-decoration: none;
 }
 
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transition: background-color .1s linear;
+}
+
+.overlay:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rounded-corners {
+  border-radius: 10px;
+}
+
+.gradient-wrapper {
+  position: relative;
+  padding: 15px 20px;
+}
+
+.gradient-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  border: 3px solid transparent;
+  background: var(--gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+.text-shadow {
+  text-shadow: #000 1px 0 10px;
+}
+
+.background {
+  background-color: red;
+}
+
+.highlight-text {
+  font-weight: bold;
+}

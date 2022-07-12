@@ -1,0 +1,111 @@
+.indicadorOwner {
+    margin-top: 2%;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+}
+
+.imageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background: linear-gradient(50deg, #22313F 50%, #ffffff calc(50% + 2px));
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
+
+    transform: skew(50px);
+    padding: 10px;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.userInformation {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+}
+
+.cardEmail {
+    font-weight: bold !important;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: start;
+    padding: 10px;
+}
+
+.emailIcon {
+    background: var(--really-darker-gradient);
+    background-size: 600% 600%;
+
+    animation: AnimationName 10s ease infinite;
+}
+
+.emailIcon a {
+    color: white;
+    text-decoration: none;
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .indicadorOwner {
+        margin-top: 10%;
+    }
+
+    .cardContainer {
+        flex-direction: column;
+    }
+
+    .imageContainer {
+        flex-direction: column;
+        background: linear-gradient(180deg, #22313F 50%, #ffffff calc(50% + 2px));
+    }
+
+    .contact {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .userInformation {
+        box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+    }
+
+    .link {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -35,7 +35,7 @@ export default function FichaTecnica(props) {
         <DataSheet datasheet={indicador} />
         <GraphBox history={indicador} />
         <MapButton mapa={indicador.mapa} />
-        <IndicadorOwner responsible={responsible.data} indicadorDate={indicador.updatedAt} />
+        <IndicadorOwner responsible={responsible.data} indicadorDate={indicador.updatedAt} indicadorName={indicador.nombre} />
       </Container>
     </>
   );

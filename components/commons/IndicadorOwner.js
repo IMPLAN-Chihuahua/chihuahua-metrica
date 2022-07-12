@@ -5,7 +5,7 @@ import style from './IndicadorOwner.module.css'
 import MailIcon from '@mui/icons-material/Mail';
 import Title from './Title'
 
-const IndicadorOwner = ({ responsible, indicadorDate }, props) => {
+const IndicadorOwner = ({ responsible, indicadorDate, indicadorName }) => {
     return (
         <>
             <Title variant='h4' component='h2'>Responsable</Title>
@@ -30,7 +30,7 @@ const IndicadorOwner = ({ responsible, indicadorDate }, props) => {
                             <br />
                         </Box>
                         <Box className={`${style.contact}`}>
-                            <a href={`mailto:${responsible.correo}`} className={`${style.link}`}>
+                            <a href={`mailto:${responsible.correo}?subject=[MÉTRICA] Comentarios acerca de ${indicadorName}`} className={`${style.link}`}>
                                 <Avatar sx={{ width: 30, height: 30 }} className={`${style.emailIcon}`}>
                                     <MailIcon />
                                 </Avatar>

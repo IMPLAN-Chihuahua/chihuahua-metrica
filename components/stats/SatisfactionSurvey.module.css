@@ -20,7 +20,7 @@
     margin-bottom: 5%;
     transition: 1s;
     white-space: pre-line;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif !important;
 }
 
 .surveyTextContrast {

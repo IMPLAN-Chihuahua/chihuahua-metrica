@@ -11,6 +11,12 @@
     max-width: 10px;
 }
 
+.blackImplan {
+    position: absolute;
+    top: 8px;
+    left: 1%;
+}
+
 .play {
     width: 70px;
     filter: invert(100%);

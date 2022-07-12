@@ -14,3 +14,24 @@
   height: 100%;
   width: 100%;
 }
+
+
+.valueAndHelper {
+  /* background-color: red !important;
+  height: 100%; */
+}
+
+.cardContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+}

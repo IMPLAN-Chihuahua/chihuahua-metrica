@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    font-family: 'Inter', sans-serif;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif !important;
 }
 
 .imageContainer {

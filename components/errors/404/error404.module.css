@@ -58,7 +58,7 @@
     color: white !important;
     border: 2px solid white !important;
     border-radius: 200px !important;
-    font-family: 'Inter', sans-serif !important;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif !important;
     font-size: 0.9em !important;
     width: 150px !important;
     height: 50px !important;
@@ -238,7 +238,7 @@
         color: white !important;
         border: 2px solid white !important;
         border-radius: 200px !important;
-        font-family: 'Inter', sans-serif !important;
+        font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif !important;
         font-size: 0.6em !important;
         width: 100px !important;
         height: 40px !important;

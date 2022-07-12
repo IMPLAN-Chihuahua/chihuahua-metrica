@@ -88,7 +88,7 @@ const Formula = ({ formula, fuente }) => {
             variant='h4'
             component='h2'
             textAlign='center'>
-            Formula
+            Fórmula
           </Typography>
           <br />
           {formula === null || formula.ecuacion === 'Consultar fuente'
@@ -100,9 +100,7 @@ const Formula = ({ formula, fuente }) => {
 
                 <div className="test">
                   <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-all' }}>
-                    <small>
-                      {fuente}
-                    </small>
+                    {fuente}
                   </Typography>
                 </div>
               </div>
@@ -133,9 +131,7 @@ const Formula = ({ formula, fuente }) => {
                   <br />
                   <br />
                   <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-all' }}>
-                    <small>
-                      {fuente}
-                    </small>
+                    {fuente}
                   </Typography>
                 </div>
               </div>

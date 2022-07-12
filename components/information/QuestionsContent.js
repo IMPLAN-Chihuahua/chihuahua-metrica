@@ -15,8 +15,8 @@ const data = [
   },
   {
     id: 'q2',
-    question: '***¿Cómo debo de referenciar la fuente de los datos en Chihuahua Métrica?',
-    answer: 'Adjective',
+    question: '¿Cómo debo de referenciar la fuente de los datos en Chihuahua Métrica?',
+    answer: 'Cada indicador cuenta con su propia fuente de información que puedes citar en el formato adecuado. Si deseas citar el sitio web, puedes referenciarlo mediante el vínculo de Chihuahua Métrica.',
   },
   {
     id: 'q3',

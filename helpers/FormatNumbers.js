@@ -1,8 +1,14 @@
 const numberWithCommas = (num) => {
-    typeof num === 'string' || num === 'number'
-        ? num = commify(num)
-        : num
-    return num;
+    try {
+        num = parseFloat(num);
+        num = Math.round(num * 100) / 100
+        return commify(num);
+    } catch (err) {
+        typeof num === 'string' || num === 'number'
+            ? num = commify(num)
+            : num
+        return num;
+    }
 };
 
 

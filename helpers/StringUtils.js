@@ -12,11 +12,12 @@ const toTitleCase = (str) => {
 const serialize = (obj) => {
     let str = [];
     for (let p in obj) {
-        if (obj.hasOwnProperty(p) && !isUndefined(obj[p])) {
+        if (obj.hasOwnProperty(p) && !isUndefined(obj[p]) && obj[p] !== null) {
             str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
         }
     }
-    return str.join('&');
+    
+    return str.length === 0 ? '' : `&${str.join('&')}`;
 };
 
 export { toTitleCase, serialize };

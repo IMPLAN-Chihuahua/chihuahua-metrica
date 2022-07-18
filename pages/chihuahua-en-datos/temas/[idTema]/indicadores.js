@@ -1,18 +1,20 @@
 import Head from "next/head";
 import Container from "@mui/material/Container";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import IndicadorFilter from "@components/indicador/IndicadorFilter";
 import IndicadorList from "@components/indicador/IndicadorList";
 import IndicadorPagination from "@components/indicador/IndicadorPagination";
 import IndicadorSkeleton from "@components/indicador/IndicadorSkeleton";
 import Alert from "@mui/material/Alert";
 import Title from "@components/commons/Title";
-import { useForm, FormProvider } from "react-hook-form"
-import { Typography, Box, Stack } from "@mui/material";
+import { useForm, FormProvider, Controller, useFormContext } from "react-hook-form"
+import { Typography, Box, Stack, TextField, IconButton, Collapse, ToggleButton, InputAdornment } from "@mui/material";
 import Image from "next/image";
 import tinycolor from 'tinycolor2';
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import { serialize } from "helpers/StringUtils";
+import { Clear, FilterAlt, MoreVert, Search } from "@mui/icons-material";
+import { debounce } from "lodash";
 
 const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
@@ -23,7 +25,8 @@ export default function Modulo(props) {
   const [isLoading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [selectedTema, setSelectedTema] = useState(props.selectedTema);
-
+  const [search, setSearch] = useState('');
+  const [open, setOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [filters, setFilters] = useState('');
@@ -32,7 +35,8 @@ export default function Modulo(props) {
   const { watch } = methods;
   const fetchIndicadores = useCallback(() => {
     setLoading(true);
-    const url = `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${page}&${filters}`;
+    const url =
+      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${page}&searchQuery=${search}${filters}`;
     fetch(url)
       .then(res => {
         if (res.ok) {
@@ -42,6 +46,7 @@ export default function Modulo(props) {
       })
       .then(indicadores => {
         setTotalPages(indicadores.totalPages);
+        setPage(1);
         setIndicadores(indicadores.data);
         setHasError(false);
       })
@@ -51,7 +56,7 @@ export default function Modulo(props) {
       .finally(() => {
         setLoading(false);
       });
-  }, [selectedTema.id, page, filters]);
+  }, [selectedTema.id, page, filters, search]);
 
   useEffect(() => {
     let isMounted = true;
@@ -77,7 +82,7 @@ export default function Modulo(props) {
       setFilters(serialize(filterValues))
     });
     return () => subscription.unsubscribe();
-  }, [watch, setFilters]);
+  }, [watch, setFilters, search]);
 
   const handlePagination = (_, value) => setPage(value);
 
@@ -133,13 +138,29 @@ export default function Modulo(props) {
         </Stack>
         <section>
           <Title variant='h4' component='h2'>Indicadores</Title>
+          <Title variant="h5" component="h3">
+            Búsqueda
+          </Title>
           <FormProvider {...methods}>
-            <IndicadorFilter
-              odsList={[...props.ods.data]}
-              unidadMedidaList={[...props.medidas.data]}
-              coberturaList={[...props.coberturas.data]}
-              modulosList={[...props.temas.data]}
-            />
+            <Box sx={{ display: 'flex', mb: 3 }}>
+              <IndicadorSearchBar setSearch={setSearch} />
+              <ToggleButton
+                value='cheked'
+                selected={open}
+                onChange={() => setOpen(!open)}
+                sx={{ ml: 3 }}
+              >
+                <FilterAlt />
+              </ToggleButton>
+            </Box>
+            <Collapse in={open}>
+              <IndicadorFilter
+                odsList={[...props.ods.data]}
+                unidadMedidaList={[...props.medidas.data]}
+                coberturaList={[...props.coberturas.data]}
+                modulosList={[...props.temas.data]}
+              />
+            </Collapse>
           </FormProvider>
           {isLoading ?
             Array.from(new Array(4)).map((_, i) => <IndicadorSkeleton key={i} />)
@@ -191,4 +212,41 @@ export async function getServerSideProps(context) {
       selectedTema: { ...selectedTema.data },
     },
   };
+};
+
+
+const IndicadorSearchBar = ({ setSearch }) => {
+  const textRef = useRef(null)
+  const handleClear = () => {
+    textRef.current.value = '';
+    setSearch('')
+    setSearching(false);
+  };
+  const [searching, setSearching] = useState(false);
+  const handleChange = useCallback(debounce(e => {
+    setSearching(true);
+    setSearch(e.target.value)
+  }, 300), []);
+
+  return (
+    <TextField
+      inputRef={textRef}
+      InputProps={{
+        startAdornment: (<InputAdornment position='start'><Search /></InputAdornment>),
+        endAdornment: (
+          searching && 
+          <IconButton
+            onClick={handleClear}
+          >
+            <Clear />
+          </IconButton>
+        )
+      }}
+      name='searchQuery'
+      fullWidth
+      onChange={handleChange}
+      placeholder='Buscar por nombre'
+    />
+  );
 }
+

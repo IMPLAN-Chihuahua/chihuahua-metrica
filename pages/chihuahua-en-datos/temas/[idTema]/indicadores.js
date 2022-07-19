@@ -15,7 +15,6 @@ import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import { serialize } from "helpers/StringUtils";
 import { Clear, FilterAlt, LocalSeeOutlined, MoreVert, Search } from "@mui/icons-material";
 import { debounce } from "lodash";
-import { useRouter } from "next/router";
 
 const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
@@ -57,23 +56,17 @@ export default function Modulo(props) {
       .finally(() => {
         setLoading(false);
       });
-  }, [selectedTema.id, filters, search]);
+  }, [selectedTema.id, filters, search, page]);
 
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      const savedPage = parseInt(localStorage.getItem('indicadores-page'));
-      setPage(savedPage);
-      if (savedPage) {
-        fetchIndicadores(savedPage);
-      } else {
-        fetchIndicadores();
-      }
+      fetchIndicadores();
     }
     return () => {
       isMounted = false;
     }
-  }, []);
+  }, [fetchIndicadores]);
 
   useEffect(() => {
     const subscription = watch(value => {
@@ -93,7 +86,6 @@ export default function Modulo(props) {
   const handlePagination = (_, value) => {
     localStorage.setItem('indicadores-page', value)
     setPage(value)
-    fetchIndicadores(value)
   };
 
   const CRUMBS = [{

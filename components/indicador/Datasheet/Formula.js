@@ -93,17 +93,16 @@ const Formula = ({ formula, fuente }) => {
           <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flexGrow: 1 }}>
             {formula === null || formula.ecuacion === 'Consultar fuente'
               ? (
-                <div className='no-formula'>
+                <>
                   <div className='tost'>
                     <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más detalles.</Typography>
                   </div>
-
                   <div className="test">
                     <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-word' }}>
                       {fuente}
                     </Typography>
                   </div>
-                </div>
+                </>
               )
               : (
                 <>

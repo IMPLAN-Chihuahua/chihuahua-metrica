@@ -8,19 +8,15 @@
 .formula-text {
   font-size: 2rem;
   font-weight: bold;
-  color: --primary-on-main;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  color: var(--primary-on-main);
   overflow-x: auto;
   overflow-y: hidden;
-  height: 80px;
 }
 
 .variable-text {
-  color: --primary-on-main;
+  color: var(--primary-on-main);
   overflow-x: hidden;
   overflow-y: auto;
   padding-top: 10px;
-  padding-bottom: 10px;
   height: 80px;
 }

@@ -13,8 +13,9 @@ import Image from "next/image";
 import tinycolor from 'tinycolor2';
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import { serialize } from "helpers/StringUtils";
-import { Clear, FilterAlt, MoreVert, Search } from "@mui/icons-material";
+import { Clear, FilterAlt, LocalSeeOutlined, MoreVert, Search } from "@mui/icons-material";
 import { debounce } from "lodash";
+import { useRouter } from "next/router";
 
 const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
@@ -33,10 +34,11 @@ export default function Modulo(props) {
 
   const methods = useForm();
   const { watch } = methods;
-  const fetchIndicadores = useCallback(() => {
+  const fetchIndicadores = useCallback((fixedPage) => {
     setLoading(true);
+    const currPage = fixedPage ? fixedPage : page;
     const url =
-      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${page}&searchQuery=${search}${filters}`;
+      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${currPage}&searchQuery=${search}${filters}`;
     fetch(url)
       .then(res => {
         if (res.ok) {
@@ -46,7 +48,6 @@ export default function Modulo(props) {
       })
       .then(indicadores => {
         setTotalPages(indicadores.totalPages);
-        setPage(1);
         setIndicadores(indicadores.data);
         setHasError(false);
       })
@@ -56,18 +57,23 @@ export default function Modulo(props) {
       .finally(() => {
         setLoading(false);
       });
-  }, [selectedTema.id, page, filters, search]);
+  }, [selectedTema.id, filters, search]);
 
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      fetchIndicadores();
+      const savedPage = parseInt(localStorage.getItem('indicadores-page'));
+      setPage(savedPage);
+      if (savedPage) {
+        fetchIndicadores(savedPage);
+      } else {
+        fetchIndicadores();
+      }
     }
     return () => {
       isMounted = false;
     }
-  }, [fetchIndicadores]);
-
+  }, []);
 
   useEffect(() => {
     const subscription = watch(value => {
@@ -84,7 +90,11 @@ export default function Modulo(props) {
     return () => subscription.unsubscribe();
   }, [watch, setFilters, search]);
 
-  const handlePagination = (_, value) => setPage(value);
+  const handlePagination = (_, value) => {
+    localStorage.setItem('indicadores-page', value)
+    setPage(value)
+    fetchIndicadores(value)
+  };
 
   const CRUMBS = [{
     text: 'Chihuahua en Datos',
@@ -147,7 +157,7 @@ export default function Modulo(props) {
               <ToggleButton
                 value='cheked'
                 selected={open}
-                onChange={() => setOpen(!open)}
+                onChange={() => setOpen(old => !old)}
                 sx={{ ml: 3 }}
               >
                 <FilterAlt />
@@ -167,7 +177,10 @@ export default function Modulo(props) {
             :
             !hasError &&
             (<>
-              <IndicadorList indicadores={indicadores} fontColor={tinycolor(selectedTema.color).darken(60).toHexString()} />
+              <IndicadorList
+                indicadores={indicadores}
+                fontColor={tinycolor(selectedTema.color).darken(60).toHexString()}
+              />
               <IndicadorPagination
                 page={page}
                 totalPages={totalPages}
@@ -234,7 +247,7 @@ const IndicadorSearchBar = ({ setSearch }) => {
       InputProps={{
         startAdornment: (<InputAdornment position='start'><Search /></InputAdornment>),
         endAdornment: (
-          searching && 
+          searching &&
           <IconButton
             onClick={handleClear}
           >

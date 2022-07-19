@@ -11,7 +11,6 @@ const CRUMBS = [
 ]
 
 export default function Modulo(props) {
-  localStorage.removeItem('indicadores-page')
   const data = props.data;
   return (
     <>

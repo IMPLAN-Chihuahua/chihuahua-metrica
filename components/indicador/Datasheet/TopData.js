@@ -10,7 +10,7 @@ import { Alert, Chip, Collapse, IconButton, Snackbar } from '@mui/material';
 import JsFileDownloader from 'js-file-downloader';
 import { Close } from '@mui/icons-material';
 
-const DOC_FORMATS = ['csv', 'pdf', 'json'];
+const DOC_FORMATS = ['xlsx', 'csv', 'pdf', 'json'];
 
 const DocumentButton = ({ indicadorId, format, icon, showErrorMessage, ...props }) => {
   const [isLoading, setLoading] = useState(false);
@@ -86,13 +86,6 @@ const TopData = (info) => {
 
         <Title variant='h4' component='h2'>Datos abiertos</Title>
         <Grid item xs={6} sx={{ justifyContent: 'flex-start', textAlign: 'center', display: 'flex', alignItems: 'center' }}>
-          <Grid item xs={6} ml={1} mr={1}>
-            <DocumentButton
-              format='xlsx'
-              indicadorId={indicador.id}
-              showErrorMessage={() => setOpen(true)}
-              icon={<Image src={getDocumentIconSrc('xlsx')} height={40} width={40} />} />
-          </Grid>
           {DOC_FORMATS.map(format => (
             <Grid item xs={6} ml={1} mr={1} key={format}>
               <DocumentButton

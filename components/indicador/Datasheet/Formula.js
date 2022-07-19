@@ -83,59 +83,55 @@ const Formula = ({ formula, fuente }) => {
           color: 'white',
           width: '100%',
         }}>
-        <Box sx={{ p: 3, borderRadius: '5px' }} className={style.overlay}>
+        <Box sx={{ p: 3, borderRadius: '5px', display: 'flex', flexDirection: 'column', }} className={style.overlay}>
           <Typography
             variant='h4'
             component='h2'
             textAlign='center'>
             Fórmula
           </Typography>
-          <br />
-          {formula === null || formula.ecuacion === 'Consultar fuente'
-            ? (
-              <div className='no-formula'>
-                <div className='tost'>
-                  <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más detalles.</Typography>
-                </div>
+          <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flexGrow: 1 }}>
+            {formula === null || formula.ecuacion === 'Consultar fuente'
+              ? (
+                <div className='no-formula'>
+                  <div className='tost'>
+                    <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más detalles.</Typography>
+                  </div>
 
-                <div className="test">
-                  <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-all' }}>
-                    {fuente}
-                  </Typography>
+                  <div className="test">
+                    <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-word' }}>
+                      {fuente}
+                    </Typography>
+                  </div>
                 </div>
-              </div>
-            )
-            : (
-              <div>
-                <div className='formula-data'>
-                  <Typography variant='h5' component='h3'>Descripcion</Typography>
-                  <Typography mb={2}>{formula.descripcion}</Typography>
-                  <MathJax.Provider>
-                    <Typography
-                      textAlign='center'
-                      variant='h4'
-                      mb={2}
-                      className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
-                  </MathJax.Provider>
-                  <Typography variant='h5' component='h3'>Donde:</Typography>
-                </div>
-                <div className='variableText'>
-                  <VariableList variables={formula.variables} />
-                </div>
-                <div className="formula-exists">
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-all' }}>
-                    {fuente}
-                  </Typography>
-                </div>
-              </div>
-            )}
+              )
+              : (
+                <>
+                  <div>
+                    <div className='formula-data'>
+                      <Typography variant='h5' component='h3'>Descripcion</Typography>
+                      <Typography mb={2}>{formula.descripcion}</Typography>
+                      <MathJax.Provider>
+                        <Typography
+                          textAlign='center'
+                          variant='h4'
+                          mb={2}
+                          className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
+                      </MathJax.Provider>
+                    </div>
+                    <Typography variant='h5' component='h3'>Donde:</Typography>
+                    <div className='variableText'>
+                      <VariableList variables={formula.variables} />
+                    </div>
+                  </div>
+                  <div className="formula-exists">
+                    <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-word' }}>
+                      {fuente}
+                    </Typography>
+                  </div>
+                </>
+              )}
+          </Box>
         </Box>
       </Box>
     </>

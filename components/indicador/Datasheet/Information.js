@@ -13,26 +13,23 @@ const Information = ({ title, helperText, children }) => {
         className={styles.overlay}
         style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
-
-        <CardContent sx={{}} className={styles.cardContent}>
-          <Box className={styles.title}>
-            <Typography
-              component='h3'
-              fontSize='1.5em'
-              fontWeight='600'
-              sx={{
-                color: 'primary.contrastText',
-                wordBreak: 'break-word'
-              }}>
-              {title}
-            </Typography>
-          </Box>
-          <Box className={styles.valueAndHelper}>
-            <Typography color='white' m='auto' fontSize='2em' fontWeight='bold' align='center'>{children}</Typography>
+        <CardContent sx={{ justifyContent: 'space-evenly', }} className={styles.cardContent}>
+          <Typography
+            component='h3'
+            fontSize='1.5em'
+            fontWeight='600'
+            sx={{
+              color: 'primary.contrastText',
+              wordBreak: 'break-word',
+            }}>
+            {title}
+          </Typography>
+          <Typography color='white' m='auto' fontSize='2em' fontWeight='bold' align='center'>{children}</Typography>
+          <div>
             <Typography variant='body2' fontSize='1em' sx={{ color: 'primary.contrastText' }}>
               {helperText}
             </Typography>
-          </Box>
+          </div>
         </CardContent>
       </Box>
     </Card>

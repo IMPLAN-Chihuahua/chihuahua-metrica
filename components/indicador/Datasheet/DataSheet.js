@@ -44,8 +44,8 @@ const DataSheet = (datasheet) => {
       <Title variant='h4' component='h2'>Ficha técnica</Title>
       <Grid container spacing={1}>
         <Grid item container xs={12} md={6} spacing={1}>
-          {INDICADOR_FIELDS.map(field => (
-            <Grid item xs={12} md={6} key={field.value}>
+          {INDICADOR_FIELDS.map((field, idx) => (
+            <Grid item xs={12} md={6} key={idx}>
               <Information title={field.title} helperText={field?.helperText}>
                 {field.value}
               </Information>

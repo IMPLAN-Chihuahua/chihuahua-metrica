@@ -15,6 +15,8 @@ import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import { serialize } from "helpers/StringUtils";
 import { Clear, FilterAlt, Search } from "@mui/icons-material";
 import { debounce } from "lodash";
+import NavBackAndFoward from "@components/commons/NavBackAndFoward";
+import { useRouter } from "next/router";
 
 const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
@@ -36,7 +38,7 @@ export default function Modulo(props) {
   const fetchIndicadores = useCallback((fixedPage, search = '') => {
     setLoading(true);
     const url =
-      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
+      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
     fetch(url)
       .then(res => {
         if (res.ok) {
@@ -56,14 +58,13 @@ export default function Modulo(props) {
       .finally(() => {
         setLoading(false);
       });
-  }, [selectedTema.id, filters, search]);
+  }, [selectedTema, filters, search]);
 
   useEffect(() => {
     let isMounted = true;
     if (!isMounted) {
       return;
     }
-    console.log('filters or search changed')
     const savedPage = parseInt(localStorage.getItem('indicadores-page'))
     fetchIndicadores(savedPage || 1, search);
 
@@ -87,10 +88,13 @@ export default function Modulo(props) {
     return () => subscription.unsubscribe();
   }, [watch, setFilters]);
 
-  const handlePagination = (_, value) => {
+  const handlePagination = useCallback((_, value) => {
+    if (value === page) {
+      return;
+    }
     localStorage.setItem('indicadores-page', value)
     fetchIndicadores(parseInt(value))
-  };
+  }, [page, selectedTema]);
 
   const CRUMBS = [{
     text: 'Chihuahua en Datos',
@@ -102,6 +106,16 @@ export default function Modulo(props) {
   const backgroundColor = useMemo(() => tinycolor(selectedTema.color).lighten().lighten().toHexString(), [selectedTema]);
   const foregroundColor = useMemo(() => tinycolor(selectedTema.color).darken(60).toHexString(), [selectedTema]);
 
+  const getTema = (id) => {
+    return [...props.temas.data].find(tema => tema.id === id);
+  }
+
+  const router = useRouter();
+  const handleTemaNavigation = useCallback((id) => {
+    localStorage.removeItem('indicadores-page')
+    setSelectedTema(getTema(id))
+  }, []);
+
   return (
     <>
       <Head>
@@ -110,7 +124,30 @@ export default function Modulo(props) {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container maxWidth="lg" sx={{ mb: 3, mt: 3 }}>
-        <PageBreadcrumb crumbs={[...CRUMBS]} />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: { xs: 'flex-end', lg: 'space-between' },
+            paddingTop: 1,
+            paddingBottom: 1,
+            alignItems: 'center'
+          }}>
+          <PageBreadcrumb crumbs={[...CRUMBS]} />
+          <NavBackAndFoward
+            prev={{
+              title: 'Temática anterior',
+              disabled: selectedTema.id === 1,
+              onClick: () => localStorage.removeItem('indicadores-page'),
+              link: `/chihuahua-en-datos/temas/${selectedTema.id - 1}/indicadores`
+            }}
+            next={{
+              title: 'Siguiente temática',
+              disabled: selectedTema.id === 14,
+              onClick: () => localStorage.removeItem('indicadores-page'),
+              link: `/chihuahua-en-datos/temas/${selectedTema.id + 1}/indicadores`
+            }}
+          />
+        </Box>
         <Stack direction='row' mb={3} flexWrap={{ xs: 'wrap', md: 'nowrap' }} justifyContent='center'>
           <Box
             sx={{
@@ -214,6 +251,7 @@ export async function getServerSideProps(context) {
   ]);
   return {
     props: {
+      key: idTema,
       ods,
       coberturas,
       medidas,

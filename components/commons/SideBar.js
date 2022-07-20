@@ -6,6 +6,7 @@ import Menu from "@mui/icons-material/Menu";
 import Link from 'next/link';
 import { useEffect, useState } from "react";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import Image from "next/image";
 
 const SideBar = ({ navLinks }) => {
     const subMenuNull = []
@@ -31,33 +32,38 @@ const SideBar = ({ navLinks }) => {
     };
 
     const list = (anchor) => (
-        <Box
-            sx={{ width: 200, marginTop: 'auto', marginBottom: 'flex' }}
-            role='presentation'
-            onKeyDown={toggleBar(anchor, false)}
-        >
-            {navLinks.map(({ title, path }, i) => (
-                <Typography
-                    variannt='button'
-                    key={`${title}${i}`}
-                    onClick={toggleBar(anchor, false)}
-                    sx={{
-                        ml: 5,
-                        my: 2,
-                        textTransform: 'uppercase',
-                        color: 'common.white',
+        <>
+            <a href='http://implanchihuahua.org' >
+                <Image src='/images/whiteImplan.png' alt='Logo' height={50} width={200} objectFit='contain' title='Logotipo de CPUM' />
+            </a>
+            <Box
+                sx={{ width: 200, marginTop: 'auto', marginBottom: 'flex' }}
+                role='presentation'
+                onKeyDown={toggleBar(anchor, false)}
+            >
+                {navLinks.map(({ title, path }, i) => (
+                    <Typography
+                        variannt='button'
+                        key={`${title}${i}`}
+                        onClick={toggleBar(anchor, false)}
+                        sx={{
+                            ml: 5,
+                            my: 2,
+                            textTransform: 'uppercase',
+                            color: 'common.white',
 
-                    }}
-                >
-                    <Link href={path} key={title}>
-                        <a>
-                            {title}
-                        </a>
-                    </Link>
-                </Typography>
-            ))}
+                        }}
+                    >
+                        <Link href={path} key={title}>
+                            <a>
+                                {title}
+                            </a>
+                        </Link>
+                    </Typography>
+                ))}
 
-        </Box>
+            </Box>
+        </>
     );
     return (
         <>

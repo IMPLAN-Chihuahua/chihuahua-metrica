@@ -86,3 +86,9 @@
 .videoFrame {
     border: 0;
 }
+
+@media screen and (max-width: 580px) {
+    .blackImplan {
+        display: none;
+    }
+}

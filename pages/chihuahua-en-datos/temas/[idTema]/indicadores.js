@@ -7,13 +7,13 @@ import IndicadorPagination from "@components/indicador/IndicadorPagination";
 import IndicadorSkeleton from "@components/indicador/IndicadorSkeleton";
 import Alert from "@mui/material/Alert";
 import Title from "@components/commons/Title";
-import { useForm, FormProvider, Controller, useFormContext } from "react-hook-form"
+import { useForm, FormProvider } from "react-hook-form"
 import { Typography, Box, Stack, TextField, IconButton, Collapse, ToggleButton, InputAdornment } from "@mui/material";
 import Image from "next/image";
 import tinycolor from 'tinycolor2';
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import { serialize } from "helpers/StringUtils";
-import { Clear, FilterAlt, LocalSeeOutlined, MoreVert, Search } from "@mui/icons-material";
+import { Clear, FilterAlt, Search } from "@mui/icons-material";
 import { debounce } from "lodash";
 
 const ODS_ID = 1;
@@ -35,9 +35,8 @@ export default function Modulo(props) {
   const { watch } = methods;
   const fetchIndicadores = useCallback((fixedPage) => {
     setLoading(true);
-    const currPage = fixedPage ? fixedPage : page;
     const url =
-      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${currPage}&searchQuery=${search}${filters}`;
+      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
     fetch(url)
       .then(res => {
         if (res.ok) {
@@ -47,6 +46,7 @@ export default function Modulo(props) {
       })
       .then(indicadores => {
         setTotalPages(indicadores.totalPages);
+        setPage(indicadores.page);
         setIndicadores(indicadores.data);
         setHasError(false);
       })
@@ -56,17 +56,20 @@ export default function Modulo(props) {
       .finally(() => {
         setLoading(false);
       });
-  }, [selectedTema.id, filters, search, page]);
+  }, [selectedTema.id, filters, search]);
 
   useEffect(() => {
     let isMounted = true;
-    if (isMounted) {
-      fetchIndicadores();
+    if (!isMounted) {
+      return;
     }
+    const savedPage = parseInt(localStorage.getItem('indicadores-page'))
+    fetchIndicadores(savedPage || 1);
+
     return () => {
       isMounted = false;
     }
-  }, [fetchIndicadores]);
+  }, []);
 
   useEffect(() => {
     const subscription = watch(value => {
@@ -85,7 +88,7 @@ export default function Modulo(props) {
 
   const handlePagination = (_, value) => {
     localStorage.setItem('indicadores-page', value)
-    setPage(value)
+    fetchIndicadores(parseInt(value))
   };
 
   const CRUMBS = [{
@@ -230,7 +233,7 @@ const IndicadorSearchBar = ({ setSearch }) => {
   const [searching, setSearching] = useState(false);
   const handleChange = useCallback(debounce(e => {
     setSearching(true);
-    setSearch(e.target.value)
+    setSearch(e.target.value);
   }, 300), []);
 
   return (

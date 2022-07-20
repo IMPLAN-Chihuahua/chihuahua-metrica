@@ -27,7 +27,7 @@ const Information = ({ title, helperText, children }) => {
           <Typography color='white' m='auto' fontSize='2em' fontWeight='bold' align='center'>{children}</Typography>
           <div>
             <Typography variant='body2' fontSize='1em' sx={{ color: 'primary.contrastText' }}>
-              {helperText}
+              <div dangerouslySetInnerHTML={{ __html: helperText }} />
             </Typography>
           </div>
         </CardContent>

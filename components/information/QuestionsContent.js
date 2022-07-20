@@ -50,7 +50,7 @@ Mientras que el área metropolitana comprende el área de influencia de los muni
   {
     id: 'q5',
     question: '¿Cómo puedo contribuir a la plataforma?',
-    answer: 'De manera técnica, puedes realizar contribuciones directamente en el <a href="https://github.com/IMPLAN-Chihuahua/observatorio-urbano-website" style="color: #31416F; font-weight: bold;">repositorio del sitio web</a> y forkear el proyecto. Uno de nuestros desarrolladores verificará tus contribuciones y en caso de que pase los filtros, lo añadiremos al proyecto. Si deseas contribuir con información o aclaraciones respecto a los datos del sitio web, puedes enviar un <a href="mailto:chihuahuametrica@implanchihuahua.org" style="color: #31416F; font-weight: bold;">correo</a> con tus comentarios.',
+    answer: 'De manera técnica, puedes realizar contribuciones directamente en el <a href="https://github.com/IMPLAN-Chihuahua/observatorio-urbano-website" style="color: #31416F; font-weight: bold;">repositorio del sitio web</a>. Uno de nuestros desarrolladores verificará tus contribuciones y en caso de que pase los filtros, lo añadiremos al proyecto. Si deseas contribuir con información o aclaraciones respecto a los datos del sitio web, puedes enviar un <a href="mailto:chihuahuametrica@implanchihuahua.org" style="color: #31416F; font-weight: bold;">correo</a> con tus comentarios.',
   },
   {
     id: 'q6',

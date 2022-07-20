@@ -33,7 +33,7 @@ export default function Modulo(props) {
 
   const methods = useForm();
   const { watch } = methods;
-  const fetchIndicadores = useCallback((fixedPage) => {
+  const fetchIndicadores = useCallback((fixedPage, search = '') => {
     setLoading(true);
     const url =
       `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
@@ -64,12 +64,12 @@ export default function Modulo(props) {
       return;
     }
     const savedPage = parseInt(localStorage.getItem('indicadores-page'))
-    fetchIndicadores(savedPage || 1);
+    fetchIndicadores(savedPage || 1, search);
 
     return () => {
       isMounted = false;
     }
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     const subscription = watch(value => {

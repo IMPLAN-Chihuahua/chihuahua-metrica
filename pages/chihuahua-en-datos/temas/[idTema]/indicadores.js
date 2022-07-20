@@ -63,13 +63,14 @@ export default function Modulo(props) {
     if (!isMounted) {
       return;
     }
+    console.log('filters or search changed')
     const savedPage = parseInt(localStorage.getItem('indicadores-page'))
     fetchIndicadores(savedPage || 1, search);
 
     return () => {
       isMounted = false;
     }
-  }, [search]);
+  }, [fetchIndicadores]);
 
   useEffect(() => {
     const subscription = watch(value => {
@@ -84,7 +85,7 @@ export default function Modulo(props) {
       setFilters(serialize(filterValues))
     });
     return () => subscription.unsubscribe();
-  }, [watch, setFilters, search]);
+  }, [watch, setFilters]);
 
   const handlePagination = (_, value) => {
     localStorage.setItem('indicadores-page', value)

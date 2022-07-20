@@ -6,7 +6,7 @@ const NavBackAndFoward = ({ prev, next }) => {
   return (
     <Box minWidth='fit-content' sx={{ display: 'flex', columnGap: 1 }}>
       <NextLink href={prev.link} passHref>
-        <a href={prev.link} style={{ pointerEvents: 'none' }}>
+        <a href={prev.link} style={{ pointerEvents: prev.disabled ? 'none' : 'default' }}>
           <NavButton
             title={prev.title}
             disabled={prev.disabled}
@@ -16,7 +16,7 @@ const NavBackAndFoward = ({ prev, next }) => {
         </a>
       </NextLink>
       <NextLink href={next.link} passHref>
-        <a href={prev.link}>
+        <a href={prev.link} style={{ pointerEvents: next.disbled ? 'none' : 'default' }}>
           <NavButton
             title={next.title}
             disabled={next.disabled}

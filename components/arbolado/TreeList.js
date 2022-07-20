@@ -40,7 +40,7 @@ const trees = [
         avatar: '/images/arbolado/mimbre_C.png',
         arbol: '/images/arbolado/mimbre_A.png',
         ficha: '/images/arbolado/mimbre_F.png',
-        nombre: '<b>Miembre/</b> Chilopsis Linearis',
+        nombre: '<b>Mimbre/</b> Chilopsis Linearis',
         sistema: 'Profundo (>1.5m)',
         riego: 'Baja',
         follaje: 'Caducifolio',

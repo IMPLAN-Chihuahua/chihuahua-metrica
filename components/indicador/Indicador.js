@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
@@ -21,7 +20,6 @@ const compareIds = (a, b) => {
 
 const Indicador = (props) => {
   const indicador = props.value;
-  const updatedAt = indicador.updatedAt.split('T')[0];
   return (
     <Card variant='outlined'>
       <CardActionArea sx={{ padding: 2 }}>
@@ -89,11 +87,11 @@ const Indicador = (props) => {
                     <Typography
                       fontWeight='bold'
                     >
-                      Fecha de Referencia
+                      Año de Referencia
                     </Typography>
                     <Typography
                     >
-                      {updatedAt}
+                      {indicador.anioUltimoValorDisponible}
                     </Typography>
                   </Grid>
                   <Divider

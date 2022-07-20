@@ -24,7 +24,7 @@ const DataSheet = (datasheet) => {
   const INDICADOR_FIELDS = [{
     title: 'Último valor disponible',
     value: numberWithCommas(data.ultimoValorDisponible),
-    helperText: getCatalogo(data.catalogos, UNIDAD_MEDIDA),
+    helperText: '<b>Unidad de medida:</b> <br/>' + getCatalogo(data.catalogos, UNIDAD_MEDIDA),
   }, {
     title: 'Tendencia actual',
     value: tendenciaIcon,

@@ -18,7 +18,7 @@ export default function Modulo(props) {
   return (
     <>
       <Head>
-        <title>Chihuahua en Datos</title>
+        <title name='start'>Chihuahua en Datos</title>
         <meta name="description" content="Proyecto Chihuahua en Datos para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
         <link rel="icon" href="/icon.ico" />
       </Head>

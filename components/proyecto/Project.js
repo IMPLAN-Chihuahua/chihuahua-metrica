@@ -5,7 +5,7 @@ const Project = (props) => {
   const { name, url, image } = props;
 
   return (
-    <NextLink href={`${url}/#top`} passHref>
+    <NextLink href={`${url}/`} passHref>
       <a>
         <div
           className={`${styles['card-proyecto']} ${styles['curve-borders']} ${styles['center-content']}`}

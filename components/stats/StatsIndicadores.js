@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from '@mui/material'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import style from './StatsIndicadores.module.css'
+import NextLink from "next/link";
 
 const Stat = ({ indicador, indextest }) => {
   const [isHovering, setIsHovering] = useState(false);

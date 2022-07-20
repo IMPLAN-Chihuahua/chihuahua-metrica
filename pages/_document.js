@@ -17,7 +17,7 @@ class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet" />
         </Head>
         <body>
-          <a id="top" style={{ display: 'hidden' }}></a>
+          <a id="top" name="top" style={{ display: 'hidden' }}></a>
           <Main />
           <NextScript />
         </body>

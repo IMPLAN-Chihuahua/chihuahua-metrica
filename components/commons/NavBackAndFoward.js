@@ -8,6 +8,7 @@ const NavBackAndFoward = ({ prev, next }) => {
       <NextLink href={prev.link} passHref>
         <a href={prev.link} style={{ pointerEvents: prev.disabled ? 'none' : 'default' }}>
           <NavButton
+            link={prev.link}
             title={prev.title}
             disabled={prev.disabled}
             icon={<ArrowBackIosNew />}
@@ -16,7 +17,7 @@ const NavBackAndFoward = ({ prev, next }) => {
         </a>
       </NextLink>
       <NextLink href={next.link} passHref>
-        <a href={prev.link} style={{ pointerEvents: next.disbled ? 'none' : 'default' }}>
+        <a href={next.link} style={{ pointerEvents: next.disabled ? 'none' : 'default' }}>
           <NavButton
             title={next.title}
             disabled={next.disabled}
@@ -25,13 +26,13 @@ const NavBackAndFoward = ({ prev, next }) => {
           />
         </a>
       </NextLink>
-    </Box>
+    </Box >
   )
 };
 
-const NavButton = ({ title, disabled, icon, onClick }) => {
+const NavButton = ({ title, disabled, icon, link, onClick = null }) => {
   const handleClick = () => {
-    if (typeof onClick === 'function' && !disabled) {
+    if (typeof onClick === 'function' && !disabled && onClick !== null) {
       onClick();
     }
   }

@@ -81,7 +81,7 @@ export async function getServerSideProps(context) {
 
     const [responsibleRes] = await Promise.all([
       fetch(
-        `${process.env.INDICADORES_BASE_URL}/usuarios/${idUser}/profile`
+        `${process.env.INDICADORES_BASE_URL}/usuarios/${idUser}`
       ),
     ]);
 

@@ -73,21 +73,26 @@ const Footer = () => {
             <Typography variant='h5' component='h3'>Legal</Typography>
             <ul className={styles.footerList}>
               <li>
-                <NextLink href='/informacion/politicas-de-privacidad' passHref>
-                  <MUILink variant='body2' underline='hover' color='#fff'>
-                    Politicas de privacidad
-                  </MUILink>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href='/informacion/aviso-de-privacidad-integral' passHref>
+                <NextLink href='https://implanchihuahua.org/IMPLAN-Datos/pdf/AVISO-SIMPLIFICADO-19072022.pdf' passHref>
                   <MUILink
                     variant='body2'
                     underline='hover'
                     color='#fff'
                     rel='noreferrer noopener'
                     target='_blank'>
-                    Aviso de privacidad integral
+                    Aviso de privacidad integral Simplificado
+                  </MUILink>
+                </NextLink>
+              </li>
+              <li>
+                <NextLink href='https://implanchihuahua.org/IMPLAN-Datos/pdf/AVISO-INTEGRAL-19072022.pdf' passHref>
+                  <MUILink
+                    variant='body2'
+                    underline='hover'
+                    color='#fff'
+                    rel='noreferrer noopener'
+                    target='_blank'>
+                    Aviso de confidencialidad
                   </MUILink>
                 </NextLink>
               </li>

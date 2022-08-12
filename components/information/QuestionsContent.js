@@ -38,7 +38,7 @@ const data = [
   {
     id: 'q3',
     question: '¿Cómo me puedo contactar con el monitor de un indicador?',
-    answer: 'Al visualizar a detalle cada indicador, en la parte inferior se encuentra el contacto de la persona responsable de monitorear y actualizar el indicador. Las actualizaciones dependen de la periodicidad y disponiblilidad de los datos de cada una de sus fuentes.',
+    answer: 'Al visualizar a detalle cada indicador, en la parte inferior se encuentra el contacto de la persona responsable de monitorear y actualizar el indicador. Las actualizaciones dependen de la periodicidad y disponibilidad de los datos de cada una de sus fuentes.',
   },
   {
     id: 'q4',

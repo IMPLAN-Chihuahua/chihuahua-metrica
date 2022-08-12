@@ -155,7 +155,7 @@ const ArboladoUrbano = () => {
           </Box>
           <Title variant='h6' component='h5'>Fuente</Title>
           <cite>
-            Alba Garcia (2021). <NextLink
+            Alba García (2021). <NextLink
               href='https://es.greenpeace.org/es/noticias/regla-3-30-300-ciudades-verdes/'
               passHref>
               <MUILink

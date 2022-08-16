@@ -47,13 +47,13 @@ export default function FichaTecnica(props) {
           <NavBackAndFoward
             prev={{
               title: 'Indicador anterior',
-              disabled: indicador.id === 1,
-              link: `/chihuahua-en-datos/indicadores/${indicador.id - 1}`
+              disabled: indicador.prev == null,
+              link: `/chihuahua-en-datos/indicadores/${indicador.prev}`
             }}
             next={{
               title: 'Siguiente indicador',
-              disabled: indicador.id === 153,
-              link: `/chihuahua-en-datos/indicadores/${indicador.id + 1}`
+              disabled: indicador.next == null,
+              link: `/chihuahua-en-datos/indicadores/${indicador.next}`
             }}
           />
         </Box>

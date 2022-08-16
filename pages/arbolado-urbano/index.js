@@ -148,43 +148,45 @@ const ArboladoUrbano = () => {
                   margin: 1,
                   wordBreak: 'break-all',
                 }}>
-                  <Typography fontWeight={500} fontSize='1.1rem'>{b}</Typography>
+                  <Typography fontSize='1.3rem'>{b}</Typography>
                 </Box>
               ))
             }
           </Box>
           <Title variant='h6' component='h5'>Fuente</Title>
-          <cite>
-            Alba García (2021). <NextLink
-              href='https://es.greenpeace.org/es/noticias/regla-3-30-300-ciudades-verdes/'
-              passHref>
-              <MUILink
-                rel='noreferrer noopener'
-                target='_blank'
-              >La regla 3-30-300 o cómo una ciudad verde te ayuda a vivir mejor.</MUILink>
-            </NextLink> Greenpeace España
-          </cite>
+          <Typography fontSize='1.3rem'>
+            <cite>
+              Alba García (2021). <NextLink
+                href='https://es.greenpeace.org/es/noticias/regla-3-30-300-ciudades-verdes/'
+                passHref>
+                <MUILink
+                  rel='noreferrer noopener'
+                  target='_blank'
+                >La regla 3-30-300 o cómo una ciudad verde te ayuda a vivir mejor.</MUILink>
+              </NextLink> Greenpeace España
+            </cite>
+          </Typography>
         </section>
         <section>
           <section>
             <Grid container>
               <MapSection
-                title='Inventario del Arbolado Urbano'
+                title='Inventario del arbolado urbano'
                 src='https://geoportal.implanchihuahua.org/sigmun/apps/webappviewer/index.html?id=842822f688c641ca90b69007fccc6b61'
                 description={(
                   <>
                     <Typography fontWeight='bold' textAlign='center' fontSize={30}>~0.23</Typography>
-                    <Typography fontWeight='500' textAlign='center'>Árboles por persona</Typography>
+                    <Typography fontSize='1.3rem' fontWeight='500' textAlign='center'>Árboles por persona</Typography>
                   </>
                 )}
               />
               <MapSection
-                title='Muestra de la Vista Verde en la Ciudad'
+                title='Muestra de la vista verde en la ciudad'
                 src='https://geoportal.implanchihuahua.org/sigmun/apps/Styler/index.html?appid=4b73f84656264dba8b027d5fed38d6d2'
                 description={(
                   <>
                     <Typography fontWeight='bold' textAlign='center' fontSize={30}>~11.76%</Typography>
-                    <Typography fontWeight='500' textAlign='center'>Areás verdes por persona</Typography>
+                    <Typography fontSize='1.3rem' fontWeight='500' textAlign='center'>Areás verdes por persona</Typography>
                   </>
                 )}
               />
@@ -194,7 +196,7 @@ const ArboladoUrbano = () => {
                 description={(
                   <>
                     <Typography fontWeight='bold' textAlign='center' fontSize={30}>~60%</Typography>
-                    <Typography fontWeight='500' textAlign='center'>De la población vive <br /> cerca de un parque</Typography>
+                    <Typography fontSize='1.3rem' fontWeight='500' textAlign='center'>De la población vive <br /> cerca de un parque</Typography>
                   </>
                 )}
               />

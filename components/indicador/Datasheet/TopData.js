@@ -9,11 +9,15 @@ import { useCallback, useState } from 'react';
 import { Alert, Chip, Collapse, IconButton, Snackbar } from '@mui/material';
 import JsFileDownloader from 'js-file-downloader';
 import { Close } from '@mui/icons-material';
+import { useRouter } from 'next/router';
 
 const DOC_FORMATS = ['xlsx', 'csv', 'pdf', 'json'];
 
 const DocumentButton = ({ indicadorId, format, icon, showErrorMessage, ...props }) => {
   const [isLoading, setLoading] = useState(false);
+  //const router = useRouter();
+
+  //const {idIndicador} = router.query;
 
   const fetchDocument = useCallback(() => {
     setLoading(true)
@@ -23,7 +27,7 @@ const DocumentButton = ({ indicadorId, format, icon, showErrorMessage, ...props 
     })
       .catch(_ => showErrorMessage())
       .finally(_ => setLoading(false))
-  }, [])
+  }, [indicadorId])
 
   return (
     <LoadingButton
@@ -31,10 +35,10 @@ const DocumentButton = ({ indicadorId, format, icon, showErrorMessage, ...props 
       variant="outlined"
       color="primary"
       startIcon={icon || <DownloadIcon />}
-      fullWidth
       loadingPosition='start'
       onClick={fetchDocument}
       {...props}
+      sx={{ width: '100px', height: '50px', maxHeight: '50px', maxWidth: '100px' }}
     >{format}</LoadingButton>
   );
 };
@@ -85,18 +89,16 @@ const TopData = (info) => {
         </Box>
 
         <Title variant='h4' component='h2'>Datos abiertos</Title>
-        <Grid item xs={6} sx={{ justifyContent: 'flex-start', textAlign: 'center', display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
           {DOC_FORMATS.map(format => (
-            <Grid item xs={6} ml={1} mr={1} key={format}>
-              <DocumentButton
-                format={format}
-                indicadorId={indicador.id}
-                showErrorMessage={() => setOpen(true)}
-                icon={<Image src={getDocumentIconSrc(format)} height={40} width={40} />}
-              />
-            </Grid>
+            <DocumentButton
+              format={format}
+              indicadorId={indicador.id}
+              showErrorMessage={() => setOpen(true)}
+              icon={<Image src={getDocumentIconSrc(format)} height={40} width={40} />}
+            />
           ))}
-        </Grid>
+        </Box>
 
       </Box>
     </>

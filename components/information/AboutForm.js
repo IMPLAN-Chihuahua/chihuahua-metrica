@@ -8,7 +8,10 @@ export const AboutForm = () => {
       <Container>
         <Box sx={theme => ({
           height: "500px",
+          width: "100%",
+          marginTop: '-66px',
           [theme.breakpoints.down('md')]: {
+            marginTop: '-66px',
             height: "700px",
           }
         })}>

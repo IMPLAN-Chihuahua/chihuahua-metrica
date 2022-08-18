@@ -6,6 +6,7 @@ import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import Title from '@components/commons/Title';
 import NextLink from 'next/link';
+import { AboutForm } from './AboutForm';
 
 export const AboutLocation = () => {
   return (
@@ -13,14 +14,11 @@ export const AboutLocation = () => {
       <Title variant='h3' component='h1'>Contacto</Title>
       <Typography variant='body1' mb={3}>
         Si te interesa saber más acerca de Chihuahua Métrica ponte en contacto con nosotros
-        <NextLink href={`mailto:${'chihuahuametrica@implanchihuahua.org'}`} passHref>
-          <MUILink color='primary.blue'> envianos un mensaje.</MUILink>
-        </NextLink>
       </Typography>
       <Box mt={2}>
         <Grid container className='center-content'>
           <Grid container item xs={12} md={6} >
-            <Grid container item xs={12} md={6} className='center-content'>
+            <Grid container item xs={12} md={6} className='center-content' sx={{ mb: '5%' }}>
               <CenteredGrid>
                 <FmdGoodIcon sx={{ fontSize: '72px', color: 'gray' }} />
               </CenteredGrid>
@@ -30,12 +28,12 @@ export const AboutLocation = () => {
 
             </Grid>
 
-            <Grid container item xs={12} md={6} className='center-content'>
+            <Grid container item xs={12} md={6} className='center-content' sx={{ mb: '5%' }}>
               <CenteredGrid>
                 <EventAvailableIcon sx={{ fontSize: '72px', color: 'gray' }} />
               </CenteredGrid>
               <CenteredGrid>
-                <Typography variant='p' sx={{ mt: '3%' }}>De 9:00 a 15:00 horas de lunes a viernes</Typography>
+                <Typography variant='p' sx={{ mt: '0%' }}>Lunes a viernes<br />de 9: 00 a 15: 00 horas</Typography>
               </CenteredGrid>
             </Grid>
 
@@ -49,7 +47,9 @@ export const AboutLocation = () => {
             </Grid>
             <Grid container item xs={12} md={6} className='center-content'>
               <CenteredGrid>
-                <TravelExploreIcon sx={{ fontSize: '72px', color: 'gray' }} />
+                <NextLink href='http://implanchihuahua.org/' passHref>
+                  <TravelExploreIcon sx={{ fontSize: '72px', color: 'gray', cursor: 'pointer' }} />
+                </NextLink>
               </CenteredGrid>
               <CenteredGrid>
                 <Typography variant='p' sx={{ mt: '3%' }}>
@@ -57,7 +57,7 @@ export const AboutLocation = () => {
                     <MUILink
                       target='_blank'
                       color='primary.blue'
-                      rel='noopener noreferrer'>implanchihuahua.org</MUILink>
+                      rel='noopener noreferrer'>¡Visita la página del IMPLAN!</MUILink>
                   </NextLink>
                 </Typography>
               </CenteredGrid>
@@ -76,6 +76,7 @@ export const AboutLocation = () => {
             </iframe>
           </Grid>
         </Grid>
+        <AboutForm />
       </Box>
     </Box>
   );

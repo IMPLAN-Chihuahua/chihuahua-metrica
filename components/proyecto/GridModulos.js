@@ -9,13 +9,16 @@ const Tema = ({ modulo }) => {
 
   return (
     <NextLink
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
       href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}
       passHref
     >
       <a>
-        <div style={{ position: 'relative' }} className={`${style.card}`}>
+
+        <div
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          style={{ position: 'relative' }} className={`${style.card}`}
+        >
           <Image src={modulo.urlImagen} layout='fill' objectFit='cover' objectPosition='center' />
           <div className='overlay'>
             <Box pt={2} pl={2} pr={2}>

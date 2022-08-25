@@ -1,28 +1,27 @@
-import { Avatar, Grid, Box } from '@mui/material'
+import { Avatar, Grid, Box, Typography, useMediaQuery } from '@mui/material'
 import React, { useState } from 'react'
 import style from './Stats.module.css'
 import Carousel from 'react-material-ui-carousel'
+import theme from 'styles/theme'
 
 const Stat = ({ indicadores }) => {
     const [isHovering, setIsHovering] = useState(false);
     return (
-        <Grid item xs={12} md={3} className={style.stat}>
+        <div className={style.stat}>
             {
                 indicadores.map((indicador, index) => (
-                    console.log(indicador.value),
                     <div className={`${style.circle}`} key={index}>
                         <Box className={`${style.circleStats}`} >
                             <Avatar src={indicador.icon} className={style.indicadorImage} sx={{ height: 110, width: 110 }} />
-                            <p className={`${style.circleStatsDescription}`}>{indicador.value}</p>
+                            <Typography textAlign='center' className={`${style.textsillo}`}>{indicador.value}</Typography>
                         </Box>
                         <p className={style.indicador}>{indicador.name}</p>
                     </div>
                 ))
             }
-        </Grid>
+        </div>
     );
 }
-
 
 const Capsule = () => {
     const indicadores = [{
@@ -93,23 +92,52 @@ const Capsule = () => {
 
     ];
 
+    const isSmallScreen = useMediaQuery('(max-width:600px)');
     return (
         <>
             {
-                <Carousel
-                    interval={7000}
-                    duration={600}
-                >
-                    <Grid item xs={12} md={3}>
-                        <Stat indicadores={indicadores.slice(0, 5)} />
-                    </Grid>
-                    <Grid item xs={12} md={3}>
-                        <Stat indicadores={indicadores.slice(5, 10)} />
-                    </Grid>
-                    <Grid item xs={12} md={3}>
-                        <Stat indicadores={indicadores.slice(10, 15)} />
-                    </Grid>
-                </Carousel>
+                isSmallScreen ?
+                    <Carousel interval={7000} duration={600}>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(0, 2)} />
+                        </div>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(2, 4)} />
+                        </div>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(4, 6)} />
+                        </div>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(6, 8)} />
+                        </div>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(8, 10)} />
+                        </div>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(10, 12)} />
+                        </div>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(12, 14)} />
+                        </div>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(14, 15)} />
+                        </div>
+                    </Carousel>
+                    :
+                    <Carousel
+                        interval={7000}
+                        duration={600}
+                    >
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(0, 5)} />
+                        </div>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(5, 10)} />
+                        </div>
+                        <div item xs={6} md={3}>
+                            <Stat indicadores={indicadores.slice(10, 15)} />
+                        </div>
+                    </Carousel>
             }
         </>
     )

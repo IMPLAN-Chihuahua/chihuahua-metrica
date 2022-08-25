@@ -25,7 +25,7 @@ export default function Modulo(props) {
       </Head>
       <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
         <PageBreadcrumb crumbs={[...CRUMBS]} />
-        {/* <Capsule /> */}
+        <Capsule />
         <section>
           <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
           <Typography textAlign='start' variant='body1'>

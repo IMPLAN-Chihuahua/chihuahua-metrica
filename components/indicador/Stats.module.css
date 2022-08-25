@@ -8,12 +8,7 @@
     height: 110px;
     width: 110px;
     border-radius: 100%;
-    margin: auto;
     margin-top: 5%;
-    margin-bottom: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start !important;
     transition: 1s;
     transition: all 0.3s ease-in-out;
 }
@@ -23,6 +18,8 @@
     cursor: pointer;
     background-size: cover;
     transition: all 0.3s ease-in-out;
+    height: 150px !important;
+    width: 150px !important;
 }
 
 .indicadorImage {
@@ -34,6 +31,11 @@
     height: 150px !important;
     width: 150px !important;
     transition: 0.5s;
+    filter: drop-shadow(0 0 0.4rem black);
+    filter: brightness(0.5);
+    /* -webkit-animation: AnimationName 3s ease infinite;
+    -moz-animation: AnimationName 3s ease infinite;
+    animation: AnimationName 3s ease infinite; */
 }
 
 .indicador {
@@ -43,44 +45,84 @@
     text-align: center;
 }
 
+
 .circleStats {
-    color: transparent;
-    font-size: 10px !important;
-    text-align: center;
+    height: 100% !important;
+    width: 100% !important;
     position: relative;
-    text-align: center;
-    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
 
-.circleStatsDescription {
-    display: none;
-    opacity: 0;
-    transition: all 0.2s ease-in-out;
-    position: fixed;
-    font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.circle:hover .circleStatsDescription {
+.circle:hover .textsillo {
     opacity: 1;
-    transition: all 0.5s ease-in-out;
-    position: static;
-    color: black;
-    display: block;
 }
+
+.textsillo {
+    position: absolute;
+    top: 55px;
+    opacity: 0;
+    transition: 0.3s;
+    font-size: 1.2rem !important;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
 
 @media (max-width: 600px) {
     .stat {
         display: flex;
-        flex-direction: column !important;
+        flex-direction: row !important;
         justify-content: space-evenly !important;
         height: 100% !important;
     }
 
     .circle {
-        margin-bottom: 10vh;
+        margin-bottom: 15vh;
+    }
+}
+
+
+@-webkit-keyframes AnimationName {
+    0% {
+        filter: drop-shadow(0 0.7rem 0.9rem crimson);
+    }
+
+    50% {
+        filter: drop-shadow(0 0.4rem 0.5rem crimson);
+    }
+
+    100% {
+        filter: drop-shadow(0 0.1rem 0.1rem crimson);
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        filter: drop-shadow(0 0 0.9rem crimson);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 0.5rem crimson);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 0.1rem crimson);
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        filter: drop-shadow(0 0 0.9rem crimson);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 0.5rem crimson);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 0.1rem crimson);
     }
 }

@@ -9,10 +9,12 @@ const {
 
 
 const CustomTable = ({ data, lastSource, lastValue, lastYear }) => {
+  const sortedData = data.sort((a, b) => a.anio - b.anio);
+
   return (
     <TableContainer>
       <StyledTable sx={{ maxWidth: '99%' }} aria-label='Tabla de datos históricos'>
-        <caption>Tabla con la evolución de los datos registrados en los últimos 5 años.</caption>
+        <caption>Tabla con la evolución de los datos registrados en los últimos años.</caption>
         <TableHead>
           <TableRow>
             <StyledTableHeaderCell scope="col">Año</StyledTableHeaderCell>
@@ -21,7 +23,7 @@ const CustomTable = ({ data, lastSource, lastValue, lastYear }) => {
           </TableRow>
         </TableHead>
         <StyledTableBody>
-          {data.map((historico) => (
+          {sortedData.map((historico) => (
             <TableRow hover key={historico.anio}>
               <StyledTableCell scope="row">{historico.anio}</StyledTableCell>
               <StyledTableCell scope="row">{numberWithCommas(historico.valor)}</StyledTableCell>

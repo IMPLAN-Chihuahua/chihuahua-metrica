@@ -22,19 +22,19 @@ ChartJS.register(
 );
 
 const Graph = ({ data, lastValue, lastYear }) => {
-
+  const sortedData = data.sort((a, b) => a.anio - b.anio);
   const state = {
-    labels: data.reverse().map((historico) => historico.anio),
+    labels: sortedData.map((historico) => historico.anio),
     datasets: [
       {
         label: "Valor registrado",
-        backgroundColor: `${theme.palette.primary.subtleMain}`,
-        hoverBackgroundColor: `${theme.palette.primary.darkerMain}`,
+        backgroundColor: ['#D12D6A', '#C62C6B', '#BC2B6B', '#B12A6C', '#A6296C', '#9C286D', '#91276E', '#86256E', '#7B246F', '#712370', '#662270'].reverse(),
+        hoverBackgroundColor: ['#D12D6A', '#C62C6B', '#BC2B6B', '#B12A6C', '#A6296C', '#9C286D', '#91276E', '#86256E', '#7B246F', '#712370', '#662270'],
         borderColor: `${theme.palette.primary.main}`,
         borderWidth: 1,
-        data: data.map((historico) => historico.valor),
-        barPercentage: 0.6,
-        borderRadius: 2,
+        data: sortedData.map((historico) => historico.valor),
+        barPercentage: 0.8,
+        borderRadius: 5,
       },
     ],
   };

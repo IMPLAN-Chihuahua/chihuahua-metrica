@@ -3,6 +3,7 @@ import Head from 'next/head';
 import TemaList from '@components/proyecto/GridModulos';
 import Title from '@components/commons/Title';
 import PageBreadcrumb from '@components/commons/PageBreadcrumb';
+import Capsule from '@components/indicador/Capsule';
 
 const CRUMBS = [
   {
@@ -24,6 +25,7 @@ export default function Modulo(props) {
       </Head>
       <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
         <PageBreadcrumb crumbs={[...CRUMBS]} />
+        {/* <Capsule /> */}
         <section>
           <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
           <Typography textAlign='start' variant='body1'>
@@ -31,12 +33,7 @@ export default function Modulo(props) {
             estructura urbana, económica y social con el fin de dar a conocer la dirección
             en la que se encuentra la ciudad y encontrar las áreas de oportunidad.
           </Typography>
-          <Typography textAlign='start' variant='body1' mt={1}>
-            La plataforma cuenta con una base de 152 de indicadores, 42 técnico-urbanos
-            y 110 sociales, los cuales pueden ser usados de referencia para estudios y proyectos.
-            Son fundamentados con la información que brindan los censos de INEGI, CONEVAL,
-            IMCO, ONU, IMPLAN, entre otros organismos.
-          </Typography>
+
         </section>
         <section>
           <Title variant='h4' component='h2'>Temas de Interés</Title>

@@ -1,0 +1,86 @@
+.stat {
+    display: flex;
+    justify-content: space-evenly !important;
+    height: 30vh !important;
+}
+
+.circle {
+    height: 110px;
+    width: 110px;
+    border-radius: 100%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    transition: 1s;
+    transition: all 0.3s ease-in-out;
+}
+
+.circle:hover {
+    color: white;
+    cursor: pointer;
+    background-size: cover;
+    transition: all 0.3s ease-in-out;
+}
+
+.indicadorImage {
+    height: 110px !important;
+    width: 110px !important;
+}
+
+.circle:hover .indicadorImage {
+    height: 150px !important;
+    width: 150px !important;
+    transition: 0.5s;
+}
+
+.indicador {
+    font-size: 1.4vh;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-align: center;
+}
+
+.circleStats {
+    color: transparent;
+    font-size: 10px !important;
+    text-align: center;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.circleStatsDescription {
+    display: none;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    position: fixed;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle:hover .circleStatsDescription {
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    position: static;
+    color: black;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .stat {
+        display: flex;
+        flex-direction: column !important;
+        justify-content: space-evenly !important;
+        height: 100% !important;
+    }
+
+    .circle {
+        margin-bottom: 10vh;
+    }
+}

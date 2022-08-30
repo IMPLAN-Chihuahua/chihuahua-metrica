@@ -38,6 +38,19 @@ let theme = createTheme({
 
         cardInformation: {
             main: '#204C5A'
+        },
+        gradient: {
+            g1: '#D12D6A',
+            g2: '#C62C6B',
+            g3: '#BC2B6B',
+            g4: '#B12A6C',
+            g5: '#A6296C',
+            g6: '#9C286D',
+            g7: '#91276E',
+            g8: '#86256E',
+            g9: '#7B246F',
+            g10: '#712370',
+            g10Darker: '#3E133E'
         }
     }
 });

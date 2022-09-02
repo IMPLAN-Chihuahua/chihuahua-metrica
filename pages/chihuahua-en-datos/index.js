@@ -25,7 +25,6 @@ export default function Modulo(props) {
       </Head>
       <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
         <PageBreadcrumb crumbs={[...CRUMBS]} />
-        <Capsule />
         <section>
           <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
           <Typography textAlign='start' variant='body1'>
@@ -33,10 +32,13 @@ export default function Modulo(props) {
             estructura urbana, económica y social con el fin de dar a conocer la dirección
             en la que se encuentra la ciudad y encontrar las áreas de oportunidad.
           </Typography>
-
         </section>
+        <br />
+        <Title variant='h4' component='h2'>Temas de Interés</Title>
+        <Capsule />
+        <br />
         <section>
-          <Title variant='h4' component='h2'>Temas de Interés</Title>
+          <Title variant='h4' component='h2'>Temáticas</Title>
           <Grid container rowSpacing={1} columnSpacing={1}>
             <TemaList modulos={data} />
           </Grid>

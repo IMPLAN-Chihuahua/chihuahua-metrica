@@ -6,8 +6,6 @@ import { Typography } from "@mui/material";
 import OracionList from "@components/variable/OracionList";
 
 const Formula = ({ formula, fuente }) => {
-  console.log(formula);
-
   return (
     <>
       <style jsx>{`

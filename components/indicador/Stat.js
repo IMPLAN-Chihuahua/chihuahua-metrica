@@ -6,7 +6,6 @@ import Carousel from 'react-material-ui-carousel'
 
 const Stat = ({ indicador, indextest }) => {
     const [isHovering, setIsHovering] = useState(false);
-    console.log('koks')
     return (
         <Grid item xs={12} md={3}>
             <div

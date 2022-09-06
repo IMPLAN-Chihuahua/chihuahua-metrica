@@ -4,7 +4,11 @@ const VariableList = ({ variables }) => {
   return (
     <>{
       variables.map((variable, index) => {
-        return (<Variable expr={variable} key={index} />);
+        return (
+          <ul>
+            <Variable expr={variable} key={index} />
+          </ul>
+        );
       })}
     </>
   );

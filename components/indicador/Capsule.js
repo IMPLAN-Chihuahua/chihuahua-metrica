@@ -120,7 +120,7 @@ const Capsule = () => {
         <>
             {
                 isSmallScreen ?
-                    <Carousel interval={7000} duration={600}>
+                    <Carousel interval={7000} duration={600} navButtonsAlwaysVisible={true}>
                         <div item xs={6} md={3}>
                             <Stat indicadores={indicadores.slice(0, 2)} />
                         </div>

@@ -14,7 +14,6 @@ import { useRouter } from "next/router";
 export default function FichaTecnica(props) {
   const indicador = props.data;
   const responsible = props.responsible;
-
   const CRUMBS = [{
     text: 'Chihuahua en Datos',
     href: '/chihuahua-en-datos'

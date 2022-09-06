@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import MathJax from "react-mathjax";
 import style from './Formula.module.css'
 import { Typography } from "@mui/material";
+import OracionList from "@components/variable/OracionList";
 
 const Formula = ({ formula, fuente }) => {
   return (
@@ -25,7 +26,7 @@ const Formula = ({ formula, fuente }) => {
                 overflow-y: auto;
                 padding-top: 10px;
                 padding-bottom: 10px;
-                height: 80px;
+                height: 250px;
               }
 
               /* width */
@@ -104,32 +105,62 @@ const Formula = ({ formula, fuente }) => {
                   </div>
                 </>
               )
-              : (
-                <>
-                  <div>
-                    <div className='formula-data'>
-                      <Typography variant='h5' component='h3'>Descripcion</Typography>
-                      <Typography mb={2}>{formula.descripcion}</Typography>
-                      <MathJax.Provider>
-                        <Typography
-                          textAlign='center'
-                          variant='h4'
-                          mb={2}
-                          className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
-                      </MathJax.Provider>
+              :
+              formula.isFormula === 'SI' ?
+                (
+                  <>
+                    <div>
+                      <div className='formula-data'>
+                        <Typography variant='h5' component='h3'>Descripcion</Typography>
+                        <Typography mb={2}>{formula.descripcion}</Typography>
+                        <MathJax.Provider>
+                          <Typography
+                            textAlign='center'
+                            variant='h4'
+                            mb={2}
+                            className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
+                        </MathJax.Provider>
+                      </div>
+                      <Typography variant='h5' component='h3'>Donde:</Typography>
+                      <div className='variableText'>
+                        <VariableList variables={formula.variables} />
+                      </div>
                     </div>
-                    <Typography variant='h5' component='h3'>Donde:</Typography>
-                    <div className='variableText'>
-                      <VariableList variables={formula.variables} />
+                    <div className="formula-exists">
+                      <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-word' }}>
+                        {fuente}
+                      </Typography>
                     </div>
-                  </div>
-                  <div className="formula-exists">
-                    <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-word' }}>
-                      {fuente}
-                    </Typography>
-                  </div>
-                </>
-              )}
+                  </>
+                )
+                :
+                (
+                  <>
+                    <div>
+                      <div className='formula-data'>
+                        <Typography variant='h5' component='h3'>Descripcion</Typography>
+                        <Typography mb={2}>{formula.descripcion}</Typography>
+                        {/* <MathJax.Provider>
+                          <Typography
+                            textAlign='center'
+                            variant='h4'
+                            mb={2}
+                            className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
+                        </MathJax.Provider> */}
+                      </div>
+                      <Typography variant='h5' component='h3'>Donde:</Typography>
+                      <div className='variableText'>
+                        <OracionList oraciones={formula.variables} />
+                      </div>
+                    </div>
+                    <div className="formula-exists">
+                      <Typography variant='caption' component='h2' sx={{ wordBreak: 'break-word' }}>
+                        {fuente}
+                      </Typography>
+                    </div>
+                  </>
+                )
+            }
           </Box>
         </Box>
       </Box>

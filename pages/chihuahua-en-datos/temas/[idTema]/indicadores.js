@@ -1,18 +1,23 @@
 import Head from "next/head";
-import Container from "@mui/material/Container";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  Typography, Box, Stack, TextField, IconButton,
+  Collapse, ToggleButton, InputAdornment, Divider,
+  Container, Alert
+} from "@mui/material";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useForm, FormProvider } from "react-hook-form"
+import { serialize } from "helpers/StringUtils";
+import { Clear, FilterAlt, Search } from "@mui/icons-material";
+import { debounce } from "lodash";
 import IndicadorFilter from "@components/indicador/IndicadorFilter";
 import IndicadorList from "@components/indicador/IndicadorList";
 import IndicadorPagination from "@components/indicador/IndicadorPagination";
 import IndicadorSkeleton from "@components/indicador/IndicadorSkeleton";
-import Alert from "@mui/material/Alert";
 import Title from "@components/commons/Title";
-import { useForm, FormProvider } from "react-hook-form"
-import { Typography, Box, Stack } from "@mui/material";
-import Image from "next/image";
-import tinycolor from 'tinycolor2';
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
-import { serialize } from "helpers/StringUtils";
+import NavBackAndFoward from "@components/commons/NavBackAndFoward";
+import tinycolor from 'tinycolor2';
+import Image from "next/image";
 
 const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
@@ -23,16 +28,18 @@ export default function Modulo(props) {
   const [isLoading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [selectedTema, setSelectedTema] = useState(props.selectedTema);
-
+  const [search, setSearch] = useState('');
+  const [open, setOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [filters, setFilters] = useState('');
 
   const methods = useForm();
   const { watch } = methods;
-  const fetchIndicadores = useCallback(() => {
+  const fetchIndicadores = useCallback((fixedPage, search = '') => {
     setLoading(true);
-    const url = `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema?.id}/indicadores?page=${page}&${filters}`;
+    const url =
+      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
     fetch(url)
       .then(res => {
         if (res.ok) {
@@ -42,6 +49,7 @@ export default function Modulo(props) {
       })
       .then(indicadores => {
         setTotalPages(indicadores.totalPages);
+        setPage(indicadores.page);
         setIndicadores(indicadores.data);
         setHasError(false);
       })
@@ -51,18 +59,20 @@ export default function Modulo(props) {
       .finally(() => {
         setLoading(false);
       });
-  }, [selectedTema.id, page, filters]);
+  }, [selectedTema, filters, search]);
 
   useEffect(() => {
     let isMounted = true;
-    if (isMounted) {
-      fetchIndicadores();
+    if (!isMounted) {
+      return;
     }
+    const savedPage = parseInt(localStorage.getItem('indicadores-page'))
+    fetchIndicadores(savedPage || 1, search);
+
     return () => {
       isMounted = false;
     }
   }, [fetchIndicadores]);
-
 
   useEffect(() => {
     const subscription = watch(value => {
@@ -79,7 +89,13 @@ export default function Modulo(props) {
     return () => subscription.unsubscribe();
   }, [watch, setFilters]);
 
-  const handlePagination = (_, value) => setPage(value);
+  const handlePagination = useCallback((_, value) => {
+    if (value === page) {
+      return;
+    }
+    localStorage.setItem('indicadores-page', value)
+    fetchIndicadores(parseInt(value))
+  }, [page, selectedTema]);
 
   const CRUMBS = [{
     text: 'Chihuahua en Datos',
@@ -88,8 +104,9 @@ export default function Modulo(props) {
     text: selectedTema.temaIndicador,
   }];
 
-  const backgroundColor = useMemo(() => tinycolor(selectedTema.color).lighten().lighten().toHexString(), [selectedTema]);
-  const foregroundColor = useMemo(() => tinycolor(selectedTema.color).darken(60).toHexString(), [selectedTema]);
+  const getTema = (id) => {
+    return [...props.temas.data].find(tema => tema.id === id);
+  }
 
   return (
     <>
@@ -99,8 +116,43 @@ export default function Modulo(props) {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container maxWidth="lg" sx={{ mb: 3, mt: 3 }}>
-        <PageBreadcrumb crumbs={[...CRUMBS]} />
-        <Stack direction='row' mb={3} flexWrap={{ xs: 'wrap', md: 'nowrap' }} justifyContent='center'>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: { xs: 'flex-end', lg: 'space-between' },
+            paddingTop: 1,
+            paddingBottom: 1,
+            alignItems: 'center'
+          }}>
+          <PageBreadcrumb crumbs={[...CRUMBS]} />
+          <NavBackAndFoward
+            prev={{
+              title: 'Temática anterior',
+              disabled: selectedTema.id === 1,
+              onClick: () => localStorage.removeItem('indicadores-page'),
+              link: `/chihuahua-en-datos/temas/${selectedTema.id - 1}/indicadores`
+            }}
+            next={{
+              title: 'Siguiente temática',
+              disabled: selectedTema.id === 14,
+              onClick: () => localStorage.removeItem('indicadores-page'),
+              link: `/chihuahua-en-datos/temas/${selectedTema.id + 1}/indicadores`
+            }}
+          />
+        </Box>
+        <Stack
+          direction='row'
+          mb={3}
+          spacing={2}
+          flexWrap={{ xs: 'wrap', md: 'nowrap' }}
+          justifyContent='space-between'
+          divider={
+            <Divider
+              orientation='vertical'
+              flexItem
+              sx={{ backgroundColor: selectedTema.color, width: 3, height: '180px', alignSelf: 'center' }} />
+          }
+        >
           <Box
             sx={{
               width: { xs: '100%' },
@@ -118,12 +170,6 @@ export default function Modulo(props) {
           <Box
             component='section'
             sx={{
-              p: 2,
-              backgroundColor,
-              color: foregroundColor,
-              border: `1px solid ${foregroundColor}`,
-              flexGrow: 1,
-              ml: { xs: 0, md: 1 },
               mt: { xs: 1, md: 0 },
               wordWrap: 'break-word'
             }}>
@@ -134,19 +180,35 @@ export default function Modulo(props) {
         <section>
           <Title variant='h4' component='h2'>Indicadores</Title>
           <FormProvider {...methods}>
-            <IndicadorFilter
-              odsList={[...props.ods.data]}
-              unidadMedidaList={[...props.medidas.data]}
-              coberturaList={[...props.coberturas.data]}
-              modulosList={[...props.temas.data]}
-            />
+            <Box sx={{ display: 'flex', mb: 3 }}>
+              <IndicadorSearchBar setSearch={setSearch} />
+              <ToggleButton
+                value='cheked'
+                selected={open}
+                onChange={() => setOpen(old => !old)}
+                sx={{ ml: 3 }}
+              >
+                <FilterAlt />
+              </ToggleButton>
+            </Box>
+            <Collapse in={open}>
+              <IndicadorFilter
+                odsList={[...props.ods.data]}
+                unidadMedidaList={[...props.medidas.data]}
+                coberturaList={[...props.coberturas.data]}
+                modulosList={[...props.temas.data]}
+              />
+            </Collapse>
           </FormProvider>
           {isLoading ?
             Array.from(new Array(4)).map((_, i) => <IndicadorSkeleton key={i} />)
             :
             !hasError &&
             (<>
-              <IndicadorList indicadores={indicadores} fontColor={tinycolor(selectedTema.color).darken(60).toHexString()} />
+              <IndicadorList
+                indicadores={indicadores}
+                fontColor={tinycolor(selectedTema.color).darken(60).toHexString()}
+              />
               <IndicadorPagination
                 page={page}
                 totalPages={totalPages}
@@ -184,6 +246,7 @@ export async function getServerSideProps(context) {
   ]);
   return {
     props: {
+      key: idTema,
       ods,
       coberturas,
       medidas,
@@ -191,4 +254,41 @@ export async function getServerSideProps(context) {
       selectedTema: { ...selectedTema.data },
     },
   };
+};
+
+
+const IndicadorSearchBar = ({ setSearch }) => {
+  const textRef = useRef(null)
+  const handleClear = () => {
+    textRef.current.value = '';
+    setSearch('')
+    setSearching(false);
+  };
+  const [searching, setSearching] = useState(false);
+  const handleChange = useCallback(debounce(e => {
+    setSearching(true);
+    setSearch(e.target.value);
+  }, 300), []);
+
+  return (
+    <TextField
+      inputRef={textRef}
+      InputProps={{
+        startAdornment: (<InputAdornment position='start'><Search /></InputAdornment>),
+        endAdornment: (
+          searching &&
+          <IconButton
+            onClick={handleClear}
+          >
+            <Clear />
+          </IconButton>
+        )
+      }}
+      name='searchQuery'
+      fullWidth
+      onChange={handleChange}
+      placeholder='Buscar indicadores por nombre'
+    />
+  );
 }
+

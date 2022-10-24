@@ -7,7 +7,7 @@ import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 
 const CRUMBS = [
   {
-    text: 'Chihuahua en Datos'
+    text: 'Contacto'
   }
 ]
 
@@ -19,10 +19,9 @@ const Contact = () => {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Splashscreen />
-      <Container>
+      <Container sx={{ mt: 3 }}>
         <PageBreadcrumb crumbs={CRUMBS} />
         <AboutLocation />
-        <AboutForm />
       </Container>
     </>
   );

@@ -4,8 +4,12 @@ import React from 'react'
 import style from './IndicadorOwner.module.css'
 import MailIcon from '@mui/icons-material/Mail';
 import Title from './Title'
+import { toLocaleDateString } from 'helpers/FormatDates';
 
 const IndicadorOwner = ({ responsible, indicadorDate, indicadorName }) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = new Date(indicadorDate).toUTCString();
+
     return (
         <>
             <Title variant='h4' component='h2'>Responsable</Title>
@@ -19,7 +23,7 @@ const IndicadorOwner = ({ responsible, indicadorDate, indicadorName }) => {
                         </Box>
                         <Box className={`${style.userInformation}`} >
                             <Typography variant='caption' component='h4' className={`${style.cardData}`}>
-                                24 de Julio 2022
+                                Fecha de actualización de la plataforma: {toLocaleDateString(date)}
                             </Typography>
                             <Typography variant='subtitle' component='h3' className={`${style.cardData}`}>
                                 {responsible.nombres} {responsible.apellidoPaterno}

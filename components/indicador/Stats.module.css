@@ -1,0 +1,128 @@
+.stat {
+    display: flex;
+    justify-content: space-evenly !important;
+    height: 30vh !important;
+}
+
+.circle {
+    height: 110px;
+    width: 110px;
+    border-radius: 100%;
+    margin-top: 5%;
+    transition: 1s;
+    transition: all 0.3s ease-in-out;
+}
+
+.circle:hover {
+    color: white;
+    cursor: pointer;
+    background-size: cover;
+    transition: all 0.3s ease-in-out;
+    height: 150px !important;
+    width: 150px !important;
+}
+
+.indicadorImage {
+    height: 110px !important;
+    width: 110px !important;
+}
+
+.circle:hover .indicadorImage {
+    height: 150px !important;
+    width: 150px !important;
+    transition: 0.5s;
+    filter: drop-shadow(0 0 0.4rem black);
+    filter: brightness(0.5);
+    /* -webkit-animation: AnimationName 3s ease infinite;
+    -moz-animation: AnimationName 3s ease infinite;
+    animation: AnimationName 3s ease infinite; */
+}
+
+.indicador {
+    font-size: 1.4vh;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.circleStats {
+    height: 100% !important;
+    width: 100% !important;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.circle:hover .textsillo {
+    opacity: 1;
+}
+
+.textsillo {
+    position: absolute;
+    top: 55px;
+    opacity: 0;
+    transition: 0.3s;
+    font-size: 1.2rem !important;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+@media (max-width: 600px) {
+    .stat {
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-evenly !important;
+        height: 100% !important;
+    }
+
+    .circle {
+        margin-bottom: 15vh;
+    }
+}
+
+
+@-webkit-keyframes AnimationName {
+    0% {
+        filter: drop-shadow(0 0.7rem 0.9rem crimson);
+    }
+
+    50% {
+        filter: drop-shadow(0 0.4rem 0.5rem crimson);
+    }
+
+    100% {
+        filter: drop-shadow(0 0.1rem 0.1rem crimson);
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        filter: drop-shadow(0 0 0.9rem crimson);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 0.5rem crimson);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 0.1rem crimson);
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        filter: drop-shadow(0 0 0.9rem crimson);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 0.5rem crimson);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 0.1rem crimson);
+    }
+}

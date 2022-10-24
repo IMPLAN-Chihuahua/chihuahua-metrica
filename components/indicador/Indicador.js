@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
@@ -21,95 +20,124 @@ const compareIds = (a, b) => {
 
 const Indicador = (props) => {
   const indicador = props.value;
-  const updatedAt = indicador.updatedAt.split('T')[0];
   return (
     <Card variant='outlined'>
       <CardActionArea sx={{ padding: 2 }}>
-        <NextLink href={`/chihuahua-en-datos/indicadores/${indicador.id}`} >
-          <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2}>
-            <Grid item sm container direction='column'>
-              <Grid item>
-                <Typography
-                  variant='h6'
-                  component='h3'
-                  fontWeight='bold'
-                  mb={2}
-                  textAlign={{ xs: 'center', md: 'left' }}
-                >
-                  {indicador.nombre}
-                </Typography>
-              </Grid>
-              <Grid
-                item
-                xs
-                container
-                direction='row'
-                justifyContent='space-evenly'
-                rowSpacing={2}
-              >
-                <Grid
-                  item
-                  xs={4}
-                  md={2}
-                  textAlign='center'
-                  container
-                  display='flex'
-                  flexDirection='column'
-                  justifyContent='space-between'
-                  >
+        <NextLink href={`/chihuahua-en-datos/indicadores/${indicador.id}`} passHref>
+          <a>
+            <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2}>
+              <Grid item sm container direction='column'>
+                <Grid item>
                   <Typography
-                  fontWeight='bold'
-                  >
-                    Último Valor Disponible
-                  </Typography>
-                  <Typography
-                    color={props.fontColor}
+                    variant='h6'
+                    component='h3'
                     fontWeight='bold'
-                    fontSize={25}
-                  >{numberWithCommas(indicador.ultimoValorDisponible)}
+                    mb={2}
+                    textAlign={{ xs: 'center', md: 'left' }}
+                  >
+                    {indicador.nombre}
                   </Typography>
                 </Grid>
-                <Divider
-                  orientation='vertical'
-                  variant='middle'
-                  flexItem
-                  sx={{ borderRightWidth: 3 }}
-                />
                 <Grid
                   item
-                  xs={4}
-                  md={2}
+                  xs
                   container
-                  textAlign='center'
-                  display='flex'
-                  flexDirection='column'
-                  justifyContent='space-between'
+                  direction='row'
+                  justifyContent='space-evenly'
+                  rowSpacing={2}
                 >
-                  <Typography
-                    fontWeight='bold'
+                  <Grid
+                    item
+                    xs={4}
+                    md={2}
+                    textAlign='center'
+                    container
+                    display='flex'
+                    flexDirection='column'
+                    justifyContent='space-between'
                   >
-                    Fecha de Referencia
-                  </Typography>
-                  <Typography
+                    <Typography
+                      fontWeight='bold'
+                    >
+                      Último Valor Disponible
+                    </Typography>
+                    <Typography
+                      color={props.fontColor}
+                      fontWeight='bold'
+                      fontSize={25}
+                    >{numberWithCommas(indicador.ultimoValorDisponible)}
+                    </Typography>
+                  </Grid>
+                  <Divider
+                    orientation='vertical'
+                    variant='middle'
+                    flexItem
+                    sx={{ borderRightWidth: 3 }}
+                  />
+                  <Grid
+                    item
+                    xs={4}
+                    md={2}
+                    container
+                    textAlign='center'
+                    display='flex'
+                    flexDirection='column'
+                    justifyContent='space-between'
                   >
-                    {updatedAt}
-                  </Typography>
+                    <Typography
+                      fontWeight='bold'
+                    >
+                      Año de Referencia
+                    </Typography>
+                    <Typography
+                    >
+                      {indicador.anioUltimoValorDisponible}
+                    </Typography>
+                  </Grid>
+                  <Divider
+                    orientation='vertical'
+                    variant='middle'
+                    flexItem
+                    sx={{ borderRightWidth: 3, display: { xs: 'none', md: 'block' } }}
+                  />
 
-
-                </Grid>
-                <Divider
-                  orientation='vertical'
-                  variant='middle'
-                  flexItem
-                  sx={{ borderRightWidth: 3, display: { xs: 'none', md: 'block' } }}
-                />
-
-                {
-                  indicador.catalogos.sort(compareIds).map((catalogo, index) => {
-                    if (catalogo.idCatalogo !== ODS) {
-                      if (catalogo.idCatalogo === UNIDAD_MEDIDA) {
-                        return (
-                          <>
+                  {
+                    indicador.catalogos.sort(compareIds).map((catalogo, index) => {
+                      if (catalogo.idCatalogo !== ODS) {
+                        if (catalogo.idCatalogo === UNIDAD_MEDIDA) {
+                          return (
+                            <>
+                              <Grid
+                                item
+                                xs={4}
+                                md={2}
+                                container
+                                textAlign='center'
+                                display='flex'
+                                flexDirection='column'
+                                justifyContent='space-between'
+                                key={index}
+                              >
+                                <Typography
+                                  fontWeight='bold'
+                                >
+                                  Unidad de Medida
+                                </Typography>
+                                <Typography
+                                >
+                                  {catalogo.nombre || 'NA'}
+                                </Typography>
+                              </Grid>
+                              <Divider
+                                orientation='vertical'
+                                variant='middle'
+                                flexItem
+                                sx={{ borderRightWidth: 3 }}
+                              />
+                            </>
+                          )
+                        } else {
+                          return (
                             <Grid
                               item
                               xs={4}
@@ -122,54 +150,24 @@ const Indicador = (props) => {
                               key={index}
                             >
                               <Typography
-                                fontWeight='bold'
+                                fontWeight={'bold'}
                               >
-                                Unidad de Medida
+                                Cobertura Geográfica
                               </Typography>
                               <Typography
                               >
                                 {catalogo.nombre || 'NA'}
                               </Typography>
                             </Grid>
-                            <Divider
-                              orientation='vertical'
-                              variant='middle'
-                              flexItem
-                              sx={{ borderRightWidth: 3 }}
-                            />
-                          </>
-                        )
-                      } else {
-                        return (
-                          <Grid
-                            item
-                            xs={4}
-                            md={2}
-                            container
-                            textAlign='center'
-                            display='flex'
-                            flexDirection='column'
-                            justifyContent='space-between'
-                            key={index}
-                          >
-                            <Typography
-                              fontWeight={'bold'}
-                            >
-                              Cobertura Geográfica
-                            </Typography>
-                            <Typography
-                            >
-                              {catalogo.nombre || 'NA'}
-                            </Typography>
-                          </Grid>
-                        )
+                          )
+                        }
                       }
-                    }
-                  })
-                }
+                    })
+                  }
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
+          </a>
         </NextLink>
       </CardActionArea>
     </Card>

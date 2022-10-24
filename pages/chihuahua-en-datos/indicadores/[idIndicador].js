@@ -6,13 +6,15 @@ import GraphBox from "@components/indicador/Datasheet/GraphBox";
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import IndicadorOwner from "@components/commons/IndicadorOwner";
 import Head from "next/head";
+import NavBackAndFoward from "@components/commons/NavBackAndFoward";
+import { Box } from "@mui/material";
+import { useRouter } from "next/router";
 
 
 export default function FichaTecnica(props) {
   const indicador = props.data;
   const responsible = props.responsible;
-
-  const crumbs = [{
+  const CRUMBS = [{
     text: 'Chihuahua en Datos',
     href: '/chihuahua-en-datos'
   }, {
@@ -22,6 +24,8 @@ export default function FichaTecnica(props) {
     text: indicador.nombre
   }];
 
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -30,7 +34,28 @@ export default function FichaTecnica(props) {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container sx={{ mb: 3, mt: 3 }}>
-        <PageBreadcrumb crumbs={[...crumbs]} />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: { xs: 'flex-end', lg: 'space-between' },
+            paddingTop: 1,
+            paddingBottom: 1,
+            alignItems: 'center'
+          }}>
+          <PageBreadcrumb crumbs={[...CRUMBS]} />
+          <NavBackAndFoward
+            prev={{
+              title: 'Indicador anterior',
+              disabled: indicador.prev == null,
+              link: `/chihuahua-en-datos/indicadores/${indicador.prev}`
+            }}
+            next={{
+              title: 'Siguiente indicador',
+              disabled: indicador.next == null,
+              link: `/chihuahua-en-datos/indicadores/${indicador.next}`
+            }}
+          />
+        </Box>
         <TopData info={indicador} />
         <DataSheet datasheet={indicador} />
         <GraphBox history={indicador} />
@@ -55,7 +80,7 @@ export async function getServerSideProps(context) {
 
     const [responsibleRes] = await Promise.all([
       fetch(
-        `${process.env.INDICADORES_BASE_URL}/usuarios/${idUser}/profile`
+        `${process.env.INDICADORES_BASE_URL}/usuarios/${idUser}`
       ),
     ]);
 

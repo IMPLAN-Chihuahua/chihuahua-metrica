@@ -9,6 +9,7 @@ const questions = () => {
     <Container>
       <br />
       <Title variant={'h4'}>Preguntas frecuentes</Title>
+      <br />
       <QuestionsContent />
     </Container>
   );

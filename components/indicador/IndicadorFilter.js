@@ -29,25 +29,13 @@ const IndicadorFilter = (props) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Grid
-        container
-        sx={{
-          marginBottom: 3,
-          border: '1px solid rgb(0, 0, 0, 0.1)'
-        }}
-        borderRadius={2}
-      >
+      <Grid container>
         <Grid
           item
           container
-          padding={2}
+          marginBottom={3}
           direction="column"
         >
-          <Grid item>
-            <Title variant="h5" component="h3">
-              Búsqueda
-            </Title>
-          </Grid>
           <Grid
             item
             container

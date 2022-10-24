@@ -63,7 +63,6 @@ const StarTree = ({ tree }) => {
                     <Image src={tree.arbol} className={style.arbol} layout='fill' objectFit='contain' />
                 </Grid>
                 <Grid item xs={12} md={4} lg={4} xl={4} className={`${style.treeDatasheet} ${isHovering ? style.treeHovered : style.treeUnhovered}`} sx={{ position: 'relative' }}>
-                    <Image src={tree.ficha} height='500px' width='500px' objectFit='contain' className={style.treeFicha} />
                 </Grid>
             </Grid>
 

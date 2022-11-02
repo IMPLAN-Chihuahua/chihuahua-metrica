@@ -1,5 +1,8 @@
 import React from 'react'
+import { Grid, Link as MUILink } from '@mui/material';
+import style from './CardTree.module.css';
 import StarTree from './StarTree'
+import CardTree from './CardTree'
 
 const trees = [
     {
@@ -46,18 +49,64 @@ const trees = [
         follaje: 'Caducifolio',
         distancia: '7',
     },
+    {
+        id: 5,
+        avatar: '/images/arbolado/mimbre_C.png',
+        arbol: '/images/arbolado/mimbre_A.png',
+        ficha: '/images/arbolado/mimbre_F.png',
+        nombre: '<b>Mimbre/</b> Chilopsis Linearis',
+        sistema: 'Profundo (>1.5m)',
+        riego: 'Baja',
+        follaje: 'Caducifolio',
+        distancia: '7',
+    },
+    {
+        id: 6,
+        avatar: '/images/arbolado/mimbre_C.png',
+        arbol: '/images/arbolado/mimbre_A.png',
+        ficha: '/images/arbolado/mimbre_F.png',
+        nombre: '<b>Mimbre/</b> Chilopsis Linearis',
+        sistema: 'Profundo (>1.5m)',
+        riego: 'Baja',
+        follaje: 'Caducifolio',
+        distancia: '7',
+    },
+    {
+        id: 7,
+        avatar: '/images/arbolado/mimbre_C.png',
+        arbol: '/images/arbolado/mimbre_A.png',
+        ficha: '/images/arbolado/mimbre_F.png',
+        nombre: '<b>Mimbre/</b> Chilopsis Linearis',
+        sistema: 'Profundo (>1.5m)',
+        riego: 'Baja',
+        follaje: 'Caducifolio',
+        distancia: '7',
+    },
+    {
+        id: 8,
+        avatar: '/images/arbolado/huizache_C.png',
+        arbol: '/images/arbolado/huizache_A.png',
+        ficha: '/images/arbolado/huizache_F.png',
+        nombre: '<b>Huizache/</b> Vachellia Farnesiana',
+        sistema: 'Profundo (>1.5m)',
+        riego: 'Baja',
+        follaje: 'Perennifolio',
+        distancia: '7',
+    },
 ]
 
 const TreeList = () => {
     return (
         <>
-            {
-                trees.map((tree, index) => {
-                    return (
-                        <StarTree key={index} tree={tree} />
-                    )
-                })
-            }
+            <Grid container spacing={3} className={style.CardTree} >
+                {
+                    trees.map((tree, index) => {
+                        return (
+                            <CardTree key={index} tree={tree} />
+                        )
+                    })
+                }
+            </Grid>
         </>
     )
 }

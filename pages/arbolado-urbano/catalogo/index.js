@@ -1,20 +1,14 @@
 import Head from 'next/head';
 import { Container, Typography, Box, Button, Grid, CardActionArea, CardActions, Link as MUILink } from '@mui/material';
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Image from 'next/image';
-import StarTree from '@components/arbolado/StarTree';
 import TreeList from '@components/arbolado/TreeList';
-import { Margin } from '@mui/icons-material';
 
 
 const Catalogo = () => {
     return (
         <>
         <Head>
-            <title>Catalogo de arboles</title>
+            <title>Catálogo de arboles</title>
         </Head>
         <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
             <Box>

@@ -2,13 +2,11 @@ import { Container, Typography, Box, Button, Grid, CardActionArea, CardActions, 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import FichaArbol from 'pages/arbolado-urbano/catalogo'
+import Link from 'next/link'
 
-import Image from 'next/image'
 import React, { useEffect, useState } from 'react';
 
 import style from './CardTree.module.css';
-import TextWithAvatar from './TextWithAvatar';
 
 
 const CardTree = ({tree}) => {
@@ -32,9 +30,18 @@ const CardTree = ({tree}) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" href={`/arbolado-urbano/catalogo/${tree.id}`} passHref>
                         Ver ficha completa
                     </Button>
+                    <Link
+                        href={{
+                            
+                            pathname: `/arbolado-urbano/catalogo/${tree.id}`,
+                            query:tree
+                        }}
+                        >
+                        <a>Ver Ficha Completa</a>   
+                    </Link>
                 </CardActions>
             </Card>
         </Grid>

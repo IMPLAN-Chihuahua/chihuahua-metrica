@@ -100,9 +100,9 @@ const TreeList = () => {
         <>
             <Grid container spacing={3} className={style.CardTree} >
                 {
-                    trees.map((tree, index) => {
+                    trees.map((tree) => {
                         return (
-                            <CardTree key={index} tree={tree} />
+                            <CardTree key={tree.id} tree={tree} />
                         )
                     })
                 }

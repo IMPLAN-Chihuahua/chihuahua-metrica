@@ -75,8 +75,7 @@ export async function getServerSideProps(context) {
   const data = await res.json();
 
   if (res.status === 200) {
-
-    const idUser = data.data.createdBy;
+    const idUser = data.data.owner;
 
     const [responsibleRes] = await Promise.all([
       fetch(

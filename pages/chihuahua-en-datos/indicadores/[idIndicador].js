@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 
 export default function FichaTecnica(props) {
   const indicador = props.data;
+  const navigation = props.navigation;
   const responsible = props.responsible;
   const CRUMBS = [{
     text: 'Chihuahua en Datos',
@@ -46,13 +47,13 @@ export default function FichaTecnica(props) {
           <NavBackAndFoward
             prev={{
               title: 'Indicador anterior',
-              disabled: indicador.prev == null,
-              link: `/chihuahua-en-datos/indicadores/${indicador.prev}`
+              disabled: navigation.prev == null,
+              link: `/chihuahua-en-datos/indicadores/${navigation.prev}`
             }}
             next={{
               title: 'Siguiente indicador',
-              disabled: indicador.next == null,
-              link: `/chihuahua-en-datos/indicadores/${indicador.next}`
+              disabled: navigation.next == null,
+              link: `/chihuahua-en-datos/indicadores/${navigation.next}`
             }}
           />
         </Box>
@@ -75,8 +76,7 @@ export async function getServerSideProps(context) {
   const data = await res.json();
 
   if (res.status === 200) {
-
-    const idUser = data.data.createdBy;
+    const idUser = data.data.owner;
 
     const [responsibleRes] = await Promise.all([
       fetch(

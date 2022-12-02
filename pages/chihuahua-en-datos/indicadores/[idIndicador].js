@@ -16,7 +16,8 @@ export default function FichaTecnica(props) {
     return <Error statusCode={props.errorCode} message={props?.message} />
   }
 
-  const { indicador, responsible } = props;
+  const { indicador, responsible, navigation } = props;
+
   const CRUMBS = [{
     text: 'Chihuahua en Datos',
     href: '/chihuahua-en-datos'
@@ -48,13 +49,13 @@ export default function FichaTecnica(props) {
           <NavBackAndFoward
             prev={{
               title: 'Indicador anterior',
-              disabled: indicador.prev == null,
-              link: `/chihuahua-en-datos/indicadores/${indicador.prev}`
+              disabled: navigation.prev == null,
+              link: `/chihuahua-en-datos/indicadores/${navigation.prev}`
             }}
             next={{
               title: 'Siguiente indicador',
-              disabled: indicador.next == null,
-              link: `/chihuahua-en-datos/indicadores/${indicador.next}`
+              disabled: navigation.next == null,
+              link: `/chihuahua-en-datos/indicadores/${navigation.next}`
             }}
           />
         </Box>
@@ -73,7 +74,6 @@ export async function getServerSideProps(context) {
   const indicadorRes = await fetch(`${process.env.INDICADORES_BASE_URL}/indicadores/${idIndicador}`);
   const errorCode = indicadorRes.ok ? false : indicadorRes.status;
   const indicador = await indicadorRes.json();
-  console.log('INDICADOR', indicador)
 
   if (errorCode) {
     return { props: { errorCode, ...indicador } }
@@ -83,6 +83,6 @@ export async function getServerSideProps(context) {
   const responsible = await responsibleRes.json();
 
   return {
-    props: { indicador: { ...indicador.data }, responsible, errorCode },
+    props: { indicador: { ...indicador.data }, responsible, errorCode, navigation: { ...indicador.navigation } },
   };
 }

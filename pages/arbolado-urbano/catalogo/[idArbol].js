@@ -16,7 +16,7 @@ import { toTitleCase } from 'helpers/StringUtils';
 export default function FichaInformativa(props) {
   const tree = props.data;
   const imageServer = 'http://siee.mpiochih.gob.mx/imagenes_catalogo';
-  
+
   return (
     <>
       <Head>
@@ -50,124 +50,125 @@ export default function FichaInformativa(props) {
           <List>
             <Grid container  >
               <Grid xs={6} >
-                <ListItem  style={{textAlign:'center'}}>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Familia" secondary={toTitleCase(tree.FAMILIA)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
               <Grid xs={6}>
-                <ListItem style={{textAlign:'center'}}>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Origen" secondary={toTitleCase(tree.ORIGEN)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
 
               <Grid xs={6} >
-                <ListItem style={{textAlign:'center'}}>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Altura Promedio" secondary={tree.ESCALA} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
               <Grid xs={6}>
-                <ListItem style={{textAlign:'center'}}>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Riego" secondary={toTitleCase(tree.RIEGO)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
 
               <Grid xs={4}>
-                <ListItem style={{alignItems:'center', justifyContent:'center'}}>
-                  <Box style={{textAlign:'center'}}>
-                  <ListItemText primary="Tipo de Hoja" secondary={toTitleCase(tree.TIPO_DE_HOJA)} />
+                <ListItem style={{ alignItems: 'center', justifyContent: 'center' }}>
+                  <Box style={{ textAlign: 'center' }}>
+                    <ListItemText primary="Tipo de Hoja" secondary={toTitleCase(tree.TIPO_DE_HOJA)} />
                   </Box>
                 </ListItem>
                 <Divider component="li" />
               </Grid>
               <Grid xs={4}>
-                <ListItem style={{alignItems:'center', justifyContent:'center'}}>
-                  <Box style={{textAlign:'center'}}>
-                  <ListItemText primary="Tipo de Corteza" secondary={toTitleCase(tree.CORTEZA)} />
+                <ListItem style={{ alignItems: 'center', justifyContent: 'center' }}>
+                  <Box style={{ textAlign: 'center' }}>
+                    <ListItemText primary="Tipo de Corteza" secondary={toTitleCase(tree.CORTEZA)} />
                   </Box>
                 </ListItem>
                 <Divider component="li" />
               </Grid>
               <Grid xs={4}>
-                <ListItem style={{alignItems:'center', justifyContent:'center'}}>
-                  <Box style={{textAlign:'center'}}>
-                  <ListItemText primary="Color de Flor" secondary={toTitleCase(tree.FLOR)} />
+                <ListItem style={{ alignItems: 'center', justifyContent: 'center' }}>
+                  <Box style={{ textAlign: 'center' }}>
+                    <ListItemText primary="Color de Flor" secondary={toTitleCase(tree.FLOR)} />
                   </Box>
                 </ListItem>
                 <Divider component="li" />
               </Grid>
 
-              <Grid xs={12}>
-                <ListItem style={{textAlign:'center'}}>
+              <Grid xs={12} style={{ textAlign: 'center' }}>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Temporada de floración" />
                 </ListItem>
                 <Rating
-                      
-                      name="read-only" readOnly
-                      getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
-                      precision={0.5}
-                      icon={<FavoriteIcon fontSize="inherit" />}
-                      emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-                      
-                    />
-                <Divider component="li" />
-              </Grid>
-              
-              <Grid xs={12}>
-                <ListItem style={{textAlign:'center'}}>
-                  <ListItemText primary="Temporada de fructuficación" />
-                </ListItem>
-                <Rating
-                      
-                      name="read-only" readOnly
-                      getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
-                      precision={0.5}
-                      icon={<FavoriteIcon fontSize="inherit" />}
-                      emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-                      
-                    />
+
+                  name="read-only" readOnly
+                  getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                  precision={0.5}
+                  icon={<FavoriteIcon fontSize="inherit" />}
+                  emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+
+                />
                 <Divider component="li" />
               </Grid>
 
+              <Grid xs={12} style={{ textAlign: 'center' }}>
+                <Box >
+                  <ListItem style={{ textAlign: 'center' }}>
+                    <ListItemText primary="Temporada de fructuficación" />
+                  </ListItem>
+                  <Rating
+                    name="read-only" readOnly
+                    getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                    precision={0.5}
+                    icon={<FavoriteIcon fontSize="inherit" />}
+                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+
+                  />
+                  <Divider component="li" />
+                </Box>
+              </Grid>
+
               <Grid xs={12}>
-                <ListItem style={{textAlign:'center'}}>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Permanencia de las hojas" secondary={toTitleCase(tree.PERMANENCIA_HOJAS)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
-              
+
               <Grid xs={12}>
-                <ListItem style={{textAlign:'center'}}>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText secondary={tree.DESCRIPCION} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
-              
+
               <Grid xs={12}>
-                <ListItem style={{textAlign:'center'}}>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Características" secondary={tree.CARACTERISTICAS} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
-              
 
-              <ListItem style={{textAlign:'center'}}>
-                <ListItemText primary="Servicios ecosistemicos" />
+
+              <ListItem style={{ textAlign: 'center' }}>
+                <ListItemText primary="Servicios ecosistémicos" />
               </ListItem>
 
               <Grid xs={12} sm={6}>
                 <ListItem>
                   <Box margin={5}
                     sx={{
-                      height: 100,
-                      width: 100,
-                      maxHeight: { xs: 100, md: 100 },
-                      maxWidth: { xs: 100, md: 100 }
+                      height: 140,
+                      width: 180,
+                      maxHeight: { xs: 140, md: 140 },
+                      maxWidth: { xs: 180, md: 180 }
                     }}
-                    component="img" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGDvNn5NeqLxJtVBwrt2Ps3ny1IUvklfPtg9TkknXx&s'}></Box>
+                    component="img" src="/images/arbolado/ficha/provision.png"></Box>
                   <Divider orientation="vertical" flexItem></Divider>
                   <Typography margin={5}>{toTitleCase(tree.SE_PROVISION)}</Typography>
                 </ListItem>
@@ -177,12 +178,12 @@ export default function FichaInformativa(props) {
                 <ListItem>
                   <Box margin={5}
                     sx={{
-                      height: 100,
-                      width: 100,
-                      maxHeight: { xs: 100, md: 100 },
-                      maxWidth: { xs: 100, md: 100 }
+                      height: 140,
+                      width: 180,
+                      maxHeight: { xs: 140, md: 140 },
+                      maxWidth: { xs: 180, md: 180 }
                     }}
-                    component="img" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGDvNn5NeqLxJtVBwrt2Ps3ny1IUvklfPtg9TkknXx&s'}></Box>
+                    component="img" src={"/images/arbolado/ficha/regulacion.png"}></Box>
                   <Divider orientation="vertical" flexItem></Divider>
                   <Typography margin={5}>{toTitleCase(tree.SE_REGULACION)}</Typography>
                 </ListItem>
@@ -192,12 +193,12 @@ export default function FichaInformativa(props) {
                 <ListItem>
                   <Box margin={5}
                     sx={{
-                      height: 100,
-                      width: 100,
-                      maxHeight: { xs: 100, md: 100 },
-                      maxWidth: { xs: 100, md: 100 }
+                      height: 140,
+                      width: 180,
+                      maxHeight: { xs: 140, md: 140 },
+                      maxWidth: { xs: 180, md: 180 }
                     }}
-                    component="img" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGDvNn5NeqLxJtVBwrt2Ps3ny1IUvklfPtg9TkknXx&s'}></Box>
+                    component="img" src={"/images/arbolado/ficha/soporte.png"}></Box>
                   <Divider orientation="vertical" flexItem></Divider>
                   <Typography margin={5}>{toTitleCase(tree.USOS_Y_SERVICIOS)}</Typography>
                 </ListItem>
@@ -207,58 +208,60 @@ export default function FichaInformativa(props) {
                 <ListItem>
                   <Box margin={5}
                     sx={{
-                      height: 100,
-                      width: 100,
-                      maxHeight: { xs: 100, md: 100 },
-                      maxWidth: { xs: 100, md: 100 }
+                      height: 140,
+                      width: 180,
+                      maxHeight: { xs: 140, md: 140 },
+                      maxWidth: { xs: 180, md: 180 }
                     }}
-                    component="img" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGDvNn5NeqLxJtVBwrt2Ps3ny1IUvklfPtg9TkknXx&s'}></Box>
+                    component="img" src={'/images/arbolado/ficha/cultural.png'}></Box>
                   <Divider orientation="vertical" flexItem></Divider>
                   <Typography margin={5}>{toTitleCase(tree.SE_CULTURALES)}</Typography>
                 </ListItem>
               </Grid>
 
               <Grid xs={6} sm={4}>
-                <ListItem>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Provisión" secondary="Sapindacae" />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
 
               <Grid xs={6} sm={4}>
-                <ListItem>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Riesgos o precauciones" secondary={toTitleCase(tree.PRECAUCIONES)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
 
               <Grid xs={6} sm={4}>
-                <ListItem>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Características" secondary="Sapindacae" />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
 
               <Grid xs={6} sm={12}>
-                <ListItem>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Usos" secondary="Sapindacae" />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
 
-              <Grid xs={6}>
-                <ListItem>
+              <Grid xs={12}>
+                <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText primary="Referencias" />
                 </ListItem>
-                <Grid xs={6}>
-                  <ListItem>
-                    <Box><ListItemText primary="Autor(es) de Imágenes" /></Box>
+                <Grid xs={12}>
+                  <ListItem style={{ alignItems: 'center', justifyContent: 'center' }}>
+                    <Box >
+                      <ListItemText primary="Autor(es) de Imágenes" />
+                    </Box>
                     <Typography margin={5}>Nombres</Typography>
                   </ListItem>
                 </Grid>
 
-                <Grid xs={6}>
-                  <ListItem>
+                <Grid xs={12}>
+                  <ListItem style={{ textAlign: 'center' }}>
                     <ListItemText secondary="Muchas referencias" />
                   </ListItem>
                 </Grid>

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import StarTree from '@components/arbolado/StarTree';
 import TreeList from '@components/arbolado/TreeList';
 import NextLink from 'next/link';
+import { green } from '@mui/material/colors';
 
 const BENEFICIOS = [
   'Mitigación de las altas temperaturas',
@@ -227,13 +228,15 @@ const ArboladoUrbano = () => {
           </Typography>
         </section>
 
-      </Container>
+        <Box style={{ textAlign: 'center', paddingBottom:'15px' }}>
+          <Button 
+            style={{backgroundColor:'#507940', color:'white'}}
+            href={`/arbolado-urbano/catalogo/`}>
+            Ver Catálogo de árboles
+          </Button>
+        </Box>
 
-      <Box sx={{ bgcolor: '#f1faee', pt: 10 }}>
-        <section >
-          <TreeList />
-        </section>
-      </Box>
+      </Container>
     </>
   );
 };

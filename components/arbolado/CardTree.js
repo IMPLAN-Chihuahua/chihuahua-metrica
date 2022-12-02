@@ -2,14 +2,14 @@ import { Container, Typography, Box, Button, Grid, CardActionArea, CardActions, 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Link from 'next/link'
+import Link from 'next/link';
 
 import React, { useEffect, useState } from 'react';
 
 import style from './CardTree.module.css';
 
-
 const CardTree = ({tree}) => {
+    const [isHover, setHover] = useState(false);
 
     return (
         <Grid item xs={6} md={3} className={style.CardTreeFlex} >
@@ -30,18 +30,9 @@ const CardTree = ({tree}) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary" href={`/arbolado-urbano/catalogo/${tree.id}`} passHref>
+                    <Button size="small" color="primary" href={`/arbolado-urbano/catalogo/${tree.id}`}>
                         Ver ficha completa
                     </Button>
-                    <Link
-                        href={{
-                            
-                            pathname: `/arbolado-urbano/catalogo/${tree.id}`,
-                            query:tree
-                        }}
-                        >
-                        <a>Ver Ficha Completa</a>   
-                    </Link>
                 </CardActions>
             </Card>
         </Grid>

@@ -21,7 +21,7 @@ const Catalogo = () => {
                     Catálogo de árboles
                 </Typography>
             </Box>
-            <Box>
+            <Box sx={{ marginBottom: 3 }}>
                 <Typography
                     textAlign='center'
                     fontSize={18}
@@ -31,15 +31,17 @@ const Catalogo = () => {
                     En esta sección podrás encontrar un listado de 102 especies de árboles en Chihuahua
                 </Typography>
             </Box>
-        </Container>
 
-        <Box sx={{ bgcolor: '#f1faee', pt: 5 }}>
-            <section >
-                <TreeList />
+            <section>
+                <Grid container rowSpacing={1} columnSpacing={1} >
+                    <TreeList />
+                </Grid>
             </section>
-        </Box>
+        </Container>
+       
         </>
     )
 };
+
 
 export default Catalogo;

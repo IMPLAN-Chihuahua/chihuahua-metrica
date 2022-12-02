@@ -6,7 +6,7 @@ import CardTree from './CardTree'
 
 const trees = [
     {
-        id: 1,
+        id: '62e983189cd74e22a91a740e',
         avatar: '/images/arbolado/mezquite_C.png',
         arbol: '/images/arbolado/mezquite_A.png',
         ficha: '/images/arbolado/mezquite_F.png',
@@ -17,7 +17,7 @@ const trees = [
         distancia: '7',
     },
     {
-        id: 2,
+        id: '',
         avatar: '/images/arbolado/huizache_C.png',
         arbol: '/images/arbolado/huizache_A.png',
         ficha: '/images/arbolado/huizache_F.png',
@@ -96,9 +96,9 @@ const trees = [
 ]
 
 const TreeList = () => {
-    return (
+    return  (
         <>
-            <Grid container spacing={3} className={style.CardTree} >
+        <Grid container spacing={3} className={style.CardTree} >
                 {
                     trees.map((tree) => {
                         return (
@@ -107,8 +107,10 @@ const TreeList = () => {
                     })
                 }
             </Grid>
-        </>
+        </>   
     )
-}
+};
+
+
 
 export default TreeList

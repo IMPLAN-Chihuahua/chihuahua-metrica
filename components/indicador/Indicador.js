@@ -10,13 +10,7 @@ export const ODS = 1;
 export const UNIDAD_MEDIDA = 2;
 export const COBERTURA_GEOGRAFICA = 3;
 
-const compareIds = (a, b) => {
-  if (a.idCatalogo > b.idCatalogo) {
-    return 1;
-  } else {
-    return -1;
-  }
-}
+const compareIds = (a, b) => a.idCatalogo - b.idCatalogo;
 
 const Indicador = (props) => {
   const indicador = props.value;

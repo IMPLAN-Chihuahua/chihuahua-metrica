@@ -18,14 +18,18 @@ import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import NavBackAndFoward from "@components/commons/NavBackAndFoward";
 import tinycolor from 'tinycolor2';
 import Image from "next/image";
+import Error from "pages/_error";
 
 const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
 const COBERTURA_GEOGRAFICA_ID = 3;
 
 export default function Modulo(props) {
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} message={props?.message} />
+  }
   const [indicadores, setIndicadores] = useState({});
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [selectedTema, setSelectedTema] = useState(props.selectedTema);
   const [search, setSearch] = useState('');
@@ -37,7 +41,6 @@ export default function Modulo(props) {
   const methods = useForm();
   const { watch } = methods;
   const fetchIndicadores = useCallback((fixedPage, search = '') => {
-    setLoading(true);
     const url =
       `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
     fetch(url)
@@ -56,10 +59,8 @@ export default function Modulo(props) {
       .catch(() => {
         setHasError(true)
       })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [selectedTema, filters, search]);
+      .finally(() => setLoading(false));
+  }, [selectedTema.id, filters, search]);
 
   useEffect(() => {
     let isMounted = true;
@@ -103,10 +104,6 @@ export default function Modulo(props) {
   }, {
     text: selectedTema.temaIndicador,
   }];
-
-  const getTema = (id) => {
-    return [...props.temas.data].find(tema => tema.id === id);
-  }
 
   return (
     <>
@@ -226,32 +223,41 @@ export default function Modulo(props) {
 export async function getServerSideProps(context) {
   const baseUrl = process.env.INDICADORES_BASE_URL;
   const { idTema } = context.params;
-  const [odsRes,
-    medidaRes,
-    coberturaRes,
-    temasRes,
-    selectedTemaRes] = await Promise.all([
+  const selectedTemaRes = await fetch(`${baseUrl}/modulos/${idTema}`);
+  const errorCode = selectedTemaRes.ok ? false : selectedTemaRes.status;
+  const selectedTema = await selectedTemaRes.json();
+  if (errorCode) {
+    return {
+      props: {
+        errorCode,
+        ...selectedTema
+      }
+    }
+  }
+
+  const [odsRes, medidaRes, coberturaRes, temasRes,]
+    = await Promise.all([
       fetch(`${baseUrl}/catalogos/${ODS_ID}`),
       fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA_ID}`),
       fetch(`${baseUrl}/catalogos/${COBERTURA_GEOGRAFICA_ID}`),
-      fetch(`${baseUrl}/modulos`),
-      fetch(`${baseUrl}/modulos/${idTema}`),
+      fetch(`${baseUrl}/modulos`)
     ]);
-  const [ods, medidas, coberturas, temas, selectedTema] = await Promise.all([
+
+  const [ods, medidas, coberturas, temas,] = await Promise.all([
     odsRes.json(),
     medidaRes.json(),
     coberturaRes.json(),
     temasRes.json(),
-    selectedTemaRes.json(),
   ]);
   return {
     props: {
+      errorCode,
       key: idTema,
       ods,
       coberturas,
       medidas,
       temas,
-      selectedTema: { ...selectedTema.data },
+      selectedTema: { ...selectedTema.data }
     },
   };
 };

@@ -1,10 +1,11 @@
-import React from 'react'
-import { Grid, Link as MUILink } from '@mui/material';
-import style from './CardTree.module.css';
+import React from 'react';
 import StarTree from './StarTree'
 import CardTree from './CardTree'
+import { Container, Typography, Box, Button, Grid, CardActionArea, CardActions, Link as MUILink } from '@mui/material';
 
-const trees = [
+import style from './CardTree.module.css';
+
+/*const trees = [
     {
         id: '62e983189cd74e22a91a740e',
         avatar: '/images/arbolado/mezquite_C.png',
@@ -93,24 +94,22 @@ const trees = [
         follaje: 'Perennifolio',
         distancia: '7',
     },
-]
+]*/
 
-const TreeList = () => {
-    return  (
-        <>
-        <Grid container spacing={3} className={style.CardTree} >
-                {
-                    trees.map((tree) => {
-                        return (
-                            <CardTree key={tree.id} tree={tree} />
-                        )
-                    })
-                }
-            </Grid>
-        </>   
+
+const TreeList = ({trees}) => {
+
+    return (
+        <Grid container spacing={3} className={style.CardTree} >{
+            trees?.map((tree) => {
+                return  (
+                    <CardTree key={tree.id} tree={tree} />
+                )
+            })
+        }
+        </Grid>
     )
+                   
 };
 
-
-
-export default TreeList
+export default TreeList;

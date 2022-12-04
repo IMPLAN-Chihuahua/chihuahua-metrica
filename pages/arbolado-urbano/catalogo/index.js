@@ -5,11 +5,13 @@ import PageBreadcrumb from '@components/commons/PageBreadcrumb';
 import TreeList from '@components/arbolado/TreeList';
 
 
-const CRUMBS = [
-    {
-      text: 'Arbolado Urbano'
-    }
-  ]
+const CRUMBS = [{
+    text: 'Arbolado Urbano',
+    href: '/arbolado-urbano'
+}, {
+text: 'Cátalogo',
+href: `/arbolado-urbano/catalogo`
+}];
 
 export default function Catalogo(props) {
     

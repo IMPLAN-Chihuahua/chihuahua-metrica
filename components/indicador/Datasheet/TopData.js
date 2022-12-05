@@ -90,8 +90,9 @@ const TopData = (info) => {
 
         <Title variant='h4' component='h2'>Datos abiertos</Title>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
-          {DOC_FORMATS.map(format => (
+          {DOC_FORMATS.map((format, idx) => (
             <DocumentButton
+              key={idx}
               format={format}
               indicadorId={indicador.id}
               showErrorMessage={() => setOpen(true)}

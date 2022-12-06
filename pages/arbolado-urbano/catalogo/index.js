@@ -1,11 +1,12 @@
 import Head from 'next/head';
-import { Container, Typography, Box, Button, Grid, CardActionArea, CardActions, Link as MUILink, Pagination } from '@mui/material';
+import { Container, Typography, Box, Button, Grid, CardActionArea, CardActions, Link as MUILink, Pagination, TextField, IconButton, InputAdornment } from '@mui/material';
 import * as React from 'react';
 import PageBreadcrumb from '@components/commons/PageBreadcrumb';
 import TreeList from '@components/arbolado/TreeList';
 import useSWR from 'swr';
 import { useState } from 'react';
-
+import SearchIcon from '@mui/icons-material/Search';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const CRUMBS = [{
     text: 'Arbolado Urbano',
@@ -20,14 +21,14 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Catalogo(props) {
     const [pageIndex, setPageIndex] = useState(1);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const handleChange = (event, value) => {
         setPageIndex(value);
     };
     // const data = props.data;
-    const { data, error } = useSWR(`${process.env.ARBOLADO_BASE_URL}/biblioteca/arboles?page=${pageIndex}&perPage=8`, fetcher);
+    const { data, error } = useSWR(`${process.env.ARBOLADO_BASE_URL}/biblioteca/arboles?page=${pageIndex}&perPage=8&searchQuery=${searchQuery}`, fetcher);
 
-    console.log(data);
     return (
         <>
             <Head>
@@ -54,6 +55,26 @@ export default function Catalogo(props) {
                     >
                         En esta sección podrás encontrar un listado de 125 especies de árboles en Chihuahua
                     </Typography>
+                    {/* <IconButton aria-label="search" onClick={() => console.log('search')}>
+                        <SearchIcon />
+                    </IconButton> */}
+                    {/* <TextField id="outlined-basic" label="Buscar" variant="outlined" onChange={(e) => setSearchQuery(e.target.value)} /> */}
+
+                    <TextField
+                        id="input-with-icon-textfield"
+                        label="Buscar árbol por nombre científico, nombre coloquial o familia"
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="start">
+                                    <SearchIcon />
+                                </InputAdornment>
+                            ),
+                        }}
+                        variant="standard"
+                        sx={{ width: '100%' }}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+
                 </Box>
 
                 <section>
@@ -84,11 +105,3 @@ export default function Catalogo(props) {
         </>
     )
 };
-
-// export async function getServerSideProps(context) {
-//     const res = await fetch(`${process.env.ARBOLADO_BASE_URL}/biblioteca/arboles`);
-//     const data = await res.json();
-//     return {
-//         props: { data: data },
-//     }
-// }

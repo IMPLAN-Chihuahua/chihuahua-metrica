@@ -16,8 +16,13 @@ const serialize = (obj) => {
             str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
         }
     }
-    
+
     return str.length === 0 ? '' : `&${str.join('&')}`;
 };
 
-export { toTitleCase, serialize };
+const toUnderScoreCase = (str) => {
+    // replace white spaces with underscore
+    return str.replace(/\s/g, '_');
+};
+
+export { toTitleCase, serialize, toUnderScoreCase };

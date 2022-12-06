@@ -7,6 +7,7 @@ import useSWR from 'swr';
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import SkeletonTree from '@components/arbolado/SkeletonTree';
 
 const CRUMBS = [{
     text: 'Arbolado Urbano',
@@ -22,12 +23,19 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 export default function Catalogo(props) {
     const [pageIndex, setPageIndex] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
+    const [totalPages, setTotalPages] = useState(10);
 
     const handleChange = (event, value) => {
         setPageIndex(value);
     };
     // const data = props.data;
     const { data, error } = useSWR(`${process.env.ARBOLADO_BASE_URL}/biblioteca/arboles?page=${pageIndex}&perPage=8&searchQuery=${searchQuery}`, fetcher);
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+        setPageIndex(1);
+        setTotalPages(data?.totalPages);
+    }
 
     return (
         <>
@@ -55,10 +63,6 @@ export default function Catalogo(props) {
                     >
                         En esta sección podrás encontrar un listado de 125 especies de árboles en Chihuahua
                     </Typography>
-                    {/* <IconButton aria-label="search" onClick={() => console.log('search')}>
-                        <SearchIcon />
-                    </IconButton> */}
-                    {/* <TextField id="outlined-basic" label="Buscar" variant="outlined" onChange={(e) => setSearchQuery(e.target.value)} /> */}
 
                     <TextField
                         id="input-with-icon-textfield"
@@ -72,7 +76,7 @@ export default function Catalogo(props) {
                         }}
                         variant="standard"
                         sx={{ width: '100%' }}
-                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onChange={handleSearch}
                     />
 
                 </Box>
@@ -82,23 +86,19 @@ export default function Catalogo(props) {
                         {
                             data && data.biblioteca ?
                                 <TreeList trees={data.biblioteca} />
-                                : null
+                                :
+                                <SkeletonTree />
                         }
                     </Grid>
-                    {
-                        data && data.totalPages ?
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    marginTop: 3
-                                }}
-                            >
-                                <Pagination count={10} page={pageIndex} onChange={handleChange} showFirstButton showLastButton />
-                            </Box>
-                            :
-                            null
-                    }
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: 3
+                        }}
+                    >
+                        <Pagination count={totalPages} page={pageIndex} onChange={handleChange} showFirstButton showLastButton />
+                    </Box>
                 </section>
             </Container>
 

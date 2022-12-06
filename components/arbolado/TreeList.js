@@ -5,111 +5,19 @@ import { Container, Typography, Box, Button, Grid, CardActionArea, CardActions, 
 
 import style from './CardTree.module.css';
 
-/*const trees = [
-    {
-        id: '62e983189cd74e22a91a740e',
-        avatar: '/images/arbolado/mezquite_C.png',
-        arbol: '/images/arbolado/mezquite_A.png',
-        ficha: '/images/arbolado/mezquite_F.png',
-        nombre: '<b>Mezquite/</b> Proposis Glandulosa',
-        sistema: 'Profundo (>1.5m)',
-        riego: 'Baja',
-        follaje: 'Perennifolio',
-        distancia: '7',
-    },
-    {
-        id: '',
-        avatar: '/images/arbolado/huizache_C.png',
-        arbol: '/images/arbolado/huizache_A.png',
-        ficha: '/images/arbolado/huizache_F.png',
-        nombre: '<b>Huizache/</b> Vachellia Farnesiana',
-        sistema: 'Profundo (>1.5m)',
-        riego: 'Baja',
-        follaje: 'Perennifolio',
-        distancia: '7',
-    },
-    {
-        id: 3,
-        avatar: '/images/arbolado/palo-verde_C.png',
-        arbol: '/images/arbolado/palo-verde_A.png',
-        ficha: '/images/arbolado/palo-verde_F.png',
-        nombre: '<b>Palo Verde/</b> Parkinsonia Aculeata',
-        sistema: 'Profundo (>1.5m)',
-        riego: 'Baja',
-        follaje: 'Perennifolio',
-        distancia: '7',
-    },
-    {
-        id: 4,
-        avatar: '/images/arbolado/mimbre_C.png',
-        arbol: '/images/arbolado/mimbre_A.png',
-        ficha: '/images/arbolado/mimbre_F.png',
-        nombre: '<b>Mimbre/</b> Chilopsis Linearis',
-        sistema: 'Profundo (>1.5m)',
-        riego: 'Baja',
-        follaje: 'Caducifolio',
-        distancia: '7',
-    },
-    {
-        id: 5,
-        avatar: '/images/arbolado/mimbre_C.png',
-        arbol: '/images/arbolado/mimbre_A.png',
-        ficha: '/images/arbolado/mimbre_F.png',
-        nombre: '<b>Mimbre/</b> Chilopsis Linearis',
-        sistema: 'Profundo (>1.5m)',
-        riego: 'Baja',
-        follaje: 'Caducifolio',
-        distancia: '7',
-    },
-    {
-        id: 6,
-        avatar: '/images/arbolado/mimbre_C.png',
-        arbol: '/images/arbolado/mimbre_A.png',
-        ficha: '/images/arbolado/mimbre_F.png',
-        nombre: '<b>Mimbre/</b> Chilopsis Linearis',
-        sistema: 'Profundo (>1.5m)',
-        riego: 'Baja',
-        follaje: 'Caducifolio',
-        distancia: '7',
-    },
-    {
-        id: 7,
-        avatar: '/images/arbolado/mimbre_C.png',
-        arbol: '/images/arbolado/mimbre_A.png',
-        ficha: '/images/arbolado/mimbre_F.png',
-        nombre: '<b>Mimbre/</b> Chilopsis Linearis',
-        sistema: 'Profundo (>1.5m)',
-        riego: 'Baja',
-        follaje: 'Caducifolio',
-        distancia: '7',
-    },
-    {
-        id: 8,
-        avatar: '/images/arbolado/huizache_C.png',
-        arbol: '/images/arbolado/huizache_A.png',
-        ficha: '/images/arbolado/huizache_F.png',
-        nombre: '<b>Huizache/</b> Vachellia Farnesiana',
-        sistema: 'Profundo (>1.5m)',
-        riego: 'Baja',
-        follaje: 'Perennifolio',
-        distancia: '7',
-    },
-]*/
-
-
-const TreeList = ({trees}) => {
+const TreeList = ({ trees }) => {
 
     return (
         <Grid container spacing={3} className={style.CardTree} >{
             trees?.map((tree) => {
-                return  (
-                    <CardTree key={tree.id} tree={tree} />
+                return (
+                    <CardTree key={tree._id} tree={tree} />
                 )
             })
         }
         </Grid>
     )
-                   
+
 };
 
 export default TreeList;

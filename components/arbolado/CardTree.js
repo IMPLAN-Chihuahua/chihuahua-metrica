@@ -2,15 +2,16 @@ import { Container, Typography, Box, Button, Grid, CardActionArea, CardActions, 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { toUnderScoreCase } from 'helpers/StringUtils';
 import Link from 'next/link';
 
 import React, { useEffect, useState } from 'react';
 
 import style from './CardTree.module.css';
 
-const imageServer = 'http://siee.mpiochih.gob.mx/imagenes_catalogo';
+const imageServer = 'http://siee.mpiochih.gob.mx/imagenes_catalogo/resized';
 
-const CardTree = ({tree}) => {
+const CardTree = ({ tree }) => {
     const [isHover, setHover] = useState(false);
 
     return (
@@ -19,16 +20,16 @@ const CardTree = ({tree}) => {
                 <CardActionArea >
                     <CardMedia
                         sx={{
-                          height: 500,
-                          width: 400,
-                          maxHeight: { xs: 500, md: 400 },
-                          maxWidth: { xs: 500, md: 400 }
+                            height: 500,
+                            width: 400,
+                            maxHeight: { xs: 500, md: 400 },
+                            maxWidth: { xs: 500, md: 400 }
                         }}
 
                         component="img"
-                        image={`${imageServer}/${tree.NOMBRE_CIENTIFICO}/${tree.NOMBRE_IMAGEN}_1.jpg`}
+                        image={`${imageServer}/${toUnderScoreCase(tree.NOMBRE_CIENTIFICO)}/${toUnderScoreCase(tree.NOMBRE_IMAGEN)}_1.jpg`}
                     />
-                        
+
                     <CardContent >
                         <Typography gutterBottom variant="h5" component="div">
                             <div dangerouslySetInnerHTML={{ __html: tree.NOMBRE_CIENTIFICO }} />
@@ -42,8 +43,8 @@ const CardTree = ({tree}) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" style={{backgroundColor:'#507940', color:'white'}} 
-                    href={`/arbolado-urbano/catalogo/${tree._id}`} passHref>
+                    <Button size="small" style={{ backgroundColor: '#507940', color: 'white' }}
+                        href={`/arbolado-urbano/catalogo/${tree._id}`}>
                         Ver ficha completa
                     </Button>
                 </CardActions>
@@ -51,5 +52,5 @@ const CardTree = ({tree}) => {
         </Grid>
     );
 };
-  
+
 export default CardTree

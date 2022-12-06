@@ -6,7 +6,6 @@ import { Container, Typography, Box, Button, Grid, CardActionArea, CardActions, 
 import style from './CardTree.module.css';
 
 const TreeList = ({ trees }) => {
-
     return (
         <Grid container spacing={3} className={style.CardTree} >{
             trees?.map((tree) => {

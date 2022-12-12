@@ -124,7 +124,9 @@ export default function FichaInformativa(props) {
                         <Box sx={{
                           p: 1,
                           mb: 1,
-                        }}>
+                        }}
+                          key={index}
+                        >
                           <LocalFloristIcon sx={{ color: color }} />
                           <ListItemText primary={toTitleCase(month.month === 'NA' ? 'No disponible' : month.month)} key={index} />
                         </Box>

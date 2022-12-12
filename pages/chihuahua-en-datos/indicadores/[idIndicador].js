@@ -12,12 +12,9 @@ import IndicadorOwner from '@components/commons/IndicadorOwner';
 
 
 export default function FichaTecnica(props) {
-  if (props.errorCode) {
-    return <Error statusCode={props.errorCode} message={props?.message} />
-  }
-
+  
   const { indicador, responsible, navigation } = props;
-
+  
   const CRUMBS = [{
     text: 'Chihuahua en Datos',
     href: '/chihuahua-en-datos'
@@ -27,8 +24,11 @@ export default function FichaTecnica(props) {
   }, {
     text: indicador.nombre
   }];
-
-
+  
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} message={props?.message} />
+  }
+  
   return (
     <>
       <Head>

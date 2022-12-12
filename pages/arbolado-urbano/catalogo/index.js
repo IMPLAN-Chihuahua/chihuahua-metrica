@@ -20,25 +20,6 @@ const CRUMBS = [{
     href: `/arbolado-urbano/catalogo`
 }];
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
-const useArboles = ({ pageIndex, searchQuery }) => {
-
-    const options = {
-        revalidateOnFocus: false,
-    }
-
-    const { data, error } = useSWR(`${process.env.ARBOLADO_BASE_URL}/biblioteca/arboles?page=${pageIndex}&perPage=8&searchQuery=${searchQuery}`, fetcher, options);
-
-    return {
-        data: data,
-        isLoading: !error && !data,
-        isError: error
-    }
-};
-
-
-
 export default function Catalogo(props) {
     const [arboles, setArboles] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -149,6 +130,7 @@ export default function Catalogo(props) {
                                 <SkeletonTree />
                         }
                     </Grid>
+
                     <Box
                         sx={{
                             display: 'flex',

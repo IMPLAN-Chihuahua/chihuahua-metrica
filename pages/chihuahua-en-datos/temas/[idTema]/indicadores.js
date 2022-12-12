@@ -25,9 +25,6 @@ const UNIDAD_MEDIDA_ID = 2;
 const COBERTURA_GEOGRAFICA_ID = 3;
 
 export default function Modulo(props) {
-  if (props.errorCode) {
-    return <Error statusCode={props.errorCode} message={props?.message} />
-  }
   const [indicadores, setIndicadores] = useState({});
   const [isLoading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -37,6 +34,10 @@ export default function Modulo(props) {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [filters, setFilters] = useState('');
+  
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} message={props?.message} />
+  }
 
   const methods = useForm();
   const { watch } = methods;

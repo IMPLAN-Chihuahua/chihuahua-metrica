@@ -12,6 +12,9 @@ import Divider from '@mui/material/Divider';
 import { assignMonths, toTitleCase } from 'helpers/StringUtils';
 import ImageCatalog from '@components/arbolado/ImageCatalog';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
+import LeafType from '@components/arbolado/LeafType';
+import TreeBark from '@components/arbolado/TreeBark';
+import FlowerColor from '@components/arbolado/FlowerColor';
 
 export default function FichaInformativa(props) {
   const tree = props.data;
@@ -25,6 +28,7 @@ export default function FichaInformativa(props) {
   console.log(tree.IMAGENES_AUTOR)
   console.log(tree.URL_AUTOR)
 
+  
   return (
     <>
       <Head>
@@ -32,7 +36,7 @@ export default function FichaInformativa(props) {
         <meta name="description" content={tree?.DESCRIPCION} />
       </Head>
       <Container sx={{ mb: 3, mt: 2 }}>
-        <Box sx={{ mt: 3, mb: 3, padding:2, backgroundColor: '#C3D3C6' }} maxWidth='lg'>
+        <Box sx={{ mt: 3, mb: 3, padding:2, backgroundColor: '#B8E4E4' }} maxWidth='lg'>
           <Typography gutterBottom variant="h4" component="div" textAlign='center' sx={{ fontStyle: 'italic', fontWeight: 'bold'}}>
             <div dangerouslySetInnerHTML={{ __html: tree.NOMBRE_COMUN }} />
           </Typography>
@@ -83,24 +87,40 @@ export default function FichaInformativa(props) {
                 <ListItem style={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Box sx={{ textAlign: 'center' }}>
                     <ListItemText primary={<Typography sx={{ fontWeight: 'bold' }} >Tipo de Hoja</Typography>} secondary={toTitleCase(tree.TIPO_DE_HOJA)} />
+                    <Grid sx={{flexDirection:'column'}}>
+                    <Box margin={2}>
+                      <LeafType treeLeaf={tree.TIPO_DE_HOJA}></LeafType>
+                    </Box>
+                    </Grid>
                   </Box>
                 </ListItem>
-                <Divider component="li" />
               </Grid>
               <Grid items xs={4}>
                 <ListItem sx={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Box sx={{ textAlign: 'center' }}>
                     <ListItemText primary={<Typography sx={{ fontWeight: 'bold' }} >Tipo de Corteza</Typography>} secondary={toTitleCase(tree.CORTEZA)} />
+                    <Grid sx={{flexDirection:'column'}}>
+                    <Box margin={2}>
+                      <TreeBark treeBark={tree.CORTEZA}></TreeBark>
+                    </Box>
+                    </Grid>
                   </Box>
                 </ListItem>
-                <Divider component="li" />
               </Grid>
               <Grid items xs={4}>
                 <ListItem sx={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Box sx={{ textAlign: 'center' }}>
                     <ListItemText primary={<Typography sx={{ fontWeight: 'bold' }} >Color de Flor</Typography>} secondary={toTitleCase(tree.FLOR === 'NA' ? 'No visible' : tree.FLOR)} />
+                    <Grid sx={{flexDirection:'column'}}>
+                    <Box margin={2}>
+                      <FlowerColor flowerColor={tree.FLOR}></FlowerColor>
+                    </Box>
+                    </Grid>
                   </Box>
                 </ListItem>
+              </Grid>
+
+              <Grid xs={12}>
                 <Divider component="li" />
               </Grid>
 
@@ -180,7 +200,7 @@ export default function FichaInformativa(props) {
                       maxHeight: { xs: 140, md: 140 },
                       maxWidth: { xs: 140, md: 140 },
                       borderStyle:'solid', 
-                      borderColor:'#C3D3C6', 
+                      borderColor:'#8EE3E3', 
                       borderRadius:'50%'
                     }}
                     component="img" src="/images/arbolado/ficha/provision.png"></Box>
@@ -202,7 +222,7 @@ export default function FichaInformativa(props) {
                       maxHeight: { xs: 140, md: 140 },
                       maxWidth: { xs: 140, md: 140 },
                       borderStyle:'solid', 
-                      borderColor:'#C3D3C6', 
+                      borderColor:'#8EE3E3', 
                       borderRadius:'50%'
                     }}
                     component="img" src={"/images/arbolado/ficha/regulacion.png"}></Box>
@@ -223,7 +243,7 @@ export default function FichaInformativa(props) {
                       maxHeight: { xs: 140, md: 140 },
                       maxWidth: { xs: 140, md: 140 },
                       borderStyle:'solid', 
-                      borderColor:'#C3D3C6', 
+                      borderColor:'#8EE3E3', 
                       borderRadius:'50%'
                     }}
                     component="img" src={"/images/arbolado/ficha/soporte.png"}></Box>
@@ -244,7 +264,7 @@ export default function FichaInformativa(props) {
                       maxHeight: { xs: 140, md: 140 },
                       maxWidth: { xs: 140, md: 140 },
                       borderStyle:'solid', 
-                      borderColor:'#C3D3C6', 
+                      borderColor:'#8EE3E3', 
                       borderRadius:'50%'
                     }}
                     component="img" src={'/images/arbolado/ficha/cultural.png'}></Box>

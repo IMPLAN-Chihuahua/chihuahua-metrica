@@ -70,7 +70,7 @@ export default function ImageCatalog({ qty, imgName, autores, nombreCientifico }
                     bgcolor: 'background.default',
                 }}
             >
-                <Typography>Fotografías obtenidas de {autores}</Typography>
+                <Typography style={{fontWeight:'bold'}}>Fotografías obtenidas de {autores}</Typography>
             </Paper>
             <Box
                 sx={{

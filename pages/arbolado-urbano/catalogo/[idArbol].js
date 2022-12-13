@@ -33,9 +33,13 @@ export default function FichaInformativa(props) {
       </Head>
       <Container sx={{ mb: 3, mt: 3 }}>
         <Box sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
-          <Typography gutterBottom variant="h5" component="div" textAlign='center'>
+          <Typography gutterBottom variant="h4" component="div" textAlign='center' style={{fontStyle:'italic', fontWeight:'bold'}}>
             <div dangerouslySetInnerHTML={{ __html: tree.NOMBRE_COMUN }} />
           </Typography>
+          <Grid container justifyContent='center'>
+            <Typography>{toTitleCase(tree.NOMBRE_CIENTIFICO)}</Typography>
+          </Grid>
+          
           <br></br>
           <Grid container justifyContent='center'>
             <Box
@@ -46,34 +50,32 @@ export default function FichaInformativa(props) {
               component="img" src={`${imageServer}/${tree.NOMBRE_CIENTIFICO}/${tree.NOMBRE_IMAGEN}_1.jpg`} >
             </Box>
           </Grid>
-          <Grid container justifyContent='center'>
-            <Typography>{toTitleCase(tree.NOMBRE_CIENTIFICO)}</Typography>
-          </Grid>
+          
         </Box>
         <Grid >
           <List>
             <Grid container  >
               <Grid item xs={6} >
                 <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Familia" secondary={toTitleCase(tree.FAMILIA)} />
+                  <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Familia</Typography>} secondary={toTitleCase(tree.FAMILIA)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
               <Grid item xs={6}>
                 <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Origen" secondary={toTitleCase(tree.ORIGEN)} />
+                  <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Origen</Typography>}  secondary={toTitleCase(tree.ORIGEN)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
               <Grid items xs={6} >
                 <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Altura Promedio" secondary={tree.ESCALA} />
+                  <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Altura promedio</Typography>} secondary={tree.ESCALA} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
               <Grid items xs={6}>
                 <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Riego" secondary={toTitleCase(tree.RIEGO)} />
+                  <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Riego</Typography>} secondary={toTitleCase(tree.RIEGO)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
@@ -81,7 +83,7 @@ export default function FichaInformativa(props) {
               <Grid items xs={4}>
                 <ListItem style={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Box style={{ textAlign: 'center' }}>
-                    <ListItemText primary="Tipo de Hoja" secondary={toTitleCase(tree.TIPO_DE_HOJA)} />
+                    <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Tipo de Hoja</Typography>} secondary={toTitleCase(tree.TIPO_DE_HOJA)} />
                   </Box>
                 </ListItem>
                 <Divider component="li" />
@@ -89,7 +91,7 @@ export default function FichaInformativa(props) {
               <Grid items xs={4}>
                 <ListItem style={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Box style={{ textAlign: 'center' }}>
-                    <ListItemText primary="Tipo de Corteza" secondary={toTitleCase(tree.CORTEZA)} />
+                    <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Tipo de Corteza</Typography>} secondary={toTitleCase(tree.CORTEZA)} />
                   </Box>
                 </ListItem>
                 <Divider component="li" />
@@ -97,7 +99,7 @@ export default function FichaInformativa(props) {
               <Grid items xs={4}>
                 <ListItem style={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Box style={{ textAlign: 'center' }}>
-                    <ListItemText primary="Color de Flor" secondary={toTitleCase(tree.FLOR === 'NA' ? 'No visible' : tree.FLOR)} />
+                    <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Color de Flor</Typography>} secondary={toTitleCase(tree.FLOR === 'NA' ? 'No visible' : tree.FLOR)} />
                   </Box>
                 </ListItem>
                 <Divider component="li" />
@@ -105,7 +107,7 @@ export default function FichaInformativa(props) {
 
               <Grid items xs={12} style={{ textAlign: 'center' }}>
                 <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Temporada de floración" />
+                  <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Temporada de floración</Typography>}  />
                 </ListItem>
 
                 <Box
@@ -146,7 +148,7 @@ export default function FichaInformativa(props) {
 
               <Grid items xs={12}>
                 <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Permanencia de las hojas" secondary={toTitleCase(tree.PERMANENCIA_HOJAS)} />
+                  <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Permanencia de las hojas</Typography>} secondary={toTitleCase(tree.PERMANENCIA_HOJAS)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
@@ -156,7 +158,7 @@ export default function FichaInformativa(props) {
 
               <Grid items xs={12}>
                 <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Características" secondary={tree.CARACTERISTICAS} />
+                  <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Características</Typography>} secondary={tree.CARACTERISTICAS} />
                 </ListItem>
                 <ListItem style={{ textAlign: 'center' }}>
                   <ListItemText secondary={tree.DESCRIPCION} />
@@ -166,7 +168,7 @@ export default function FichaInformativa(props) {
 
 
               <ListItem style={{ textAlign: 'center' }}>
-                <ListItemText primary="Servicios ecosistémicos" />
+                <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Servicios ecosistémicos</Typography>} />
               </ListItem>
 
               <Grid items xs={12} sm={6}>
@@ -210,7 +212,7 @@ export default function FichaInformativa(props) {
                     }}
                     component="img" src={"/images/arbolado/ficha/soporte.png"}></Box>
                   <Divider orientation="vertical" flexItem></Divider>
-                  <Typography margin={5}>{toTitleCase(tree.USOS_Y_SERVICIOS)}</Typography>
+                  <Typography margin={5}>Hábitats para las especies. Productividad primaria. Mantenimiento de la diversidad genética.</Typography>
                 </ListItem>
               </Grid>
 
@@ -229,30 +231,16 @@ export default function FichaInformativa(props) {
                 </ListItem>
               </Grid>
 
-              <Grid items xs={6} sm={4}>
+              <Grid items xs={6} >
                 <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Provisión" secondary="Sapindacae" />
+                  <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Riesgos o precauciones</Typography>} secondary={toTitleCase(tree.PRECAUCIONES)} />
                 </ListItem>
                 <Divider component="li" />
               </Grid>
 
-              <Grid items xs={6} sm={4}>
+              <Grid items xs={6}>
                 <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Riesgos o precauciones" secondary={toTitleCase(tree.PRECAUCIONES)} />
-                </ListItem>
-                <Divider component="li" />
-              </Grid>
-
-              <Grid items xs={6} sm={4}>
-                <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Características" secondary="Sapindacae" />
-                </ListItem>
-                <Divider component="li" />
-              </Grid>
-
-              <Grid items xs={6} sm={12}>
-                <ListItem style={{ textAlign: 'center' }}>
-                  <ListItemText primary="Usos" secondary="Sapindacae" />
+                  <ListItemText primary={<Typography style={{fontWeight:'bold'}} >Usos</Typography>} secondary="Sapindacae" />
                 </ListItem>
                 <Divider component="li" />
               </Grid>

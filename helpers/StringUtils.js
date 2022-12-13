@@ -25,4 +25,26 @@ const toUnderScoreCase = (str) => {
     return str.replace(/\s/g, '_');
 };
 
-export { toTitleCase, serialize, toUnderScoreCase };
+const assignMonths = (months) => {
+    const monthsArray = months.split(',');
+
+    for (let i = 0; i < monthsArray.length; i++) {
+        monthsArray[i] = monthsArray[i].trim();
+    }
+
+    const totalMonths = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+
+    const monthsObject = monthsArray.map((month) => {
+        if (months.includes(month)) {
+            return {
+                month: month,
+                index: totalMonths.indexOf(month) + 1,
+                selected: true
+            }
+        }
+    });
+
+    return monthsObject;
+}
+
+export { toTitleCase, serialize, toUnderScoreCase, assignMonths };

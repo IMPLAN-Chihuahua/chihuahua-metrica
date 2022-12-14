@@ -25,7 +25,7 @@ const CardTree = ({ tree }) => {
         <Grid item xs={12} md={3} className={style.CardTreeFlex} >
             <NextLink href={`/arbolado-urbano/catalogo/${tree._id}`} passHref>
                 <Card  >
-                    <CardActionArea >
+                    <CardActionArea  >
                         <CardMedia
                             sx={{
                                 height: 500,
@@ -45,6 +45,7 @@ const CardTree = ({ tree }) => {
                                 priority={true}
                                 loading="eager"
                                 unoptimized={true}
+                                className={`${style.grow}`}
                             />
 
                         </CardMedia>
@@ -64,7 +65,7 @@ const CardTree = ({ tree }) => {
                             pb: 3,
                         }}
                     >
-                        <Button size="small" style={{ backgroundColor: '#507940', color: 'white' }}
+                        <Button size="small" style={{ backgroundColor: '#507940', color: 'white' }} className={`${style.fadeBtn}`}
                             href={`/arbolado-urbano/catalogo/${tree._id}`}
                             sx={{
                                 position: 'absolute'

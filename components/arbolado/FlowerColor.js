@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Box } from "@mui/material";
 
+import style from './CardTree.module.css';
+
 const ColorFlor = ({flowerColor}) => {
     switch (flowerColor) {
       case 'BLANCAS':
@@ -8,7 +10,7 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/blanco.png">
+          }} component="img" src="/images/arbolado/ficha/blanco.png" className={`${style.boxShadow}`}>
           </Box>
         )
       case 'AMARILLAS':
@@ -17,7 +19,7 @@ const ColorFlor = ({flowerColor}) => {
             sx={{
               maxHeight: { xs: 100, md: 100 },
               maxWidth: { xs: 100, md: 100 }
-            }} component="img" src="/images/arbolado/ficha/amarillo.png">
+            }} component="img" src="/images/arbolado/ficha/amarillo.png" className={`${style.boxShadow}`}>
           </Box>
         )
         case 'ROJAS':
@@ -25,7 +27,7 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/rojo.png">
+          }} component="img" src="/images/arbolado/ficha/rojo.png" className={`${style.boxShadow}`}>
           </Box>
         )
         case 'NARANJA':
@@ -33,7 +35,7 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/naranja.png">
+          }} component="img" src="/images/arbolado/ficha/naranja.png" className={`${style.boxShadow}`}>
           </Box>
         )
         case 'AZUL':
@@ -41,7 +43,7 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/azul.png">
+          }} component="img" src="/images/arbolado/ficha/azul.png" className={`${style.boxShadow}`}>
           </Box>
         )
         case 'MORADA':
@@ -49,7 +51,7 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/morado.png">
+          }} component="img" src="/images/arbolado/ficha/morado.png" className={`${style.boxShadow}`}>
           </Box>
         )
         case 'CREMAS':
@@ -57,7 +59,7 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/crema.png">
+          }} component="img" src="/images/arbolado/ficha/crema.png" className={`${style.boxShadow}`}>
           </Box>
         )
         case 'ROSA':
@@ -65,7 +67,7 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/rosa.png">
+          }} component="img" src="/images/arbolado/ficha/rosa.png" className={`${style.boxShadow}`}>
           </Box>
         )
         case 'VERDES':
@@ -73,7 +75,7 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/verde.png">
+          }} component="img" src="/images/arbolado/ficha/verde.png" className={`${style.boxShadow}`}>
           </Box>
         )
         case 'GRIS':
@@ -81,7 +83,7 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/gris.png">
+          }} component="img" src="/images/arbolado/ficha/gris.png" className={`${style.boxShadow}`}>
           </Box>
         )
         case 'INCONSPICUAS':
@@ -89,11 +91,17 @@ const ColorFlor = ({flowerColor}) => {
           <Box sx={{
             maxHeight: { xs: 100, md: 100 },
             maxWidth: { xs: 100, md: 100 }
-          }} component="img" src="/images/arbolado/ficha/inconspicuas.png">
+          }} component="img" src="/images/arbolado/ficha/inconspicuas.png" className={`${style.boxShadow}`}>
           </Box>
         )
       default:
-        return null;
+        return (
+          <Box sx={{
+            maxHeight: { xs: 100, md: 100 },
+            maxWidth: { xs: 100, md: 100 }
+          }} component="img" src="/images/arbolado/ficha/novisible.png">
+          </Box>
+        )
     }
   };
 

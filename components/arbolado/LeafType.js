@@ -125,7 +125,13 @@ const TipoHoja = ({treeLeaf}) => {
           </Box>
         )
       default:
-        return null;
+        return (
+          <Box sx={{
+            maxHeight: { xs: 100, md: 100 },
+            maxWidth: { xs: 100, md: 100 }
+          }} component="img" src="/images/arbolado/ficha/novisible.png">
+          </Box>
+        )
     }
   };
 

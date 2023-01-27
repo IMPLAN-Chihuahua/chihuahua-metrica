@@ -20,7 +20,7 @@ import style from './FichaArbol.module.css';
 
 export default function FichaInformativa(props) {
   const tree = props.data;
-  const imageServer = 'http://siee.mpiochih.gob.mx/imagenes_catalogo';
+  const imageServer = 'https://arbol-mid-bucket.s3.us-west-1.amazonaws.com/imagenes_catalogo';
 
   const months = assignMonths(tree.FLORACION)
 
@@ -30,7 +30,7 @@ export default function FichaInformativa(props) {
   console.log(tree.IMAGENES_AUTOR)
   console.log(tree.URL_AUTOR)
 
-  
+
   return (
     <>
       <Head>
@@ -38,8 +38,8 @@ export default function FichaInformativa(props) {
         <meta name="description" content={tree?.DESCRIPCION} />
       </Head>
       <Container sx={{ mb: 3, mt: 2 }}>
-        <Box sx={{ mt: 3, mb: 3, padding:2, backgroundColor: '#B8E4E4' }} maxWidth='lg'>
-          <Typography gutterBottom variant="h4" component="div" textAlign='center' sx={{ fontStyle: 'italic', fontWeight: 'bold'}}>
+        <Box sx={{ mt: 3, mb: 3, padding: 2, backgroundColor: '#B8E4E4' }} maxWidth='lg'>
+          <Typography gutterBottom variant="h4" component="div" textAlign='center' sx={{ fontStyle: 'italic', fontWeight: 'bold' }}>
             <div dangerouslySetInnerHTML={{ __html: tree.NOMBRE_COMUN }} />
           </Typography>
           <Grid container justifyContent='center'>
@@ -83,8 +83,8 @@ export default function FichaInformativa(props) {
                   <ListItemText primary={<Typography sx={{ fontWeight: 'bold' }} >Riego</Typography>} secondary={toTitleCase(tree.RIEGO)} />
                 </ListItem>
               </Grid>
-              
-              <Grid xs={12} sx={{mb:2}}>
+
+              <Grid xs={12} sx={{ mb: 2 }}>
                 <Divider component="li" />
               </Grid>
 
@@ -92,10 +92,10 @@ export default function FichaInformativa(props) {
                 <ListItem style={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Box sx={{ textAlign: 'center' }} className={`${style.grow}`}>
                     <ListItemText primary={<Typography sx={{ fontWeight: 'bold' }} >Tipo de Hoja</Typography>} secondary={toTitleCase(tree.TIPO_DE_HOJA)} />
-                    <Grid sx={{flexDirection:'column'}}>
-                    <Box margin={2} >
-                      <LeafType treeLeaf={tree.TIPO_DE_HOJA}></LeafType>
-                    </Box>
+                    <Grid sx={{ flexDirection: 'column' }}>
+                      <Box margin={2} >
+                        <LeafType treeLeaf={tree.TIPO_DE_HOJA}></LeafType>
+                      </Box>
                     </Grid>
                   </Box>
                 </ListItem>
@@ -104,10 +104,10 @@ export default function FichaInformativa(props) {
                 <ListItem sx={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Box sx={{ textAlign: 'center' }} className={`${style.grow}`}>
                     <ListItemText primary={<Typography sx={{ fontWeight: 'bold' }} >Tipo de Corteza</Typography>} secondary={toTitleCase(tree.CORTEZA)} />
-                    <Grid sx={{flexDirection:'column'}}>
-                    <Box margin={2}>
-                      <TreeBark treeBark={tree.CORTEZA}></TreeBark>
-                    </Box>
+                    <Grid sx={{ flexDirection: 'column' }}>
+                      <Box margin={2}>
+                        <TreeBark treeBark={tree.CORTEZA}></TreeBark>
+                      </Box>
                     </Grid>
                   </Box>
                 </ListItem>
@@ -116,10 +116,10 @@ export default function FichaInformativa(props) {
                 <ListItem sx={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Box sx={{ textAlign: 'center' }} className={`${style.grow}`}>
                     <ListItemText primary={<Typography sx={{ fontWeight: 'bold' }} >Color de Flor</Typography>} secondary={toTitleCase(tree.FLOR === 'NA' ? 'No visible' : tree.FLOR)} />
-                    <Grid sx={{flexDirection:'column'}}>
-                    <Box margin={2}>
-                      <FlowerColor flowerColor={tree.FLOR}></FlowerColor>
-                    </Box>
+                    <Grid sx={{ flexDirection: 'column' }}>
+                      <Box margin={2}>
+                        <FlowerColor flowerColor={tree.FLOR}></FlowerColor>
+                      </Box>
                     </Grid>
                   </Box>
                 </ListItem>
@@ -143,7 +143,7 @@ export default function FichaInformativa(props) {
                     flexWrap: 'wrap',
 
                   }}
-                  
+
                 >
                   {
                     months.map((month, index) => {
@@ -199,23 +199,23 @@ export default function FichaInformativa(props) {
 
               <Grid items xs={12} sm={6}>
                 <ListItem >
-                  <Grid sx={{flexDirection:'column'}} className={`${style.sinkBox}`}>
-                    
-                    <Box margin={5} 
-                    sx={{
-                      height: 140,
-                      width: 140,
-                      maxHeight: { xs: 140, md: 140 },
-                      maxWidth: { xs: 140, md: 140 },
-                      borderStyle:'solid', 
-                      borderColor:'#8EE3E3', 
-                      borderRadius:'50%'
-                    }}
-                    component="img" src="/images/arbolado/ficha/provision.png"></Box>
-                    
-                  <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', marginTop:-5 }}>Provisión</Typography>
+                  <Grid sx={{ flexDirection: 'column' }} className={`${style.sinkBox}`}>
+
+                    <Box margin={5}
+                      sx={{
+                        height: 140,
+                        width: 140,
+                        maxHeight: { xs: 140, md: 140 },
+                        maxWidth: { xs: 140, md: 140 },
+                        borderStyle: 'solid',
+                        borderColor: '#8EE3E3',
+                        borderRadius: '50%'
+                      }}
+                      component="img" src="/images/arbolado/ficha/provision.png"></Box>
+
+                    <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', marginTop: -5 }}>Provisión</Typography>
                   </Grid>
-                  
+
                   <Divider orientation="vertical" flexItem></Divider>
                   <Typography margin={5}>{toTitleCase(tree.SE_PROVISION)}</Typography>
                 </ListItem>
@@ -223,40 +223,40 @@ export default function FichaInformativa(props) {
 
               <Grid items xs={12} sm={6}>
                 <ListItem>
-                  <Grid sx={{flexDirection:'column'}} className={`${style.sinkBox}`}>
-                    <Box margin={5} 
-                    sx={{
-                      height: 140,
-                      width: 140,
-                      maxHeight: { xs: 140, md: 140 },
-                      maxWidth: { xs: 140, md: 140 },
-                      borderStyle:'solid', 
-                      borderColor:'#8EE3E3', 
-                      borderRadius:'50%'
-                    }}
-                    component="img" src={"/images/arbolado/ficha/regulacion.png"}></Box>
-                    <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', marginTop:-5 }}>Regulación</Typography>
+                  <Grid sx={{ flexDirection: 'column' }} className={`${style.sinkBox}`}>
+                    <Box margin={5}
+                      sx={{
+                        height: 140,
+                        width: 140,
+                        maxHeight: { xs: 140, md: 140 },
+                        maxWidth: { xs: 140, md: 140 },
+                        borderStyle: 'solid',
+                        borderColor: '#8EE3E3',
+                        borderRadius: '50%'
+                      }}
+                      component="img" src={"/images/arbolado/ficha/regulacion.png"}></Box>
+                    <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', marginTop: -5 }}>Regulación</Typography>
                   </Grid>
                   <Divider orientation="vertical" flexItem></Divider>
                   <Typography margin={5}>{toTitleCase(tree.SE_REGULACION)}</Typography>
                 </ListItem>
               </Grid>
 
-              <Grid items xs={12} sm={6} sx={{mb:3}}>
+              <Grid items xs={12} sm={6} sx={{ mb: 3 }}>
                 <ListItem>
-                  <Grid sx={{flexDirection:'column'}} className={`${style.sinkBox}`}>
-                    <Box margin={5} 
-                    sx={{
-                      height: 140,
-                      width: 140,
-                      maxHeight: { xs: 140, md: 140 },
-                      maxWidth: { xs: 140, md: 140 },
-                      borderStyle:'solid', 
-                      borderColor:'#8EE3E3', 
-                      borderRadius:'50%'
-                    }}
-                    component="img" src={"/images/arbolado/ficha/soporte.png"}></Box>
-                    <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', marginTop:-5 }}>Soporte</Typography>
+                  <Grid sx={{ flexDirection: 'column' }} className={`${style.sinkBox}`}>
+                    <Box margin={5}
+                      sx={{
+                        height: 140,
+                        width: 140,
+                        maxHeight: { xs: 140, md: 140 },
+                        maxWidth: { xs: 140, md: 140 },
+                        borderStyle: 'solid',
+                        borderColor: '#8EE3E3',
+                        borderRadius: '50%'
+                      }}
+                      component="img" src={"/images/arbolado/ficha/soporte.png"}></Box>
+                    <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', marginTop: -5 }}>Soporte</Typography>
                   </Grid>
                   <Divider orientation="vertical" flexItem></Divider>
                   <Typography margin={5}>Hábitats para las especies. Productividad primaria. Mantenimiento de la diversidad genética.</Typography>
@@ -265,21 +265,21 @@ export default function FichaInformativa(props) {
 
 
 
-              <Grid items xs={12} sm={6} sx={{mb:3}}>
+              <Grid items xs={12} sm={6} sx={{ mb: 3 }}>
                 <ListItem>
-                  <Grid sx={{flexDirection:'column'}} className={`${style.sinkBox}`}>
-                    <Box margin={5} 
-                    sx={{
-                      height: 140,
-                      width: 140,
-                      maxHeight: { xs: 140, md: 140 },
-                      maxWidth: { xs: 140, md: 140 },
-                      borderStyle:'solid', 
-                      borderColor:'#8EE3E3', 
-                      borderRadius:'50%'
-                    }}
-                    component="img" src={'/images/arbolado/ficha/cultural.png'}></Box>
-                    <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', marginTop:-5 }}>Cultural</Typography>
+                  <Grid sx={{ flexDirection: 'column' }} className={`${style.sinkBox}`}>
+                    <Box margin={5}
+                      sx={{
+                        height: 140,
+                        width: 140,
+                        maxHeight: { xs: 140, md: 140 },
+                        maxWidth: { xs: 140, md: 140 },
+                        borderStyle: 'solid',
+                        borderColor: '#8EE3E3',
+                        borderRadius: '50%'
+                      }}
+                      component="img" src={'/images/arbolado/ficha/cultural.png'}></Box>
+                    <Typography variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', marginTop: -5 }}>Cultural</Typography>
                   </Grid>
                   <Divider orientation="vertical" flexItem></Divider>
                   <Typography margin={5}>{toTitleCase(tree.SE_CULTURALES)}</Typography>
@@ -289,7 +289,7 @@ export default function FichaInformativa(props) {
               <Grid xs={12}>
                 <Divider component="li" />
               </Grid>
-              
+
 
               <Grid items xs={6} >
                 <ListItem sx={{ textAlign: 'center' }}>

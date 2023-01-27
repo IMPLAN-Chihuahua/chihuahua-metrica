@@ -10,8 +10,7 @@ import React, { useEffect, useState } from 'react';
 
 import style from './CardTree.module.css';
 
-const imageServer = 'http://siee.mpiochih.gob.mx/imagenes_catalogo/resized';
-
+const imageServer = 'https://arbol-mid-bucket.s3.us-west-1.amazonaws.com/imagenes_catalogo/resized';
 
 
 const CardTree = ({ tree }) => {

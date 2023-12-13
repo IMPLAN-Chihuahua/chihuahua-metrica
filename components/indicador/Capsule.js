@@ -14,9 +14,10 @@ const Stat = ({ indicadores }) => {
                     <NextLink
                         href={indicador.url}
                         passHref
+                        key={index}
                     >
                         <a title='Visitar la ficha del indicador'>
-                            <div className={`${style.circle}`} key={index}>
+                            <div className={`${style.circle}`}>
                                 <Box className={`${style.circleStats}`} >
                                     <Avatar src={indicador.icon} className={style.indicadorImage} sx={{ height: 110, width: 110 }} />
                                     <Typography textAlign='center' className={`${style.textsillo}`}>{indicador.value}</Typography>

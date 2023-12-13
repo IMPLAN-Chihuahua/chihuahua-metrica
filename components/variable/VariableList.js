@@ -2,15 +2,13 @@ import Variable from "./Variable";
 
 const VariableList = ({ variables }) => {
   return (
-    <>{
+    <ul>{
       variables.map((variable, index) => {
         return (
-          <ul>
-            <Variable expr={variable} key={index} />
-          </ul>
+          <Variable expr={variable} key={index} />
         );
       })}
-    </>
+    </ul>
   );
 };
 

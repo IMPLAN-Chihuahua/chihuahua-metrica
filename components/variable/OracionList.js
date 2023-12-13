@@ -3,15 +3,13 @@ import Oracion from './Oracion';
 
 const OracionList = ({ oraciones }) => {
     return (
-        <>{
+        <ul>{
             oraciones.map((oracion, index) => {
                 return (
-                    <ul>
-                        <Oracion expr={oracion} key={index} />
-                    </ul>
+                    <Oracion expr={oracion} key={index} />
                 );
             })}
-        </>
+        </ul>
     );
 };
 

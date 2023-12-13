@@ -1,19 +1,20 @@
+import Error from '../../_error'
 import Container from "@mui/material/Container";
 import MapButton from "@components/indicador/Datasheet/MapButton";
 import TopData from "@components/indicador/Datasheet/TopData";
 import DataSheet from "@components/indicador/Datasheet/DataSheet";
 import GraphBox from "@components/indicador/Datasheet/GraphBox";
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
-import IndicadorOwner from "@components/commons/IndicadorOwner";
 import Head from "next/head";
 import NavBackAndFoward from "@components/commons/NavBackAndFoward";
 import { Box } from "@mui/material";
-import { useRouter } from "next/router";
+import IndicadorOwner from '@components/commons/IndicadorOwner';
 
 
 export default function FichaTecnica(props) {
-  const indicador = props.data;
-  const responsible = props.responsible;
+  
+  const { indicador, responsible, navigation } = props;
+  
   const CRUMBS = [{
     text: 'Chihuahua en Datos',
     href: '/chihuahua-en-datos'
@@ -23,9 +24,11 @@ export default function FichaTecnica(props) {
   }, {
     text: indicador.nombre
   }];
-
-  const router = useRouter();
-
+  
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} message={props?.message} />
+  }
+  
   return (
     <>
       <Head>
@@ -46,13 +49,13 @@ export default function FichaTecnica(props) {
           <NavBackAndFoward
             prev={{
               title: 'Indicador anterior',
-              disabled: indicador.prev == null,
-              link: `/chihuahua-en-datos/indicadores/${indicador.prev}`
+              disabled: navigation.prev == null,
+              link: `/chihuahua-en-datos/indicadores/${navigation.prev}`
             }}
             next={{
               title: 'Siguiente indicador',
-              disabled: indicador.next == null,
-              link: `/chihuahua-en-datos/indicadores/${indicador.next}`
+              disabled: navigation.next == null,
+              link: `/chihuahua-en-datos/indicadores/${navigation.next}`
             }}
           />
         </Box>
@@ -68,34 +71,18 @@ export default function FichaTecnica(props) {
 
 export async function getServerSideProps(context) {
   const idIndicador = context.params.idIndicador;
-  const res = await fetch(
-    `${process.env.INDICADORES_BASE_URL}/indicadores/${idIndicador}`
-  );
+  const indicadorRes = await fetch(`${process.env.INDICADORES_BASE_URL}/indicadores/${idIndicador}`);
+  const errorCode = indicadorRes.ok ? false : indicadorRes.status;
+  const indicador = await indicadorRes.json();
 
-  const data = await res.json();
-
-  if (res.status === 200) {
-
-    const idUser = data.data.createdBy;
-
-    const [responsibleRes] = await Promise.all([
-      fetch(
-        `${process.env.INDICADORES_BASE_URL}/usuarios/${idUser}`
-      ),
-    ]);
-
-    const [responsible] = await Promise.all([
-      responsibleRes.json(),
-    ]);
-
-    return {
-      props: { ...data, responsible },
-    };
-  } else {
-    return {
-      props: {
-        data: [],
-      },
-    };
+  if (errorCode) {
+    return { props: { errorCode, ...indicador } }
   }
+  const idUser = indicador.data.createdBy || null;
+  const responsibleRes = await fetch(`${process.env.INDICADORES_BASE_URL}/usuarios/${idUser}`);
+  const responsible = await responsibleRes.json();
+
+  return {
+    props: { indicador: { ...indicador.data }, responsible, errorCode, navigation: { ...indicador.navigation } },
+  };
 }

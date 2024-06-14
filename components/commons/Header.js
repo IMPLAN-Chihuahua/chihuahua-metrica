@@ -65,10 +65,6 @@ const Header = () => {
                 md={2}
               >
 
-                <a href='http://implanchihuahua.org' className={style.blackImplan}>
-                  <Image src='/images/blackImplan.png' alt='Logo' height={50} width={200} objectFit='contain' title='Logotipo de CPUM' />
-                </a>
-
                 <NextLink href='/'>
                   <a>
                     <Image src='/images/small-logo.png' width={210} height={60} objectFit='contain' alt="small Logo" />
@@ -92,11 +88,6 @@ const Header = () => {
                   </IconButton>
                 </Box>
                 <Grid item flexGrow={1} className={`${style.navbarCentered} ${style.scrolledDown}`} md={2}>
-
-                  <a href='http://implanchihuahua.org' className={style.blackImplan}>
-                    <Image src='/images/whiteImplan.png' alt='Logo' height={50} width={200} objectFit='contain' title='Logotipo de CPUM' />
-                  </a>
-
                   <NextLink href='/'>
                     <a>
                       <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} objectFit='contain' alt="small Logo" />

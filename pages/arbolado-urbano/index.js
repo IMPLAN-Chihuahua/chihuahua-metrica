@@ -8,7 +8,6 @@ import { useCallback, useState } from 'react';
 
 
 const ArboladoUrbano = () => {
-
   return (
     <>
       <Head>
@@ -19,8 +18,12 @@ const ArboladoUrbano = () => {
       <Box my={5}></Box>
       <Box
         component='section'
-        sx={{ position: 'relative', height: '300px' }}>
-        <Image src='/regla-300-828w.webp' layout='fill' objectFit='cover' />
+        sx={{
+          position: 'relative',
+          height: '300px',
+          backgroundColor: '#4f8127'
+        }}>
+        <Image src='/regla-300-828w.webp' layout='fill' objectFit='contain' />
       </Box>
 
       <Container sx={{ marginTop: 3 }} maxWidth='xl'>
@@ -41,19 +44,14 @@ const ArboladoUrbano = () => {
           <ArboladoSectionTitle text="Beneficios de estar en contacto con" highlightedText="zonas verdes" />
           <Beneficios />
         </section>
+      </Container>
+      <Box component='section' sx={{ backgroundColor: '#222222' }} mt={10}>
+        <InventarioArboladoSection />
+      </Box>
+      <Container sx={{ marginTop: 3 }} maxWidth='xl'>
         <section>
           <section>
             <Grid container>
-              <MapSection
-                title='Inventario del arbolado urbano'
-                src='https://geoportal.implanchihuahua.org/sigmun/apps/webappviewer/index.html?id=842822f688c641ca90b69007fccc6b61'
-                description={(
-                  <>
-                    <Typography fontWeight='bold' textAlign='center' fontSize={30}>~0.23</Typography>
-                    <Typography fontSize='1.3rem' fontWeight='500' textAlign='center'>Árboles por persona</Typography>
-                  </>
-                )}
-              />
               <MapSection
                 title='Proximidad a espacios verdes con más de 10 árboles para uso recreativo'
                 src='https://geoportal.implanchihuahua.org/sigmun/apps/instant/media/index.html?appid=25d7bf6eebb545e0b5205de75bb8ad6f'
@@ -98,7 +96,6 @@ const ArboladoUrbano = () => {
             Ver Catálogo de árboles
           </Button>
         </Box>
-
       </Container>
     </>
   );
@@ -111,7 +108,7 @@ const ArboladoSectionTitle = ({ text, highlightedText }) => {
       component='h2'
       textAlign='center'
       mb={2}
-      sx={{ fontWeight: 600, fontSize: 16, fontStyle: 'italic' }}>
+      sx={{ fontWeight: 600, fontStyle: 'italic' }}>
       {text} <span style={{ color: '#73b21b', marginLeft: '.2em' }}>{highlightedText}</span>
     </Typography>
   );
@@ -321,7 +318,6 @@ const BeneficioContent = ({ beneficio }) => {
   </>)
 }
 
-
 const MapSection = ({ src, description, title }) => {
   return (<Grid item container>
     <Grid item xs={12}>
@@ -371,5 +367,34 @@ const MapSection = ({ src, description, title }) => {
   </Grid>)
 };
 
+
+const InventarioArboladoSection = () => {
+
+  return (
+    <Box display='flex' py={3} pl={8} columnGap={5} alignItems='center' flexWrap='wrap'>
+      <Box flex={1} sx={{
+        height: '400px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+      }}>
+        <iframe
+          height='100%'
+          width='100%'
+          src={'https://geoportal.implanchihuahua.org/sigmun/apps/webappviewer/index.html?id=842822f688c641ca90b69007fccc6b61'}
+          title={'Inventario'}
+        >Mapa</iframe>
+      </Box>
+      <Box flex={1} position='relative' height='550px'>
+        <Image
+          loader={({ src }) => `https://chihuahua-metrica-bucket.s3.us-west-1.amazonaws.com/images/arbolado/${src}`}
+          src='banner_negro_arbolado_crop.jpg'
+          layout='fill'
+          objectFit='cover'
+        />
+      </Box>
+    </Box>
+  )
+}
 
 export default ArboladoUrbano;

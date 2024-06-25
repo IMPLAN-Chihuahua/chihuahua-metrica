@@ -58,14 +58,14 @@ const ArboladoUrbano = () => {
                 description={(
                   <>
                     <Typography fontWeight='bold' textAlign='center' fontSize={30}>~60%</Typography>
-                    <Typography fontSize='1.3rem' fontWeight='500' textAlign='center'>De la población vive <br /> cerca de un parque</Typography>
+                    <Typography fontSize='1.2rem' fontWeight='500' textAlign='center'>De la población vive <br /> cerca de un parque</Typography>
                   </>
                 )}
               />
             </Grid>
           </section>
           <Title variant='h5' component='h3' sx={{ mt: 4 }}>Fuente</Title>
-          <Typography mb={1} fontSize='1.3rem'>Para calcular el GVI, se utilizó una herramienta desarrollada por el <b>Senseable City Lab del MIT</b>. El código fuente se encuentra en el siguiente enlace. </Typography>
+          <Typography mb={1} fontSize='1.2rem'>Para calcular el GVI, se utilizó una herramienta desarrollada por el <b>Senseable City Lab del MIT</b>. El código fuente se encuentra en el siguiente enlace. </Typography>
           <Button
             target='_blank'
             rel='noreferrer noopener'
@@ -76,7 +76,7 @@ const ArboladoUrbano = () => {
         </section>
         <section>
           <Title variant='h4' component='h2' mt={3}>Censo del Arbolado</Title>
-          <Typography fontSize='1.3rem' sx={{ mb: '5vh' }}>
+          <Typography fontSize='1.2rem' sx={{ mb: '5vh' }}>
             El Instituto de Planeación Integral del Municipio de Chihuahua con
             el propósito de contribuir a una ciudad resiliente y  sustentable,
             desarrolló un proyecto como instrumento que ofrece información actual
@@ -279,7 +279,7 @@ const Beneficios = () => {
       component='h3'
       fontWeight={600}
       fontStyle='italic'>Fuente</Title>
-    <Typography fontSize='1.3rem' color='#4c7018'>
+    <Typography fontSize='1.2rem' color='#4c7018'>
       <cite>
         Alba García (2021). <NextLink
           href='https://es.greenpeace.org/es/noticias/regla-3-30-300-ciudades-verdes/'

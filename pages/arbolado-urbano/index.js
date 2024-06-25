@@ -30,12 +30,12 @@ const ArboladoUrbano = () => {
         <section>
           <ArboladoSectionTitle text="Regla" highlightedText="3-30-300" />
           <LinesDecoration />
-          <Typography mb={3} mt={5} fontSize='1.3rem' textAlign='center'>
+          <Typography mb={3} mt={5} fontSize='1.2rem' textAlign='justify'>
             Esta regla esta enfocada a mejorar la calidad del arbolado urbano
             contribuyendo a su vez en el bienestar y la salud humana. Lo primero
-            consiste en observar 3 árboles desde casa de un tamaño considerable,
-            tener como mínimo el 30% de cobertura vegetal en su colonia y
-            vivir a una distancia menor de 300 metros de un espacio verde. Aunque el estado actual
+            consiste en observar 3 árboles de un tamaño considerable desde tu casa,
+            también tener como mínimo el 30% de cobertura vegetal en tu colonia y
+            por último, vivir a una distancia menor de 300 metros de un espacio verde. Aunque el estado actual
             de las ciudades es diferente, utilizar esta regla aporta a la
             necesidad de tener un sistema arbóreo bien planificado y establecido en la ciudad.
           </Typography>
@@ -144,63 +144,63 @@ const Banner = () => {
 const Beneficios = () => {
   const [beneficios, setBeneficios] = useState(() => [
     {
-      icon: '100x100',
+      icon: '1.png',
       text: 'Mitigación de las',
       highlightedText: 'altas temperaturas',
       desc: 'Las zonas verdes mejoran las condiciones microclimáticas ya que son capaces de reducir la temperatura de sus alrededores varios grados centígrados, además de proporcionar sombra protegiendo de las radiaciones solares. Las zonas verdes son la mejor herramienta para enfriar las ciudades y combatir las islas de calor, que al elevar la temperatura de la ciudad también elevan enormemente el consumo de energía.',
       showMore: false
     },
     {
-      icon: '100x100',
+      icon: '2.png',
       text: 'Mitigación de',
       highlightedText: 'inundaciones',
       desc: 'La urbanización de las ciudades ha hecho que tengan una alta proporción de superficies impermeables, como el cemento, lo que reduce mucho la capacidad de esa zona para absorber agua y retenerla. Eso hace que aumente el riesgo de escorrentía, y la magnitud y frecuencia de las inundaciones. Las zonas verdes aportarían un suelo permeable a la ciudad, protegiéndola ante estas adversidades. ',
       showMore: false
     },
     {
-      icon: '100x100',
+      icon: '3.png',
       text: 'Mejor',
       highlightedText: 'salud mental',
       desc: 'El contacto con espacios verdes se asocia con un menor riesgo de angustia psicológica, de sufrir depresión, ansiedad, y puede mejorar nuestro desarrollo del comportamiento, reduciendo dificultades emocionales y de relaciones sociales. ',
       showMore: false
     },
     {
-      icon: '100x100',
+      icon: '4.png',
       text: 'Mejor desarrollo cerebral',
       highlightedText: 'y función cognitiva',
       desc: 'La exposición a largo plazo a los espacios verdes puede reducir riesgo de problemas emocionales y de comportamiento y generar mejoras del desarrollo cognitivo, incluida una mejor atención y memoria de trabajo.',
       showMore: false
     },
     {
-      icon: '100x100',
+      icon: '5.png',
       text: 'Reducción del riesgo de',
       highlightedText: 'enfermedades no transmisibles',
       desc: 'El contacto con espacios verdes se asocia con un menor riesgo de enfermedades cardiovasculares, diabetes, obesidad y dolor lumbar. Las enfermedades no transmisibles son responsables 71% de todas las muertes a nivel mundial, por lo que el beneficio global de espacios verdes más accesibles podría ser enorme.',
       showMore: false
     },
     {
-      icon: '100x100',
+      icon: '6.png',
       text: 'Reducción de la',
       highlightedText: 'mortalidad prematura',
       desc: 'Se puede reducir la mortalidad prematura por todas las causas debidas a una menor exposición a la contaminación del aire, a la mayor realización de ejercicio físico, a una mayor participación social percibida y al menor riesgo de depresión que generan estos espacios.',
       showMore: false
     },
     {
-      icon: '100x100',
+      icon: '7.png',
       text: 'Mejores resultados',
       highlightedText: 'del embarazo',
       desc: 'El acceso a los espacios verdes se asocia positivamente con una mayor duración de la gestación, lo que reduce el riesgo de parto prematuro, la mortalidad infantil y los resultados negativos a largo plazo durante la niñez y más allá.',
       showMore: false
     },
     {
-      icon: '100x100',
+      icon: '8.png',
       text: 'Mejor percepción de',
       highlightedText: 'la salud general',
       desc: 'Un mayor contacto con los espacios verdes se ha asociado constantemente con una mejor percepción de la salud general y también con el bienestar subjetivo, cosas como sentirse más satisfecho con la vida y la felicidad.',
       showMore: false
     },
     {
-      icon: '100x100',
+      icon: '9.png',
       text: 'Reducción del tiempo de',
       highlightedText: 'hospitalización y recuperación',
       desc: 'La exposición a espacios verdes ayuda a evitar la hospitalización debido al desarrollo de condiciones físicas y psicológicas más saludables, y reduce el período de recuperación después de tratamientos y operaciones.',
@@ -230,6 +230,7 @@ const Beneficios = () => {
       {
         beneficios.map((b, idx) => (
           <Box
+            key={idx}
             variant='outlined'
             sx={{
               position: 'relative',
@@ -239,13 +240,15 @@ const Beneficios = () => {
               width: 450,
               height: 300
             }}>
-            <Box p={3} overflow='hidden' maxHeight={300}>
+            <Box p={3} overflow='scroll' maxHeight={300}>
               <Collapse in={b.showMore}>
                 <Typography p={1}>
                   {b.desc}
                 </Typography>
               </Collapse>
-              <BeneficioContent beneficio={b} />
+              {
+                !b.showMore && (<BeneficioContent beneficio={b} />)
+              }
             </Box>
             <Button
               onClick={() => handleClick({ ...b, idx })}
@@ -297,15 +300,15 @@ const BeneficioContent = ({ beneficio }) => {
     <Box display='flex' justifyContent='center' mb={1}>
       <Image
         style={{ marginLeft: 'auto', marginRight: 'auto' }}
-        loader={({ src }) => `https://placehold.co/${src}`}
+        loader={({ src }) => `https://chihuahua-metrica-bucket.s3.us-west-1.amazonaws.com/images/arbolado/${src}`}
         src={beneficio.icon}
-        width={100}
-        height={100}
+        width={150}
+        height={150}
       />
     </Box>
     <Typography
       textAlign='center'
-      fontWeight={300}
+      fontWeight={400}
       textTransform='uppercase'
       fontSize={20}>{beneficio.text}
     </Typography>
@@ -371,29 +374,28 @@ const MapSection = ({ src, description, title }) => {
 const InventarioArboladoSection = () => {
 
   return (
-    <Box display='flex' py={3} pl={8} columnGap={5} alignItems='center' flexWrap='wrap'>
-      <Box flex={1} sx={{
-        height: '400px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'stretch',
-      }}>
+    <Grid container>
+      <Grid item xs={12} md={6} alignContent='center'>
         <iframe
-          height='100%'
+          height='500px'
           width='100%'
+          style={{ minHeight: '300px', padding: '40px 20px', border: 'none' }}
           src={'https://geoportal.implanchihuahua.org/sigmun/apps/webappviewer/index.html?id=842822f688c641ca90b69007fccc6b61'}
-          title={'Inventario'}
+          title='Inventario del arbolado urbano'
         >Mapa</iframe>
-      </Box>
-      <Box flex={1} position='relative' height='550px'>
+      </Grid>
+      <Grid item xs={12} md={6} alignContent='center'>
         <Image
           loader={({ src }) => `https://chihuahua-metrica-bucket.s3.us-west-1.amazonaws.com/images/arbolado/${src}`}
           src='banner_negro_arbolado_crop.jpg'
-          layout='fill'
+          layout='responsive'
           objectFit='cover'
+          height={300}
+          width={500}
+          style={{ minHeight: '300px' }}
         />
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   )
 }
 

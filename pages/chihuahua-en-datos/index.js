@@ -4,6 +4,7 @@ import TemaList from '@components/proyecto/GridModulos';
 import Title from '@components/commons/Title';
 import PageBreadcrumb from '@components/commons/PageBreadcrumb';
 import Capsule from '@components/indicador/Capsule';
+import DimensionesList from '@components/dimension/GridDimensiones';
 
 const CRUMBS = [
   {
@@ -15,7 +16,13 @@ export default function Modulo(props) {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('indicadores-page')
   }
-  const data = props.data;
+
+  const modulos = props.data.modulos;
+  const dimensiones = props.data.dimensiones;
+  console.log(console.log('hu washusei'))
+  console.log(modulos);
+  console.log('#################')
+  console.log(dimensiones)
   return (
     <>
       <Head>
@@ -38,9 +45,15 @@ export default function Modulo(props) {
         <Capsule />
         <br />
         <section>
-          <Title variant='h4' component='h2'>Temáticas</Title>
+          <Title variant='h4' component='h2'>Indicadores separados por dimensión</Title>
+          <Grid container rowSpacing={1} columnSpacing={1} sx={{ mb: 5 }}>
+            <DimensionesList dimensiones={dimensiones} />
+          </Grid>
+        </section>
+        <section>
+          <Title variant='h4' component='h2'>Indicadores separados por temática</Title>
           <Grid container rowSpacing={1} columnSpacing={1}>
-            <TemaList modulos={data} />
+            <TemaList modulos={modulos} />
           </Grid>
         </section>
       </Container>
@@ -49,7 +62,16 @@ export default function Modulo(props) {
 };
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos`);
-  const data = await res.json();
-  return res.status === 200 ? { props: { ...data } } : { props: { data: [] } };
+  const modulosRes = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos`);
+  const { data: modulosData } = await modulosRes.json();
+
+  const dimensionesRes = await fetch(`${process.env.INDICADORES_BASE_URL}/dimensiones/info/general`);
+  const { data: dimensionesData } = await dimensionesRes.json();
+
+  const data = {
+    modulos: modulosData,
+    dimensiones: dimensionesData
+  }
+
+  return modulosRes.status === 200 && dimensionesRes.status === 200 ? { props: { data } } : { props: { data: [] } };
 }

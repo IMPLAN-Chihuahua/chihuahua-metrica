@@ -35,14 +35,14 @@ export default function Modulo(props) {
   const [totalPages, setTotalPages] = useState(0);
   const [filters, setFilters] = useState('');
 
-  
+
   const methods = useForm();
   const { watch } = methods;
   const fetchIndicadores = useCallback((fixedPage, search = '') => {
     const url =
-    `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
+      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
     fetch(url)
-    .then(res => {
+      .then(res => {
         if (res.ok) {
           return res.json()
         }
@@ -58,24 +58,18 @@ export default function Modulo(props) {
         setHasError(true)
       })
       .finally(() => setLoading(false));
-    }, [selectedTema.id, filters, search]);
-    
-    useEffect(() => {
-      let isMounted = true;
-      if (!isMounted) {
-        return;
-    }
+  }, [selectedTema.id, filters, search]);
+
+  useEffect(() => {
+
     const savedPage = parseInt(localStorage.getItem('indicadores-page'))
     fetchIndicadores(savedPage || 1, search);
-    
-    return () => {
-      isMounted = false;
-    }
   }, [fetchIndicadores]);
-  
+
   useEffect(() => {
     const subscription = watch(value => {
       const { tema, ...data } = value;
+
       setSelectedTema(tema || props.selectedTema)
       const filterValues = {};
       filterValues.idOds = data.ods?.id;
@@ -87,7 +81,7 @@ export default function Modulo(props) {
     });
     return () => subscription.unsubscribe();
   }, [watch, setFilters]);
-  
+
   const handlePagination = useCallback((_, value) => {
     if (value === page) {
       return;
@@ -95,7 +89,7 @@ export default function Modulo(props) {
     localStorage.setItem('indicadores-page', value)
     fetchIndicadores(parseInt(value))
   }, [page, selectedTema]);
-  
+
   const CRUMBS = [{
     text: 'Chihuahua en Datos',
     href: '/chihuahua-en-datos'
@@ -104,9 +98,8 @@ export default function Modulo(props) {
   }];
 
   if (props.errorCode) {
-    return <Error statusCode={props.errorCode} message={props?.message} />
   }
-  
+
   return (
     <>
       <Head>

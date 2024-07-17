@@ -44,7 +44,7 @@ const IndicadorFilter = (props) => {
             rowSpacing={2}
             justifyContent='center'
           >
-            <Grid item xs={12} md={4} lg={3}>
+            {/* <Grid item xs={12} md={4} lg={3}>
               <Controller
                 name='tema'
                 control={control}
@@ -85,7 +85,7 @@ const IndicadorFilter = (props) => {
                   />
                 )}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} md={4} lg={3}>
               <Controller
                 name='ods'
@@ -255,7 +255,7 @@ const IndicadorFilter = (props) => {
                 )}
               />
             </Grid>
-            <Grid item xs={12} md={4} lg={3}>
+            {/* <Grid item xs={12} md={4} lg={3}>
               <Controller
                 name='tendenciaActual'
                 control={control}
@@ -278,7 +278,7 @@ const IndicadorFilter = (props) => {
                   />
                 )}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>

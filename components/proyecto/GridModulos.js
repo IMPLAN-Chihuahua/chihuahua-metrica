@@ -6,7 +6,6 @@ import NextLink from 'next/link';
 
 const Tema = ({ modulo }) => {
   const [isHover, setHover] = useState(false);
-
   return (
     <NextLink
       href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}
@@ -19,7 +18,13 @@ const Tema = ({ modulo }) => {
           onMouseLeave={() => setHover(false)}
           style={{ position: 'relative' }} className={`${style.card}`}
         >
-          <Image src={modulo.urlImagen} layout='fill' objectFit='cover' objectPosition='center' />
+          <Image
+            loader={() => modulo.urlImagen}
+            src={modulo.urlImagen}
+            layout='fill'
+            objectFit='cover'
+            objectPosition='center' />
+
           <div className='overlay'>
             <Box pt={2} pl={2} pr={2}>
               <Typography variant='h5' component='h3'>{modulo.temaIndicador}</Typography>

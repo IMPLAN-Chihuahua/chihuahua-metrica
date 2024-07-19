@@ -16,13 +16,8 @@ export default function Modulo(props) {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('indicadores-page')
   }
-
   const modulos = props.data.modulos;
   const dimensiones = props.data.dimensiones;
-  console.log(console.log('hu washusei'))
-  console.log(modulos);
-  console.log('#################')
-  console.log(dimensiones)
   return (
     <>
       <Head>
@@ -41,7 +36,7 @@ export default function Modulo(props) {
           </Typography>
         </section>
         <br />
-        <Title variant='h4' component='h2'>Temas de Interés</Title>
+        <Title variant='h5' component='h3'>Indicadores que te podrían interesar basados en su temática</Title>
         <Capsule />
         <br />
         <section>
@@ -51,10 +46,10 @@ export default function Modulo(props) {
           </Grid>
         </section>
         <section>
-          <Title variant='h4' component='h2'>Indicadores separados por temática</Title>
-          <Grid container rowSpacing={1} columnSpacing={1}>
+          {/* <Title variant='h4' component='h2'>Indicadores separados por temática</Title> */}
+          {/* <Grid container rowSpacing={1} columnSpacing={1}>
             <TemaList modulos={modulos} />
-          </Grid>
+          </Grid> */}
         </section>
       </Container>
     </>

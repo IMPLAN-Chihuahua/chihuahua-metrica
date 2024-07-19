@@ -2,11 +2,13 @@ import Head from "next/head";
 import {
     Typography, Box, Stack, TextField, IconButton,
     Collapse, ToggleButton, InputAdornment, Divider,
-    Container, Alert
+    Container, Alert,
+    FormControlLabel,
+    Checkbox
 } from "@mui/material";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useForm, FormProvider } from "react-hook-form"
-import { Clear, FilterAlt, PausePresentation, Search } from "@mui/icons-material";
+import { useForm, FormProvider, Controller } from "react-hook-form"
+import { Clear, Done, FilterAlt, PanoramaFishEye, PausePresentation, Search } from "@mui/icons-material";
 import { debounce } from "lodash";
 import IndicadorFilter from "@components/indicador/IndicadorFilter";
 import IndicadorList from "@components/indicador/IndicadorList";
@@ -18,6 +20,8 @@ import NavBackAndFoward from "@components/commons/NavBackAndFoward";
 import tinycolor from 'tinycolor2';
 import Image from "next/image";
 import Error from "pages/_error";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { hexAsRGBA } from "helpers/StringUtils";
 
 const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
@@ -44,7 +48,8 @@ const indicadores = (props) => {
     const { watch } = methods;
 
     const getIndicadores = useCallback((page, searchQuery, filters) => {
-        const { idOds, idCobertura, anioUltimoValorDisponible, idUnidadMedida } = filters;
+        const { idOds, idCobertura, anioUltimoValorDisponible, idUnidadMedida, idModulo } = filters;
+
         const queryParams = new URLSearchParams({
             page,
             idDimension: dimension.id,
@@ -52,8 +57,11 @@ const indicadores = (props) => {
             ...(idOds > 0 && { idOds }),
             ...(anioUltimoValorDisponible > 0 && { anioUltimoValorDisponible }),
             ...(idCobertura > 0 && { idCobertura }),
-            ...(idUnidadMedida > 0 && { idUnidadMedida })
+            ...(idUnidadMedida > 0 && { idUnidadMedida }),
+            ...(idModulo?.length > 0 && { modulos: idModulo.join(',') })
+
         });
+
         const url = `${process.env.INDICADORES_BASE_URL}/dimensiones/indicadores?${queryParams}`;
         fetch(url)
             .then(res => {
@@ -85,6 +93,7 @@ const indicadores = (props) => {
             filterValues.idCobertura = data.cobertura?.id;
             filterValues.anioUltimoValorDisponible = data?.anio?.getFullYear();
             filterValues.idUnidadMedida = data.medida?.id;
+            filterValues.idModulo = watch('modulos');
             setFilters(filterValues)
         });
         return () => subscription.unsubscribe();
@@ -188,7 +197,7 @@ const indicadores = (props) => {
                 <section>
                     <Title variant='h4' component='h2'>Indicadores</Title>
                     <FormProvider {...methods}>
-                        <Box sx={{ display: 'flex', mb: 3 }}>
+                        <Box sx={{ display: 'flex', mb: 1 }}>
                             <IndicadorSearchBar setSearch={setSearch} />
                             <ToggleButton
                                 value='cheked'
@@ -206,6 +215,51 @@ const indicadores = (props) => {
                                 coberturaList={[...props.coberturas.data]}
                             />
                         </Collapse>
+                        <Box sx={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: 1,
+                            m: 2
+                        }}>
+                            {
+                                props.modulos.data.map(modulo => (
+                                    <Controller
+                                        name='modulos'
+                                        defaultValue={[]}
+                                        key={modulo.id}
+                                        control={methods.control}
+                                        render={({ field: { value, onChange } }) => (
+                                            <FormControlLabel
+                                                control={
+                                                    <Checkbox
+                                                        size="small"
+                                                        icon={<PanoramaFishEye />}
+                                                        checkedIcon={<CheckCircleIcon />}
+                                                        onChange={onChange}
+                                                        value={modulo.id}
+                                                        {...methods.register('modulos')}
+                                                        sx={{
+                                                            color: dimension.color,
+                                                            '&.Mui-checked': {
+                                                                color: dimension.color,
+                                                            },
+                                                        }}
+                                                    />
+                                                }
+                                                label={<Typography sx={{ fontSize: '12px' }}>{modulo.temaIndicador}</Typography>}
+                                                sx={{
+                                                    borderRadius: '50px',
+                                                    border: value.includes(modulo.id.toString()) ? `1px solid ${dimension.color}` : '1px solid #ccc',
+                                                    p: '1px',
+                                                    pr: '10px',
+                                                    backgroundColor: value.includes(modulo.id.toString()) ? hexAsRGBA(dimension.color, 0.1) : 'transparent',
+                                                }}
+                                            />
+                                        )}
+                                    />
+                                ))
+                            }
+                        </Box>
                     </FormProvider>
                     {isLoading ?
                         Array.from(new Array(4)).map((_, i) => <IndicadorSkeleton key={i} />)
@@ -285,17 +339,19 @@ export async function getServerSideProps(context) {
         }
     }
 
-    const [odsRes, medidaRes, coberturaRes]
+    const [odsRes, medidaRes, coberturaRes, modulosRes]
         = await Promise.all([
             fetch(`${baseUrl}/catalogos/${ODS_ID}`),
             fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA_ID}`),
             fetch(`${baseUrl}/catalogos/${COBERTURA_GEOGRAFICA_ID}`),
+            fetch(`${baseUrl}/dimensiones/${idDimension}/modulos`)
         ]);
 
-    const [ods, medidas, coberturas] = await Promise.all([
+    const [ods, medidas, coberturas, modulos] = await Promise.all([
         odsRes.json(),
         medidaRes.json(),
         coberturaRes.json(),
+        modulosRes.json()
     ]);
     return {
         props: {
@@ -304,6 +360,7 @@ export async function getServerSideProps(context) {
             ods,
             coberturas,
             medidas,
+            modulos,
             selectedDimension: { ...selectedDimension.data }
         },
     };

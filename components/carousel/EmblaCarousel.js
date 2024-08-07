@@ -91,7 +91,7 @@ const EmblaCarousel = () => {
               description={'Es una herramienta esencial para evaluar el progreso hacia objetivos establecidos en el PDUCP. Busca proporcionar información clave para la toma de decisiones informadas, identificando áreas de mejora y permitiendo una rendición de cuentas efectiva.'}
             />
           </SlideContainer>
-          <SlideContainer backgroundImageUrl='https://images.unsplash.com/photo-1702305289740-1c4836dd149a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'>
+          <SlideContainer>
             <SlideContent
               href='/arbolado-urbano'
               title='Arbolado urbano'

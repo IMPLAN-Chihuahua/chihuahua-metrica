@@ -7,29 +7,11 @@ import { useState, useEffect } from "react";
 
 const NavLink = ({ title, path, cssName }) => {
   return (
-    <>
-      <NextLink href={path} passHref >
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-          className={`${style.pointer} ${style[cssName]}`}
-        >
-          <a
-            style={{
-              fontWeight: 500,
-              fontSize: '1.2rem',
-            }}
-          >
-            {title}
-            <br />
-            <span className={style.dot}></span>
-          </a>
-        </Box>
-      </NextLink>
-    </>
+    <NextLink href={path} passHref >
+      <a className={style.navlink}>
+        {title}
+      </a>
+    </NextLink>
   );
 }
 
@@ -59,8 +41,7 @@ const Navbar = ({ navLinks }) => {
         >
           <Stack
             direction="row"
-            style={{ borderBottom: scrollPosition > 100 ? '' : '1px solid white' }}
-            spacing={3}
+            spacing={2}
             className={`${style.navbar} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}
           >
             {navLinks.map(

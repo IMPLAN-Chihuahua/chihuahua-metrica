@@ -27,7 +27,7 @@ const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
 const COBERTURA_GEOGRAFICA_ID = 3;
 
-const indicadores = (props) => {
+const Indicadores = (props) => {
     const [indicadores, setIndicadores] = useState({});
     const [isLoading, setLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
@@ -93,7 +93,6 @@ const indicadores = (props) => {
             filterValues.idCobertura = data.cobertura?.id;
             filterValues.anioUltimoValorDisponible = data?.anio?.getFullYear();
             filterValues.idUnidadMedida = data.medida?.id;
-            filterValues.idModulo = watch('modulos');
             setFilters(filterValues)
         });
         return () => subscription.unsubscribe();
@@ -366,4 +365,4 @@ export async function getServerSideProps(context) {
     };
 };
 
-export default indicadores
+export default Indicadores

@@ -8,6 +8,7 @@ import SatisfactionSurvey from '@components/stats/SatisfactionSurvey';
 import Splashscreen from '@components/commons/Splashscreen';
 import PartnersStrip from '@components/commons/PartnersStrip';
 import PDU2040 from '@components/information/PDU2040';
+import { useRef } from 'react';
 
 export default function Home() {
   return (
@@ -22,9 +23,9 @@ export default function Home() {
         <EmblaCarousel />
         <Container maxWidth='lg' sx={{ marginTop: 3 }}>
           <PDU2040 />
+          <SatisfactionSurvey />
+          <PartnersStrip />
         </Container>
-        <SatisfactionSurvey />
-        <PartnersStrip />
       </body>
     </>
   )

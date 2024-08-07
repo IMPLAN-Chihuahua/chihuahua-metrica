@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { DotButton, useDotButton } from "./EmblaCarouselButtons";
 import useEmblaCarousel from "embla-carousel-react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, styled, Typography } from "@mui/material";
 import styles from './EmblaCarousel.module.css'
 import Image from "next/image";
 import NextLink from "next/link";
 import { usePrevNextButton } from "./EmblaArrowButtons";
 import { PrevButton, NextButton } from './EmblaArrowButtons'
 import { useRouter } from "next/router";
+import { grey } from "@mui/material/colors";
 
 const SLIDES = [
   {
@@ -50,7 +51,19 @@ const SlideContainer = ({ children, backgroundImageUrl }) => {
   );
 }
 
-const SlideContent = ({ href, callToActionLabel, title, description, titleWeight }) => {
+const CallToActionButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(grey[50]),
+  backgroundColor: grey[50],
+  borderRadius: 25,
+  textTransform: 'none',
+  minWidth: '8rem',
+  '&:hover': {
+    color: theme.palette.getContrastText(grey[200]),
+    backgroundColor: grey[200],
+  }
+}))
+
+const SlideContent = ({ href, callToActionLabel, title, description, titleWeight, onClick }) => {
   const router = useRouter();
 
   return (
@@ -59,18 +72,18 @@ const SlideContent = ({ href, callToActionLabel, title, description, titleWeight
       <Typography zIndex={1} variant='body1' mt={2} maxWidth='50em' style={{ textShadow: '1px 1px 3px black' }}>
         {description}
       </Typography>
-      <Button
-        onClick={() => router.push(href)}
-        sx={{
-          borderRadius: 25,
-          backgroundColor: 'white',
-          textTransform: 'capitalize',
-          minWidth: '8rem',
-          mt: 5
+      <CallToActionButton
+        sx={{ mt: 2 }}
+        onClick={() => {
+          if (onClick instanceof Function) {
+            onClick();
+            return;
+          }
+          router.push(href);
         }}
       >
         {callToActionLabel || 'Ver más'}
-      </Button>
+      </CallToActionButton>
     </>
   )
 }
@@ -89,6 +102,15 @@ const EmblaCarousel = () => {
               titleWeight={600}
               title='Sistema de indicadores del PDUCP'
               description={'Es una herramienta esencial para evaluar el progreso hacia objetivos establecidos en el PDUCP. Busca proporcionar información clave para la toma de decisiones informadas, identificando áreas de mejora y permitiendo una rendición de cuentas efectiva.'}
+              callToActionLabel='Saber más'
+              onClick={() => {
+                const elem = document.getElementById('PDU2040-section')
+                if (!elem) return;
+                window.scroll({
+                  top: elem.offsetTop - 80,
+                  behavior: 'smooth'
+                })
+              }}
             />
           </SlideContainer>
           <SlideContainer>
@@ -96,7 +118,7 @@ const EmblaCarousel = () => {
               href='/arbolado-urbano'
               title='Arbolado urbano'
               description='La presencia del arbolado urbano forma parte de una infraestructura verde que impacta en el aspecto social, económico y cultural, mejorando la calidad de vida de la sociedad y mantener la resiliencia de las ciudades.'
-              callToActionLabel='Ir a arbolado urbano'
+              callToActionLabel='Ver arbolado urbano'
             />
           </SlideContainer>
           <SlideContainer >
@@ -104,7 +126,7 @@ const EmblaCarousel = () => {
               href='/conocenos'
               title='Chihuahua Métrica'
               description='Plataforma digital para informar, monitorear y evaluar la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial'
-              callToActionLabel='Ver video'
+              callToActionLabel='Reproducir video'
             />
           </SlideContainer>
         </div>

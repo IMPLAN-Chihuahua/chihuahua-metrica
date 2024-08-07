@@ -6,7 +6,7 @@ import React from 'react'
 
 const PDU2040 = () => {
     return (
-        <Box >
+        <section id='PDU2040-section'>
             <Typography variant='h4' fontWeight={600} sx={{ pb: 1 }}>
                 Objetivo del Sistema de Indicadores del PDUCP
             </Typography>
@@ -26,7 +26,7 @@ const PDU2040 = () => {
                 </Typography>
             </Typography>
             <PrimordialBox />
-        </Box>
+        </section>
     )
 }
 

@@ -53,26 +53,24 @@ const Header = () => {
 
   return (
     <>
-      <AppBar position="fixed" elevation={0} className={`${style.appbar}`} >
+      <AppBar position="fixed" elevation={0} className={`${style.appbar}`}>
         <Grid container direction='column'>
           {
             pathname === '/' ?
-              <Grid
-                item
-                flexGrow={1}
-                style={{ backgroundColor: 'white' }}
-                className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`}
-                md={2}
-              >
-
-                <NextLink href='/'>
-                  <a>
-                    <Image src='/images/small-logo.png' width={210} height={60} objectFit='contain' alt="small Logo" />
-                  </a>
-                </NextLink>
-
-                <img onClick={handleOpen} className={`${style.play}`} src='/images/video/playbtn.png' alt="play button" />
-              </Grid>
+              (
+                <Grid
+                  item
+                  flexGrow={1}
+                  style={{ backgroundColor: 'white', height: '5rem' }}
+                  className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`}
+                >
+                  <NextLink href='/'>
+                    <a>
+                      <Image src='/images/small-logo.png' width={210} height={60} objectFit='contain' alt="small Logo" />
+                    </a>
+                  </NextLink>
+                </Grid>
+              )
               :
               <>
                 <Box
@@ -104,7 +102,7 @@ const Header = () => {
               xs
               justifyContent='flex-end'
               className={`${style.navbarCentered} ${style.navbarMenu} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}
-              md={10} >
+            >
               {
                 scrollPosition > 100 &&
                 <NextLink href='/'>
@@ -119,7 +117,6 @@ const Header = () => {
           }
         </Grid>
       </AppBar>
-      <div id="back-to-top" />
       <BackToTop>
         <Fab sx={{
           backgroundColor: "primary.subtleMain",

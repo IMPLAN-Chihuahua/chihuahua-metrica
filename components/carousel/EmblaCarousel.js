@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { DotButton, useDotButton } from "./EmblaCarouselButtons";
 import useEmblaCarousel from "embla-carousel-react";
-import { Box, Button, styled, Typography } from "@mui/material";
+import { Box, Button, Modal, styled, Typography } from "@mui/material";
 import styles from './EmblaCarousel.module.css'
 import Image from "next/image";
 import NextLink from "next/link";
@@ -42,7 +42,7 @@ const SlideContainer = ({ children, backgroundImageUrl }) => {
       <div className={styles.embla__slide__content}>
         {
           backgroundImageUrl && (
-            <Image src={backgroundImageUrl} layout='fill' objectFit="cover" />
+            <Image src={backgroundImageUrl} layout='fill' objectFit="cover" priority />
           )
         }
         {children}
@@ -98,20 +98,7 @@ const EmblaCarousel = () => {
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
           <SlideContainer backgroundImageUrl='https://images.unsplash.com/photo-1626908013351-800ddd734b8a?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'>
-            <SlideContent
-              titleWeight={600}
-              title='Sistema de indicadores del PDUCP'
-              description={'Es una herramienta esencial para evaluar el progreso hacia objetivos establecidos en el PDUCP. Busca proporcionar información clave para la toma de decisiones informadas, identificando áreas de mejora y permitiendo una rendición de cuentas efectiva.'}
-              callToActionLabel='Saber más'
-              onClick={() => {
-                const elem = document.getElementById('PDU2040-section')
-                if (!elem) return;
-                window.scroll({
-                  top: elem.offsetTop - 80,
-                  behavior: 'smooth'
-                })
-              }}
-            />
+            <PDU20240Slide />
           </SlideContainer>
           <SlideContainer>
             <SlideContent
@@ -122,12 +109,7 @@ const EmblaCarousel = () => {
             />
           </SlideContainer>
           <SlideContainer >
-            <SlideContent
-              href='/conocenos'
-              title='Chihuahua Métrica'
-              description='Plataforma digital para informar, monitorear y evaluar la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial'
-              callToActionLabel='Reproducir video'
-            />
+            <ChihuahuaMetricaSlide />
           </SlideContainer>
         </div>
       </div>
@@ -151,6 +133,58 @@ const EmblaCarousel = () => {
     </section>
   );
 };
+
+const PDU20240Slide = () => {
+  return (
+    <SlideContent
+      titleWeight={600}
+      title='Sistema de indicadores del PDUCP'
+      description={'Es una herramienta esencial para evaluar el progreso hacia objetivos establecidos en el PDUCP. Busca proporcionar información clave para la toma de decisiones informadas, identificando áreas de mejora y permitiendo una rendición de cuentas efectiva.'}
+      callToActionLabel='Saber más'
+      onClick={() => {
+        const elem = document.getElementById('PDU2040-section')
+        if (!elem) return;
+        window.scroll({
+          top: elem.offsetTop - 80,
+          behavior: 'smooth'
+        })
+      }}
+    />
+  )
+}
+
+
+const ChihuahuaMetricaSlide = () => {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <SlideContent
+        href='/conocenos'
+        title='Chihuahua Métrica'
+        description='Plataforma digital para informar, monitorear y evaluar la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial'
+        callToActionLabel='Reproducir video'
+        onClick={() => {
+          setOpen(true)
+        }}
+      />
+
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}>
+          <iframe width="1180" height="480" src="https://www.youtube.com/embed/5Jc6aMbJkAc" title="Métrica  Chihuahua" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </Box>
+      </Modal>
+    </>
+  )
+}
 
 
 export default EmblaCarousel;

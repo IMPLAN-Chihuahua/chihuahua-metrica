@@ -7,6 +7,7 @@ import StatsIndicadores from '@components/stats/StatsIndicadores';
 import SatisfactionSurvey from '@components/stats/SatisfactionSurvey';
 import Splashscreen from '@components/commons/Splashscreen';
 import PartnersStrip from '@components/commons/PartnersStrip';
+import PDU2040 from '@components/information/PDU2040';
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
         <Splashscreen />
         <EmblaCarousel />
         <Container maxWidth='lg' sx={{ marginTop: 3 }}>
-          <AboutDescription />
+          <PDU2040 />
           <ProjectsSection />
         </Container>
         <StatsIndicadores />

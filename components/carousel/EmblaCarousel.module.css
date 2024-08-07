@@ -3,7 +3,7 @@
     max-width: 100%;
     --slide-height: 80vh;
     --slide-spacing: 1rem;
-    --slide-size: 85%;
+    --slide-size: 90%;
 }
 
 
@@ -27,8 +27,7 @@
 .embla__slide__content {
     position: relative;
     color: white;
-    background: rgb(2,0,36);
-    background: linear-gradient(27deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 60%, rgba(0,212,255,1) 100%);
+    background: rgb(2,0,36);/* linear-gradient(27deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 60%, rgba(0,212,255,1) 100%); */
     height: var(--slide-height);
     border-radius: .8rem;
     user-select: none;

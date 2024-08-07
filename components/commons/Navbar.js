@@ -59,7 +59,6 @@ const Navbar = ({ navLinks }) => {
         >
           <Stack
             direction="row"
-            style={{ borderBottom: scrollPosition > 100 ? '' : '1px solid white' }}
             spacing={3}
             className={`${style.navbar} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}
           >

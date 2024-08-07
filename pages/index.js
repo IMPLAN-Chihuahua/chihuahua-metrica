@@ -18,15 +18,13 @@ export default function Home() {
         <meta name="description" content="Chihuahua Métrica es una plataforma digital innovadora impulsada por el Instituto de Planeación Integral del Municipio de Chihuahua para informar, monitorear y evaluar su transformación en el ámbito de la planeación urbana y territorial, a través de proyectos y herramientas fáciles de utilizar, entender e interpretar para que cualquier usuario que tome decisiones." />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <body>
-        <Splashscreen />
-        <EmblaCarousel />
-        <Container maxWidth='lg' sx={{ marginTop: 3 }}>
-          <PDU2040 />
-          <SatisfactionSurvey />
-          <PartnersStrip />
-        </Container>
-      </body>
+      <Splashscreen />
+      <EmblaCarousel />
+      <Container maxWidth='lg' sx={{ marginTop: 3 }}>
+        <PDU2040 />
+        <SatisfactionSurvey />
+        <PartnersStrip />
+      </Container>
     </>
   )
 }

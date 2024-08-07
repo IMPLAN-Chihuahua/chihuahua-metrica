@@ -8,7 +8,7 @@ import DimensionesList from '@components/dimension/GridDimensiones';
 
 const CRUMBS = [
   {
-    text: 'Chihuahua en Datos'
+    text: 'Sistema de Indicadores del PDUCP'
   }
 ]
 
@@ -21,22 +21,20 @@ export default function Modulo(props) {
   return (
     <>
       <Head>
-        <title name='start'>Chihuahua en Datos</title>
-        <meta name="description" content="Proyecto Chihuahua en Datos para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
+        <title name='start'>Sistema de Indicadores del PDUCP</title>
+        <meta name="description" content="Proyecto Sistema de Indicadores del PDUCPpara el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
         <PageBreadcrumb crumbs={[...CRUMBS]} />
         <section>
-          <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
+          <Title variant='h3' component='h1'>Sistema de Indicadores del PDUCP</Title>
           <Typography textAlign='start' variant='body1'>
-            Chihuahua en Datos ofrece a la ciudadanía los datos de la
-            estructura urbana, económica y social con el fin de dar a conocer la dirección
-            en la que se encuentra la ciudad y encontrar las áreas de oportunidad.
+            El Sistema de Indicadores del PDUCP ofrece a la ciudadanía los datos de las dimensiones evaluadas en el PDU2040, con el objetivo de monitorear diferentes aspectos de la ciudad de Chihuahua. Los indicadores presentados en este sistema permiten analizar la Infraestructura de Desarrollo, los ENtornos URbanos Consolidados y la Calidad de Vida y Sostenibilidad Ambiental mediante diferentes medios de obtención de datos representados mediante una ficha técnica.
           </Typography>
         </section>
         <br />
-        <Title variant='h5' component='h3'>Indicadores que te podrían interesar basados en su temática</Title>
+        <Title variant='h5' component='h3' sx={{ pb: 2 }}>Indicadores que te podrían interesar</Title>
         <Capsule />
         <br />
         <section>

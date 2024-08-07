@@ -91,7 +91,7 @@ export default function Modulo(props) {
   }, [page, selectedTema]);
 
   const CRUMBS = [{
-    text: 'Chihuahua en Datos',
+    text: 'Sistema de Indicadores del PDUCP',
     href: '/chihuahua-en-datos'
   }, {
     text: selectedTema.temaIndicador,

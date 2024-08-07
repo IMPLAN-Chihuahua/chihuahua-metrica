@@ -22,9 +22,7 @@ export default function Home() {
         <EmblaCarousel />
         <Container maxWidth='lg' sx={{ marginTop: 3 }}>
           <PDU2040 />
-          <ProjectsSection />
         </Container>
-        <StatsIndicadores />
         <SatisfactionSurvey />
         <PartnersStrip />
       </body>

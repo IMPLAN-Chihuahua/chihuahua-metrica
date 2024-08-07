@@ -114,7 +114,7 @@ const indicadores = (props) => {
 
 
     const CRUMBS = [{
-        text: 'Chihuahua en Datos',
+        text: 'Sistema de Indicadores del PDUCP',
         href: '/chihuahua-en-datos'
     }, {
         text: dimension.titulo,

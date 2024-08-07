@@ -12,11 +12,11 @@ import IndicadorOwner from '@components/commons/IndicadorOwner';
 
 
 export default function FichaTecnica(props) {
-  
+
   const { indicador, responsible, navigation } = props;
-  
+
   const CRUMBS = [{
-    text: 'Chihuahua en Datos',
+    text: 'Sistema de Indicadores del PDUCP',
     href: '/chihuahua-en-datos'
   }, {
     text: indicador.modulo.temaIndicador,
@@ -24,11 +24,11 @@ export default function FichaTecnica(props) {
   }, {
     text: indicador.nombre
   }];
-  
+
   if (props.errorCode) {
     return <Error statusCode={props.errorCode} message={props?.message} />
   }
-  
+
   return (
     <>
       <Head>

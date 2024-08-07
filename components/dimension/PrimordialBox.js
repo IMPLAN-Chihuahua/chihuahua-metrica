@@ -137,7 +137,7 @@ const Dimension = (props) => {
                     <Typography variant='h6' fontWeight={400} mb={1} >
                         {dimension.shortDescription}
                     </Typography>
-                    <Typography variant='body1' fontWeight={400} mb={3} sx={{
+                    <Typography variant='h6' fontWeight={400} mb={3} sx={{
                     }}>
                         {dimension.summary}
                     </Typography>

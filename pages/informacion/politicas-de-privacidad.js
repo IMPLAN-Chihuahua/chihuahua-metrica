@@ -5,7 +5,7 @@ import React from 'react';
 
 const CRUMBS = [
   {
-    text: 'Sistema de Indicadores del PDUCP'
+    text: 'Sistema de Indicadores del PDU2040 Séptima Actualización'
   }
 ]
 const policies = () => {

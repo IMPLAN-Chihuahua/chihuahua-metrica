@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from './EmblaCarouselButton.module.css'
-import { Button, IconButton } from "@mui/material";
+import { Button, IconButton, styled } from "@mui/material";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { grey } from "@mui/material/colors";
 
 export const usePrevNextButton = (emblaApi) => {
     const [prevBtnDisabled, setPrevDisabled] = useState(true);
@@ -43,14 +44,23 @@ export const usePrevNextButton = (emblaApi) => {
     }
 }
 
+const CustomIconButton = styled(IconButton)(({ theme }) => ({
+    color: theme.palette.getContrastText(grey[900]),
+    backgroundColor: grey[900],
+    '&:hover': {
+        backgroundColor: grey[700],
+        color: theme.palette.getContrastText(grey[700]),
+    }
+}))
+
 export const PrevButton = ({ disabled, onClick }) => (
-    <IconButton onClick={onClick} disabled={disabled} sx={{ backgroundColor: 'primary' }}>
+    <CustomIconButton onClick={onClick} disabled={disabled} size="large">
         <KeyboardArrowLeftIcon />
-    </IconButton>
+    </CustomIconButton>
 );
 
 export const NextButton = ({ disabled, onClick }) => (
-    <IconButton onClick={onClick} disabled={disabled}>
+    <CustomIconButton onClick={onClick} disabled={disabled} sx={{ ml: 1 }} size='large'>
         <KeyboardArrowRightIcon />
-    </IconButton>
+    </CustomIconButton>
 );

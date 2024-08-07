@@ -41,9 +41,12 @@
 
 
 .embla__controls {
+    max-width: var(--slide-size);
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 1rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    flex-direction: row;
     gap: .6rem;
     justify-content: space-between;
 }

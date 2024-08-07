@@ -113,7 +113,7 @@ const Indicadores = (props) => {
 
 
     const CRUMBS = [{
-        text: 'Sistema de Indicadores del PDUCP',
+        text: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
         href: '/chihuahua-en-datos'
     }, {
         text: dimension.titulo,
@@ -245,7 +245,7 @@ const Indicadores = (props) => {
                                                         }}
                                                     />
                                                 }
-                                                label={<Typography sx={{ fontSize: '12px' }}>{modulo.temaIndicador}</Typography>}
+                                                label={<Typography sx={{ fontSize: '14px' }}>{modulo.temaIndicador}</Typography>}
                                                 sx={{
                                                     borderRadius: '50px',
                                                     border: value.includes(modulo.id.toString()) ? `1px solid ${dimension.color}` : '1px solid #ccc',

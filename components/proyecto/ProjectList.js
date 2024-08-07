@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 
 const PROJECTS = [
   {
-    name: 'Sistema de Indicadores del PDUCP',
+    name: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
     url: '/chihuahua-en-datos',
     image: '/chihuahua-en-datos.webp'
   },

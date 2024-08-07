@@ -23,7 +23,7 @@ export default function Home() {
         <Container maxWidth='lg' sx={{ marginTop: 3 }}>
           <PDU2040 />
         </Container>
-        <SatisfactionSurvey />
+        {/* <SatisfactionSurvey /> */}
         <PartnersStrip />
       </body>
     </>

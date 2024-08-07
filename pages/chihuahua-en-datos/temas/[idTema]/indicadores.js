@@ -91,7 +91,7 @@ export default function Modulo(props) {
   }, [page, selectedTema]);
 
   const CRUMBS = [{
-    text: 'Sistema de Indicadores del PDUCP',
+    text: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
     href: '/chihuahua-en-datos'
   }, {
     text: selectedTema.temaIndicador,

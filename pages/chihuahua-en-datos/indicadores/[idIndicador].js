@@ -16,7 +16,7 @@ export default function FichaTecnica(props) {
   const { indicador, responsible, navigation } = props;
 
   const CRUMBS = [{
-    text: 'Sistema de Indicadores del PDUCP',
+    text: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
     href: '/chihuahua-en-datos'
   }, {
     text: indicador.modulo.temaIndicador,

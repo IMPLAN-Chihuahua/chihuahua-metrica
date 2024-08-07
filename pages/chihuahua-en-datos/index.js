@@ -8,7 +8,7 @@ import DimensionesList from '@components/dimension/GridDimensiones';
 
 const CRUMBS = [
   {
-    text: 'Sistema de Indicadores del PDUCP'
+    text: 'Sistema de Indicadores del PDU2040 Séptima Actualización'
   }
 ]
 
@@ -21,28 +21,29 @@ export default function Modulo(props) {
   return (
     <>
       <Head>
-        <title name='start'>Sistema de Indicadores del PDUCP</title>
-        <meta name="description" content="Proyecto Sistema de Indicadores del PDUCPpara el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
+        <title name='start'>Sistema de Indicadores del PDU2040 Séptima Actualización</title>
+        <meta name="description" content="Proyecto Sistema de Indicadores del PDU2040 para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
         <PageBreadcrumb crumbs={[...CRUMBS]} />
         <section>
-          <Title variant='h3' component='h1'>Sistema de Indicadores del PDUCP</Title>
+          <Title variant='h3' component='h1'>Sistema de Indicadores del PDU2040 Séptima Actualización</Title>
           <Typography textAlign='start' variant='body1'>
-            El Sistema de Indicadores del PDUCP ofrece a la ciudadanía los datos de las dimensiones evaluadas en el PDU2040, con el objetivo de monitorear diferentes aspectos de la ciudad de Chihuahua. Los indicadores presentados en este sistema permiten analizar la Infraestructura de Desarrollo, los ENtornos URbanos Consolidados y la Calidad de Vida y Sostenibilidad Ambiental mediante diferentes medios de obtención de datos representados mediante una ficha técnica.
+            El Sistema de Indicadores del PDU2040 ofrece a la ciudadanía los datos de las dimensiones evaluadas en el PDU2040, con el objetivo de monitorear diferentes aspectos de la ciudad de Chihuahua. Los indicadores presentados en este sistema permiten analizar la Infraestructura de Desarrollo, los Entornos Urbanos Consolidados y la Calidad de Vida y Sostenibilidad Ambiental mediante diferentes medios de obtención de datos representados mediante una ficha técnica.
           </Typography>
         </section>
-        <br />
-        <Title variant='h5' component='h3' sx={{ pb: 2 }}>Indicadores que te podrían interesar</Title>
-        <Capsule />
         <br />
         <section>
           <Title variant='h4' component='h2'>Indicadores separados por dimensión</Title>
           <Grid container rowSpacing={1} columnSpacing={1} sx={{ mb: 5 }}>
             <DimensionesList dimensiones={dimensiones} />
           </Grid>
+          <Title variant='h5' component='h3' sx={{ pb: 2 }}>Indicadores que te podrían interesar</Title>
         </section>
+        <Capsule />
+        <br />
+
         <section>
           {/* <Title variant='h4' component='h2'>Indicadores separados por temática</Title> */}
           {/* <Grid container rowSpacing={1} columnSpacing={1}>

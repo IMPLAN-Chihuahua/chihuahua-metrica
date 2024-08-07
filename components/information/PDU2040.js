@@ -8,7 +8,7 @@ const PDU2040 = () => {
     return (
         <Box >
             <Typography variant='h4' fontWeight={600} sx={{ pb: 1 }}>
-                Objetivo del Sistema de Indicadores del PDUCP
+                Sistema de Indicadores del PDU2040 Séptima Actualización
             </Typography>
             <Typography variant='body1' fontSize="1.3rem" sx={{ pb: 1 }}>
                 Es una herramienta que permite realizar un seguimiento constante del avance y cumplimiento de los objetivos establecidos en el PDU, revelando las fortalezas y debilidades del desarrollo urbano. Esto permite enfocar esfuerzos donde más se requiera y tomar decisiones de acuerdo a información clave para planificación y toma de decisiones efectivas.

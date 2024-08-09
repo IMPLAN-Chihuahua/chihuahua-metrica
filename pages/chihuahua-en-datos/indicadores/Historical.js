@@ -1,5 +1,5 @@
 import Graph from "pages/chihuahua-en-datos/indicadores/BarChart";
-import CustomTable from "@components/indicador/Datasheet/CustomTable";
+import HistoricalTable from "pages/chihuahua-en-datos/indicadores/HistoricalTable";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
@@ -17,7 +17,7 @@ function HistoricalValues({ history }) {
   return (
     <Grid container columnSpacing={2}>
       <Grid item xs={12} md>
-        <CustomTable data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
+        <HistoricalTable data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
       </Grid>
       <Grid item xs={12} md>
         <Graph data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />

@@ -55,8 +55,8 @@ const Graph = ({ data, lastValue, lastYear }) => {
           width={'auto'}
           height={'165%'}
         />
-        <Box sx={{ mt: '1.6%' }}>
-          <Typography variant="p" sx={{ fontSize: '14px', fontWeight: 'bold', color: theme.palette.primary.subtleMain, pt: 10 }}>
+        <Box sx={{ mt: 1 }}>
+          <Typography variant="caption">
             Gráfica de barras representativa del valor en los últimos años disponibles
           </Typography>
         </Box>

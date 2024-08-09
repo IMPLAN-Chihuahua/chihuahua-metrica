@@ -1,12 +1,10 @@
-import VariableList from "@components/variable/VariableList";
 import Box from "@mui/material/Box";
 import MathJax from "react-mathjax";
-import style from './Formula.module.css'
 import { Typography } from "@mui/material";
 import OracionList from "@components/variable/OracionList";
 import VariablesTable from "@components/variable/VariablesTable";
 
-const Formula = ({ formula, fuente }) => {
+const Formula = ({ formula}) => {
   return (
     <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flexGrow: 1 }}>
       {formula === null || formula.ecuacion === 'Consultar fuente'

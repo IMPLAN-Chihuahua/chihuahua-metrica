@@ -1,32 +1,28 @@
-import Graph from "@components/indicador/Datasheet/Graph";
+import Graph from "pages/chihuahua-en-datos/indicadores/BarChart";
 import CustomTable from "@components/indicador/Datasheet/CustomTable";
-import Title from "@components/commons/Title";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 const GraphBox = (history) => {
   const { history: data } = history;
   if (Object.keys(data.historicos).length === 0) {
-    return HistoricalValuesNotExists(history);
+    return <HistoricalValuesNotExists />;
   } else {
-    return HistoricalValuesExists(history);
+    return <HistoricalValues history={history} />;
   }
 };
 
-function HistoricalValuesExists(history) {
+function HistoricalValues({ history }) {
   const { history: data } = history;
   return (
-    <Box sx={{ mt: 3, mb: 3 }}>
-      <Title variant='h4' component='h2'>Valores históricos</Title>
-      <Grid container columnSpacing={1}>
-        <Grid item xs={12} md={6}>
-          <CustomTable data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Graph data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
-        </Grid>
+    <Grid container columnSpacing={2}>
+      <Grid item xs={12} md>
+        <CustomTable data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
       </Grid>
-    </Box>
+      <Grid item xs={12} md>
+        <Graph data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
+      </Grid>
+    </Grid>
   );
 };
 

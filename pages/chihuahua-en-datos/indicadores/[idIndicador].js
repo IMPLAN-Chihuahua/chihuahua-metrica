@@ -1,14 +1,13 @@
 import Error from '../../_error'
-import Container from "@mui/material/Container";
-import MapButton from "@components/indicador/Datasheet/MapButton";
-import TopData from "@components/indicador/Datasheet/TopData";
-import DataSheet from "@components/indicador/Datasheet/DataSheet";
-import GraphBox from "@components/indicador/Datasheet/GraphBox";
-import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import Head from "next/head";
-import NavBackAndFoward from "@components/commons/NavBackAndFoward";
-import { Box } from "@mui/material";
-import IndicadorOwner from '@components/commons/IndicadorOwner';
+import Container from "@mui/material/Container";
+import Header from "./Header";
+import HistoricalData from "./Historical";
+import PageBreadcrumb from "@components/commons/PageBreadcrumb";
+import { Stack, Typography } from "@mui/material";
+import Owner from '@components/commons/IndicadorOwner';
+import Formula from '@components/indicador/Datasheet/Formula';
+import { IndicadorStats as Stats } from './Stats';
 
 
 export default function FichaTecnica(props) {
@@ -32,42 +31,51 @@ export default function FichaTecnica(props) {
   return (
     <>
       <Head>
-        <title>{indicador?.nombre}</title>
-        <meta name="description" content={indicador?.descripcion} />
+        <title>{indicador.nombre}</title>
+        <meta name="description" content={indicador.descripcion} />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Container sx={{ mb: 3, mt: 3 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: { xs: 'flex-end', lg: 'space-between' },
-            paddingTop: 1,
-            paddingBottom: 1,
-            alignItems: 'center'
-          }}>
-          <PageBreadcrumb crumbs={[...CRUMBS]} />
-          <NavBackAndFoward
-            prev={{
-              title: 'Indicador anterior',
-              disabled: navigation.prev == null,
-              link: `/chihuahua-en-datos/indicadores/${navigation.prev}`
-            }}
-            next={{
-              title: 'Siguiente indicador',
-              disabled: navigation.next == null,
-              link: `/chihuahua-en-datos/indicadores/${navigation.next}`
-            }}
+        <PageBreadcrumb crumbs={CRUMBS} />
+        <Stack spacing={6} mt={3}>
+          <Header info={indicador} />
+          <Stats
+            ultimoValor={indicador.ultimoValorDisponible}
+            anioReferencia={indicador.anioUltimoValorDisponible}
+            tendencia={indicador.tendenciaActual}
+            cobertura={indicador.catalogos[2].nombre}
           />
-        </Box>
-        <TopData info={indicador} />
-        <DataSheet datasheet={indicador} />
-        <GraphBox history={indicador} />
-        <MapButton mapa={indicador.mapa} />
-        <IndicadorOwner responsible={responsible.data} indicadorDate={indicador.updatedAt} indicadorName={indicador.nombre} />
+          <section>
+            <Typography fontStyle='italic' variant='body2'>{indicador.fuente}</Typography>
+          </section>
+          {/* TODO: ADD ELI5 SECTION */}
+          {
+            indicador?.formula && (
+              <section>
+                <Typography variant='h5' mb={2}>Fórmula</Typography>
+                <Formula formula={indicador?.formula} />
+              </section>
+            )
+          }
+          <section>
+            <Typography variant='h5' mb={2}>Históricos</Typography>
+            <HistoricalData history={indicador} />
+          </section>
+          <section>
+            <Typography variant='h5' mb={2}>Responsable</Typography>
+            <Owner
+              responsible={responsible.data}
+              indicadorDate={indicador.updatedAt}
+              indicadorName={indicador.nombre}
+            />
+          </section>
+          {/* TODO: ADD RELATED INDICADORES */}
+        </Stack>
       </Container>
     </>
   );
 }
+
 
 export async function getServerSideProps(context) {
   const idIndicador = context.params.idIndicador;

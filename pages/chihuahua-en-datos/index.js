@@ -1,10 +1,5 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import Head from 'next/head';
-import TemaList from '@components/proyecto/GridModulos';
-import Title from '@components/commons/Title';
-import PageBreadcrumb from '@components/commons/PageBreadcrumb';
-import Capsule from '@components/indicador/Capsule';
-import DimensionesList from '@components/dimension/GridDimensiones';
 import IndicadoresPDU2040 from '@components/information/IndicadoresPDU2040';
 import TemasBook from '@components/proyecto/TemasBook';
 
@@ -29,15 +24,23 @@ export default function Modulo(props) {
       </Head>
       <IndicadoresPDU2040 dimensiones={dimensiones} />
 
-      <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
-        <TemasBook />
+      <Box sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        pr: 20,
+        pl: 20,
+
+      }}>
+        <TemasBook modulos={modulos} />
 
         {/* <Title variant='h4' component='h2'>Indicadores separados por dimensión</Title> */}
 
         <section>
           {/* <Typography textAlign='start' variant='body1'>
             El Sistema de Indicadores del PDU2040 ofrece a la ciudadanía los datos de las dimensiones evaluadas en el PDU2040, con el objetivo de monitorear diferentes aspectos de la ciudad de Chihuahua. Los indicadores presentados en este sistema permiten analizar la Infraestructura de Desarrollo, los Entornos Urbanos Consolidados y la Calidad de Vida y Sostenibilidad Ambiental mediante diferentes medios de obtención de datos representados mediante una ficha técnica.
-          </Typography> */}
+            </Typography> */}
         </section>
         <br />
         {/* <Capsule /> */}
@@ -49,7 +52,7 @@ export default function Modulo(props) {
             <TemaList modulos={modulos} />
           </Grid> */}
         </section>
-      </Container>
+      </Box>
     </>
   );
 };

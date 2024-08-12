@@ -5,6 +5,8 @@ import Title from '@components/commons/Title';
 import PageBreadcrumb from '@components/commons/PageBreadcrumb';
 import Capsule from '@components/indicador/Capsule';
 import DimensionesList from '@components/dimension/GridDimensiones';
+import IndicadoresPDU2040 from '@components/information/IndicadoresPDU2040';
+import TemasBook from '@components/proyecto/TemasBook';
 
 const CRUMBS = [
   {
@@ -25,23 +27,20 @@ export default function Modulo(props) {
         <meta name="description" content="Proyecto Sistema de Indicadores del PDU2040 para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
         <link rel="icon" href="/icon.ico" />
       </Head>
+      <IndicadoresPDU2040 dimensiones={dimensiones} />
+
       <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
-        <PageBreadcrumb crumbs={[...CRUMBS]} />
+        <TemasBook />
+
+        {/* <Title variant='h4' component='h2'>Indicadores separados por dimensión</Title> */}
+
         <section>
-          <Title variant='h3' component='h1'>Sistema de Indicadores del PDU2040 Séptima Actualización</Title>
-          <Typography textAlign='start' variant='body1'>
+          {/* <Typography textAlign='start' variant='body1'>
             El Sistema de Indicadores del PDU2040 ofrece a la ciudadanía los datos de las dimensiones evaluadas en el PDU2040, con el objetivo de monitorear diferentes aspectos de la ciudad de Chihuahua. Los indicadores presentados en este sistema permiten analizar la Infraestructura de Desarrollo, los Entornos Urbanos Consolidados y la Calidad de Vida y Sostenibilidad Ambiental mediante diferentes medios de obtención de datos representados mediante una ficha técnica.
-          </Typography>
+          </Typography> */}
         </section>
         <br />
-        <section>
-          <Title variant='h4' component='h2'>Indicadores separados por dimensión</Title>
-          <Grid container rowSpacing={1} columnSpacing={1} sx={{ mb: 5 }}>
-            <DimensionesList dimensiones={dimensiones} />
-          </Grid>
-          <Title variant='h5' component='h3' sx={{ pb: 2 }}>Indicadores que te podrían interesar</Title>
-        </section>
-        <Capsule />
+        {/* <Capsule /> */}
         <br />
 
         <section>

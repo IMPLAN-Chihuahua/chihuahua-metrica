@@ -10,7 +10,6 @@ import BackToTop from "./BackToTop";
 import { Grid, IconButton, Box } from "@mui/material";
 import NextLink from "next/link";
 import { ArrowBackIosNew } from "@mui/icons-material";
-import Modal from '@mui/material/Modal';
 
 import style from './Header.module.css'
 
@@ -117,6 +116,7 @@ const Header = () => {
           }
         </Grid>
       </AppBar>
+
       <BackToTop>
         <Fab sx={{
           backgroundColor: "primary.subtleMain",
@@ -130,16 +130,6 @@ const Header = () => {
           <KeyboardArrowUp />
         </Fab>
       </BackToTop>
-
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-      >
-        <Box sx={modalStyle}>
-          <iframe width="1180" height="480" src="https://www.youtube.com/embed/5Jc6aMbJkAc" title="Métrica  Chihuahua" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </Box>
-      </Modal>
     </>
   )
 }

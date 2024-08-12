@@ -1,17 +1,9 @@
 .card {
-  height: 200px;
-  color: white;
+  height: 160px;
   transition: font-size 0.2s linear;
   cursor: pointer;
 }
 
-.divider {
-  border: none;
-  width: 5px;
-  height: 5px;
-  margin-left: 0;
-  transition: all 0.2s linear;
-}
 
 @media only screen and (max-width: 810px) {
   .divider {
@@ -23,4 +15,10 @@
 
 .divider-extended {
   width: 80%;
+}
+
+.inter {
+  font-family: "Inter", sans-serif !important;
+  padding-left: 10px;
+  padding-right: 10px;
 }

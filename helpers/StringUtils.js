@@ -57,6 +57,16 @@ const hexAsRGBA = (hex, alpha) => {
     } else {
         return "rgb(" + r + ", " + g + ", " + b + ")";
     }
+};
+
+const usefulString = (descripcion) => {
+    const definition = descripcion.replace('Los indicadores que se presentan ', '');
+
+    if (definition.length > 130) {
+        const ellipsis = definition.substring(0, 130) + '...';
+        return ellipsis.charAt(0).toUpperCase() + ellipsis.slice(1);
+    }
+    return definition.charAt(0).toUpperCase() + definition.slice(1);
 }
 
-export { toTitleCase, serialize, toUnderScoreCase, assignMonths, hexAsRGBA };
+export { toTitleCase, serialize, toUnderScoreCase, assignMonths, hexAsRGBA, usefulString };

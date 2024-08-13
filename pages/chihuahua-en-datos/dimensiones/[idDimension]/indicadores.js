@@ -49,7 +49,7 @@ const Indicadores = (props) => {
 
     const getIndicadores = useCallback((page, searchQuery, filters) => {
         const { idOds, idCobertura, anioUltimoValorDisponible, idUnidadMedida, idModulo } = filters;
-
+        console.log(idModulo);
         const queryParams = new URLSearchParams({
             page,
             idDimension: dimension.id,
@@ -93,6 +93,7 @@ const Indicadores = (props) => {
             filterValues.idCobertura = data.cobertura?.id;
             filterValues.anioUltimoValorDisponible = data?.anio?.getFullYear();
             filterValues.idUnidadMedida = data.medida?.id;
+            filterValues.idModulo = data.modulos;
             setFilters(filterValues)
         });
         return () => subscription.unsubscribe();
@@ -108,6 +109,7 @@ const Indicadores = (props) => {
 
     useEffect(() => {
         const savedPage = parseInt(localStorage.getItem('indicadores-page'))
+        console.log(filters);
         getIndicadores(savedPage || 1, search, filters);
     }, [getIndicadores])
 

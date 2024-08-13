@@ -18,6 +18,16 @@
     padding-left: 3%;
 }
 
+.subtitle {
+    font-family: "Inter", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+}
+
+.text {
+    font-family: "Inter", sans-serif !important;
+}
+
 .bigBoxElementLeft {
     padding-bottom: 10%;
 }

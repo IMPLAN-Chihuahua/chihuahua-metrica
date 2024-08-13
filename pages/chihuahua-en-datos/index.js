@@ -2,7 +2,8 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import Head from 'next/head';
 import IndicadoresPDU2040 from '@components/information/IndicadoresPDU2040';
 import TemasBook from '@components/proyecto/TemasBook';
-
+import AboutIndicadores from '@components/information/AboutIndicadores';
+import style from './ChihEnDatos.module.css';
 const CRUMBS = [
   {
     text: 'Sistema de Indicadores del PDU2040 Séptima Actualización'
@@ -23,6 +24,7 @@ export default function Modulo(props) {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <IndicadoresPDU2040 dimensiones={dimensiones} />
+      <AboutIndicadores />
 
       <Box sx={{
         display: 'flex',
@@ -33,25 +35,16 @@ export default function Modulo(props) {
         pl: 20,
 
       }}>
+        <Typography
+          variant='h3'
+          component='h1'
+          fontWeight={600}
+          className={style.subtitle}
+          textAlign={'center'}
+        >
+          Temas de interés
+        </Typography>
         <TemasBook modulos={modulos} />
-
-        {/* <Title variant='h4' component='h2'>Indicadores separados por dimensión</Title> */}
-
-        <section>
-          {/* <Typography textAlign='start' variant='body1'>
-            El Sistema de Indicadores del PDU2040 ofrece a la ciudadanía los datos de las dimensiones evaluadas en el PDU2040, con el objetivo de monitorear diferentes aspectos de la ciudad de Chihuahua. Los indicadores presentados en este sistema permiten analizar la Infraestructura de Desarrollo, los Entornos Urbanos Consolidados y la Calidad de Vida y Sostenibilidad Ambiental mediante diferentes medios de obtención de datos representados mediante una ficha técnica.
-            </Typography> */}
-        </section>
-        <br />
-        {/* <Capsule /> */}
-        <br />
-
-        <section>
-          {/* <Title variant='h4' component='h2'>Indicadores separados por temática</Title> */}
-          {/* <Grid container rowSpacing={1} columnSpacing={1}>
-            <TemaList modulos={modulos} />
-          </Grid> */}
-        </section>
       </Box>
     </>
   );

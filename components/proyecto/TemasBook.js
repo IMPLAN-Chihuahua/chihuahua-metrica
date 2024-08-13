@@ -2,6 +2,7 @@ import { Box, Card, Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Tema } from './GridModulos';
 import IndicadorHover from './IndicadorHover';
+import style from './Project.module.css'
 
 const TemasBook = (props) => {
     const { modulos } = props
@@ -38,8 +39,8 @@ const TemasBook = (props) => {
             sx={{
                 pr: 5,
                 pl: 5,
-                mt: 20,
-                pb: 5
+                pb: 5,
+                mt: 5
             }}
         >
             <Grid item xs={12} md={6} sx={{
@@ -50,16 +51,7 @@ const TemasBook = (props) => {
             }}>
                 <IndicadorHover indicador={indicador} />
             </Grid>
-            <Grid item xs={12} md={6} sx={{
-                maxHeight: '800px',
-                overflowY: 'auto',
-                scrollbarWidth: 'thin',
-                scrollbarColor: 'grey',
-                scrollbarTrackColor: 'white',
-
-                scrollBehavior: 'smooth',
-
-            }}>
+            <Grid item xs={12} md={6} >
                 <ModulosCard modulos={modulosWithIndicadores} setidModulo={setidModulo} setBackgroundColor={setBackgroundColor} />
             </Grid>
         </Grid>
@@ -68,7 +60,14 @@ const TemasBook = (props) => {
 
 const ModulosCard = ({ modulos, setidModulo, setBackgroundColor }) => {
     return (
-        <Grid container>
+        <Grid container sx={{
+            maxHeight: '800px',
+            overflowY: 'auto',
+            scrollbarWidth: 'thin',
+            scrollbarColor: 'grey',
+            scrollbarTrackColor: 'white',
+            scrollBehavior: 'smooth',
+        }}>
             {
                 modulos?.map((modulo, idx) => (
                     <Grid item xs={12} md={6} key={idx} sx={{

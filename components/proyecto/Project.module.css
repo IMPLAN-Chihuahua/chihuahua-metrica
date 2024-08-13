@@ -19,12 +19,17 @@
 }
 
 
-.card-proyecto:hover, .card-title:hover {
-  background-color:rgb(0, 0, 0, .9);
+.card-proyecto:hover,
+.card-title:hover {
+  background-color: rgb(0, 0, 0, .9);
 }
 
 .card-title {
   color: #fff;
   font-size: large;
   margin: 0;
+}
+
+.inter {
+  font-family: 'Inter', sans-serif !important;
 }

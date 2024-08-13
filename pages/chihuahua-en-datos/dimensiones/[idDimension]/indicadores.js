@@ -52,7 +52,6 @@ const Indicadores = (props) => {
         console.log(idModulo);
         const queryParams = new URLSearchParams({
             page,
-            idDimension: dimension.id,
             ...(searchQuery.length > 0 && { searchQuery: searchQuery.trim() }),
             ...(idOds > 0 && { idOds }),
             ...(anioUltimoValorDisponible > 0 && { anioUltimoValorDisponible }),
@@ -62,7 +61,7 @@ const Indicadores = (props) => {
 
         });
 
-        const url = `${process.env.INDICADORES_BASE_URL}/dimensiones/indicadores?${queryParams}`;
+        const url = `${process.env.INDICADORES_BASE_URL}/dimensiones/${dimension.id}/indicadores?${queryParams}`;
         fetch(url)
             .then(res => {
                 if (res.ok) {
@@ -230,32 +229,34 @@ const Indicadores = (props) => {
                                         key={modulo.id}
                                         control={methods.control}
                                         render={({ field: { value, onChange } }) => (
-                                            <FormControlLabel
-                                                control={
-                                                    <Checkbox
-                                                        size="small"
-                                                        icon={<PanoramaFishEye />}
-                                                        checkedIcon={<CheckCircleIcon />}
-                                                        onChange={onChange}
-                                                        value={modulo.id}
-                                                        {...methods.register('modulos')}
-                                                        sx={{
-                                                            color: dimension.color,
-                                                            '&.Mui-checked': {
+                                            <>
+                                                <FormControlLabel
+                                                    control={
+                                                        <Checkbox
+                                                            size="small"
+                                                            icon={<PanoramaFishEye />}
+                                                            checkedIcon={<CheckCircleIcon />}
+                                                            onChange={(item) =>  onChange(item.id)}
+                                                            value={value}
+                                                            {...methods.register('modulos')}
+                                                            sx={{
                                                                 color: dimension.color,
-                                                            },
-                                                        }}
-                                                    />
-                                                }
-                                                label={<Typography sx={{ fontSize: '14px' }}>{modulo.temaIndicador}</Typography>}
-                                                sx={{
-                                                    borderRadius: '50px',
-                                                    border: value.includes(modulo.id.toString()) ? `1px solid ${dimension.color}` : '1px solid #ccc',
-                                                    p: '1px',
-                                                    pr: '10px',
-                                                    backgroundColor: value.includes(modulo.id.toString()) ? hexAsRGBA(dimension.color, 0.1) : 'transparent',
-                                                }}
-                                            />
+                                                                '&.Mui-checked': {
+                                                                    color: dimension.color,
+                                                                },
+                                                            }}
+                                                        />
+                                                    }
+                                                    label={<Typography sx={{ fontSize: '14px' }}>{modulo.temaIndicador}</Typography>}
+                                                    sx={{
+                                                        borderRadius: '50px',
+                                                        border: value?.includes(modulo.id.toString()) ? `1px solid ${dimension.color}` : '1px solid #ccc',
+                                                        p: '1px',
+                                                        pr: '10px',
+                                                        backgroundColor: value?.includes(modulo.id.toString()) ? hexAsRGBA(dimension.color, 0.1) : 'transparent',
+                                                    }}
+                                                />
+                                            </>
                                         )}
                                     />
                                 ))
@@ -345,7 +346,7 @@ export async function getServerSideProps(context) {
             fetch(`${baseUrl}/catalogos/${ODS_ID}`),
             fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA_ID}`),
             fetch(`${baseUrl}/catalogos/${COBERTURA_GEOGRAFICA_ID}`),
-            fetch(`${baseUrl}/dimensiones/${idDimension}/modulos`)
+            fetch(`${baseUrl}/dimensiones/${idDimension}/temas`)
         ]);
 
     const [ods, medidas, coberturas, modulos] = await Promise.all([

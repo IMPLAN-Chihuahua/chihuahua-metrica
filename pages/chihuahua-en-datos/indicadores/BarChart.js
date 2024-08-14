@@ -28,7 +28,7 @@ const Graph = ({ data, lastValue, lastYear }) => {
       {
         label: "Valor registrado",
         backgroundColor: 'rgba(8, 32, 62, 1)',
-        hoverBackgroundColor: 'rgba(8, 32, 62, 1)',
+        hoverBackgroundColor: 'rgba(85, 124, 147, 1)',
         borderColor: `${theme.palette.primary.main}`,
         borderWidth: 1,
         data: sortedData.map((historico) => historico.valor),

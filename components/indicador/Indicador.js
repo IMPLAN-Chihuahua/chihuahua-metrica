@@ -32,7 +32,7 @@ const Indicador = (props) => {
                 />
 
               )}
-              <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2}>
+              <Grid container justifyContent='center' spacing={4}>
                 <Grid item sm container direction='column'>
                   <Grid item>
                     <Typography
@@ -76,7 +76,7 @@ const Indicador = (props) => {
                       orientation='vertical'
                       variant='middle'
                       flexItem
-                      sx={{ borderRightWidth: 2 }}
+                      sx={{ borderRightWidth: 2, minHeight: '4rem', maxHeight: '5rem' }}
                     />
                     <Grid
                       item
@@ -122,7 +122,7 @@ const Indicador = (props) => {
                       orientation='vertical'
                       variant='middle'
                       flexItem
-                      sx={{ borderRightWidth: 2 }}
+                      sx={{ borderRightWidth: 2, minHeight: '4rem', maxHeight: '5rem', }}
                     />
                     <Grid
                       item

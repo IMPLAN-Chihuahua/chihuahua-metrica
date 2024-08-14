@@ -10,6 +10,7 @@ import Instagram from '@mui/icons-material/Instagram';
 import NextLink from 'next/link';
 import { Link as MUILink } from '@mui/material';
 import { YouTube } from '@mui/icons-material';
+import XIcon from '@mui/icons-material/X';
 
 const Footer = () => {
   return (
@@ -20,7 +21,6 @@ const Footer = () => {
         paddingLeft={5}
         paddingRight={5}
         paddingTop={4}
-        backgroundColor='primary.main'
         color='white'
       >
         <Stack
@@ -108,17 +108,17 @@ const Footer = () => {
                   target='_blank'
                   rel='noreferrer noopener'
                   className={styles.underline}>
-                  <Facebook fontSize='large' style={{ color: '#4267B2' }} />
+                  <Facebook fontSize='large' />
                 </a>
               </NextLink>
               <NextLink href='https://twitter.com/IMPLANChih?s=08' passHref={true}>
                 <a
-                  alt="Ícono de Twitter que redirecciona hacia al perfil del IMPLAN"
+                  alt="Ícono de X (antes conocido como Twitter) que redirecciona hacia al perfil del IMPLAN"
                   title='¡Síguenos en Twitter!'
                   target='_blank'
                   rel='noreferrer noopener'
                   className={styles.underline}>
-                  <Twitter fontSize='large' style={{ color: '#1DA1F2' }} />
+                  <XIcon fontSize='large' />
                 </a>
               </NextLink>
               <NextLink href='https://www.instagram.com/implanchihuahua/' passHref={true}>
@@ -127,17 +127,17 @@ const Footer = () => {
                   target='_blank'
                   rel='noreferrer noopener'
                   className={styles.underline}>
-                  <Instagram fontSize='large' style={{ color: '#E1306C' }} />
+                  <Instagram fontSize='large' />
                 </a>
               </NextLink>
               <NextLink href='https://www.youtube.com/channel/UCOVGOuYfPdbttVLNz0yjGSg' passHref={true}>
                 <a
-                  alt='Ícono de Instagram que redirecciona al perfil del IMPLAN'
+                  alt='Ícono de Youtube que redirecciona al canal del IMPLAN'
                   title='¡Síguenos en YouTube!'
                   target='_blank'
                   rel='noreferrer noopener'
                   className={styles.underline}>
-                  <YouTube fontSize='large' style={{ color: '#FF0000' }} />
+                  <YouTube fontSize='large' />
                 </a>
               </NextLink>
             </Stack>

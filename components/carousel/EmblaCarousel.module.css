@@ -27,7 +27,8 @@
 .embla__slide__content {
     position: relative;
     color: white;
-    background: rgb(2,0,36);/* linear-gradient(27deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 60%, rgba(0,212,255,1) 100%); */
+    background: rgb(2, 0, 36);
+    /* linear-gradient(27deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 60%, rgba(0,212,255,1) 100%); */
     height: var(--slide-height);
     border-radius: .8rem;
     user-select: none;
@@ -53,4 +54,49 @@
 
 .embla__dots {
     display: flex;
+}
+
+
+/* for mobile */
+
+@media (max-width: 768px) {
+    .embla {
+        max-width: 100%;
+        --slide-height: 75vh;
+        --slide-spacing: 0;
+        --slide-size: 100%;
+    }
+
+
+    .embla__viewport {
+        overflow: auto;
+    }
+
+
+    .embla__container {
+        display: flex;
+        touch-action: pan-y pinch-zoom;
+        margin-left: calc(var(--slide-spacing) * -1);
+    }
+
+    .embla__arrows {
+        display: none;
+    }
+
+    .embla__slide__content {
+        padding-left: 10px;
+        border-radius: 0px;
+    }
+
+    .embla__slide__description {
+        font-weight: 500 !important;
+    }
+
+    .embla__slide__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
 }

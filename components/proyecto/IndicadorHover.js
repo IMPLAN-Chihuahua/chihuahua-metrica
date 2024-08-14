@@ -73,7 +73,7 @@ const IndicadorHover = ({ indicador }) => {
                                     {indicador.definicion}
                                 </Typography>
                                 <Typography variant='subtitle1' component='h2' textAlign={'center'} color={'white'}>
-                                    Este indicador forma parte del objetivo del objetivo de {indicador.dimension.titulo}
+                                    Este indicador forma parte del objetivo del objetivo de {indicador.objetivos[0].titulo}
                                 </Typography>
 
                                 <NextLink

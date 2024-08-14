@@ -35,26 +35,47 @@ const TemasBook = (props) => {
     }, [idModulo])
 
     return (
-        <Grid container
+        <Box
             sx={{
-                pr: 5,
-                pl: 5,
-                pb: 5,
-                mt: 5
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                pr: 20,
+                pl: 20,
             }}
         >
-            <Grid item xs={12} md={6} sx={{
-                backgroundColor: backgroundColor ? backgroundColor : '#123d70'
-                , transition:
-                    'background-color 0.3s ease-in-out',
-                borderRadius: 2,
-            }}>
-                <IndicadorHover indicador={indicador} />
+            <Typography
+                variant='h3'
+                component='h1'
+                fontWeight={600}
+                className={style.subtitle}
+                textAlign={'center'}
+            >
+                Temas de interés
+            </Typography>
+            <Grid container
+                sx={{
+                    pr: 5,
+                    pl: 5,
+                    mt: 5,
+                    mb: 5,
+                }}
+            >
+                <Grid item xs={12} md={6}
+                    sx={{
+                        backgroundColor: backgroundColor ? backgroundColor : '#123d70',
+                        transition: 'background-color 0.3s ease-in-out',
+                        borderRadius: '20px 0px 0px 20px',
+                    }}>
+                    <IndicadorHover indicador={indicador} />
+                </Grid>
+                <Grid item xs={12} md={6} >
+                    <ModulosCard modulos={modulosWithIndicadores} setidModulo={setidModulo} setBackgroundColor={setBackgroundColor} />
+                </Grid>
             </Grid>
-            <Grid item xs={12} md={6} >
-                <ModulosCard modulos={modulosWithIndicadores} setidModulo={setidModulo} setBackgroundColor={setBackgroundColor} />
-            </Grid>
-        </Grid>
+        </Box>
+
     )
 };
 

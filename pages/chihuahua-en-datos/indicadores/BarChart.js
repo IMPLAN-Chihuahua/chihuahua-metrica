@@ -10,7 +10,6 @@ import {
 } from "chart.js";
 import theme from "styles/theme";
 import { Box, Typography } from "@mui/material";
-import { useEffect } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -28,8 +27,8 @@ const Graph = ({ data, lastValue, lastYear }) => {
     datasets: [
       {
         label: "Valor registrado",
-        backgroundColor: ['#D12D6A', '#C62C6B', '#BC2B6B', '#B12A6C', '#A6296C', '#9C286D', '#91276E', '#86256E', '#7B246F', '#712370', '#662270'].reverse(),
-        hoverBackgroundColor: ['#D12D6A', '#C62C6B', '#BC2B6B', '#B12A6C', '#A6296C', '#9C286D', '#91276E', '#86256E', '#7B246F', '#712370', '#662270'],
+        backgroundColor: 'rgba(8, 32, 62, 1)',
+        hoverBackgroundColor: 'rgba(85, 124, 147, 1)',
         borderColor: `${theme.palette.primary.main}`,
         borderWidth: 1,
         data: sortedData.map((historico) => historico.valor),
@@ -48,19 +47,13 @@ const Graph = ({ data, lastValue, lastYear }) => {
 
   return (
     <>
-      <Box sx={{ textAlign: 'center', width: 'auto', height: 'auto' }}>
-        <Bar
-          data={state}
-          options={options}
-          width={'auto'}
-          height={'165%'}
-        />
-        <Box sx={{ mt: 1 }}>
-          <Typography variant="caption">
-            Gráfica de barras representativa del valor en los últimos años disponibles
-          </Typography>
-        </Box>
-      </Box>
+      <Bar
+        data={state}
+        options={options}
+      />
+      <Typography variant="caption" mt={1}>
+        Gráfica de barras representativa del valor en los últimos años disponibles
+      </Typography>
     </>
   );
 };

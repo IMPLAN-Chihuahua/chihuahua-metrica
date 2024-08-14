@@ -117,7 +117,7 @@ const Indicadores = (props) => {
         text: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
         href: '/chihuahua-en-datos'
     }, {
-        text: dimension.titulo,
+        text: `${dimension.titulo.substring(0, 50)}${dimension.titulo.length > 50 ? '...' : ''}`,
     }];
 
     if (hasError) {
@@ -158,24 +158,18 @@ const Indicadores = (props) => {
                 </Box>
 
                 <Stack
-                    direction='row'
-                    mb={3}
+                    direction={{ xs: 'column', md: 'row' }}
+                    my={{ xs: 1, md: 3 }}
                     spacing={2}
-                    flexWrap={{ xs: 'wrap', md: 'nowrap' }}
-                    justifyContent='space-between'
-                    divider={
-                        <Divider
-                            orientation='vertical'
-                            flexItem
-                            sx={{ backgroundColor: dimension.color, width: 3, height: '180px', alignSelf: 'center' }} />
-                    }
+                    justifyContent='space-around'
                 >
                     <Box
                         sx={{
-                            width: { xs: '100%' },
+                            minWidth: { xs: '100%', sm: 500, md: 400 },
                             maxWidth: 400,
                             height: 250,
                             position: 'relative',
+                            alignSelf: { xs: 'center', md: 'flex-start' }
                         }}>
                         <Image
                             loader={() => dimension.urlImagen}
@@ -185,10 +179,10 @@ const Indicadores = (props) => {
                         />
                     </Box>
                     <Box
-                        component='section'
                         sx={{
-                            mt: { xs: 1, md: 0 },
-                            wordWrap: 'break-word'
+                            flex: 1,
+                            wordWrap: 'break-word',
+                            alignSelf: 'flex-start'
                         }}>
                         <Title variant='h4' component='h1'>{dimension.titulo}</Title>
                         <Typography>{dimension.descripcion}</Typography>
@@ -236,7 +230,7 @@ const Indicadores = (props) => {
                                                             size="small"
                                                             icon={<PanoramaFishEye />}
                                                             checkedIcon={<CheckCircleIcon />}
-                                                            onChange={(item) =>  onChange(item.id)}
+                                                            onChange={(item) => onChange(item.id)}
                                                             value={value}
                                                             {...methods.register('modulos')}
                                                             sx={{
@@ -326,7 +320,6 @@ const IndicadorSearchBar = ({ setSearch }) => {
 export async function getServerSideProps(context) {
     const baseUrl = process.env.INDICADORES_BASE_URL;
     const { idDimension } = context.params;
-
     const selectedDimensionRes = await fetch(`${baseUrl}/dimensiones/${idDimension}`);
     const errorCode = selectedDimensionRes.ok ? false : selectedDimensionRes.status;
     const selectedDimension = await selectedDimensionRes.json();

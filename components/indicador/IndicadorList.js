@@ -9,7 +9,7 @@ const IndicadorList = (props) => {
       {
         indicadores.length > 0
           ? indicadores.map(elem => <Indicador value={elem} key={elem.id} fontColor={props.fontColor} />)
-          : <Alert severity="warning">Indicadores no disponibles</Alert>
+          : <Alert severity="warning">No se encontraron indicadores</Alert>
       }
     </Stack>
   );

@@ -16,6 +16,8 @@ const compareIds = (a, b) => a.idCatalogo - b.idCatalogo;
 const Indicador = (props) => {
   const indicador = props.value;
   const objetivo = indicador.objetivos[0]
+  const ods = indicador.catalogos.find(c => c.idCatalogo === ODS);
+  const coberturaGeografica = indicador.catalogos.find(c => c.idCatalogo === COBERTURA_GEOGRAFICA);
   return (
     <Tooltip title={objetivo?.destacado ? `Este indicador abona principalmente para lograr el objetivo '${objetivo.titulo}'` : ``} placement='left-start'>
       <Card variant='outlined'>
@@ -36,9 +38,8 @@ const Indicador = (props) => {
                     <Typography
                       variant='h6'
                       component='h3'
-                      fontWeight='bold'
                       mb={2}
-                      textAlign={{ xs: 'center', md: 'left' }}
+                      textAlign={{ xs: 'center', sm: 'left' }}
                     >
                       {indicador.nombre}
                     </Typography>
@@ -61,9 +62,7 @@ const Indicador = (props) => {
                       flexDirection='column'
                       justifyContent='space-between'
                     >
-                      <Typography
-                        fontWeight='bold'
-                      >
+                      <Typography>
                         Último Valor Disponible
                       </Typography>
                       <Typography
@@ -77,7 +76,7 @@ const Indicador = (props) => {
                       orientation='vertical'
                       variant='middle'
                       flexItem
-                      sx={{ borderRightWidth: 3 }}
+                      sx={{ borderRightWidth: 2 }}
                     />
                     <Grid
                       item
@@ -89,13 +88,10 @@ const Indicador = (props) => {
                       flexDirection='column'
                       justifyContent='space-between'
                     >
-                      <Typography
-                        fontWeight='bold'
-                      >
+                      <Typography>
                         Año de Referencia
                       </Typography>
-                      <Typography
-                      >
+                      <Typography fontWeight={600}>
                         {indicador.anioUltimoValorDisponible}
                       </Typography>
                     </Grid>
@@ -103,72 +99,48 @@ const Indicador = (props) => {
                       orientation='vertical'
                       variant='middle'
                       flexItem
-                      sx={{ borderRightWidth: 3, display: { xs: 'none', md: 'block' } }}
+                      sx={{ borderRightWidth: 2, display: { xs: 'none', md: 'block' } }}
                     />
-
-                    {
-                      indicador.catalogos.sort(compareIds).map((catalogo, index) => {
-                        if (catalogo.idCatalogo !== ODS) {
-                          if (catalogo.idCatalogo === UNIDAD_MEDIDA) {
-                            return (
-                              <>
-                                <Grid
-                                  item
-                                  xs={4}
-                                  md={2}
-                                  container
-                                  textAlign='center'
-                                  display='flex'
-                                  flexDirection='column'
-                                  justifyContent='space-between'
-                                  key={index}
-                                >
-                                  <Typography
-                                    fontWeight='bold'
-                                  >
-                                    Unidad de Medida
-                                  </Typography>
-                                  <Typography
-                                  >
-                                    {catalogo.nombre || 'NA'}
-                                  </Typography>
-                                </Grid>
-                                <Divider
-                                  orientation='vertical'
-                                  variant='middle'
-                                  flexItem
-                                  sx={{ borderRightWidth: 3 }}
-                                />
-                              </>
-                            )
-                          } else {
-                            return (
-                              <Grid
-                                item
-                                xs={4}
-                                md={2}
-                                container
-                                textAlign='center'
-                                display='flex'
-                                flexDirection='column'
-                                justifyContent='space-between'
-                                key={index}
-                              >
-                                <Typography
-                                  fontWeight={'bold'}
-                                >
-                                  Cobertura Geográfica
-                                </Typography>
-                                <Typography
-                                >
-                                  {catalogo.nombre || 'NA'}
-                                </Typography>
-                              </Grid>
-                            )
-                          }
-                        }
-                      })
-                    }
+                    <Grid
+                      item
+                      xs={4}
+                      md={2}
+                      container
+                      textAlign='center'
+                      display='flex'
+                      flexDirection='column'
+                      justifyContent='space-between'
+                    >
+                      <Typography>
+                        Objetivo Desarrollo Sostenible
+                      </Typography>
+                      <Typography fontWeight={600}>
+                        {ods.nombre}
+                      </Typography>
+                    </Grid>
+                    <Divider
+                      orientation='vertical'
+                      variant='middle'
+                      flexItem
+                      sx={{ borderRightWidth: 2 }}
+                    />
+                    <Grid
+                      item
+                      xs={4}
+                      md={2}
+                      container
+                      textAlign='center'
+                      display='flex'
+                      flexDirection='column'
+                      justifyContent='space-between'
+                    >
+                      <Typography>
+                        Cobertura Geográfica
+                      </Typography>
+                      <Typography fontWeight={600}>
+                        {coberturaGeografica.nombre}
+                      </Typography>
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>

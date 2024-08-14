@@ -17,7 +17,7 @@ const HistoricalTable = ({ data, lastSource, lastValue, lastYear }) => {
 
   return (
     <TableContainer>
-      <Table aria-label='Tabla de datos históricos'>
+      <Table aria-label='Tabla de datos históricos' sx={{ minWidth: 400 }}>
         <TableHead>
           <TableRow>
             <TableCell align="right"><b>Año</b></TableCell>

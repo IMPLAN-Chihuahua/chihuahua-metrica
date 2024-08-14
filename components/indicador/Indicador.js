@@ -36,9 +36,8 @@ const Indicador = (props) => {
                     <Typography
                       variant='h6'
                       component='h3'
-                      fontWeight='bold'
                       mb={2}
-                      textAlign={{ xs: 'center', md: 'left' }}
+                      textAlign={{ xs: 'center', sm: 'left' }}
                     >
                       {indicador.nombre}
                     </Typography>
@@ -61,9 +60,7 @@ const Indicador = (props) => {
                       flexDirection='column'
                       justifyContent='space-between'
                     >
-                      <Typography
-                        fontWeight='bold'
-                      >
+                      <Typography>
                         Último Valor Disponible
                       </Typography>
                       <Typography
@@ -89,9 +86,7 @@ const Indicador = (props) => {
                       flexDirection='column'
                       justifyContent='space-between'
                     >
-                      <Typography
-                        fontWeight='bold'
-                      >
+                      <Typography>
                         Año de Referencia
                       </Typography>
                       <Typography
@@ -123,9 +118,7 @@ const Indicador = (props) => {
                                   justifyContent='space-between'
                                   key={index}
                                 >
-                                  <Typography
-                                    fontWeight='bold'
-                                  >
+                                  <Typography>
                                     Unidad de Medida
                                   </Typography>
                                   <Typography
@@ -154,9 +147,7 @@ const Indicador = (props) => {
                                 justifyContent='space-between'
                                 key={index}
                               >
-                                <Typography
-                                  fontWeight={'bold'}
-                                >
+                                <Typography>
                                   Cobertura Geográfica
                                 </Typography>
                                 <Typography

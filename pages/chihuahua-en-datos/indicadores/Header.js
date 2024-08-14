@@ -4,9 +4,10 @@ import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import LoadingButton from '@mui/lab/LoadingButton'
 import { useCallback, useState } from 'react';
-import { Alert, AppBar, Chip, Collapse, Container, IconButton, Slide, Snackbar, styled, Toolbar, useScrollTrigger } from '@mui/material';
+import { Alert, AppBar, Chip, Collapse, Container, IconButton, Slide, Snackbar, styled, Toolbar, useMediaQuery, useScrollTrigger } from '@mui/material';
 import JsFileDownloader from 'js-file-downloader';
 import { grey } from '@mui/material/colors';
+import { useTheme } from '@emotion/react';
 
 const DOC_FORMATS = ['xlsx', 'csv', 'pdf', 'json'];
 
@@ -57,7 +58,7 @@ const TopData = (info) => {
     <section>
       <IndicadorAppBar indicador={indicador} />
       <IndicadorHeader indicador={indicador} />
-      <Typography>{indicador.definicion} Este indicador esta relacionado al objectivo de desarrollo sustentable que busca promover el crecimiento económico inclusivo y sostenible, el empleo y el trabajo decente para todos.</Typography>
+      <Typography>{indicador.definicion}</Typography>
     </section >
   );
 };
@@ -65,8 +66,8 @@ const TopData = (info) => {
 
 const IndicadorHeader = ({ indicador, sx }) => {
   return (
-    <Box display='flex' sx={{ mb: 2, ...sx }} flexWrap='wrap'>
-      <Typography sx={{ flex: 3 }} variant='h3' component='h1'>{indicador.nombre}</Typography>
+    <Box display='flex' sx={{ mb: 2, gap: 2, ...sx }} flexWrap='wrap'>
+      <Typography sx={{ flex: 3 }} variant='h4' component='h1'>{indicador.nombre}</Typography>
       <DescargablesSection indicadorId={indicador.id} />
     </Box>
   )
@@ -80,8 +81,10 @@ const CustomAppBar = styled(AppBar)(({ theme }) => ({
 }))
 
 const IndicadorAppBar = ({ indicador }) => {
+  const theme = useTheme();
+  const smallDevices = useMediaQuery(theme.breakpoints.down('md'))
   const trigger = useScrollTrigger({
-    threshold: 150,
+    threshold: smallDevices ? 300 : 150,
     disableHysteresis: true
   });
 

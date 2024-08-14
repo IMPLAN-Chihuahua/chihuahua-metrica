@@ -6,7 +6,7 @@ import { numberWithCommas } from "helpers/FormatNumbers"
 export const IndicadorStats = ({ ultimoValor, anioReferencia, tendencia, cobertura }) => {
 
     return (<section>
-        <Stack direction='row' justifyContent='space-around' flexWrap='wrap'>
+        <Stack direction={{xs: 'column', md: 'row'}} justifyContent='space-around' spacing={3}>
             <StatBox value={numberWithCommas(ultimoValor)} label='Último valor disponible' />
             <StatBox value={anioReferencia} label='Año de referencia' />
             <StatBox value={tendencia} label='Tendencia actual' />
@@ -21,10 +21,9 @@ const StatBox = ({ value, label }) => {
         <Box>
             <Typography
                 textAlign='center'
-                fontSize={36}
+                fontSize={30}
                 fontWeight={600}
-                color={indigo[900]}
-                mb={1}
+                color={'rgba(8, 32, 62, 1)'}
             >{value}</Typography>
             <Typography textAlign='center' variant='body2'>{label}</Typography>
         </Box >

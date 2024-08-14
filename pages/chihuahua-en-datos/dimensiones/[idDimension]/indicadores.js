@@ -217,7 +217,10 @@ const Indicadores = (props) => {
                         </Collapse>
                         <Box sx={{
                             display: 'flex',
+                            flexDirection: 'row',
                             flexWrap: 'wrap',
+                            justifyContent: 'center',
+
                             gap: 1,
                             m: 2
                         }}>
@@ -236,7 +239,7 @@ const Indicadores = (props) => {
                                                             size="small"
                                                             icon={<PanoramaFishEye />}
                                                             checkedIcon={<CheckCircleIcon />}
-                                                            onChange={(item) =>  onChange(item.id)}
+                                                            onChange={(item) => onChange(item.id)}
                                                             value={value}
                                                             {...methods.register('modulos')}
                                                             sx={{
@@ -247,7 +250,7 @@ const Indicadores = (props) => {
                                                             }}
                                                         />
                                                     }
-                                                    label={<Typography sx={{ fontSize: '14px' }}>{modulo.temaIndicador}</Typography>}
+                                                    label={<Typography sx={{ fontSize: '17px' }}>{modulo.temaIndicador}</Typography>}
                                                     sx={{
                                                         borderRadius: '50px',
                                                         border: value?.includes(modulo.id.toString()) ? `1px solid ${dimension.color}` : '1px solid #ccc',

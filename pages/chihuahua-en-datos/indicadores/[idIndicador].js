@@ -27,7 +27,7 @@ export default function FichaTecnica(props) {
   if (props.errorCode) {
     return <Error statusCode={props.errorCode} message={props?.message} />
   }
-
+  console.log(indicador);
   return (
     <>
       <Head>
@@ -43,6 +43,7 @@ export default function FichaTecnica(props) {
             ultimoValor={indicador.ultimoValorDisponible}
             anioReferencia={indicador.anioUltimoValorDisponible}
             tendencia={indicador.tendenciaActual}
+            unidad={indicador.catalogos[0].nombre}
             cobertura={indicador.catalogos[2].nombre}
           />
           <section>

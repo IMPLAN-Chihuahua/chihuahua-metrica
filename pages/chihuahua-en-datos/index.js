@@ -16,6 +16,7 @@ export default function Modulo(props) {
   }
   const modulos = props.data.modulos;
   const dimensiones = props.data.dimensiones;
+  console.log(dimensiones);
   return (
     <>
       <Head>
@@ -26,26 +27,6 @@ export default function Modulo(props) {
       <IndicadoresPDU2040 dimensiones={dimensiones} />
       <AboutIndicadores />
 
-      <Box sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        pr: 20,
-        pl: 20,
-
-      }}>
-        <Typography
-          variant='h3'
-          component='h1'
-          fontWeight={600}
-          className={style.subtitle}
-          textAlign={'center'}
-        >
-          Temas de interés
-        </Typography>
-        <TemasBook modulos={modulos} />
-      </Box>
     </>
   );
 };

@@ -24,10 +24,9 @@ const StatBox = ({ value, label, unidad }) => {
         <Box>
             <Typography
                 textAlign='center'
-                fontSize={36}
+                fontSize={30}
                 fontWeight={600}
-                color={indigo[900]}
-                mb={1}
+                color={'rgba(8, 32, 62, 1)'}
             >{value}</Typography>
             <Typography textAlign='center' variant='body1'>{label}</Typography>
             <Typography textAlign='center' variant='body2'>{unidad}</Typography>

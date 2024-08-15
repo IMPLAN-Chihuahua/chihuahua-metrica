@@ -11,7 +11,6 @@ const VariablesTable = ({ variables = [] }) => {
                     <TableRow>
                         <TableCell>Variable</TableCell>
                         <TableCell>Descripción</TableCell>
-                        <TableCell>Unidad de medida</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -24,7 +23,6 @@ const VariablesTable = ({ variables = [] }) => {
                                     </MathJax.Provider>
                                 </TableCell>
                                 <TableCell>{v.descripcion}</TableCell>
-                                <TableCell>{v.idUnidad}<b>!</b></TableCell>
                             </TableRow>
                         ))
                     }

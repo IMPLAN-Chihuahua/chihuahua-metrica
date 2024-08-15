@@ -19,7 +19,7 @@ export default function FichaTecnica(props) {
     href: '/chihuahua-en-datos'
   }, {
     text: indicador.modulo.temaIndicador,
-    href: `/chihuahua-en-datos/temas/${indicador.modulo.id}/indicadores`
+    href: '/chihuahua-en-datos/temas/${indicador.modulo.id}/indicadores'
   }, {
     text: indicador.nombre
   }];
@@ -35,9 +35,9 @@ export default function FichaTecnica(props) {
         <meta name="description" content={indicador.descripcion} />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Container sx={{ mb: 3, mt: 3 }}>
+      <Container sx={{ mb: 3, mt: { xs: 0, md: 3 } }}>
         <PageBreadcrumb crumbs={CRUMBS} />
-        <Stack spacing={6} mt={3}>
+        <Stack spacing={6} mt={2}>
           <Header info={indicador} />
           <Stats
             ultimoValor={indicador.ultimoValorDisponible}
@@ -49,32 +49,44 @@ export default function FichaTecnica(props) {
           <section>
             <Typography fontStyle='italic' variant='body2'>{indicador.fuente}</Typography>
           </section>
+
           {/* TODO: ADD ELI5 SECTION */}
+
           {
-            indicador?.formula && (
-              <section>
-                <Typography variant='h5' mb={2}>Fórmula</Typography>
+            indicador.formula && (
+              <IndicadorPageSection title='Fórmula'>
                 <Formula formula={indicador?.formula} />
-              </section>
+              </IndicadorPageSection>
             )
           }
-          <section>
-            <Typography variant='h5' mb={2}>Históricos</Typography>
-            <HistoricalData history={indicador} />
-          </section>
-          <section>
-            <Typography variant='h5' mb={2}>Responsable</Typography>
+          {
+            indicador.historicos.length > 0 && (
+              <IndicadorPageSection title='Históricos'>
+                <HistoricalData history={indicador} />
+              </IndicadorPageSection>
+            )
+          }
+
+          <IndicadorPageSection title='Responsable'>
+
             <Owner
               responsible={responsible.data}
               indicadorDate={indicador.updatedAt}
               indicadorName={indicador.nombre}
             />
-          </section>
+          </IndicadorPageSection>
           {/* TODO: ADD RELATED INDICADORES */}
         </Stack>
       </Container>
     </>
   );
+}
+
+const IndicadorPageSection = ({ title, children }) => {
+  return (<section>
+    <Typography variant='h5' mb={2}>{title}</Typography>
+    {children}
+  </section>)
 }
 
 

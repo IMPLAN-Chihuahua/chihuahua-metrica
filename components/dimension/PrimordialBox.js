@@ -51,7 +51,6 @@ const PrimordialBox = () => {
                             display: 'none'
                         },
                         borderRadius: '40px',
-                        //set gap between tabs
                         '& .MuiTabs-flexContainer': {
                             gap: 5
                         },
@@ -157,7 +156,7 @@ const Dimension = (props) => {
                 >
                     <img
                         src={`${dimension.img}`}
-                        style={{ width: '400px', height: '400px', borderRadius: '5px' }}
+                        style={{ width: '100%', height: '100%', borderRadius: '5px' }}
                     />
                 </Grid>
 

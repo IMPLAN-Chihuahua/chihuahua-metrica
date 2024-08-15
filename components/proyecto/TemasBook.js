@@ -56,8 +56,6 @@ const TemasBook = (props) => {
             </Typography>
             <Grid container
                 sx={{
-                    pr: 5,
-                    pl: 5,
                     mt: 5,
                     mb: 5,
                 }}

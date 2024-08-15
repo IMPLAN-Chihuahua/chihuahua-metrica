@@ -7,6 +7,7 @@ import style from './ChihEnDatos.module.css';
 import { useEffect, useState } from 'react';
 import TemasGrid from '@components/proyecto/TemasGrid';
 import TemaList from '@components/proyecto/GridModulos';
+import TemasCarousel from '@components/proyecto/TemasCarousel';
 const CRUMBS = [
   {
     text: 'Sistema de Indicadores del PDU2040 Séptima Actualización'
@@ -43,7 +44,7 @@ export default function Modulo(props) {
       <IndicadoresPDU2040 dimensiones={dimensiones} />
       <AboutIndicadores />
       {isMobile ?
-        <TemaList modulos={modulos} />
+        <TemasCarousel modulos={modulos} />
         :
         <TemasBook modulos={modulos} />
       }

@@ -50,4 +50,11 @@
     justify-content: center;
     cursor: pointer;
   }
+
+  .title {
+    font-family: "Inter", sans-serif !important;
+    font-weight: 600 !important;
+    text-align: center;
+    padding: 1rem;
+  }
 }

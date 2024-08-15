@@ -75,7 +75,6 @@ const TemaList = ({ modulos }) => {
         display: 'flex',
       }}
     >
-
       <Box className={style.arrow}>
         <NavigateBeforeIcon fontSize='large' />
       </Box>

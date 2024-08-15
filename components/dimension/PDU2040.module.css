@@ -79,5 +79,15 @@
         padding-top: 0.3rem;
         font-size: 1em !important;
     }
+}
 
+/*for laptop screens */
+@media (min-width: 769px) and (max-width: 1920px) {
+    .cardHeader {
+        font-size: 1.6rem !important;
+    }
+
+    .cardShortDescription {
+        font-size: 1rem !important;
+    }
 }

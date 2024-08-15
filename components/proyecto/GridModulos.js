@@ -4,16 +4,16 @@ import style from '../../styles/indicador.module.css'
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { hexAsRGBA, usefulString } from 'helpers/StringUtils';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 export const Tema = ({ modulo }) => {
   const [isHover, setHover] = useState(false);
   return (
-
     <Box
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       passHref
-
       sx={{
         boxShadow: 2,
         borderRadius: 2,
@@ -21,6 +21,7 @@ export const Tema = ({ modulo }) => {
         boxShadow: isHover ? ' rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px' : '0px 0px 10px 0px rgba(0,0,0,0.25)',
         transition: 'box-shadow 0.3s ease-in-out',
       }}
+      className={style.tema}
     >
       <div
         style={{
@@ -33,7 +34,7 @@ export const Tema = ({ modulo }) => {
         }}>
           <Box className={style.cardHeader}>
             <Typography
-              variant='h6' fontSize={'30px'} className={style.inter}>{modulo.temaIndicador}</Typography>
+              variant='h6' fontSize={'30px'} className={`${style.inter} ${style.interTitle}`}>{modulo.temaIndicador}</Typography>
             <Typography fontWeight={300} className={style.inter}>
               Indicadores: {modulo.indicadoresCount}
             </Typography>
@@ -48,17 +49,13 @@ export const Tema = ({ modulo }) => {
           variant='contained'
           sx={{
             backgroundColor: `${hexAsRGBA(modulo.color, 1)}`,
-            color: isHover ? 'white' : 'white',
+            color: 'white',
             borderRadius: '0px 30px 30px 0px',
-            width: '30%',
-            '&:hover': {
-              backgroundColor: `${hexAsRGBA(modulo.color, 1)}`,
-            },
+            width: '40%',
             fontWeight: 600,
           }}>
           <NextLink
-            href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}
-          >
+            href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}>
             <a>
               Ver más
             </a>
@@ -71,12 +68,50 @@ export const Tema = ({ modulo }) => {
 
 
 const TemaList = ({ modulos }) => {
-  return modulos.map((modulo) => (
-    parseInt(modulo.indicadoresCount) > 0 && (
-      <Grid item xs={12} md={6} lg={4} key={modulo.id}>
-        <Tema key={modulo.id} modulo={modulo} />
-      </Grid>)
-  ))
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+      }}
+    >
+
+      <Box className={style.arrow}>
+        <NavigateBeforeIcon fontSize='large' />
+      </Box>
+      <Box>
+        <Typography variant='h2' component='h1' fontWeight={600} textAlign={'center'} className={style.subtitle}>Temas de interés</Typography>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '10px',
+          maxHeight: '300px',
+          overflow: 'auto',
+          overflowY: 'hidden',
+        }}>
+          {
+            modulos.map((modulo) => (
+              parseInt(modulo.indicadoresCount) > 0 && (
+                <Box key={modulo.id} className={style.temaList}>
+                  <Tema key={modulo.id} modulo={modulo} />
+                </Box>)
+            ))
+          }
+        </Box>
+      </Box>
+      <Box className={style.arrow}>
+        <NavigateNextIcon fontSize='large' />
+      </Box>
+    </Box >
+  )
+  // return modulos.map((modulo) => (
+  //   parseInt(modulo.indicadoresCount) > 0 && (
+  //     <Grid item xs={12} md={6} lg={4} key={modulo.id} className={style.temaList}>
+  //       <Tema key={modulo.id} modulo={modulo} />
+  //     </Grid>)
+  // ))
 };
 
 export default TemaList;

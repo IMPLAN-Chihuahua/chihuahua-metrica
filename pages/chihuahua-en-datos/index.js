@@ -1,9 +1,12 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import Head from 'next/head';
 import IndicadoresPDU2040 from '@components/information/IndicadoresPDU2040';
 import TemasBook from '@components/proyecto/TemasBook';
 import AboutIndicadores from '@components/information/AboutIndicadores';
 import style from './ChihEnDatos.module.css';
+import { useEffect, useState } from 'react';
+import TemasGrid from '@components/proyecto/TemasGrid';
+import TemaList from '@components/proyecto/GridModulos';
 const CRUMBS = [
   {
     text: 'Sistema de Indicadores del PDU2040 Séptima Actualización'
@@ -16,7 +19,20 @@ export default function Modulo(props) {
   }
   const modulos = props.data.modulos;
   const dimensiones = props.data.dimensiones;
-  console.log(dimensiones);
+
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' && window.innerWidth < 760
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 760);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <Head>
@@ -26,7 +42,11 @@ export default function Modulo(props) {
       </Head>
       <IndicadoresPDU2040 dimensiones={dimensiones} />
       <AboutIndicadores />
-
+      {isMobile ?
+        <TemaList modulos={modulos} />
+        :
+        <TemasBook modulos={modulos} />
+      }
     </>
   );
 };

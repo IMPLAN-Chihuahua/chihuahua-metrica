@@ -62,14 +62,26 @@
 
 @media (max-width: 768px) {
     .bigBox {
-        height: 70vh;
-        position: initial;
+        all: initial;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(8, 32, 62, 1) 50%, rgba(85, 124, 147, 1) 100%);
+        padding: 30px;
+    }
+
+    .ghostBox {
+        all: initial;
+        position: relative;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(8, 32, 62, 1) 50%, rgba(85, 124, 147, 1) 100%);
     }
 
     .container {
-        margin-top: 70vh;
-        margin-bottom: 30vh;
         padding-left: 2vw;
+        margin-top: 0px;
+        height: initial;
+        margin-bottom: 2rem;
     }
 
 }

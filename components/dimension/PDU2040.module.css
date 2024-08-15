@@ -66,15 +66,18 @@
         height: 20%;
     }
 
+    .indicadorCounter {
+        padding-right: 0.5rem;
+        font-size: 2rem !important;
+    }
+
     .cardHeader {
         font-size: 1.5em !important;
     }
 
     .cardShortDescription {
+        padding-top: 0.3rem;
         font-size: 1em !important;
     }
 
-    .indicadorCounter {
-        font-size: 2.2em !important;
-    }
 }

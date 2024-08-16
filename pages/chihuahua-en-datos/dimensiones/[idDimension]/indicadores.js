@@ -48,8 +48,7 @@ const Indicadores = (props) => {
     const { watch } = methods;
 
     const getIndicadores = useCallback((page, searchQuery, filters) => {
-        const { idOds, idCobertura, anioUltimoValorDisponible, idUnidadMedida, idModulo } = filters;
-        console.log(idModulo);
+        const { idOds, idCobertura, anioUltimoValorDisponible, idUnidadMedida, idTema } = filters;
         const queryParams = new URLSearchParams({
             page,
             ...(searchQuery.length > 0 && { searchQuery: searchQuery.trim() }),
@@ -57,7 +56,7 @@ const Indicadores = (props) => {
             ...(anioUltimoValorDisponible > 0 && { anioUltimoValorDisponible }),
             ...(idCobertura > 0 && { idCobertura }),
             ...(idUnidadMedida > 0 && { idUnidadMedida }),
-            ...(idModulo?.length > 0 && { modulos: idModulo.join(',') })
+            ...(idTema?.length > 0 && { temas: idTema.join(',') })
 
         });
 
@@ -92,7 +91,7 @@ const Indicadores = (props) => {
             filterValues.idCobertura = data.cobertura?.id;
             filterValues.anioUltimoValorDisponible = data?.anio?.getFullYear();
             filterValues.idUnidadMedida = data.medida?.id;
-            filterValues.idModulo = data.modulos;
+            filterValues.idTema = data.temas;
             setFilters(filterValues)
         });
         return () => subscription.unsubscribe();
@@ -219,11 +218,11 @@ const Indicadores = (props) => {
                             m: 2
                         }}>
                             {
-                                props.modulos.data.map(modulo => (
+                                props.temas.data.map(tema => (
                                     <Controller
-                                        name='modulos'
+                                        name='temas'
                                         defaultValue={[]}
-                                        key={modulo.id}
+                                        key={tema.id}
                                         control={methods.control}
                                         render={({ field: { value, onChange } }) => (
                                             <>
@@ -235,7 +234,7 @@ const Indicadores = (props) => {
                                                             checkedIcon={<CheckCircleIcon />}
                                                             onChange={(item) => onChange(item.id)}
                                                             value={value}
-                                                            {...methods.register('modulos')}
+                                                            {...methods.register('temas')}
                                                             sx={{
                                                                 color: dimension.color,
                                                                 '&.Mui-checked': {
@@ -244,13 +243,13 @@ const Indicadores = (props) => {
                                                             }}
                                                         />
                                                     }
-                                                    label={<Typography sx={{ fontSize: '17px' }}>{modulo.temaIndicador}</Typography>}
+                                                    label={<Typography sx={{ fontSize: '17px' }}>{tema.temaIndicador}</Typography>}
                                                     sx={{
                                                         borderRadius: '50px',
-                                                        border: value?.includes(modulo.id.toString()) ? `1px solid ${dimension.color}` : '1px solid #ccc',
+                                                        border: value?.includes(tema.id.toString()) ? `1px solid ${dimension.color}` : '1px solid #ccc',
                                                         p: '1px',
                                                         pr: '10px',
-                                                        backgroundColor: value?.includes(modulo.id.toString()) ? hexAsRGBA(dimension.color, 0.1) : 'transparent',
+                                                        backgroundColor: value?.includes(tema.id.toString()) ? hexAsRGBA(dimension.color, 0.1) : 'transparent',
                                                     }}
                                                 />
                                             </>
@@ -337,7 +336,7 @@ export async function getServerSideProps(context) {
         }
     }
 
-    const [odsRes, medidaRes, coberturaRes, modulosRes]
+    const [odsRes, medidaRes, coberturaRes, temasRes]
         = await Promise.all([
             fetch(`${baseUrl}/catalogos/${ODS_ID}`),
             fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA_ID}`),
@@ -345,11 +344,11 @@ export async function getServerSideProps(context) {
             fetch(`${baseUrl}/dimensiones/${idDimension}/temas`)
         ]);
 
-    const [ods, medidas, coberturas, modulos] = await Promise.all([
+    const [ods, medidas, coberturas, temas] = await Promise.all([
         odsRes.json(),
         medidaRes.json(),
         coberturaRes.json(),
-        modulosRes.json()
+        temasRes.json()
     ]);
     return {
         props: {
@@ -358,7 +357,7 @@ export async function getServerSideProps(context) {
             ods,
             coberturas,
             medidas,
-            modulos,
+            temas,
             selectedDimension: { ...selectedDimension.data }
         },
     };

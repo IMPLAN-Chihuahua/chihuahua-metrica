@@ -22,7 +22,7 @@ const tendencyList = [
 
 const IndicadorFilter = (props) => {
   const { odsList, unidadMedidaList,
-    coberturaList, modulosList } = props;
+    coberturaList } = props;
   const minDate = subYears(20, new Date());
   const maxDate = new Date();
   const { control, setError } = useFormContext();
@@ -44,48 +44,6 @@ const IndicadorFilter = (props) => {
             rowSpacing={2}
             justifyContent='center'
           >
-            {/* <Grid item xs={12} md={4} lg={3}>
-              <Controller
-                name='tema'
-                control={control}
-                defaultValue={null}
-                render={({ field: props }) => (
-                  <Autocomplete
-                    {...props}
-                    onChange={(_, data) => props.onChange(data)}
-                    disablePortal
-                    options={modulosList}
-                    getOptionLabel={(option) => option.temaIndicador}
-                    noOptionsText="No hay opciones"
-                    isOptionEqualToValue={(option, value) => option.id === value.id}
-                    renderOption={(props, option, { inputValue }) => {
-                      const matches = match(option.temaIndicador, inputValue);
-                      const parts = parse(option.temaIndicador, matches);
-
-                      return (
-                        <li {...props}>
-                          <div>
-                            {parts.map((part, index) => (
-                              <span
-                                key={index}
-                                style={{
-                                  fontWeight: part.highlight ? 700 : 400,
-                                }}
-                              >
-                                {part.text}
-                              </span>
-                            ))}
-                          </div>
-                        </li>
-                      );
-                    }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Temática" />
-                    )}
-                  />
-                )}
-              />
-            </Grid> */}
             <Grid item xs={12} md={4} lg={3}>
               <Controller
                 name='ods'

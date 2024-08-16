@@ -7,7 +7,7 @@ import { hexAsRGBA, usefulString } from 'helpers/StringUtils';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
-export const Tema = ({ modulo }) => {
+export const Tema = ({ tema }) => {
   const [isHover, setHover] = useState(false);
   return (
     <Box
@@ -34,28 +34,28 @@ export const Tema = ({ modulo }) => {
         }}>
           <Box className={style.cardHeader}>
             <Typography
-              variant='h6' fontSize={'30px'} className={`${style.inter} ${style.interTitle}`}>{modulo.temaIndicador}</Typography>
+              variant='h6' fontSize={'30px'} className={`${style.inter} ${style.interTitle}`}>{tema.temaIndicador}</Typography>
             <Typography fontWeight={300} className={style.inter}>
-              Indicadores: {modulo.indicadoresCount}
+              Indicadores: {tema.indicadoresCount}
             </Typography>
           </Box>
           <Typography
             variant='body1' component='h3' className={style.inter} >
             {/* If text is too big, display ellipsis */}
-            {usefulString(modulo.descripcion, 100)}
+            {usefulString(tema.descripcion, 100)}
           </Typography>
         </Box>
         <Button
           variant='contained'
           sx={{
-            backgroundColor: `${hexAsRGBA(modulo.color, 1)}`,
+            backgroundColor: `${hexAsRGBA(tema.color, 1)}`,
             color: 'white',
             borderRadius: '0px 30px 30px 0px',
             width: '40%',
             fontWeight: 600,
           }}>
           <NextLink
-            href={`/chihuahua-en-datos/temas/${modulo.id}/indicadores`}>
+            href={`/chihuahua-en-datos/temas/${tema.id}/indicadores`}>
             <a>
               Ver más
             </a>
@@ -67,7 +67,7 @@ export const Tema = ({ modulo }) => {
 }
 
 
-const TemaList = ({ modulos }) => {
+const TemaList = ({ temas }) => {
 
   return (
     <Box
@@ -91,10 +91,10 @@ const TemaList = ({ modulos }) => {
           overflowY: 'hidden',
         }}>
           {
-            modulos.map((modulo) => (
-              parseInt(modulo.indicadoresCount) > 0 && (
-                <Box key={modulo.id} className={style.temaList}>
-                  <Tema key={modulo.id} modulo={modulo} />
+            temas.map((tema) => (
+              parseInt(tema.indicadoresCount) > 0 && (
+                <Box key={tema.id} className={style.temaList}>
+                  <Tema key={tema.id} tema={tema} />
                 </Box>)
             ))
           }
@@ -105,12 +105,6 @@ const TemaList = ({ modulos }) => {
       </Box>
     </Box >
   )
-  // return modulos.map((modulo) => (
-  //   parseInt(modulo.indicadoresCount) > 0 && (
-  //     <Grid item xs={12} md={6} lg={4} key={modulo.id} className={style.temaList}>
-  //       <Tema key={modulo.id} modulo={modulo} />
-  //     </Grid>)
-  // ))
 };
 
 export default TemaList;

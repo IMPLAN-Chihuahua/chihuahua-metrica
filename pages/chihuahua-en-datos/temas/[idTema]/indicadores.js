@@ -24,7 +24,7 @@ const ODS_ID = 1;
 const UNIDAD_MEDIDA_ID = 2;
 const COBERTURA_GEOGRAFICA_ID = 3;
 
-export default function Modulo(props) {
+export default function Tema(props) {
   const [indicadores, setIndicadores] = useState({});
   const [isLoading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -40,7 +40,7 @@ export default function Modulo(props) {
   const { watch } = methods;
   const fetchIndicadores = useCallback((fixedPage, search = '') => {
     const url =
-      `${process.env.INDICADORES_BASE_URL}/modulos/${selectedTema.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
+      `${process.env.INDICADORES_BASE_URL}/temas/${selectedTema.id}/indicadores?page=${fixedPage}&searchQuery=${search}${filters}`;
     fetch(url)
       .then(res => {
         if (res.ok) {
@@ -188,7 +188,7 @@ export default function Modulo(props) {
                 odsList={[...props.ods.data]}
                 unidadMedidaList={[...props.medidas.data]}
                 coberturaList={[...props.coberturas.data]}
-                modulosList={[...props.temas.data]}
+                temasList={[...props.temas.data]}
               />
             </Collapse>
           </FormProvider>
@@ -218,7 +218,7 @@ export default function Modulo(props) {
 export async function getServerSideProps(context) {
   const baseUrl = process.env.INDICADORES_BASE_URL;
   const { idTema } = context.params;
-  const selectedTemaRes = await fetch(`${baseUrl}/modulos/${idTema}`);
+  const selectedTemaRes = await fetch(`${baseUrl}/temas/${idTema}`);
   const errorCode = selectedTemaRes.ok ? false : selectedTemaRes.status;
   const selectedTema = await selectedTemaRes.json();
   if (errorCode) {
@@ -235,7 +235,7 @@ export async function getServerSideProps(context) {
       fetch(`${baseUrl}/catalogos/${ODS_ID}`),
       fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA_ID}`),
       fetch(`${baseUrl}/catalogos/${COBERTURA_GEOGRAFICA_ID}`),
-      fetch(`${baseUrl}/modulos`)
+      fetch(`${baseUrl}/temas`)
     ]);
 
   const [ods, medidas, coberturas, temas,] = await Promise.all([

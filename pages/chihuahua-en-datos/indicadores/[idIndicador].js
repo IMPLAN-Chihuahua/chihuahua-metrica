@@ -18,8 +18,8 @@ export default function FichaTecnica(props) {
     text: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
     href: '/chihuahua-en-datos'
   }, {
-    text: indicador.modulo.temaIndicador,
-    href: '/chihuahua-en-datos/temas/${indicador.modulo.id}/indicadores'
+    text: indicador.Tema.temaIndicador,
+    href: '/chihuahua-en-datos/temas/${indicador.Tema.id}/indicadores'
   }, {
     text: indicador.nombre
   }];

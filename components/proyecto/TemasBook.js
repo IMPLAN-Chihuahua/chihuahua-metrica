@@ -1,21 +1,20 @@
-import { Box, Card, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { Tema } from './GridModulos';
+import { Tema } from './GridTemas';
 import IndicadorHover from './IndicadorHover';
 import style from './Project.module.css'
 
 const TemasBook = (props) => {
-    const { modulos } = props
+    const { temas } = props
 
-    const [idModulo, setidModulo] = useState(0)
+    const [idTema, setidTema] = useState(0)
     const [backgroundColor, setBackgroundColor] = useState('')
     const [indicador, setIndicador] = useState({})
 
-    const modulosWithIndicadores = modulos.filter(modulo => parseInt(modulo.indicadoresCount) > 0)
+    const temasWithIndicadores = temas.filter(tema => parseInt(tema.indicadoresCount) > 0)
 
-    const fetchIndicadorFromSelectedModulo = (idModulo) => {
-        console.log(idModulo)
-        fetch(`${process.env.INDICADORES_BASE_URL}/modulos/${idModulo}/randomIndicador`)
+    const fetchIndicadorFromSelectedTema = (idTema) => {
+        fetch(`${process.env.INDICADORES_BASE_URL}/temas/${idTema}/randomIndicador`)
             .then(res => {
                 if (res.ok) {
                     return res.json()
@@ -31,8 +30,8 @@ const TemasBook = (props) => {
     }
 
     useEffect(() => {
-        fetchIndicadorFromSelectedModulo(idModulo)
-    }, [idModulo])
+        fetchIndicadorFromSelectedTema(idTema)
+    }, [idTema])
 
     return (
         <Box
@@ -69,7 +68,7 @@ const TemasBook = (props) => {
                     <IndicadorHover indicador={indicador} />
                 </Grid>
                 <Grid item xs={12} md={6} >
-                    <ModulosCard modulos={modulosWithIndicadores} setidModulo={setidModulo} setBackgroundColor={setBackgroundColor} />
+                    <TemasCard temas={temasWithIndicadores} setidTemas={setidTema} setBackgroundColor={setBackgroundColor} />
                 </Grid>
             </Grid>
         </Box>
@@ -77,7 +76,7 @@ const TemasBook = (props) => {
     )
 };
 
-const ModulosCard = ({ modulos, setidModulo, setBackgroundColor }) => {
+const TemasCard = ({ temas, setidTemas, setBackgroundColor }) => {
     return (
         <Grid container sx={{
             maxHeight: '800px',
@@ -88,21 +87,21 @@ const ModulosCard = ({ modulos, setidModulo, setBackgroundColor }) => {
             scrollBehavior: 'smooth',
         }}>
             {
-                modulos?.map((modulo, idx) => (
+                temas?.map((tema, idx) => (
                     <Grid item xs={12} md={6} key={idx} sx={{
                         p: 1,
                     }}
                         onMouseEnter={() => {
                             setTimeout(() => {
-                                setidModulo(modulo.id)
-                                setBackgroundColor(modulo.color)
+                                setidTemas(tema.id)
+                                setBackgroundColor(tema.color)
                             }, 500)
                         }}
                         onMouseLeave={() => {
                             clearTimeout()
                         }}
                     >
-                        <Tema modulo={modulo} />
+                        <Tema tema={tema} />
                     </Grid>
                 ))
             }

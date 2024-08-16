@@ -7,7 +7,7 @@ import style from '../../styles/indicador.module.css'
 
 import { usePrevNextButton } from "@components/carousel/EmblaArrowButtons";
 import { PrevButton, NextButton } from "@components/carousel/EmblaArrowButtons";
-import { Tema } from "./GridModulos";
+import { Tema } from "./GridTemas";
 
 const SlideContainer = ({ children }) => {
     return (
@@ -19,7 +19,7 @@ const SlideContainer = ({ children }) => {
     );
 }
 
-const TemasCarousel = ({ modulos }) => {
+const TemasCarousel = ({ temas }) => {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
     const { selectedIndex, onDotButtonClick, scrollSnaps } = useDotButton(emblaApi);
     const { nextBtnDisabled, onNextButtonClick, prevBtnDisabled, onPrevButtonClick, } = usePrevNextButton(emblaApi);
@@ -30,11 +30,11 @@ const TemasCarousel = ({ modulos }) => {
             <div className={emblaStyles.embla__viewport} ref={emblaRef}>
                 <div className={emblaStyles.embla__container}>
                     {
-                        modulos.map((modulo) => (
-                            parseInt(modulo.indicadoresCount) > 0 && (
+                        temas.map((tema) => (
+                            parseInt(tema.indicadoresCount) > 0 && (
                                 <SlideContainer>
-                                    <Box key={modulo.id} className={style.temaList}>
-                                        <Tema key={modulo.id} modulo={modulo} />
+                                    <Box key={tema.id} className={style.temaList}>
+                                        <Tema key={tema.id} tema={tema} />
                                     </Box>
                                 </SlideContainer>
                             )

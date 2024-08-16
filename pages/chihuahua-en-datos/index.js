@@ -1,12 +1,8 @@
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import Head from 'next/head';
 import IndicadoresPDU2040 from '@components/information/IndicadoresPDU2040';
 import TemasBook from '@components/proyecto/TemasBook';
 import AboutIndicadores from '@components/information/AboutIndicadores';
-import style from './ChihEnDatos.module.css';
 import { useEffect, useState } from 'react';
-import TemasGrid from '@components/proyecto/TemasGrid';
-import TemaList from '@components/proyecto/GridModulos';
 import TemasCarousel from '@components/proyecto/TemasCarousel';
 const CRUMBS = [
   {
@@ -14,11 +10,11 @@ const CRUMBS = [
   }
 ]
 
-export default function Modulo(props) {
+export default function TEma(props) {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('indicadores-page')
   }
-  const modulos = props.data.modulos;
+  const temas = props.data.temas;
   const dimensiones = props.data.dimensiones;
 
   const [isMobile, setIsMobile] = useState(
@@ -44,25 +40,25 @@ export default function Modulo(props) {
       <IndicadoresPDU2040 dimensiones={dimensiones} />
       <AboutIndicadores />
       {isMobile ?
-        <TemasCarousel modulos={modulos} />
+        <TemasCarousel temas={temas} />
         :
-        <TemasBook modulos={modulos} />
+        <TemasBook temas={temas} />
       }
     </>
   );
 };
 
 export async function getServerSideProps(context) {
-  const modulosRes = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos`);
-  const { data: modulosData } = await modulosRes.json();
+  const temasRes = await fetch(`${process.env.INDICADORES_BASE_URL}/temas`);
+  const { data: temasData } = await temasRes.json();
 
   const dimensionesRes = await fetch(`${process.env.INDICADORES_BASE_URL}/dimensiones/info/general`);
   const { data: dimensionesData } = await dimensionesRes.json();
 
   const data = {
-    modulos: modulosData,
+    temas: temasData,
     dimensiones: dimensionesData
   }
 
-  return modulosRes.status === 200 && dimensionesRes.status === 200 ? { props: { data } } : { props: { data: [] } };
+  return temasRes.status === 200 && dimensionesRes.status === 200 ? { props: { data } } : { props: { data: [] } };
 }

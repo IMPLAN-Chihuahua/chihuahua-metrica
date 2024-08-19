@@ -1,13 +1,14 @@
 import Error from '../../_error'
 import Head from "next/head";
 import Container from "@mui/material/Container";
-import Header from "./Header";
-import HistoricalData from "./Historical";
+import Header from "@components/indicador/Header";
+import HistoricalData from "@components/indicador/Historical";
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import { Stack, Typography } from "@mui/material";
 import Owner from '@components/commons/IndicadorOwner';
 import Formula from '@components/indicador/Datasheet/Formula';
-import { IndicadorStats as Stats } from './Stats';
+import Stats from '@components/indicador/Stats';
+import { COBERTURA_GEOGRAFICA, UNIDAD_MEDIDA } from '@components/indicador/Indicador';
 
 
 export default function FichaTecnica(props) {
@@ -27,7 +28,8 @@ export default function FichaTecnica(props) {
   if (props.errorCode) {
     return <Error statusCode={props.errorCode} message={props?.message} />
   }
-  console.log(indicador);
+  const unidad = indicador.catalogos.find(c => c.idCatalogo === UNIDAD_MEDIDA)
+  const cobertura = indicador.catalogos.find(c => c.idCatalogo === COBERTURA_GEOGRAFICA)
   return (
     <>
       <Head>
@@ -43,8 +45,8 @@ export default function FichaTecnica(props) {
             ultimoValor={indicador.ultimoValorDisponible}
             anioReferencia={indicador.anioUltimoValorDisponible}
             tendencia={indicador.tendenciaActual}
-            unidad={indicador.catalogos[0].nombre}
-            cobertura={indicador.catalogos[2].nombre}
+            unidad={unidad.nombre}
+            cobertura={cobertura.nombre}
           />
           <section>
             <Typography fontStyle='italic' variant='body2'>{indicador.fuente}</Typography>

@@ -3,7 +3,7 @@ import { indigo } from "@mui/material/colors"
 import { numberWithCommas } from "helpers/FormatNumbers"
 
 
-export const IndicadorStats = ({ ultimoValor, anioReferencia, tendencia, cobertura, unidad }) => {
+const IndicadorStats = ({ ultimoValor, anioReferencia, tendencia, cobertura, unidad }) => {
 
     return (<section>
         <Stack direction='row' justifyContent='space-around' flexWrap='wrap'>
@@ -33,3 +33,5 @@ const StatBox = ({ value, label, unidad }) => {
         </Box >
     )
 }
+
+export default IndicadorStats;

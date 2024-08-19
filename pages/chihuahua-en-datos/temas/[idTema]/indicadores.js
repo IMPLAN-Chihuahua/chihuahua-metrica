@@ -72,9 +72,9 @@ export default function Tema(props) {
 
       setSelectedTema(tema || props.selectedTema)
       const filterValues = {};
-      filterValues.idOds = data.ods?.id;
-      filterValues.idUnidadMedida = data.medida?.id;
-      filterValues.idCobertura = data.cobertura?.id;
+      filterValues.ods = data.ods?.id;
+      filterValues.medida = data.medida?.id;
+      filterValues.cobertura = data.cobertura?.id;
       filterValues.tendenciaActual = data?.tendenciaActual?.value;
       filterValues.anioUltimoValorDisponible = data?.anio?.getFullYear();
       setFilters(serialize(filterValues))

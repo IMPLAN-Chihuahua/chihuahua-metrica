@@ -48,7 +48,7 @@ const Indicadores = (props) => {
     const { watch } = methods;
 
     const getIndicadores = useCallback((page, searchQuery, filters) => {
-        const { idOds, idCobertura, anioUltimoValorDisponible, idUnidadMedida, idModulo } = filters;
+        const { idOds, idCobertura, anioUltimoValorDisponible, idUnidadMedida, temas } = filters;
         const queryParams = new URLSearchParams({
             page,
             ...(searchQuery.length > 0 && { searchQuery: searchQuery.trim() }),
@@ -56,7 +56,7 @@ const Indicadores = (props) => {
             ...(anioUltimoValorDisponible > 0 && { anioUltimoValorDisponible }),
             ...(idCobertura > 0 && { cobertura: idCobertura }),
             ...(idUnidadMedida > 0 && { medida: idUnidadMedida }),
-            ...(idModulo?.length > 0 && { modulos: idModulo.join(',') })
+            ...(temas?.length > 0 && { temas: temas.join(',') })
 
         });
 
@@ -91,7 +91,7 @@ const Indicadores = (props) => {
             filterValues.idCobertura = data.cobertura?.id;
             filterValues.anioUltimoValorDisponible = data?.anio?.getFullYear();
             filterValues.idUnidadMedida = data.medida?.id;
-            filterValues.idTema = data.temas;
+            filterValues.temas = data.temas;
             setFilters(filterValues)
         });
         return () => subscription.unsubscribe();
@@ -218,41 +218,32 @@ const Indicadores = (props) => {
                         }}>
                             {
                                 props.temas.data.map(tema => (
-                                    <Controller
-                                        name='temas'
-                                        defaultValue={[]}
+                                    <FormControlLabel
                                         key={tema.id}
-                                        control={methods.control}
-                                        render={({ field: { value, onChange } }) => (
-                                            <>
-                                                <FormControlLabel
-                                                    control={
-                                                        <Checkbox
-                                                            size="small"
-                                                            icon={<PanoramaFishEye />}
-                                                            checkedIcon={<CheckCircleIcon />}
-                                                            onChange={(item) => onChange(item.id)}
-                                                            value={value}
-                                                            {...methods.register('temas')}
-                                                            sx={{
-                                                                color: dimension.color,
-                                                                '&.Mui-checked': {
-                                                                    color: dimension.color,
-                                                                },
-                                                            }}
-                                                        />
-                                                    }
-                                                    label={<Typography sx={{ fontSize: '17px' }}>{tema.temaIndicador}</Typography>}
-                                                    sx={{
-                                                        borderRadius: '50px',
-                                                        border: value?.includes(tema.id.toString()) ? `1px solid ${dimension.color}` : '1px solid #ccc',
-                                                        p: '1px',
-                                                        pr: '10px',
-                                                        backgroundColor: value?.includes(tema.id.toString()) ? hexAsRGBA(dimension.color, 0.1) : 'transparent',
-                                                    }}
-                                                />
-                                            </>
-                                        )}
+                                        control={
+                                            <Checkbox
+                                                size="small"
+                                                icon={<PanoramaFishEye />}
+                                                checkedIcon={<CheckCircleIcon />}
+                                                onChange={console.log}
+                                                value={tema.id}
+                                                {...methods.register('temas')}
+                                                sx={{
+                                                    color: dimension.color,
+                                                    '&.Mui-checked': {
+                                                        color: dimension.color,
+                                                    },
+                                                }}
+                                            />
+                                        }
+                                        label={<Typography sx={{ fontSize: '17px' }}>{tema.temaIndicador}</Typography>}
+                                        sx={{
+                                            borderRadius: '50px',
+                                            border: `1px solid ${dimension.color}`,
+                                            p: '1px',
+                                            pr: '10px',
+                                            backgroundColor: hexAsRGBA(dimension.color, 0.1),
+                                        }}
                                     />
                                 ))
                             }

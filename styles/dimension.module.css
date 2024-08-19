@@ -1,28 +1,3 @@
-.cardHeader {
-    color: #123d70;
-    font-family: "Inter", sans-serif !important;
-}
-
-.cardShortDescription {
-    font-family: "Inter", sans-serif !important;
-}
-
-.indicadorCounter {
-    font-family: "Inter", sans-serif !important;
-    color: #123d70;
-    padding-left: 10px;
-    line-height: 0.8 !important;
-    margin: 0px !important;
-}
-
-.indicadorQuantity {
-    font-family: "Inter", sans-serif !important;
-    color: #557C93;
-    padding-left: 5px;
-    font-size: 1.5rem !important;
-    margin: 0px !important;
-}
-
 .divider {
     border: none;
     width: 5px;
@@ -31,13 +6,7 @@
     transition: all 0.2s linear;
 }
 
-.indicadorBox {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
+
 
 @media only screen and (max-width: 810px) {
     .divider {

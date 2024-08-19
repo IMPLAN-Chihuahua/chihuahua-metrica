@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import json from './dimensions.json';
 import NextLink from "next/link";
 
@@ -35,76 +35,63 @@ const PrimordialBox = () => {
     };
 
     return (
-        <Box sx={{ width: '100%', mb: 3 }}>
+        <Box sx={{
+            width: '100%', mb: 3,
+            borderRadius: '10px',
+        }}>
             <Box sx={{
                 display: 'flex',
                 alignItems: 'center',
                 width: '100%',
-            }}>
+            }
+            } >
                 <Tabs value={value} onChange={handleChange}
                     sx={{
-                        p: 1,
-                        pl: 3,
                         '& .MuiTabs-indicator': {
                             display: 'none'
                         },
-                        background: ' linear-gradient(white, white) padding-box, linear-gradient(to right, darkblue, darkorchid) border-box;',
                         borderRadius: '40px',
-                        border: '2px solid transparent',
-                        mb: 2
+                        '& .MuiTabs-flexContainer': {
+                            gap: 5
+                        },
                     }}
+                    scrollButtons={true}
+                    variant='scrollable'
+                    allowScrollButtonsMobile
+
                 >
                     <Tab label="Infraestructura de Desarrollo"
                         sx={{
                             backgroundColor: 'rgba(255, 139, 253, 0.2)',
                             borderRadius: '40px',
-                            width: '300px',
-                            fontWeight: '500',
                             '&.Mui-selected': {
-                                backgroundImage: 'linear-gradient(90deg, #712370 0%, #A6296C 50%, #D12D6A 100%)',
+                                backgroundImage: 'linear-gradient(90deg, #08203E 0%, #2F4E69 50%, #557C93 100%)',
                                 color: 'white',
-                                fontWeight: 'bold'
-
                             },
-                            boxShadow: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
-                            mr: 3,
-                            transition: 'all 0.3s ease-in-out',
+                            fontWeight: 700,
                         }}
                     />
                     <Tab label="Entornos Urbanos Consolidados" sx={{
                         backgroundColor: 'rgba(255, 139, 253, 0.2)',
                         borderRadius: '40px',
-                        width: '300px',
-                        fontWeight: '500',
                         '&.Mui-selected': {
-                            backgroundImage: 'linear-gradient(90deg, #712370 0%, #A6296C 50%, #D12D6A 100%)',
+                            backgroundImage: 'linear-gradient(90deg, #08203E 0%, #2F4E69 50%, #557C93 100%)',
                             color: 'white',
-                            fontWeight: 'bold'
-
                         },
-                        boxShadow: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
-                        mr: 3,
-                        transition: 'all 0.3s ease-in-out'
-
+                        fontWeight: 700,
                     }} />
 
                     <Tab label="Calidad de vida y Sostenibilidad Ambiental" sx={{
                         backgroundColor: 'rgba(255, 139, 253, 0.2)',
                         borderRadius: '40px',
-                        width: '300px',
-                        fontWeight: '500',
                         '&.Mui-selected': {
-                            backgroundImage: 'linear-gradient(90deg, #712370 0%, #A6296C 50%, #D12D6A 100%)',
+                            backgroundImage: 'linear-gradient(90deg, #08203E 0%, #2F4E69 50%, #557C93 100%)',
                             color: 'white',
-                            fontWeight: 'bold'
                         },
-                        boxShadow: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
-                        mr: 3,
-                        transition: 'all 0.3s ease-in-out'
-
+                        fontWeight: 700,
                     }} />
                 </Tabs>
-            </Box>
+            </Box >
 
             {
                 dimensions.map((item, index) => {
@@ -117,7 +104,7 @@ const PrimordialBox = () => {
 
             }
 
-        </Box>
+        </Box >
     )
 }
 
@@ -143,7 +130,19 @@ const Dimension = (props) => {
                     </Typography>
                     <Typography variant='subtitle2' fontWeight={600} color={'blueviolet'}>
                         <NextLink href={`/chihuahua-en-datos/dimensiones/${dimension.id}/indicadores`} passHref>
-                            <a>Ver indicadores</a>
+                            <a>
+                                <Button variant='contained' sx={{
+                                    backgroundImage: 'linear-gradient(90deg, #08203E 0%, #2F4E69 50%, #557C93 100%)',
+                                    borderRadius: '40px',
+                                    fontWeight: 'bold',
+                                    pl: 2,
+                                    pr: 2,
+                                    pt: 1,
+                                    pb: 1,
+                                }}>
+                                    Ver indicadores
+                                </Button>
+                            </a>
                         </NextLink>
                     </Typography>
                 </Grid>
@@ -157,7 +156,7 @@ const Dimension = (props) => {
                 >
                     <img
                         src={`${dimension.img}`}
-                        style={{ width: '300px', height: '300px', borderRadius: '5px' }}
+                        style={{ width: '100%', height: '100%', borderRadius: '5px' }}
                     />
                 </Grid>
 

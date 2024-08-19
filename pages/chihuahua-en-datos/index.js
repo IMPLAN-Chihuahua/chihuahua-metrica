@@ -1,21 +1,35 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
 import Head from 'next/head';
 import IndicadoresPDU2040 from '@components/information/IndicadoresPDU2040';
 import TemasBook from '@components/proyecto/TemasBook';
 import AboutIndicadores from '@components/information/AboutIndicadores';
-import style from './ChihEnDatos.module.css';
+import { useEffect, useState } from 'react';
+import TemasCarousel from '@components/proyecto/TemasCarousel';
 const CRUMBS = [
   {
     text: 'Sistema de Indicadores del PDU2040 Séptima Actualización'
   }
 ]
 
-export default function Modulo(props) {
+export default function TEma(props) {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('indicadores-page')
   }
-  const modulos = props.data.modulos;
+  const temas = props.data.temas;
   const dimensiones = props.data.dimensiones;
+
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' && window.innerWidth < 760
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 760);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <Head>
@@ -25,42 +39,26 @@ export default function Modulo(props) {
       </Head>
       <IndicadoresPDU2040 dimensiones={dimensiones} />
       <AboutIndicadores />
-
-      <Box sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        pr: 20,
-        pl: 20,
-
-      }}>
-        <Typography
-          variant='h3'
-          component='h1'
-          fontWeight={600}
-          className={style.subtitle}
-          textAlign={'center'}
-        >
-          Temas de interés
-        </Typography>
-        <TemasBook modulos={modulos} />
-      </Box>
+      {isMobile ?
+        <TemasCarousel temas={temas} />
+        :
+        <TemasBook temas={temas} />
+      }
     </>
   );
 };
 
 export async function getServerSideProps(context) {
-  const modulosRes = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos`);
-  const { data: modulosData } = await modulosRes.json();
+  const temasRes = await fetch(`${process.env.INDICADORES_BASE_URL}/temas`);
+  const { data: temasData } = await temasRes.json();
 
   const dimensionesRes = await fetch(`${process.env.INDICADORES_BASE_URL}/dimensiones/info/general`);
   const { data: dimensionesData } = await dimensionesRes.json();
 
   const data = {
-    modulos: modulosData,
+    temas: temasData,
     dimensiones: dimensionesData
   }
 
-  return modulosRes.status === 200 && dimensionesRes.status === 200 ? { props: { data } } : { props: { data: [] } };
+  return temasRes.status === 200 && dimensionesRes.status === 200 ? { props: { data } } : { props: { data: [] } };
 }

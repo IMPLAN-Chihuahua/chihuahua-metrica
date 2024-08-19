@@ -4,7 +4,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import { Box, Button, Modal, styled, Typography } from "@mui/material";
 import styles from './EmblaCarousel.module.css'
 import Image from "next/image";
-import NextLink from "next/link";
 import { usePrevNextButton } from "./EmblaArrowButtons";
 import { PrevButton, NextButton } from './EmblaArrowButtons'
 import { useRouter } from "next/router";
@@ -68,10 +67,28 @@ const SlideContent = ({ href, callToActionLabel, title, description, titleWeight
 
   return (
     <>
-      <Typography zIndex={1} variant='h3' fontWeight={titleWeight || 500} style={{ textShadow: '1px 1px 3px black' }}>{title}</Typography>
-      <Typography zIndex={1} variant='body1' mt={2} maxWidth='50em' style={{ textShadow: '1px 1px 3px black' }}>
-        {description}
-      </Typography>
+      <Box
+        zIndex={1}
+        className={styles.embla__slide__text}
+      >
+        <Typography
+          variant='h3'
+          fontWeight={titleWeight || 500}
+          style={{ textShadow: '1px 1px 3px black' }}
+          className={styles.embla__slide__title}
+        >
+          {title}
+        </Typography>
+        <Typography
+          variant='body1'
+          maxWidth='50em'
+          style={{ textShadow: '1px 1px 3px black' }}
+          className={styles.embla__slide__description}
+        >
+          {description}
+        </Typography>
+      </Box>
+
       <CallToActionButton
         sx={{ mt: 2 }}
         onClick={() => {
@@ -125,10 +142,10 @@ const EmblaCarousel = () => {
             ))
           }
         </div>
-        <div>
+        <Box className={styles.embla__arrows}>
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </div>
+        </Box>
       </div>
     </section>
   );
@@ -138,8 +155,8 @@ const PDU20240Slide = () => {
   return (
     <SlideContent
       titleWeight={600}
-      title='Sistema de indicadores del PDUCP'
-      description={'Es una herramienta esencial para evaluar el progreso hacia objetivos establecidos en el PDUCP. Busca proporcionar información clave para la toma de decisiones informadas, identificando áreas de mejora y permitiendo una rendición de cuentas efectiva.'}
+      title='Sistema de indicadores del PDU2040'
+      description={'Es una herramienta esencial para evaluar el progreso hacia objetivos establecidos en el PDU2040. Busca proporcionar información clave para la toma de decisiones informadas, identificando áreas de mejora y permitiendo una rendición de cuentas efectiva.'}
       callToActionLabel='Saber más'
       onClick={() => {
         const elem = document.getElementById('PDU2040-section')

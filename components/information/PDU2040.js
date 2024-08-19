@@ -1,13 +1,12 @@
 import PrimordialBox from '@components/dimension/PrimordialBox';
 import { Box, Typography } from '@mui/material';
 import NextLink from "next/link";
-
 import React from 'react'
 
 const PDU2040 = () => {
     return (
         <section id='PDU2040-section'>
-            <Typography variant='h4' fontWeight={600} sx={{ pb: 1 }}>
+            <Typography variant='h3' fontWeight={600} sx={{ pb: 1 }}>
                 Sistema de Indicadores del PDU2040 Séptima Actualización
             </Typography>
             <Typography variant='body1' fontSize="1.3rem" sx={{ pb: 1 }}>

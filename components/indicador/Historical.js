@@ -1,5 +1,5 @@
-import Graph from "pages/chihuahua-en-datos/indicadores/BarChart";
-import HistoricalTable from "pages/chihuahua-en-datos/indicadores/HistoricalTable";
+import Graph from "@components/indicador/BarChart";
+import HistoricalTable from "@components/indicador/HistoricalTable";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 

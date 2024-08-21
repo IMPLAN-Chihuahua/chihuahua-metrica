@@ -7,7 +7,7 @@ const IndicadorStats = ({ ultimoValor, anioReferencia, tendencia, cobertura, uni
 
     return (<section>
         <Stack direction='row' justifyContent='space-around' flexWrap='wrap'>
-            <StatBox value={numberWithCommas(ultimoValor)} unidad={unidad} label='Último valor disponible' />
+            <StatBox value={ultimoValor} unidad={unidad} label='Último valor disponible' />
             <StatBox value={anioReferencia} label='Año de referencia' />
             <StatBox value={tendencia} label='Tendencia actual' />
             {

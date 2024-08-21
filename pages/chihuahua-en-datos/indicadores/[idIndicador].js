@@ -9,6 +9,7 @@ import Owner from '@components/commons/IndicadorOwner';
 import Formula from '@components/indicador/Datasheet/Formula';
 import Stats from '@components/indicador/Stats';
 import { COBERTURA_GEOGRAFICA, UNIDAD_MEDIDA } from '@components/indicador/Indicador';
+import { numberWithCommas } from 'helpers/FormatNumbers';
 
 
 export default function FichaTecnica(props) {
@@ -42,7 +43,7 @@ export default function FichaTecnica(props) {
         <Stack spacing={6} mt={2}>
           <Header info={indicador} />
           <Stats
-            ultimoValor={indicador.ultimoValorDisponible}
+            ultimoValor={`${numberWithCommas(indicador.ultimoValorDisponible)} ${indicador.adornment}`}
             anioReferencia={indicador.anioUltimoValorDisponible}
             tendencia={indicador.tendenciaActual}
             unidad={unidad.nombre}

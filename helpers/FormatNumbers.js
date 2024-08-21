@@ -1,7 +1,7 @@
 const numberWithCommas = (num) => {
     try {
-        num = parseFloat(num);
-        num = Math.round(num * 100) / 100
+        // num = parseFloat(num);
+        // num = Math.round(num * 100) / 100
         return commify(num);
     } catch (err) {
         typeof num === 'string' || num === 'number'

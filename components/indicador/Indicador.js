@@ -69,7 +69,7 @@ const Indicador = (props) => {
                         color={props.fontColor}
                         fontWeight='bold'
                         fontSize={25}
-                      >{numberWithCommas(indicador.ultimoValorDisponible)}
+                      >{numberWithCommas(indicador.ultimoValorDisponible)}{indicador.adornment !== null && indicador.adornment}
                       </Typography>
                     </Grid>
                     <Divider

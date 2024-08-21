@@ -141,16 +141,16 @@ const Indicadores = (props) => {
                     <PageBreadcrumb crumbs={[...CRUMBS]} />
                     <NavBackAndFoward
                         prev={{
-                            title: 'Dimensión anterior',
+                            title: 'Objetivo anterior',
                             disabled: dimension.id === 1,
                             onClick: () => localStorage.removeItem('indicadores-page'),
-                            link: `/chihuahua-en-datos/dimensiones/${dimension.id - 1}/indicadores`
+                            link: `/chihuahua-en-datos/objetivos/${dimension.id - 1}/indicadores`
                         }}
                         next={{
-                            title: 'Siguiente dimensión',
+                            title: 'Siguiente objetivo',
                             disabled: dimension.id === 3,
                             onClick: () => localStorage.removeItem('indicadores-page'),
-                            link: `/chihuahua-en-datos/dimensiones/${dimension.id + 1}/indicadores`
+                            link: `/chihuahua-en-datos/objetivos/${dimension.id + 1}/indicadores`
                         }}
                     />
                 </Box>
@@ -174,6 +174,7 @@ const Indicadores = (props) => {
                             src={dimension?.urlImagen}
                             layout='fill'
                             objectFit='cover'
+                            style={{ borderRadius: 7 }}
                         />
                     </Box>
                     <Box
@@ -311,8 +312,8 @@ const IndicadorSearchBar = ({ setSearch }) => {
 
 export async function getServerSideProps(context) {
     const baseUrl = process.env.INDICADORES_BASE_URL;
-    const { idDimension } = context.params;
-    const selectedDimensionRes = await fetch(`${baseUrl}/dimensiones/${idDimension}`);
+    const { idObjetivo } = context.params;
+    const selectedDimensionRes = await fetch(`${baseUrl}/dimensiones/${idObjetivo}`);
     const errorCode = selectedDimensionRes.ok ? false : selectedDimensionRes.status;
     const selectedDimension = await selectedDimensionRes.json();
 
@@ -331,7 +332,7 @@ export async function getServerSideProps(context) {
             fetch(`${baseUrl}/catalogos/${ODS_ID}`),
             fetch(`${baseUrl}/catalogos/${UNIDAD_MEDIDA_ID}`),
             fetch(`${baseUrl}/catalogos/${COBERTURA_GEOGRAFICA_ID}`),
-            fetch(`${baseUrl}/dimensiones/${idDimension}/temas`)
+            fetch(`${baseUrl}/dimensiones/${idObjetivo}/temas`)
         ]);
 
     const [ods, medidas, coberturas, temas] = await Promise.all([
@@ -343,7 +344,7 @@ export async function getServerSideProps(context) {
     return {
         props: {
             errorCode,
-            key: idDimension,
+            key: idObjetivo,
             ods,
             coberturas,
             medidas,

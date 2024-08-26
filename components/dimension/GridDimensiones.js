@@ -19,7 +19,7 @@ const Dimension = ({ dimension }) => {
                 onMouseLeave={() => setHover(false)}
             >
                 <NextLink
-                    href={`/chihuahua-en-datos/dimensiones/${dimension.dimension.id}/indicadores`}
+                    href={`/chihuahua-en-datos/objetivos/${dimension.dimension.id}/indicadores`}
                     passHref>
                     <a>
                         <CardContent className={styles.cardContent}>

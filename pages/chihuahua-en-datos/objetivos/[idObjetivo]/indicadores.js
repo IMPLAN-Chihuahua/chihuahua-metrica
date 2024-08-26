@@ -225,6 +225,7 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
                         objectFit='cover'
                         style={{ borderRadius: 7 }}
                         priority
+                        alt=''
                     />
                 </Box>
                 <Box

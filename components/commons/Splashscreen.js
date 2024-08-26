@@ -3,19 +3,19 @@ import { useEffect } from "react";
 
 const Splashscreen = () => {
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const globalLoader = document.getElementById('globalLoader');
-      const loader = document.getElementById('loader');
-      if (globalLoader && loader) {
-        setTimeout(() => {
-          loader.style.opacity = 0;
-          setTimeout(() => {
-            globalLoader.style.opacity = 0;
-            globalLoader.style.zIndex = -1;
-          }, 400);
-        }, 900)
-      }
-    }
+    if (typeof window === 'undefined') return;
+
+    const globalLoader = document.getElementById('globalLoader');
+    const loader = document.getElementById('loader');
+    if (!globalLoader || !loader) return;
+    
+    setTimeout(() => {
+      loader.style.opacity = 0;
+      setTimeout(() => {
+        globalLoader.style.opacity = 0;
+        globalLoader.style.zIndex = -1;
+      }, 400);
+    }, 900)
 
   }, []);
 

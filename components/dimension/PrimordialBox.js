@@ -129,7 +129,7 @@ const Dimension = (props) => {
                         {dimension.summary}
                     </Typography>
                     <Typography variant='subtitle2' fontWeight={600} color={'blueviolet'}>
-                        <NextLink href={`/chihuahua-en-datos/dimensiones/${dimension.id}/indicadores`} passHref>
+                        <NextLink href={`/chihuahua-en-datos/objetivos/${dimension.id}/indicadores`} passHref>
                             <a>
                                 <Button variant='contained' sx={{
                                     backgroundImage: 'linear-gradient(90deg, #08203E 0%, #2F4E69 50%, #557C93 100%)',

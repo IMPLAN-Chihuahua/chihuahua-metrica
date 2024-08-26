@@ -1,14 +1,9 @@
 import Head from 'next/head'
 import EmblaCarousel from '@components/carousel/EmblaCarousel';
-import AboutDescription from '@components/information/AboutDescription';
-import { ProjectsSection } from '@components/proyecto/ProjectSection';
 import { Container } from '@mui/material';
-import StatsIndicadores from '@components/stats/StatsIndicadores';
-import SatisfactionSurvey from '@components/stats/SatisfactionSurvey';
 import Splashscreen from '@components/commons/Splashscreen';
 import PartnersStrip from '@components/commons/PartnersStrip';
 import PDU2040 from '@components/information/PDU2040';
-import { useRef } from 'react';
 
 export default function Home() {
   return (

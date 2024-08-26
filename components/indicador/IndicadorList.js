@@ -7,9 +7,7 @@ const IndicadorList = (props) => {
   return (
     <Stack spacing={2} alignItems="stretch" justifyContent="space-around">
       {
-        indicadores.length > 0
-          ? indicadores.map(elem => <Indicador value={elem} key={elem.id} fontColor={props.fontColor} />)
-          : <Alert severity="warning">No se encontraron indicadores</Alert>
+        indicadores.map(elem => <Indicador value={elem} key={elem.id} fontColor={props.fontColor} />)
       }
     </Stack>
   );

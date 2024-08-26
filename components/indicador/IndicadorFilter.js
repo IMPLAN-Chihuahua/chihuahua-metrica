@@ -13,19 +13,34 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import Title from '@components/commons/Title';
 import { debounce } from 'lodash';
+import { COBERTURA_GEOGRAFICA, ODS } from './Indicador';
+import { useEffect, useState } from 'react';
+import useSWRImmutable from 'swr/immutable'
 
-const tendencyList = [
-  { id: 1, value: 'Ascendente' },
-  { id: 2, value: 'Descendente' },
-  { id: 3, value: 'No aplica' }
-];
+const IndicadoresFilter = (props) => {
+  const [ods, setOds] = useState([]);
+  const [coberturas, setCoberturas] = useState([]);
 
-const IndicadorFilter = (props) => {
-  const { odsList, unidadMedidaList,
-    coberturaList } = props;
   const minDate = subYears(20, new Date());
   const maxDate = new Date();
   const { control, setError } = useFormContext();
+  const fetcher = async (url) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_INDICADORES_BASE_URL}${url}`)
+    return res.json();
+  }
+
+  const { data: odsList } = useSWRImmutable(`/catalogos/${ODS}`, fetcher);
+  const { data: coberturaList } = useSWRImmutable(`/catalogos/${COBERTURA_GEOGRAFICA}`, fetcher);
+
+  useEffect(() => {
+    if (!odsList) return;
+    setOds(odsList.data)
+  }, [odsList])
+
+  useEffect(() => {
+    if (!coberturaList) return;
+    setCoberturas(coberturaList.data)
+  }, [coberturaList])
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -54,7 +69,7 @@ const IndicadorFilter = (props) => {
                     {...props}
                     onChange={(_, data) => props.onChange(data)}
                     disablePortal
-                    options={odsList}
+                    options={ods}
                     getOptionLabel={(option) => option.nombre}
                     isOptionEqualToValue={(option, value) => option.id === value.id}
                     noOptionsText="No hay opciones"
@@ -92,54 +107,7 @@ const IndicadorFilter = (props) => {
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Controller
-                name='medida'
-                control={control}
-                defaultValue={null}
-                render={({ field: props }) => (
-                  <Autocomplete
-                    {...props}
-                    onChange={(_, data) => props.onChange(data)}
-                    disablePortal
-                    id="cbx-medida"
-                    options={unidadMedidaList}
-                    getOptionLabel={(option) => option.nombre}
-                    isOptionEqualToValue={(option, value) => option.id === value.id}
-                    noOptionsText="No hay opciones"
-                    renderOption={(props, option, { inputValue }) => {
-                      const matches = match(option.nombre, inputValue);
-                      const parts = parse(option.nombre, matches);
-
-                      return (
-                        <li {...props}>
-                          <div>
-                            {parts.map((part, index) => (
-                              <span
-                                key={index}
-                                style={{
-                                  fontWeight: part.highlight ? 700 : 400,
-                                }}
-                              >
-                                {part.text}
-                              </span>
-                            ))}
-                          </div>
-                        </li>
-                      );
-                    }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Unidad de Medida"
-                      />
-                    )}
-                  />
-
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <Controller
-                name='anio'
+                name='anioUltimoValorDisponible'
                 control={control}
                 defaultValue={null}
                 render={({ field: props }) => (
@@ -178,7 +146,7 @@ const IndicadorFilter = (props) => {
                     {...props}
                     onChange={(_, data) => props.onChange(data)}
                     disablePortal
-                    options={coberturaList}
+                    options={coberturas}
                     getOptionLabel={(option) => option.nombre}
                     isOptionEqualToValue={(option, value) => option.id === value.id}
                     noOptionsText="No hay opciones"
@@ -244,4 +212,4 @@ const IndicadorFilter = (props) => {
   );
 };
 
-export default IndicadorFilter;
+export default IndicadoresFilter;

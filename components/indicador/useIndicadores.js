@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import qs from 'qs';
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 
 /**
  * 
@@ -13,21 +13,20 @@ import useSWR from "swr";
 const useIndicadores = (args) => {
     const { resource, resourceId, searchQuery, ...filters } = args;
     const [page, setPage] = useState(1);
-    const queryParams = qs.stringify({
+    const [totalPages, setTotalPages] = useState(0);
+
+    const [indicadores, setIndicadores] = useState([]);
+    const queryParams = useMemo(() => qs.stringify({
         searchQuery,
         page,
         ...filters
     }, {
         addQueryPrefix: true,
         skipNulls: true
-    })
+    }), [searchQuery, page, filters]);
 
-    const [totalPages, setTotalPages] = useState(0);
-    const [indicadores, setIndicadores] = useState([]);
-
-    const endpoint = `/${resource}/${resourceId}/indicadores${queryParams}`
-    const { data, error, mutate } = useSWR(endpoint, fetchIndicadores);
-
+    const endpoint = `/${resource}/${resourceId}/indicadores${queryParams}`;
+    const { data, error, mutate } = useSWRImmutable(endpoint, fetchIndicadores);
 
     const nextPage = useCallback(() => {
         setPage(prevPage => prevPage + 1);

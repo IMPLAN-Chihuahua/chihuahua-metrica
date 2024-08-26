@@ -13,10 +13,9 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import Title from '@components/commons/Title';
 import { debounce } from 'lodash';
-import useSWR from 'swr';
 import { COBERTURA_GEOGRAFICA, ODS } from './Indicador';
 import { useEffect, useState } from 'react';
-
+import useSWRImmutable from 'swr/immutable'
 
 const IndicadoresFilter = (props) => {
   const [ods, setOds] = useState([]);
@@ -30,8 +29,8 @@ const IndicadoresFilter = (props) => {
     return res.json();
   }
 
-  const { data: odsList } = useSWR(`/catalogos/${ODS}`, fetcher);
-  const { data: coberturaList } = useSWR(`/catalogos/${COBERTURA_GEOGRAFICA}`, fetcher);
+  const { data: odsList } = useSWRImmutable(`/catalogos/${ODS}`, fetcher);
+  const { data: coberturaList } = useSWRImmutable(`/catalogos/${COBERTURA_GEOGRAFICA}`, fetcher);
 
   useEffect(() => {
     if (!odsList) return;

@@ -132,7 +132,7 @@ const Banner = () => {
         height: '70vh'
       }}>
       <Image
-        loader={({ src }) => `https://chihuahua-metrica-bucket.s3.us-west-1.amazonaws.com/images/arbolado/${src}`}
+        loader={({ src }) => `https://www.implanchihuahua.org/indicadores/images/arbolado/${src}`}
         src='arbolado_urbano_banner_principal.jpg'
         layout='fill'
         objectFit='cover'
@@ -300,7 +300,7 @@ const BeneficioContent = ({ beneficio }) => {
     <Box display='flex' justifyContent='center' mb={1}>
       <Image
         style={{ marginLeft: 'auto', marginRight: 'auto' }}
-        loader={({ src }) => `https://chihuahua-metrica-bucket.s3.us-west-1.amazonaws.com/images/arbolado/${src}`}
+        loader={({ src }) => `https://www.implanchihuahua.org/indicadores/images/arbolado/${src}`}
         src={beneficio.icon}
         width={150}
         height={150}
@@ -386,7 +386,7 @@ const InventarioArboladoSection = () => {
       </Grid>
       <Grid item xs={12} md={6} alignContent='center'>
         <Image
-          loader={({ src }) => `https://chihuahua-metrica-bucket.s3.us-west-1.amazonaws.com/images/arbolado/${src}`}
+          loader={({ src }) => `https://www.implanchihuahua.org/indicadores/images/arbolado/${src}`}
           src='banner_negro_arbolado_crop.jpg'
           layout='responsive'
           objectFit='cover'

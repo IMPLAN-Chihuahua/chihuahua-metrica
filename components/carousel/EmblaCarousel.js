@@ -41,7 +41,7 @@ const SlideContainer = ({ children, backgroundImageUrl }) => {
       <div className={styles.embla__slide__content}>
         {
           backgroundImageUrl && (
-            <Image src={backgroundImageUrl} layout='fill' objectFit="cover" priority />
+            <Image src={backgroundImageUrl} loader={({ src }) => src} layout='fill' objectFit="cover" priority />
           )
         }
         {children}
@@ -114,7 +114,7 @@ const EmblaCarousel = () => {
     <section className={styles.embla}>
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
-          <SlideContainer backgroundImageUrl='https://images.unsplash.com/photo-1626908013351-800ddd734b8a?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'>
+          <SlideContainer backgroundImageUrl='https://www.implanchihuahua.org/indicadores/images/unsplash.avif'>
             <PDU20240Slide />
           </SlideContainer>
           <SlideContainer>

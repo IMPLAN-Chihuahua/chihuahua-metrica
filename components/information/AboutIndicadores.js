@@ -30,7 +30,7 @@ const AboutIndicadores = () => {
                 md={6}
             >
                 <img
-                    src='https://chihuahua-metrica-bucket.s3.us-west-1.amazonaws.com/images/objetivos/MentalMap.png'
+                    src='https://www.implanchihuahua.org/indicadores/images/objetivos/MentalMap.png'
                     alt='Indicadores'
                     className={style.imgMentalMap}
                 />

@@ -21,7 +21,7 @@ export default function FichaTecnica(props) {
     href: '/chihuahua-en-datos'
   }, {
     text: indicador.Tema.temaIndicador,
-    href: '/chihuahua-en-datos/temas/${indicador.Tema.id}/indicadores'
+    href: `/chihuahua-en-datos/temas/${indicador.Tema.id}/indicadores`
   }, {
     text: indicador.nombre
   }];
@@ -43,7 +43,7 @@ export default function FichaTecnica(props) {
         <Stack spacing={6} mt={2}>
           <Header info={indicador} />
           <Stats
-            ultimoValor={`${numberWithCommas(indicador.ultimoValorDisponible)} ${indicador.adornment}`}
+            ultimoValor={`${numberWithCommas(indicador.ultimoValorDisponible)}${indicador.adornment !== null ? indicador.adornment : ''}`}
             anioReferencia={indicador.anioUltimoValorDisponible}
             tendencia={indicador.tendenciaActual}
             unidad={unidad.nombre}

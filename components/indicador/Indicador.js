@@ -11,7 +11,6 @@ export const ODS = 1;
 export const UNIDAD_MEDIDA = 2;
 export const COBERTURA_GEOGRAFICA = 3;
 
-const compareIds = (a, b) => a.idCatalogo - b.idCatalogo;
 
 const Indicador = (props) => {
   const indicador = props.value;
@@ -19,7 +18,7 @@ const Indicador = (props) => {
   const ods = indicador.catalogos.find(c => c.idCatalogo === ODS);
   const coberturaGeografica = indicador.catalogos.find(c => c.idCatalogo === COBERTURA_GEOGRAFICA);
   return (
-    <Tooltip title={objetivo?.destacado ? `Este indicador abona principalmente para lograr el objetivo '${objetivo.titulo}'` : ``} placement='left-start'>
+    <Tooltip title={objetivo?.destacado ? 'Este indicador abona principalmente para lograr el presente objetivo' : ``} placement='left-start'>
       <Card variant='outlined'>
         <CardActionArea sx={{ p: 2 }}>
           <NextLink href={`/chihuahua-en-datos/indicadores/${indicador.id}`} passHref>
@@ -69,7 +68,7 @@ const Indicador = (props) => {
                         color={props.fontColor}
                         fontWeight='bold'
                         fontSize={25}
-                      >{numberWithCommas(indicador.ultimoValorDisponible)}{indicador.adornment !== null && indicador.adornment}
+                      >{numberWithCommas(indicador.ultimoValorDisponible)}{indicador.adornment !== null ? indicador.adornment : ''}
                       </Typography>
                     </Grid>
                     <Divider

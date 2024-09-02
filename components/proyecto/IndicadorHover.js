@@ -43,7 +43,7 @@ const IndicadorHover = ({ indicador }) => {
                                     alignItems: 'center',
                                 }}>
                                     <img
-                                        src={indicador?.tema?.urlImagen}
+                                        src={indicador.Tema?.urlImagen}
                                         alt='Indicador'
                                         layout='fill'
                                         style={{

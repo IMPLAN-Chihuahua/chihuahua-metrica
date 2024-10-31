@@ -5,7 +5,7 @@ import useSWRImmutable from "swr/immutable";
 /**
  * 
  * @param {Object} args arguments to useIndicadores hook
- * @param {('dimensiones' | 'temas')} args.resource get indicadores classify by a given resource (objetivos or temas) e.g., indicadores in objectivos, or indicadores in temas.
+ * @param {('objetivos' | 'temas')} args.resource get indicadores classify by a given resource (objetivos or temas) e.g., indicadores in objectivos, or indicadores in temas.
  * @param {number} args.resourceId id of given resource e.g., objetivos/1/indicadores here objetivos is the resource and 1 is its resourceId
  * @param {string} searchQuery
  * @param {object} filters

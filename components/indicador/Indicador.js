@@ -15,8 +15,8 @@ export const COBERTURA_GEOGRAFICA = 3;
 const Indicador = (props) => {
   const indicador = props.value;
   const objetivo = indicador.objetivos[0]
-  const ods = indicador.catalogos.find(c => c.idCatalogo === ODS);
-  const coberturaGeografica = indicador.catalogos.find(c => c.idCatalogo === COBERTURA_GEOGRAFICA);
+  // const ods = indicador.catalogos.find(c => c.idCatalogo === ODS);
+  // const coberturaGeografica = indicador.catalogos.find(c => c.idCatalogo === COBERTURA_GEOGRAFICA);
   return (
     <Tooltip title={objetivo?.destacado ? 'Este indicador abona principalmente para lograr el presente objetivo' : ``} placement='left-start'>
       <Card variant='outlined'>
@@ -113,9 +113,9 @@ const Indicador = (props) => {
                       <Typography>
                         Objetivo Desarrollo Sostenible
                       </Typography>
-                      <Typography fontWeight={600}>
+                      {/* <Typography fontWeight={600}>
                         {ods.nombre}
-                      </Typography>
+                      </Typography> */}
                     </Grid>
                     <Divider
                       orientation='vertical'
@@ -136,9 +136,9 @@ const Indicador = (props) => {
                       <Typography>
                         Cobertura Geográfica
                       </Typography>
-                      <Typography fontWeight={600}>
+                      {/* <Typography fontWeight={600}>
                         {coberturaGeografica.nombre}
-                      </Typography>
+                      </Typography> */}
                     </Grid>
                   </Grid>
                 </Grid>

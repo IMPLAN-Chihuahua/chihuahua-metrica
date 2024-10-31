@@ -7,10 +7,13 @@ const shortDescription = ['Incluye indicadores relacionados al crecimiento, plan
 
 import styles from './PDU2040.module.css'
 
-const Dimension = ({ dimension }) => {
+const Objetivo = ({ objetivoObject }) => {
     const [isHover, setHover] = useState(false);
+
+    const { indicadoresCount, objetivo } = objetivoObject;
+
     return (
-        <Grid item xs={12} md={6} lg={4} className={styles.dimensionGridItem}>
+        <Grid item xs={12} md={6} lg={4} className={styles.objetivoGridItem}>
             <Card sx={{
                 boxShadow: isHover ? '0px 0px 20px 0px rgba(0,0,0,0.6)' : '0px 0px 10px 0px rgba(0,0,0,0.3)',
             }}
@@ -19,15 +22,15 @@ const Dimension = ({ dimension }) => {
                 onMouseLeave={() => setHover(false)}
             >
                 <NextLink
-                    href={`/chihuahua-en-datos/objetivos/${dimension.dimension.id}/indicadores`}
+                    href={`/chihuahua-en-datos/objetivos/${objetivo.id}/indicadores`}
                     passHref>
                     <a>
                         <CardContent className={styles.cardContent}>
-                            <Typography variant='h5' component='h5' fontWeight={500} className={styles.cardHeader}>{titles[dimension.dimension.id - 1]}</Typography>
-                            <Typography variant='body1' component='h3' className={styles.cardShortDescription} >{shortDescription[dimension.dimension.id - 1]}</Typography>
+                            <Typography variant='h5' component='h5' fontWeight={500} className={styles.cardHeader}>{titles[objetivo.id - 1]}</Typography>
+                            <Typography variant='body1' component='h3' className={styles.cardShortDescription} >{shortDescription[objetivo.id - 1]}</Typography>
 
                             <Box className={styles.indicadorBox}>
-                                <Typography variant='h2' fontWeight={600} className={styles.indicadorCounter}>{dimension.indicadoresCount}</Typography>
+                                <Typography variant='h2' fontWeight={600} className={styles.indicadorCounter}>{indicadoresCount}</Typography>
                                 <Typography variant='body1' fontWeight={325} className={styles.indicadorQuantity}>Indicadores disponibles</Typography>
                             </Box>
 
@@ -39,18 +42,18 @@ const Dimension = ({ dimension }) => {
     )
 }
 
-const DimensionesList = ({ dimensiones }) => {
+const ObjetivosList = ({ objetivos }) => {
     return (
         <Grid container
-            className={styles.dimensionesList}
+            className={styles.objetivosList}
         >
-            {dimensiones.map((dimension) => (
-                parseInt(dimension.indicadoresCount) > 0 && (
-                    <Dimension key={dimension.id} dimension={dimension} />
+            {objetivos.map((objetivo) => (
+                parseInt(objetivo.indicadoresCount) > 0 && (
+                    <Objetivo key={objetivo.id} objetivoObject={objetivo} />
                 )
             ))}
         </Grid>
     )
 }
 
-export default DimensionesList
+export default ObjetivosList

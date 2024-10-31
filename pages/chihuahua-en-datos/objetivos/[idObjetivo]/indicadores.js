@@ -2,7 +2,7 @@ import Head from "next/head";
 import {
     Typography, Box, Stack,
     Collapse, ToggleButton,
-    Container, 
+    Container,
     FormControlLabel,
     Checkbox,
 } from "@mui/material";
@@ -41,7 +41,7 @@ const Indicadores = (props) => {
         cobertura: values.cobertura?.id
     }
     const { indicadores, isLoading, goToPage, page, totalPages } = useIndicadores({
-        resource: 'dimensiones',
+        resource: 'objetivos',
         resourceId: objetivo.id,
         searchQuery,
         ...filters
@@ -166,7 +166,7 @@ const Indicadores = (props) => {
 export async function getServerSideProps(context) {
     const baseUrl = process.env.INDICADORES_BASE_URL;
     const { idObjetivo } = context.params;
-    const objetivoRes = await fetch(`${baseUrl}/dimensiones/${idObjetivo}`);
+    const objetivoRes = await fetch(`${baseUrl}/objetivos/${idObjetivo}`);
     const errorCode = objetivoRes.ok ? false : objetivoRes.status;
     const selectedObjetivo = await objetivoRes.json();
 
@@ -178,7 +178,7 @@ export async function getServerSideProps(context) {
             }
         }
     }
-    const objetivosRes = await fetch(`${baseUrl}/dimensiones/${idObjetivo}/temas`);
+    const objetivosRes = await fetch(`${baseUrl}/objetivos/${idObjetivo}/temas`);
     const temas = await objetivosRes.json()
     return {
         props: {

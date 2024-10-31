@@ -3,7 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Button, Grid, Typography } from '@mui/material';
-import json from './dimensions.json';
+import json from './objetivos.json';
 import NextLink from "next/link";
 
 const CustomPanel = (props) => {
@@ -28,7 +28,7 @@ const CustomPanel = (props) => {
 
 const PrimordialBox = () => {
     const [value, setValue] = useState(0);
-    const { dimensions } = json;
+    const { objetivos } = json;
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -94,10 +94,10 @@ const PrimordialBox = () => {
             </Box >
 
             {
-                dimensions.map((item, index) => {
+                objetivos.map((item, index) => {
                     return (
                         <CustomPanel value={value} index={index} key={index}>
-                            <Dimension id={index} dimension={item} />
+                            <Objetivo id={index} objetivo={item} />
                         </CustomPanel>
                     )
                 })
@@ -109,8 +109,8 @@ const PrimordialBox = () => {
 }
 
 
-const Dimension = (props) => {
-    const { id, dimension, index } = props;
+const Objetivo = (props) => {
+    const { id, objetivo, index } = props;
 
     return (
         <Box sx={{
@@ -119,17 +119,17 @@ const Dimension = (props) => {
             <Grid container>
                 <Grid item xs={12} sm={7} sx={{ pt: 3 }} >
                     <Typography variant='h5' fontWeight={600} mb={2}>
-                        {dimension.title}
+                        {objetivo.title}
                     </Typography>
                     <Typography variant='h6' fontWeight={400} mb={1} >
-                        {dimension.shortDescription}
+                        {objetivo.shortDescription}
                     </Typography>
                     <Typography variant='h6' fontWeight={400} mb={3} sx={{
                     }}>
-                        {dimension.summary}
+                        {objetivo.summary}
                     </Typography>
                     <Typography variant='subtitle2' fontWeight={600} color={'blueviolet'}>
-                        <NextLink href={`/chihuahua-en-datos/objetivos/${dimension.id}/indicadores`} passHref>
+                        <NextLink href={`/chihuahua-en-datos/objetivos/${objetivo.id}/indicadores`} passHref>
                             <a>
                                 <Button variant='contained' sx={{
                                     backgroundImage: 'linear-gradient(90deg, #08203E 0%, #2F4E69 50%, #557C93 100%)',
@@ -155,7 +155,7 @@ const Dimension = (props) => {
                     }}
                 >
                     <img
-                        src={`${dimension.img}`}
+                        src={`${objetivo.img}`}
                         style={{ width: '100%', height: '100%', borderRadius: '5px' }}
                     />
                 </Grid>

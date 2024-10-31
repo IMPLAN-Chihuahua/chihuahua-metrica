@@ -14,13 +14,13 @@
     font-size: 1.3em !important;
 }
 
-.dimensionGridItem {
+.objetivoGridItem {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.dimensionesList {
+.objetivosList {
     translate: 0.5s;
     transform: translateY(-5vh);
 }

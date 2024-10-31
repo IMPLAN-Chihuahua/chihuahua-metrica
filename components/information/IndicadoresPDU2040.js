@@ -1,10 +1,10 @@
 import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
-import DimensionesList from '@components/dimension/GridDimensiones'
+import ObjetivosList from '@components/objetivo/GridObjetivos'
 import style from './information.module.css'
 import TemasBook from '@components/proyecto/TemasBook'
 
-const IndicadoresPDU2040 = ({ dimensiones }) => {
+const IndicadoresPDU2040 = ({ objetivos }) => {
     return (
         <Box>
             <Grid container className={style.bigBox}>
@@ -18,7 +18,7 @@ const IndicadoresPDU2040 = ({ dimensiones }) => {
                 </Grid>
             </Grid >
             <Box className={style.ghostBox}>
-                <DimensionesList dimensiones={dimensiones} />
+                <ObjetivosList objetivos={objetivos} />
             </Box>
         </Box>
 

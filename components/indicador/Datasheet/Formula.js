@@ -4,18 +4,10 @@ import { Typography } from "@mui/material";
 import OracionList from "@components/variable/OracionList";
 import VariablesTable from "@components/variable/VariablesTable";
 
-const Formula = ({ formula}) => {
+const Formula = ({ formula }) => {
   return (
     <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flexGrow: 1 }}>
-      {formula === null || formula.ecuacion === 'Consultar fuente'
-        ? (
-          <>
-            <div className='tost'>
-              <Typography variant='h5' component='h2'>No hay fórmula disponible. Consulte la fuente de información para obtener más detalles.</Typography>
-            </div>
-          </>
-        )
-        :
+      {
         formula.isFormula === 'SI' ?
           (
             <div>
@@ -35,20 +27,19 @@ const Formula = ({ formula}) => {
             <>
               <div>
                 <div className='formula-data'>
-                  <Typography variant='h5' component='h3'>Descripcion</Typography>
+                  <Typography variant='h6' component='h3'>Descripcion</Typography>
                   <Typography mb={2}>{formula.descripcion}</Typography>
-                  {/* <MathJax.Provider>
-                          <Typography
-                            textAlign='center'
-                            variant='h4'
-                            mb={2}
-                            className={style['formula-text']}><MathJax.Node inline formula={formula.ecuacion} /></Typography>
-                        </MathJax.Provider> */}
                 </div>
-                <Typography variant='h5' component='h3'>Donde:</Typography>
-                <div className='variableText'>
-                  <OracionList oraciones={formula.variables} />
-                </div>
+                {
+                  formula.variables.length > 0 && (
+                    <>
+                      <Typography variant='h6' component='h3'>Donde:</Typography>
+                      <div className='variableText'>
+                        <OracionList oraciones={formula.variables} />
+                      </div>
+                    </>
+                  )
+                }
               </div>
             </>
           )

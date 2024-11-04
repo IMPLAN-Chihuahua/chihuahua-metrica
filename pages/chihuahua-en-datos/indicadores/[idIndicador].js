@@ -8,29 +8,31 @@ import { Stack, Typography } from "@mui/material";
 import Owner from '@components/commons/IndicadorOwner';
 import Formula from '@components/indicador/Datasheet/Formula';
 import Stats from '@components/indicador/Stats';
-import { COBERTURA_GEOGRAFICA, UNIDAD_MEDIDA } from '@components/indicador/Indicador';
 import { numberWithCommas } from 'helpers/FormatNumbers';
+import { IndicadoresRelacionados } from '@components/indicador/IndicadoresRelacionados';
 
 
 export default function FichaTecnica(props) {
+  if (props.errorCode) {
+    console.log(props)
+    return <Error statusCode={props.errorCode} message={props?.message} />
+  }
 
-  const { indicador, responsible, navigation } = props;
-
+  const { indicador } = props;
+  const objetivo = indicador.objetivos[0]
   const CRUMBS = [{
     text: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
     href: '/chihuahua-en-datos'
   }, {
-    text: indicador.Tema.temaIndicador,
-    href: `/chihuahua-en-datos/temas/${indicador.Tema.id}/indicadores`
+    text: `${objetivo.titulo}`,
+    href: `/chihuahua-en-datos/objetivos/${objetivo.id}/indicadores`
   }, {
     text: indicador.nombre
   }];
 
-  if (props.errorCode) {
-    return <Error statusCode={props.errorCode} message={props?.message} />
-  }
-  const unidad = indicador.catalogos.find(c => c.idCatalogo === UNIDAD_MEDIDA)
-  const cobertura = indicador.catalogos.find(c => c.idCatalogo === COBERTURA_GEOGRAFICA)
+  const unidad = indicador?.unidadMedida || "NA";
+  const cobertura = indicador?.cobertura || "NA";
+
   return (
     <>
       <Head>
@@ -47,18 +49,16 @@ export default function FichaTecnica(props) {
             anioReferencia={indicador.anioUltimoValorDisponible}
             tendencia={indicador.tendenciaActual}
             unidad={unidad.nombre}
-            cobertura={cobertura.nombre}
+            cobertura={cobertura.tipo}
           />
           <section>
             <Typography fontStyle='italic' variant='body2'>{indicador.fuente}</Typography>
           </section>
-
           {/* TODO: ADD ELI5 SECTION */}
-
           {
             indicador.formula && (
-              <IndicadorPageSection title='Fórmula'>
-                <Formula formula={indicador?.formula} />
+              <IndicadorPageSection title={indicador.formula.isFormula === 'NO' ? 'Origen de datos' : 'Fórmula'}>
+                <Formula formula={indicador.formula} />
               </IndicadorPageSection>
             )
           }
@@ -69,16 +69,24 @@ export default function FichaTecnica(props) {
               </IndicadorPageSection>
             )
           }
-
-          <IndicadorPageSection title='Responsable'>
-
-            <Owner
-              responsible={responsible.data}
-              indicadorDate={indicador.updatedAt}
-              indicadorName={indicador.nombre}
-            />
-          </IndicadorPageSection>
-          {/* TODO: ADD RELATED INDICADORES */}
+          {
+            indicador.related.length > 0 && (
+              <IndicadorPageSection title='Indicadores relacionados'>
+                <IndicadoresRelacionados indicadores={indicador.related} />
+              </IndicadorPageSection>
+            )
+          }
+          {
+            indicador.usuarios.length > 0 && (
+              <IndicadorPageSection title='Responsable'>
+                <Owner
+                  responsible={indicador.usuarios[0]}
+                  indicadorDate={indicador.updatedAt}
+                  indicadorName={indicador.nombre}
+                />
+              </IndicadorPageSection>
+            )
+          }
         </Stack>
       </Container>
     </>
@@ -97,16 +105,13 @@ export async function getServerSideProps(context) {
   const idIndicador = context.params.idIndicador;
   const indicadorRes = await fetch(`${process.env.INDICADORES_BASE_URL}/indicadores/${idIndicador}`);
   const errorCode = indicadorRes.ok ? false : indicadorRes.status;
-  const indicador = await indicadorRes.json();
+  const res = await indicadorRes.json();
 
   if (errorCode) {
-    return { props: { errorCode, ...indicador } }
+    return { props: { errorCode: res.status, message: res.message } }
   }
-  const idUser = indicador.data.createdBy || null;
-  const responsibleRes = await fetch(`${process.env.INDICADORES_BASE_URL}/usuarios/${idUser}`);
-  const responsible = await responsibleRes.json();
 
   return {
-    props: { indicador: { ...indicador.data }, responsible, errorCode, navigation: { ...indicador.navigation } },
+    props: { indicador: res.data, errorCode: null },
   };
 }

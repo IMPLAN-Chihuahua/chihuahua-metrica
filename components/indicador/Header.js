@@ -58,7 +58,9 @@ const TopData = (info) => {
     <section>
       <IndicadorAppBar indicador={indicador} />
       <IndicadorHeader indicador={indicador} />
-      <Typography>{indicador.definicion}</Typography>
+      <Typography>{indicador.definicion}. {indicador.ods
+        ? `Este indicador sigue el objetivo de desarrollo sostenible "${indicador.ods.titulo}", el cual busca "${indicador.ods.descripcion}".`
+        : ''}</Typography>
     </section >
   );
 };

@@ -10,7 +10,7 @@ const CRUMBS = [
   }
 ]
 
-export default function TEma(props) {
+export default function Tema(props) {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('indicadores-page')
   }
@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
   const temasRes = await fetch(`${process.env.INDICADORES_BASE_URL}/temas`);
   const { data: temasData } = await temasRes.json();
 
-  const objetivosRes = await fetch(`${process.env.INDICADORES_BASE_URL}/objetivos/info/general`);
+  const objetivosRes = await fetch(`${process.env.INDICADORES_BASE_URL}/objetivos`);
   const { data: objetivosData } = await objetivosRes.json();
 
   const data = {

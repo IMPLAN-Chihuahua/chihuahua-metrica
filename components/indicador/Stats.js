@@ -9,13 +9,8 @@ const IndicadorStats = ({ ultimoValor, anioReferencia, tendencia, cobertura, uni
         <Stack direction='row' justifyContent='space-around' flexWrap='wrap'>
             <StatBox value={ultimoValor} unidad={unidad} label='Último valor disponible' />
             <StatBox value={anioReferencia} label='Año de referencia' />
-            {
-                tendencia !== 'No aplica' && <StatBox value={tendencia} label='Tendencia actual' />
-            }
-            {
-                cobertura !== 'NA-ODS' && <StatBox value={cobertura} label='Cobertura geográfica' />
-            }
-            {/* <StatBox value={cobertura} label='Cobertura geográfica' /> */}
+            <StatBox value={tendencia} label='Tendencia actual' />
+            <StatBox value={cobertura} label='Cobertura geográfica' />
         </Stack>
     </section>)
 }

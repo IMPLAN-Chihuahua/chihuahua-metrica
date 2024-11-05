@@ -6,12 +6,10 @@ import style from './Project.module.css'
 
 const TemasBook = (props) => {
     const { temas } = props
-
     const [idTema, setidTema] = useState(0)
     const [backgroundColor, setBackgroundColor] = useState('')
     const [indicador, setIndicador] = useState({})
 
-    const temasWithIndicadores = temas.filter(tema => parseInt(tema.indicadoresCount) > 0)
 
     const fetchIndicadorFromSelectedTema = (idTema) => {
         fetch(`${process.env.INDICADORES_BASE_URL}/temas/${idTema}/randomIndicador`)
@@ -26,7 +24,6 @@ const TemasBook = (props) => {
             })
             .catch(() => {
             })
-
     }
 
     useEffect(() => {
@@ -68,7 +65,7 @@ const TemasBook = (props) => {
                     <IndicadorHover indicador={indicador} />
                 </Grid>
                 <Grid item xs={12} md={6} >
-                    <TemasCard temas={temasWithIndicadores} setidTemas={setidTema} setBackgroundColor={setBackgroundColor} />
+                    <TemasCard temas={temas} setidTemas={setidTema} setBackgroundColor={setBackgroundColor} />
                 </Grid>
             </Grid>
         </Box>
@@ -77,6 +74,8 @@ const TemasBook = (props) => {
 };
 
 const TemasCard = ({ temas, setidTemas, setBackgroundColor }) => {
+    const [timeoutId, setTimeoutId] = useState(null)
+
     return (
         <Grid container sx={{
             maxHeight: '800px',
@@ -91,14 +90,15 @@ const TemasCard = ({ temas, setidTemas, setBackgroundColor }) => {
                     <Grid item xs={12} md={6} key={idx} sx={{
                         p: 1,
                     }}
-                        onMouseEnter={() => {
-                            setTimeout(() => {
+                        onMouseOver={() => {
+                            setTimeoutId(setTimeout(() => {
                                 setidTemas(tema.id)
                                 setBackgroundColor(tema.color)
-                            }, 500)
+                            }, 500))
                         }}
-                        onMouseLeave={() => {
-                            clearTimeout()
+
+                        onMouseOut={() => {
+                            clearTimeout(timeoutId)
                         }}
                     >
                         <Tema tema={tema} />

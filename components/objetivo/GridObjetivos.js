@@ -10,7 +10,8 @@ import styles from './PDU2040.module.css'
 const Objetivo = ({ objetivoObject }) => {
     const [isHover, setHover] = useState(false);
 
-    const { indicadoresCount, objetivo } = objetivoObject;
+    const { indicadoresCount, ...objetivo } = objetivoObject;
+
 
     return (
         <Grid item xs={12} md={6} lg={4} className={styles.objetivoGridItem}>

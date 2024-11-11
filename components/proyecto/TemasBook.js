@@ -11,7 +11,7 @@ const TemasBook = (props) => {
     const [backgroundColor, setBackgroundColor] = useState('')
     const [indicador, setIndicador] = useState({})
 
-    const temasWithIndicadores = temas.filter(tema => parseInt(tema.indicadoresCount) > 0)
+    // const temasWithIndicadores = temas.filter(tema => parseInt(tema.indicadoresCount) > 0)
 
     const fetchIndicadorFromSelectedTema = (idTema) => {
         fetch(`${process.env.INDICADORES_BASE_URL}/temas/${idTema}/randomIndicador`)
@@ -68,7 +68,7 @@ const TemasBook = (props) => {
                     <IndicadorHover indicador={indicador} />
                 </Grid>
                 <Grid item xs={12} md={6} >
-                    <TemasCard temas={temasWithIndicadores} setidTemas={setidTema} setBackgroundColor={setBackgroundColor} />
+                    <TemasCard temas={temas} setidTemas={setidTema} setBackgroundColor={setBackgroundColor} />
                 </Grid>
             </Grid>
         </Box>

@@ -4,11 +4,6 @@ import TemasBook from '@components/proyecto/TemasBook';
 import AboutIndicadores from '@components/information/AboutIndicadores';
 import { useEffect, useState } from 'react';
 import TemasCarousel from '@components/proyecto/TemasCarousel';
-const CRUMBS = [
-  {
-    text: 'Sistema de Indicadores del PDU2040 Séptima Actualización'
-  }
-]
 
 export default function Tema(props) {
   if (typeof window !== 'undefined') {

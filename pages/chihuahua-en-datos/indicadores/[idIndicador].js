@@ -77,10 +77,10 @@ export default function FichaTecnica(props) {
             )
           }
           {
-            indicador.usuarios.length > 0 && (
+            indicador.responsable.length > 0 && (
               <IndicadorPageSection title='Responsable'>
                 <Owner
-                  responsible={indicador.usuarios[0]}
+                  responsible={indicador.responsable[0]}
                   indicadorDate={indicador.updatedAt}
                   indicadorName={indicador.nombre}
                 />

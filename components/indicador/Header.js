@@ -53,7 +53,7 @@ const DocumentButton = ({ indicadorId, format, icon, showErrorMessage, ...props 
 
 const TopData = (info) => {
   const { info: indicador } = info;
-
+  console.log(indicador)
   return (
     <section>
       <IndicadorAppBar indicador={indicador} />
@@ -61,10 +61,22 @@ const TopData = (info) => {
       <Typography>{indicador.definicion}. {indicador.ods
         ? `Este indicador sigue el objetivo de desarrollo sostenible "${indicador.ods.titulo}", el cual busca "${indicador.ods.descripcion}".`
         : ''}</Typography>
+      <IndicadorElif elif={indicador.elif} />
     </section >
   );
 };
 
+const IndicadorElif = ({ elif }) => {
+
+  if (!elif || elif.length === 0) return null;
+
+  return (
+    <Box sx={{ mt: 2 }}>
+      <Typography variant='h5' component='h2'>Explicación rápida</Typography>
+      <Typography>{elif}</Typography>
+    </Box>
+  )
+}
 
 const IndicadorHeader = ({ indicador, sx }) => {
   return (

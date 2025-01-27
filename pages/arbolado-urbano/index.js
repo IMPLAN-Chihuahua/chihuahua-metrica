@@ -15,7 +15,7 @@ const ArboladoUrbano = () => {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <Banner />
-      <Box my={5}></Box>
+      <Box my={5} id='beneficios'></Box>
       <Box
         component='section'
         sx={{
@@ -126,18 +126,23 @@ const LinesDecoration = () => {
 
 const Banner = () => {
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        height: '70vh'
-      }}>
-      <Image
-        loader={({ src }) => `https://www.implanchihuahua.org/indicadores/images/arbolado/${src}`}
-        src='arbolado_urbano_banner_principal.jpg'
-        layout='fill'
-        objectFit='cover'
-      />
-    </Box>
+    <a
+      href='#beneficios'
+      style={{ textDecoration: 'none' }}
+    >
+      <Box
+        sx={{
+          position: 'relative',
+          height: '70vh'
+        }}>
+        <Image
+          loader={({ src }) => `https://www.implanchihuahua.org/indicadores/images/arbolado/${src}`}
+          src='arbolado_urbano_banner_principal.jpg'
+          layout='fill'
+          objectFit='cover'
+        />
+      </Box>
+    </a>
   )
 }
 
@@ -238,9 +243,9 @@ const Beneficios = () => {
               borderRadius: 0,
               color: 'white',
               width: 450,
-              height: 300
+              height: 300,
             }}>
-            <Box p={3} overflow='scroll' maxHeight={300}>
+            <Box p={3} maxHeight={300}>
               <Collapse in={b.showMore}>
                 <Typography p={1}>
                   {b.desc}
@@ -297,7 +302,7 @@ const Beneficios = () => {
 
 const BeneficioContent = ({ beneficio }) => {
   return (<>
-    <Box display='flex' justifyContent='center' mb={1}>
+    <Box display='flex' justifyContent='center' mb={1} >
       <Image
         style={{ marginLeft: 'auto', marginRight: 'auto' }}
         loader={({ src }) => `https://www.implanchihuahua.org/indicadores/images/arbolado/${src}`}

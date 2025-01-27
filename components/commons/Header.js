@@ -20,13 +20,6 @@ const navLinks = [
   { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
 ]
 
-const modalStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-};
-
 const Header = () => {
   const [scrollPosition, setScroll] = useState(0)
   useEffect(() => {
@@ -84,7 +77,11 @@ const Header = () => {
                     <ArrowBackIosNew fontSize='large' htmlColor='white' />
                   </IconButton>
                 </Box>
-                <Grid item flexGrow={1} className={`${style.navbarCentered} ${style.scrolledDown}`} md={2}>
+                <Grid item flexGrow={1} className={
+                  `${style.navbarCentered} ${style.scrolledDown}
+                  ${pathname === '/arbolado-urbano' ? style.arboladoHeader : ''}
+                  `
+                } md={2}>
                   <NextLink href='/'>
                     <a>
                       <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} objectFit='contain' alt="small Logo" />

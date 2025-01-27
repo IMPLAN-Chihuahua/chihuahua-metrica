@@ -47,6 +47,15 @@
 
 }
 
+.arboladoHeader {
+    /* background: linear-gradient(90deg, rgba(0, 20, 30, 1) 0%, rgba(0, 50, 60, 1) 50%, rgba(10, 90, 80, 1) 100%); */
+    background: linear-gradient(90deg, rgba(0, 43, 54, 1) 0%, rgba(8, 94, 64, 1) 50%, rgba(34, 153, 84, 1) 100%);
+
+
+    background-color: transparent;
+    transition: 1.5s;
+}
+
 .scrolledUp {
     transition: 1.5s;
     background-color: transparent;

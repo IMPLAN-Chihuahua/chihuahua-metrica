@@ -1,54 +1,51 @@
 import { Box, Grid, Typography, Link as MUILink } from '@mui/material';
-import React from 'react';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
-import SmartphoneIcon from '@mui/icons-material/Smartphone';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-import Title from '@components/commons/Title';
+import CallIcon from '@mui/icons-material/Call';
 import NextLink from 'next/link';
 import { AboutForm } from './AboutForm';
 
 export const AboutLocation = () => {
   return (
-    <Box >
-      <Title variant='h3' component='h1'>Contacto</Title>
+    <Box>
+      <Typography variant='h4' mb={2}>Contacto</Typography>
       <Typography variant='body1' mb={3}>
-        Si te interesa saber más acerca de Chihuahua Métrica ponte en contacto con nosotros
+        Si te interesa saber más acerca de Chihuahua Métrica ponte en contacto con nosotros.
       </Typography>
       <Box mt={2}>
-        <Grid container className='center-content'>
+        <Grid container py={2}>
           <Grid container item xs={12} md={6} >
-            <Grid container item xs={12} md={6} className='center-content' sx={{ mb: '5%' }}>
+            <Grid container item xs={12} md={6} sx={{ mb: '5%' }}>
               <CenteredGrid>
-                <FmdGoodIcon sx={{ fontSize: '72px', color: 'gray' }} />
+                <FmdGoodIcon sx={{ fontSize: '72px', color: '#32526d' }} />
               </CenteredGrid>
               <CenteredGrid>
                 <Typography variant='p' sx={{ mt: '3%' }}>P.º Victoria 14, Zona Centro, 31000 Chihuahua, Chih.</Typography>
               </CenteredGrid>
-
             </Grid>
 
-            <Grid container item xs={12} md={6} className='center-content' sx={{ mb: '5%' }}>
+            <Grid container item xs={12} md={6} sx={{ mb: '5%' }}>
               <CenteredGrid>
-                <EventAvailableIcon sx={{ fontSize: '72px', color: 'gray' }} />
+                <EventAvailableIcon sx={{ fontSize: '72px', color: '#32526d' }} />
               </CenteredGrid>
               <CenteredGrid>
-                <Typography variant='p' sx={{ mt: '0%' }}>Lunes a viernes<br />de 9: 00 a 15: 00 horas</Typography>
+                <Typography variant='p' sx={{ mt: '0%' }}>Lunes a viernes<br />de 8:30 a 15:30 horas.</Typography>
               </CenteredGrid>
             </Grid>
 
-            <Grid container item xs={12} md={6} className='center-content'>
+            <Grid container item xs={12} md={6}>
               <CenteredGrid>
-                <SmartphoneIcon sx={{ fontSize: '72px', color: 'gray' }} />
+                <CallIcon sx={{ fontSize: '72px', color: '#32526d' }} />
               </CenteredGrid>
               <CenteredGrid>
                 <Typography variant='p' sx={{ mt: '3%' }}>+52 614-200-4820</Typography>
               </CenteredGrid>
             </Grid>
-            <Grid container item xs={12} md={6} className='center-content'>
+            <Grid container item xs={12} md={6}>
               <CenteredGrid>
                 <NextLink href='http://implanchihuahua.org/' passHref>
-                  <TravelExploreIcon sx={{ fontSize: '72px', color: 'gray', cursor: 'pointer' }} />
+                  <TravelExploreIcon sx={{ fontSize: '72px', color: '#32526d', cursor: 'pointer' }} />
                 </NextLink>
               </CenteredGrid>
               <CenteredGrid>
@@ -57,7 +54,7 @@ export const AboutLocation = () => {
                     <MUILink
                       target='_blank'
                       color='primary.blue'
-                      rel='noopener noreferrer'>¡Visita la página del IMPLAN!</MUILink>
+                      rel='noopener noreferrer'>Página del IMPLAN</MUILink>
                   </NextLink>
                 </Typography>
               </CenteredGrid>
@@ -68,7 +65,6 @@ export const AboutLocation = () => {
               title='Ubicacion implan'
               width="100%"
               height="400"
-              frameBorder="0"
               style={{ border: 0 }}
               allowFullScreen=""
               aria-hidden="false"

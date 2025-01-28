@@ -36,7 +36,6 @@ const Footer = () => {
                 backgroundColor: 'whitesmoke'
               }}
               variant='medium'
-              light
               flexItem />
           }
           justifyContent='space-around'

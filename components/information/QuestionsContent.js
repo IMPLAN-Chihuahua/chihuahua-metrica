@@ -77,7 +77,7 @@ const data = [
   {
     id: 'q5',
     question: '¿Cómo puedo contribuir a la plataforma?',
-    answer: 'De manera técnica, puedes realizar contribuciones directamente en el <a href="https://github.com/IMPLAN-Chihuahua/observatorio-urbano-website" style="color: #31416F; font-weight: bold;">repositorio del sitio web</a>. Uno de nuestros desarrolladores verificará tus contribuciones y en caso de que pase los filtros, lo añadiremos al proyecto. Si deseas contribuir con información o aclaraciones respecto a los datos del sitio web, puedes <a href="mailto:chihuahuametrica@implanchihuahua.org" style="color: #31416F; font-weight: bold;">enviar un correo</a> con tus comentarios.',
+    answer: 'De manera técnica, puedes realizar contribuciones directamente en el <a href="https://github.com/IMPLAN-Chihuahua/chihuahua-metrica" style="color: #31416F; font-weight: bold;">repositorio del sitio web</a>. Uno de nuestros desarrolladores verificará tus contribuciones y en caso de que pase los filtros, lo añadiremos al proyecto. Si deseas contribuir con información o aclaraciones respecto a los datos del sitio web, puedes <a href="mailto:contacto@implanchihuahua.org" style="color: #31416F; font-weight: bold;">enviar un correo</a> con tus comentarios.',
   },
   {
     id: 'q6',
@@ -87,7 +87,7 @@ const data = [
   {
     id: 'q7',
     question: '¿Puedo construir mi propia aplicación con base en los datos de la plataforma?',
-    answer: '¡Sí! Al ser una aplicación de código abierto, puedes utilizar nuestra REST API para construir tu aplicación propia. Si tienes dudas sobre cómo consumir la API consulta nuestra <a href="http://localhost:8080/api/v1/documentation/" style="color: #31416F; font-weight: bold;">documentación</a>.',
+    answer: '¡Sí! Al ser una aplicación de código abierto, puedes utilizar nuestra REST API para construir tu aplicación propia. Si tienes dudas sobre cómo consumir la API consulta nuestra <a href="https://indicadores-backend.chihuahuametrica.online/api/v1/documentacion" style="color: #31416F; font-weight: bold;">documentación</a>.',
   }
 ];
 

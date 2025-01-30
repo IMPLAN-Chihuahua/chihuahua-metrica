@@ -1,6 +1,13 @@
 import { isUndefined } from "./ObjectUtils";
 
 const toTitleCase = (str) => {
+    //check if str is an array and take the first element
+
+    if (Array.isArray(str)) {
+        str = str[0];
+    }
+
+
     return str.replace(
         /\w\S*/g,
         function (txt) {
@@ -69,4 +76,8 @@ const usefulString = (descripcion) => {
     return definition.charAt(0).toUpperCase() + definition.slice(1);
 }
 
-export { toTitleCase, serialize, toUnderScoreCase, assignMonths, hexAsRGBA, usefulString };
+const isNA = (value) => {
+    return value === 'NA' || value === 'N/A' || value === 'n/a' || value === 'Na' ? 'Sin definir' : value;
+}
+
+export { toTitleCase, serialize, toUnderScoreCase, assignMonths, hexAsRGBA, usefulString, isNA };

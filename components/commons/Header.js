@@ -79,7 +79,8 @@ const Header = () => {
                 </Box>
                 <Grid item flexGrow={1} className={
                   `${style.navbarCentered} ${style.scrolledDown}
-                  ${pathname === '/arbolado-urbano' ? style.arboladoHeader : ''}
+                    ${(pathname === '/arbolado-urbano' || pathname === '/arbolado-urbano/catalogo')
+                    ? style.arboladoHeader : ''}
                   `
                 } md={2}>
                   <NextLink href='/'>

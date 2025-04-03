@@ -15,7 +15,6 @@ import style from './Header.module.css'
 
 const navLinks = [
   { title: 'Inicio', path: '/', cssName: 'inicio' },
-  { title: 'Proyectos', path: '#proyectos', cssName: 'proyectos' },
   { title: 'Conócenos', path: '/conocenos', cssName: 'conocenos' },
   { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
 ]
@@ -38,10 +37,6 @@ const Header = () => {
 
   const router = useRouter();
   const { pathname } = router;
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <>

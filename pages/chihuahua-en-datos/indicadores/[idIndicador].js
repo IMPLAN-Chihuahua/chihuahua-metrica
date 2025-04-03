@@ -14,7 +14,6 @@ import { IndicadoresRelacionados } from '@components/indicador/IndicadoresRelaci
 
 export default function FichaTecnica(props) {
   if (props.errorCode) {
-    console.log(props)
     return <Error statusCode={props.errorCode} message={props?.message} />
   }
 

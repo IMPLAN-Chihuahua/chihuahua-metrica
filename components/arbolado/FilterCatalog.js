@@ -115,8 +115,8 @@ const FilterCatalog = ({ filters, setFilters }) => {
                     options.map((option, index) => {
                         const dataForOption = filtros[option.id] || [];
                         return (
-                            <>
-                                <Accordion key={index} sx={{ boxShadow: 'none' }}>
+                            <Box key={index}>
+                                <Accordion sx={{ boxShadow: 'none' }}>
                                     <AccordionSummary
                                         expandIcon={<ArrowDropDownIcon />}
                                         aria-controls="panel1-content"
@@ -136,7 +136,7 @@ const FilterCatalog = ({ filters, setFilters }) => {
                                     }}>
                                         {
                                             dataForOption.map((item, idx) => (
-                                                <FormGroup>
+                                                <FormGroup key={idx}>
                                                     <FormControlLabel control={
                                                         <Checkbox
                                                             onChange={(e) => handleCheckboxChange(option.id, item._id)}
@@ -153,7 +153,8 @@ const FilterCatalog = ({ filters, setFilters }) => {
                                         }
                                     </AccordionDetails>
                                 </Accordion>
-                                <Divider /></>
+                                <Divider />
+                            </Box>
                         )
                     })
                 }

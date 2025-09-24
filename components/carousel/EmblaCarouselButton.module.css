@@ -66,6 +66,6 @@
 }
 
 .embla__dot.is-selected:after {
-  background-color: var(--blue);
+  background-color: #212121;
   opacity: 1;
 }

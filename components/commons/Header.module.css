@@ -42,8 +42,17 @@
 }
 
 .scrolledDown {
-    transition: 3s;
-    background-color: rgba(0, 0, 0, 0.8);
+    transition: 2s;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(8, 32, 62, 1) 50%, rgba(85, 124, 147, 1) 100%);
+
+}
+
+.arboladoHeader {
+    background: linear-gradient(90deg, rgba(0, 43, 54, 1) 0%, rgba(8, 94, 64, 1) 50%, rgba(34, 153, 84, 1) 100%);
+
+
+    background-color: transparent;
+    transition: 1.5s;
 }
 
 .scrolledUp {
@@ -66,7 +75,6 @@
     opacity: 0;
     height: 8px;
     width: 8px;
-    margin-top: 11%;
     border-radius: 50%;
     display: inline-block;
 }

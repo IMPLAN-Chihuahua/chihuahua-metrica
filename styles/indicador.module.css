@@ -1,26 +1,60 @@
 .card {
-  height: 200px;
-  color: white;
+  height: 160px;
   transition: font-size 0.2s linear;
   cursor: pointer;
 }
 
-.divider {
-  border: none;
-  width: 5px;
-  height: 5px;
-  margin-left: 0;
-  transition: all 0.2s linear;
+.divider-extended {
+  width: 80%;
 }
 
-@media only screen and (max-width: 810px) {
+.inter {
+  font-family: "Inter", sans-serif !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media only screen and (max-width: 768px) {
   .divider {
     width: 15px;
     height: 15px;
     margin-left: 0;
   }
-}
 
-.divider-extended {
-  width: 80%;
+  .temaList .tema {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 90%;
+  }
+
+  .interTitle {
+    font-size: 1.5rem !important;
+  }
+
+  .temaList .tema .inter {
+    font-size: 1rem;
+  }
+
+  .temaList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .arrow {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .title {
+    font-family: "Inter", sans-serif !important;
+    font-weight: 600 !important;
+    text-align: center;
+    padding: 1rem;
+  }
 }

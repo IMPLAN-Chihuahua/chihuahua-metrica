@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { DotButton, PrevButton, NextButton } from "./EmblaCarouselButtons";
+import { DotButton, useDotButton } from "./EmblaCarouselButtons";
 import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from 'embla-carousel-autoplay'
-import { Box, Typography } from "@mui/material";
-import style from '../../styles/EmblaCarousel.module.css'
+import { Box, Button, Modal, styled, Typography } from "@mui/material";
+import styles from './EmblaCarousel.module.css'
 import Image from "next/image";
-import NextLink from "next/link";
+import { usePrevNextButton } from "./EmblaArrowButtons";
+import { PrevButton, NextButton } from './EmblaArrowButtons'
+import { useRouter } from "next/router";
+import { grey } from "@mui/material/colors";
 
 const SLIDES = [
   {
@@ -25,129 +27,181 @@ const SLIDES = [
     imgSrc: `/banner-02-828w.webp`,
     href: "/chihuahua-en-datos",
   },
+  {
+    name: "banner-03",
+    description: "Sistema de monitoreo del PDU",
+    imgSrc: `/banner-02-828w.webp`,
+    href: "/chihuahua-en-datos",
+  }
 ]
 
-const Description = React.memo(({ name }) => {
-  switch (name) {
-    case 'banner-01':
-      return (
-        <Box sx={{
-          position: 'absolute',
-          maxWidth: 750,
-          left: { md: '5%' },
-          top: { xs: '23%', sm: '43%' }
-        }}>
-          <Typography
-            fontSize={{ xs: 24, md: 32 }}
-            fontWeight={300}
-            textAlign='center'
-            color='white'
-            sx={{
-              textShadow: '1px 2px rgba(0, 0, 0, 0.8)'
-            }}>
-            <span className="highlight-text">Chihuahua Métrica </span>
-            es una plataforma digital para <span className='highlight-text'>informar, monitorear
-              y evaluar</span> la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial
-          </Typography>
-        </Box>
-      )
-    case 'banner-02':
-      return (
-        <Box
-          sx={{
-            position: 'absolute',
-            maxWidth: 900,
-            right: { md: '5%' },
-            top: { xs: '23%', sm: '43%' }
-          }}>
-          <Typography
-            fontSize={{ xs: 24, md: 32 }}
-            fontWeight={300}
-            textAlign='center'
-            color='white'
-            sx={{
-              textShadow: '1px 2px rgba(0, 0, 0, 0.8)'
-            }}>
-            <span className='highlight-text'>Sistema de indicadores del municipio de Chihuahua</span> <br />
-            Es una herramienta que transforma información compleja
-            en información simple, presentada en indicadores y mapas
-          </Typography>
-        </Box>
-      )
-    default:
-      return null;
-  }
-});
-
-Description.displayName = 'Description';
-
-const Slide = ({ slide }) => {
+const SlideContainer = ({ children, backgroundImageUrl }) => {
   return (
-    <NextLink href={slide.href}>
-      <Box className={style.embla__slide} key={slide.name} sx={{ height: { xs: '60vh', md: '90vh' } }}>
-        <Image src={slide.imgSrc} layout='fill' objectFit='cover' objectPosition='center' />
-        <Description name={slide.name} />
-      </Box>
-    </NextLink>
+    <div className={styles.embla__slide}>
+      <div className={styles.embla__slide__content}>
+        {
+          backgroundImageUrl && (
+            <Image src={backgroundImageUrl} loader={({ src }) => src} layout='fill' objectFit="cover" priority />
+          )
+        }
+        {children}
+      </div>
+    </div>
   );
 }
 
-const EmblaCarousel = () => {
-  const options = { delay: 15000 };
-  const autoplayRoot = (emblaRoot) => emblaRoot.parentElement;
-  const [emblaRef, embla] = useEmblaCarousel({
-    skipSnaps: true,
-    loop: true,
-    startIndex: 0,
-    draggable: true
-  }, [Autoplay(options, autoplayRoot)]);
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const [selectedSlide, setSelectedSlide] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState([]);
+const CallToActionButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(grey[50]),
+  backgroundColor: grey[50],
+  borderRadius: 25,
+  textTransform: 'none',
+  minWidth: '8rem',
+  '&:hover': {
+    color: theme.palette.getContrastText(grey[200]),
+    backgroundColor: grey[200],
+  }
+}))
 
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
-  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
-  const scrollTo = useCallback((index) => embla && embla.scrollTo(index), [embla]);
-
-  const onSelect = useCallback(() => {
-    if (!embla) return;
-    setSelectedSlide(embla.selectedScrollSnap());
-    setPrevBtnEnabled(embla.canScrollPrev());
-    setNextBtnEnabled(embla.canScrollNext());
-  }, [embla, setSelectedSlide]);
-
-  useEffect(() => {
-    if (!embla) return;
-    onSelect();
-    setScrollSnaps(embla.scrollSnapList());
-    embla.on("select", onSelect);
-  }, [embla, setScrollSnaps, onSelect]);
+const SlideContent = ({ href, callToActionLabel, title, description, titleWeight, onClick }) => {
+  const router = useRouter();
 
   return (
     <>
-      <Box className={style.embla} style={{ marginTop: '5vh' }} >
-        <Box className={style.embla__viewport} ref={emblaRef}>
-          <Box className={style.embla__container}>
-            {SLIDES.map((slide, idx) => (
-              <Slide slide={slide} key={idx} />
-            ))}
-          </Box>
-        </Box>
-        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+      <Box
+        zIndex={1}
+        className={styles.embla__slide__text}
+      >
+        <Typography
+          variant='h3'
+          fontWeight={titleWeight || 500}
+          style={{ textShadow: '1px 1px 3px black' }}
+          className={styles.embla__slide__title}
+        >
+          {title}
+        </Typography>
+        <Typography
+          variant='body1'
+          maxWidth='50em'
+          style={{ textShadow: '1px 1px 3px black' }}
+          className={styles.embla__slide__description}
+        >
+          {description}
+        </Typography>
       </Box>
-      <Box className={style.embla__dots}>
-        {scrollSnaps.map((_, index) => (
-          <DotButton
-            key={index}
-            selected={index === selectedSlide}
-            onClick={() => scrollTo(index)}
-          />
-        ))}
-      </Box>
+
+      <CallToActionButton
+        sx={{ mt: 2 }}
+        onClick={() => {
+          if (onClick instanceof Function) {
+            onClick();
+            return;
+          }
+          router.push(href);
+        }}
+      >
+        {callToActionLabel || 'Ver más'}
+      </CallToActionButton>
     </>
+  )
+}
+
+const EmblaCarousel = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const { selectedIndex, onDotButtonClick, scrollSnaps } = useDotButton(emblaApi);
+  const { nextBtnDisabled, onNextButtonClick, prevBtnDisabled, onPrevButtonClick, } = usePrevNextButton(emblaApi);
+
+  return (
+    <section className={styles.embla}>
+      <div className={styles.embla__viewport} ref={emblaRef}>
+        <div className={styles.embla__container}>
+          <SlideContainer backgroundImageUrl='https://www.implanchihuahua.org/indicadores/images/unsplash.avif'>
+            <PDU20240Slide />
+          </SlideContainer>
+          <SlideContainer>
+            <SlideContent
+              href='/arbolado-urbano'
+              title='Arbolado urbano'
+              description='La presencia del arbolado urbano forma parte de una infraestructura verde que impacta en el aspecto social, económico y cultural, mejorando la calidad de vida de la sociedad y mantener la resiliencia de las ciudades.'
+              callToActionLabel='Ver arbolado urbano'
+            />
+          </SlideContainer>
+          <SlideContainer >
+            <ChihuahuaMetricaSlide />
+          </SlideContainer>
+        </div>
+      </div>
+      <div className={styles.embla__controls}>
+        <div className={styles.embla__dots}>
+          {
+            scrollSnaps.map((_, index) => (
+              <DotButton
+                key={index}
+                onClick={() => onDotButtonClick(index)}
+                selected={index == selectedIndex}
+              />
+            ))
+          }
+        </div>
+        <Box className={styles.embla__arrows}>
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+        </Box>
+      </div>
+    </section>
   );
 };
+
+const PDU20240Slide = () => {
+  return (
+    <SlideContent
+      titleWeight={600}
+      title='Sistema de indicadores del PDU2040'
+      description={'Es una herramienta esencial para evaluar el progreso hacia objetivos establecidos en el PDU2040. Busca proporcionar información clave para la toma de decisiones informadas, identificando áreas de mejora y permitiendo una rendición de cuentas efectiva.'}
+      callToActionLabel='Saber más'
+      onClick={() => {
+        const elem = document.getElementById('PDU2040-section')
+        if (!elem) return;
+        window.scroll({
+          top: elem.offsetTop - 80,
+          behavior: 'smooth'
+        })
+      }}
+    />
+  )
+}
+
+
+const ChihuahuaMetricaSlide = () => {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <SlideContent
+        href='/conocenos'
+        title='Chihuahua Métrica'
+        description='Plataforma digital para informar, monitorear y evaluar la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial'
+        callToActionLabel='Reproducir video'
+        onClick={() => {
+          setOpen(true)
+        }}
+      />
+
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}>
+          <iframe width="1180" height="480" src="https://www.youtube.com/embed/5Jc6aMbJkAc" title="Métrica  Chihuahua" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </Box>
+      </Modal>
+    </>
+  )
+}
+
 
 export default EmblaCarousel;

@@ -5,7 +5,7 @@ import React from 'react';
 
 const CRUMBS = [
   {
-    text: 'Chihuahua en Datos'
+    text: 'Sistema de Indicadores del PDU2040 Séptima Actualización'
   }
 ]
 const policies = () => {

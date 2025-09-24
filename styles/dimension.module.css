@@ -1,0 +1,21 @@
+.divider {
+    border: none;
+    width: 5px;
+    height: 5px;
+    margin-left: 0;
+    transition: all 0.2s linear;
+}
+
+
+
+@media only screen and (max-width: 810px) {
+    .divider {
+        width: 15px;
+        height: 15px;
+        margin-left: 0;
+    }
+}
+
+.divider-extended {
+    width: 80%;
+}

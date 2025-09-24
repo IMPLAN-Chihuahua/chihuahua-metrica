@@ -1,0 +1,93 @@
+.card {
+    width: 25vw;
+    height: 25vh;
+}
+
+.cardHeader {
+    color: #123d70;
+    font-family: "Inter", sans-serif !important;
+    font-size: 2em !important;
+}
+
+.cardShortDescription {
+    font-family: "Inter", sans-serif !important;
+    font-size: 1.3em !important;
+}
+
+.objetivoGridItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.objetivosList {
+    translate: 0.5s;
+    transform: translateY(-5vh);
+}
+
+.cardContent {
+    position: relative;
+    height: 100%;
+}
+
+.indicadorCounter {
+    font-family: "Inter", sans-serif !important;
+    color: #123d70;
+    line-height: 0.8 !important;
+}
+
+.indicadorQuantity {
+    font-family: "Inter", sans-serif !important;
+    color: #557C93;
+    font-size: 1.5rem !important;
+}
+
+
+.indicadorBox {
+    position: absolute;
+    bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 80%;
+        margin-top: 3vh;
+    }
+
+    .indicadorBox {
+        right: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0.5rem;
+        border-radius: 0 0 0 0.5rem;
+        width: 100%;
+        height: 20%;
+    }
+
+    .indicadorCounter {
+        padding-right: 0.5rem;
+        font-size: 2rem !important;
+    }
+
+    .cardHeader {
+        font-size: 1.5em !important;
+    }
+
+    .cardShortDescription {
+        padding-top: 0.3rem;
+        font-size: 1em !important;
+    }
+}
+
+/*for laptop screens */
+@media (min-width: 769px) and (max-width: 1920px) {
+    .cardHeader {
+        font-size: 1.6rem !important;
+    }
+
+    .cardShortDescription {
+        font-size: 1rem !important;
+    }
+}

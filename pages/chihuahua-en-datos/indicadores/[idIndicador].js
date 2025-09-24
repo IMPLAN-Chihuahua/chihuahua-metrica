@@ -1,88 +1,116 @@
 import Error from '../../_error'
-import Container from "@mui/material/Container";
-import MapButton from "@components/indicador/Datasheet/MapButton";
-import TopData from "@components/indicador/Datasheet/TopData";
-import DataSheet from "@components/indicador/Datasheet/DataSheet";
-import GraphBox from "@components/indicador/Datasheet/GraphBox";
-import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import Head from "next/head";
-import NavBackAndFoward from "@components/commons/NavBackAndFoward";
-import { Box } from "@mui/material";
-import IndicadorOwner from '@components/commons/IndicadorOwner';
+import Container from "@mui/material/Container";
+import Header from "@components/indicador/Header";
+import HistoricalData from "@components/indicador/Historical";
+import PageBreadcrumb from "@components/commons/PageBreadcrumb";
+import { Stack, Typography } from "@mui/material";
+import Owner from '@components/commons/IndicadorOwner';
+import Formula from '@components/indicador/Datasheet/Formula';
+import Stats from '@components/indicador/Stats';
+import { numberWithCommas } from 'helpers/FormatNumbers';
+import { IndicadoresRelacionados } from '@components/indicador/IndicadoresRelacionados';
 
 
 export default function FichaTecnica(props) {
-  
-  const { indicador, responsible, navigation } = props;
-  
-  const CRUMBS = [{
-    text: 'Chihuahua en Datos',
-    href: '/chihuahua-en-datos'
-  }, {
-    text: indicador.modulo.temaIndicador,
-    href: `/chihuahua-en-datos/temas/${indicador.modulo.id}/indicadores`
-  }, {
-    text: indicador.nombre
-  }];
-  
   if (props.errorCode) {
     return <Error statusCode={props.errorCode} message={props?.message} />
   }
-  
+
+  const { indicador } = props;
+  const objetivo = indicador.objetivos[0]
+  const CRUMBS = [{
+    text: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
+    href: '/chihuahua-en-datos'
+  }, {
+    text: `${objetivo.titulo}`,
+    href: `/chihuahua-en-datos/objetivos/${objetivo.id}/indicadores`
+  }, {
+    text: indicador.nombre
+  }];
+
+  const unidad = indicador?.unidadMedida || "NA";
+  const cobertura = indicador?.cobertura || "NA";
+
   return (
     <>
       <Head>
-        <title>{indicador?.nombre}</title>
-        <meta name="description" content={indicador?.descripcion} />
+        <title>{indicador.nombre}</title>
+        <meta name="description" content={indicador.descripcion} />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Container sx={{ mb: 3, mt: 3 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: { xs: 'flex-end', lg: 'space-between' },
-            paddingTop: 1,
-            paddingBottom: 1,
-            alignItems: 'center'
-          }}>
-          <PageBreadcrumb crumbs={[...CRUMBS]} />
-          <NavBackAndFoward
-            prev={{
-              title: 'Indicador anterior',
-              disabled: navigation.prev == null,
-              link: `/chihuahua-en-datos/indicadores/${navigation.prev}`
-            }}
-            next={{
-              title: 'Siguiente indicador',
-              disabled: navigation.next == null,
-              link: `/chihuahua-en-datos/indicadores/${navigation.next}`
-            }}
+      <Container sx={{ mb: 3, mt: { xs: 0, md: 3 } }}>
+        <PageBreadcrumb crumbs={CRUMBS} />
+        <Stack spacing={6} mt={2}>
+          <Header info={indicador} />
+          <Stats
+            ultimoValor={`${numberWithCommas(indicador.ultimoValorDisponible)}${indicador.adornment !== null ? indicador.adornment : ''}`}
+            anioReferencia={indicador.anioUltimoValorDisponible}
+            tendencia={indicador.tendenciaActual}
+            unidad={unidad.nombre}
+            cobertura={cobertura.tipo}
           />
-        </Box>
-        <TopData info={indicador} />
-        <DataSheet datasheet={indicador} />
-        <GraphBox history={indicador} />
-        <MapButton mapa={indicador.mapa} />
-        <IndicadorOwner responsible={responsible.data} indicadorDate={indicador.updatedAt} indicadorName={indicador.nombre} />
+          <section>
+            <Typography fontStyle='italic' variant='body2'>{indicador.fuente}</Typography>
+          </section>
+          {/* TODO: ADD ELI5 SECTION */}
+          {
+            indicador.formula && (
+              <IndicadorPageSection title={indicador.formula.isFormula === 'NO' ? 'Origen de datos' : 'Fórmula'}>
+                <Formula formula={indicador.formula} />
+              </IndicadorPageSection>
+            )
+          }
+          {
+            indicador.historicos.length > 0 && (
+              <IndicadorPageSection title='Históricos'>
+                <HistoricalData history={indicador} />
+              </IndicadorPageSection>
+            )
+          }
+          {
+            indicador.related.length > 0 && (
+              <IndicadorPageSection title='Indicadores relacionados'>
+                <IndicadoresRelacionados indicadores={indicador.related} />
+              </IndicadorPageSection>
+            )
+          }
+          {
+            indicador.responsable.length > 0 && (
+              <IndicadorPageSection title='Responsable'>
+                <Owner
+                  responsible={indicador.responsable[0]}
+                  indicadorDate={indicador.updatedAt}
+                  indicadorName={indicador.nombre}
+                />
+              </IndicadorPageSection>
+            )
+          }
+        </Stack>
       </Container>
     </>
   );
 }
 
+const IndicadorPageSection = ({ title, children }) => {
+  return (<section>
+    <Typography variant='h5' mb={2}>{title}</Typography>
+    {children}
+  </section>)
+}
+
+
 export async function getServerSideProps(context) {
   const idIndicador = context.params.idIndicador;
   const indicadorRes = await fetch(`${process.env.INDICADORES_BASE_URL}/indicadores/${idIndicador}`);
   const errorCode = indicadorRes.ok ? false : indicadorRes.status;
-  const indicador = await indicadorRes.json();
+  const res = await indicadorRes.json();
 
   if (errorCode) {
-    return { props: { errorCode, ...indicador } }
+    return { props: { errorCode: res.status, message: res.message } }
   }
-  const idUser = indicador.data.createdBy || null;
-  const responsibleRes = await fetch(`${process.env.INDICADORES_BASE_URL}/usuarios/${idUser}`);
-  const responsible = await responsibleRes.json();
 
   return {
-    props: { indicador: { ...indicador.data }, responsible, errorCode, navigation: { ...indicador.navigation } },
+    props: { indicador: res.data, errorCode: null },
   };
 }

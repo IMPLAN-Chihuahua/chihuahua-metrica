@@ -1,55 +1,59 @@
-import { Container, Grid, Typography } from '@mui/material';
 import Head from 'next/head';
-import TemaList from '@components/proyecto/GridModulos';
-import Title from '@components/commons/Title';
-import PageBreadcrumb from '@components/commons/PageBreadcrumb';
-import Capsule from '@components/indicador/Capsule';
+import IndicadoresPDU2040 from '@components/information/IndicadoresPDU2040';
+import TemasBook from '@components/proyecto/TemasBook';
+import AboutIndicadores from '@components/information/AboutIndicadores';
+import { useEffect, useState } from 'react';
+import TemasCarousel from '@components/proyecto/TemasCarousel';
 
-const CRUMBS = [
-  {
-    text: 'Chihuahua en Datos'
-  }
-]
-
-export default function Modulo(props) {
+export default function Tema(props) {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('indicadores-page')
   }
-  const data = props.data;
+  const temas = props.data.temas;
+  const objetivos = props.data.objetivos;
+
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' && window.innerWidth < 760
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 760);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <Head>
-        <title name='start'>Chihuahua en Datos</title>
-        <meta name="description" content="Proyecto Chihuahua en Datos para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
+        <title name='start'>Sistema de Indicadores del PDU2040 Séptima Actualización</title>
+        <meta name="description" content="Proyecto Sistema de Indicadores del PDU2040 para el monitoreo de una serie de indicadores de la ciudad de Chihuahua" />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <Container sx={{ marginTop: 3, marginBottom: 3 }} maxWidth='lg'>
-        <PageBreadcrumb crumbs={[...CRUMBS]} />
-        <section>
-          <Title variant='h3' component='h1'>Chihuahua en Datos</Title>
-          <Typography textAlign='start' variant='body1'>
-            Chihuahua en Datos ofrece a la ciudadanía los datos de la
-            estructura urbana, económica y social con el fin de dar a conocer la dirección
-            en la que se encuentra la ciudad y encontrar las áreas de oportunidad.
-          </Typography>
-        </section>
-        <br />
-        <Title variant='h4' component='h2'>Temas de Interés</Title>
-        <Capsule />
-        <br />
-        <section>
-          <Title variant='h4' component='h2'>Temáticas</Title>
-          <Grid container rowSpacing={1} columnSpacing={1}>
-            <TemaList modulos={data} />
-          </Grid>
-        </section>
-      </Container>
+      <IndicadoresPDU2040 objetivos={objetivos} />
+      <AboutIndicadores />
+      {isMobile ?
+        <TemasCarousel temas={temas} />
+        :
+        <TemasBook temas={temas} />
+      }
     </>
   );
 };
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`${process.env.INDICADORES_BASE_URL}/modulos`);
-  const data = await res.json();
-  return res.status === 200 ? { props: { ...data } } : { props: { data: [] } };
+  const temasRes = await fetch(`${process.env.INDICADORES_BASE_URL}/temas`);
+  const { data: temasData } = await temasRes.json();
+
+  const objetivosRes = await fetch(`${process.env.INDICADORES_BASE_URL}/objetivos`);
+  const { data: objetivosData } = await objetivosRes.json();
+
+  const data = {
+    temas: temasData,
+    objetivos: objetivosData
+  }
+
+  return temasRes.status === 200 && objetivosRes.status === 200 ? { props: { data } } : { props: { data: [] } };
 }

@@ -3,8 +3,8 @@ import Grid from '@mui/material/Grid';
 
 const PROJECTS = [
   {
-    name: 'Chihuahua en Datos',
-    url: '/chihuahua-en-datos', 
+    name: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
+    url: '/chihuahua-en-datos',
     image: '/chihuahua-en-datos.webp'
   },
   {

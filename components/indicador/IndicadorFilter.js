@@ -39,7 +39,7 @@ const IndicadoresFilter = (props) => {
 
   useEffect(() => {
     if (!coberturaList) return;
-    setCoberturas(coberturaList.data)
+    setCoberturas([1, 2, 3])
   }, [coberturaList])
 
   return (
@@ -181,30 +181,6 @@ const IndicadoresFilter = (props) => {
                 )}
               />
             </Grid>
-            {/* <Grid item xs={12} md={4} lg={3}>
-              <Controller
-                name='tendenciaActual'
-                control={control}
-                defaultValue={null}
-                render={({ field: props }) => (
-                  <Autocomplete
-                    {...props}
-                    onChange={(_, data) => props.onChange(data)}
-                    disablePortal
-                    options={tendencyList}
-                    getOptionLabel={(option) => option.value}
-                    isOptionEqualToValue={(option, value) => option.id === value.id}
-                    noOptionsText="No hay opciones"
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Tendencia"
-                      />
-                    )}
-                  />
-                )}
-              />
-            </Grid> */}
           </Grid>
         </Grid>
       </Grid>

@@ -16,7 +16,7 @@ const Indicador = (props) => {
   const indicador = props.value;
   const objetivo = indicador.objetivos[0]
   const ods = indicador?.ods.titulo
-  const coberturaGeografica = indicador.cobertura.tipo || 'NA'
+  const coberturaGeografica = indicador.cobertura?.tipo || 'NA'
   return (
     <Tooltip title={objetivo?.destacado ? 'Este indicador abona principalmente para lograr el presente objetivo' : ``} placement='left-start'>
       <Card variant='outlined'>

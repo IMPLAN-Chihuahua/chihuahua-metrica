@@ -37,7 +37,7 @@ const steps = [
 export default function ImageCatalog({ qty, imgName, autores, nombreCientifico }) {
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
-    const imageServer = 'http://siee.mpiochih.gob.mx/imagenes_catalogo/';
+    const imageServer = 'https://implanchihuahua.org/arbolado/imagenes_catalogo/';
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -70,7 +70,7 @@ export default function ImageCatalog({ qty, imgName, autores, nombreCientifico }
                     bgcolor: 'background.default',
                 }}
             >
-                <Typography style={{fontWeight:'bold'}}>Fotografías obtenidas de {autores}</Typography>
+                <Typography style={{ fontWeight: 'bold' }}>Fotografías obtenidas de {autores}</Typography>
             </Paper>
             <Box
                 sx={{

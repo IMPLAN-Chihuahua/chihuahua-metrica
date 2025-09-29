@@ -1,19 +1,22 @@
 import { isUndefined } from "./ObjectUtils";
 
 const toTitleCase = (str) => {
-    //check if str is an array and take the first element
+    console.log('this one');
+    console.log(str);
 
+    // Si es array, tomar primer elemento
     if (Array.isArray(str)) {
         str = str[0];
     }
 
+    // Validar que str sea string
+    if (typeof str !== "string") {
+        return "";
+    }
 
-    return str.replace(
-        /\w\S*/g,
-        function (txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-    );
+    return str.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
 };
 
 const serialize = (obj) => {
@@ -33,7 +36,8 @@ const toUnderScoreCase = (str) => {
 };
 
 const assignMonths = (months) => {
-    const monthsArray = months.split(',');
+    console.log(months)
+    const monthsArray = months;
 
     for (let i = 0; i < monthsArray.length; i++) {
         monthsArray[i] = monthsArray[i].trim();
@@ -51,7 +55,7 @@ const assignMonths = (months) => {
         }
     });
 
-    return monthsObject;
+    return months;
 }
 
 const hexAsRGBA = (hex, alpha) => {

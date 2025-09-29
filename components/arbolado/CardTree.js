@@ -6,7 +6,7 @@ import NextLink from "next/link";
 import React, { useEffect, useState } from 'react';
 
 import style from './CardTree.module.css';
-const imageServer = 'https://local-arbolado.s3.us-east-2.amazonaws.com/imagenes_catalogo/resized';
+const imageServer = 'https://implanchihuahua.org/arbolado/imagenes_catalogo/resized';
 
 
 const CardTree = ({ tree }) => {

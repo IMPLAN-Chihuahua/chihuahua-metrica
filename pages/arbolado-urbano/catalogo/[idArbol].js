@@ -20,16 +20,11 @@ import style from './FichaArbol.module.css';
 
 export default function FichaInformativa(props) {
   const tree = props.data;
-  const imageServer = 'https://arbol-mid-bucket.s3.us-west-1.amazonaws.com/imagenes_catalogo';
+  const imageServer = 'https://implanchihuahua.org/arbolado/imagenes_catalogo';
 
   const months = assignMonths(tree.FLORACION)
 
   const color = tree.FLORACION === 'NA' ? '#8FA29C' : '#139C78';
-  console.log(tree.CANTIDAD_IMAGENES);
-  console.log(tree.NOMBRE_IMAGEN)
-  console.log(tree.IMAGENES_AUTOR)
-  console.log(tree.URL_AUTOR)
-
 
   return (
     <>
@@ -156,7 +151,7 @@ export default function FichaInformativa(props) {
                           className={`${style.floatBox}`}
                         >
                           <LocalFloristIcon sx={{ color: color }} />
-                          <ListItemText primary={toTitleCase(month.month === 'NA' ? 'No disponible' : month.month)} key={index} />
+                          <ListItemText primary={month} key={index} />
                         </Box>
                       )
                     })

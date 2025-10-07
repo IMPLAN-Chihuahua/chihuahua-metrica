@@ -12,6 +12,13 @@ FROM node:lts-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+ARG INDICADORES_BASE_URL
+ARG ARBOLADO_BASE_URL
+
+# Crear .env usando los build-args
+RUN printf "INDICADORES_BASE_URL=\"%s\"\nARBOLADO_BASE_URL=\"%s\"\n" "$INDICADORES_BASE_URL" "$ARBOLADO_BASE_URL" > .env
+
 RUN npm install -g corepack
 RUN yarn build
 

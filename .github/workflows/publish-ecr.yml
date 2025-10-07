@@ -45,8 +45,9 @@ jobs:
           NEXT_PUBLIC_INDICADORES_BASE_URL=$(echo "$SECRET_JSON" | jq -r '.NEXT_PUBLIC_INDICADORES_BASE_URL')
 
 
-          echo "INDICADORES_URL=$INDICADORES_URL" >> $GITHUB_ENV
-          echo "ARBOLADO_URL=$ARBOLADO_URL" >> $GITHUB_ENV
+          echo "INDICADORES_BASE_URL=$INDICADORES_BASE_URL" >> $GITHUB_ENV
+          echo "ARBOLADO_BASE_URL=$ARBOLADO_BASE_URL" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_INDICADORES_BASE_URL=$NEXT_PUBLIC_INDICADORES_BASE_URL" >> $GITHUB_ENV
 
       - name: Build and push Docker image to ECR
         uses: docker/build-push-action@v4

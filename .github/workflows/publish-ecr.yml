@@ -21,6 +21,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      - name: Create ECR repository if not exists
+        run: |
+          aws ecr describe-repositories --repository-names chihuahua-metrica || \
+          aws ecr create-repository --repository-name chihuahua-metrica
+
+      - name: Login to Amazon ECR
+        run: |
+          aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | \
+          docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+
       - name: Fetch secrets from AWS Secrets Manager
         id: secrets
         run: |
@@ -30,8 +40,10 @@ jobs:
             --secret-id "$SECRET_ARN" \
             --query SecretString --output text)
 
-          INDICADORES_URL=$(echo "$SECRET_JSON" | jq -r '.INDICADORES_URL')
-          ARBOLADO_URL=$(echo "$SECRET_JSON" | jq -r '.ARBOLADO_URL')
+          INDICADORES_BASE_URL=$(echo "$SECRET_JSON" | jq -r '.INDICADORES_BASE_URL')
+          ARBOLADO_BASE_URL=$(echo "$SECRET_JSON" | jq -r '.ARBOLADO_BASE_URL')
+          NEXT_PUBLIC_INDICADORES_BASE_URL=$(echo "$SECRET_JSON" | jq -r '.NEXT_PUBLIC_INDICADORES_BASE_URL')
+
 
           echo "INDICADORES_URL=$INDICADORES_URL" >> $GITHUB_ENV
           echo "ARBOLADO_URL=$ARBOLADO_URL" >> $GITHUB_ENV
@@ -44,5 +56,6 @@ jobs:
           push: true
           tags: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/chihuahua-metrica:latest
           build-args: |
-            INDICADORES_BASE_URL=${{ env.INDICADORES_URL }}
-            ARBOLADO_BASE_URL=${{ env.ARBOLADO_URL }}
+            INDICADORES_BASE_URL=${{ env.INDICADORES_BASE_URL }}
+            ARBOLADO_BASE_URL=${{ env.ARBOLADO_BASE_URL }}
+            NEXT_PUBLIC_INDICADORES_BASE_URL=${{NEXT_PUBLIC_INDICADORES_BASE_URL}}

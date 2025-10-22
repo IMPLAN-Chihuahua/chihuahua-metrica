@@ -13,15 +13,7 @@ const AboutIndicadores = () => {
                 <Box sx={{ p: 4 }}>
                     <Typography variant='h3' component='h1' fontWeight={600} className={style.subtitle}>Sobre el Sistema</Typography>
                     <Typography variant='body1' fontSize="1.3rem" mb={3} className={style.text}>
-                        El Sistema de Indicadores del PDU2040 ofrece a la  ciudadanía
-                        los datos de los objetivos evaluados en el PDU2040, con el
-                        objetivo de monitorear diferentes aspectos de la ciudad de
-                        Chihuahua.
-                        Los indicadores presentados en este sistema permiten analizar
-                        la Infraestructura de Desarrollo, los Entornos Urbanos Consolidados
-                        y la Calidad de Vida y Sostenibilidad Ambiental mediante
-                        diferentes medios de obtención de datos representados mediante
-                        una ficha técnica.
+                        Es una herramienta que permite realizar un seguimiento constante del avance y cumplimiento de los objetivos establecidos en el PDU, revelando las fortalezas y debilidades del desarrollo urbano. Esto permite enfocar esfuerzos donde más se requiera y tomar decisiones de acuerdo a información clave para planificación y toma de decisiones efectivas.
                     </Typography>
                 </Box>
             </Grid>

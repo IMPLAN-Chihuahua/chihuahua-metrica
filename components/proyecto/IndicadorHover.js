@@ -13,6 +13,7 @@ const IndicadorHover = ({ indicador }) => {
             height: '100%',
             transition: '0.3s ease-in-out',
         }}>
+
             {
                 indicador.id
                     ? (
@@ -42,16 +43,18 @@ const IndicadorHover = ({ indicador }) => {
                                     pt: 8,
                                     alignItems: 'center',
                                 }}>
-                                    <img
-                                        src={indicador.Tema?.urlImagen}
-                                        alt='Indicador'
-                                        layout='fill'
-                                        style={{
-                                            borderRadius: '50%',
-                                            height: '200px',
-                                            width: '200px',
-                                        }}
-                                    />
+                                    {indicador.temas && indicador.temas.length > 0 && (
+                                        <img
+                                            src={indicador.temas[0].urlImagen}
+                                            alt='Indicador'
+                                            layout='fill'
+                                            style={{
+                                                borderRadius: '50%',
+                                                height: '200px',
+                                                width: '200px',
+                                            }}
+                                        />
+                                    )}
                                 </Box>
 
                                 <Typography variant='h4' component='h1' textAlign={'center'} color={'white'} sx={{

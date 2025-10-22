@@ -114,7 +114,7 @@ const EmblaCarousel = () => {
     <section className={styles.embla}>
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
-          <SlideContainer backgroundImageUrl='https://www.implanchihuahua.org/indicadores/images/unsplash.avif'>
+          <SlideContainer backgroundImageUrl='https://www.implanchihuahua.org/indicadores/images/objetivos/new/banner.jpeg'>
             <PDU20240Slide />
           </SlideContainer>
           <SlideContainer>
@@ -156,7 +156,7 @@ const PDU20240Slide = () => {
     <SlideContent
       titleWeight={600}
       title='Sistema de indicadores del PDU2040'
-      description={'Es una herramienta esencial para evaluar el progreso hacia objetivos establecidos en el PDU2040. Busca proporcionar información clave para la toma de decisiones informadas, identificando áreas de mejora y permitiendo una rendición de cuentas efectiva.'}
+      description={''}
       callToActionLabel='Saber más'
       onClick={() => {
         const elem = document.getElementById('PDU2040-section')

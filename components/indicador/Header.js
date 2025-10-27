@@ -53,7 +53,6 @@ const DocumentButton = ({ indicadorId, format, icon, showErrorMessage, ...props 
 
 const TopData = (info) => {
   const { info: indicador } = info;
-  console.log(indicador)
   return (
     <section>
       <IndicadorAppBar indicador={indicador} />

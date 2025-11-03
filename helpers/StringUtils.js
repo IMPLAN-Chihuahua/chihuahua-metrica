@@ -1,9 +1,6 @@
 import { isUndefined } from "./ObjectUtils";
 
 const toTitleCase = (str) => {
-    console.log('this one');
-    console.log(str);
-
     // Si es array, tomar primer elemento
     if (Array.isArray(str)) {
         str = str[0];
@@ -36,7 +33,6 @@ const toUnderScoreCase = (str) => {
 };
 
 const assignMonths = (months) => {
-    console.log(months)
     const monthsArray = months;
 
     for (let i = 0; i < monthsArray.length; i++) {

@@ -6,6 +6,7 @@ import AboutIndicadores from './AboutIndicadores';
 import TemasCarousel from '@components/proyecto/TemasCarousel';
 import TemasBook from '@components/proyecto/TemasBook';
 import InteractiveMap from '@components/objetivo/InteractiveMap';
+import InteractiveMapDefinitions from '@components/objetivo/InteractiveMapDefinitions';
 
 const ObjetivosContainer = ({ data }) => {
     const temas = data.temas;
@@ -37,6 +38,7 @@ const ObjetivosContainer = ({ data }) => {
                     Temas de interés
                 </Typography>
                 <InteractiveMap />
+                <InteractiveMapDefinitions />
             </Container>
         </Box>
     )

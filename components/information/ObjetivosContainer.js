@@ -1,10 +1,11 @@
 import ObjetivosList from '@components/objetivo/GridObjetivos';
-import { Box } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react'
 import style from './information.module.css'
 import AboutIndicadores from './AboutIndicadores';
 import TemasCarousel from '@components/proyecto/TemasCarousel';
 import TemasBook from '@components/proyecto/TemasBook';
+import InteractiveMap from '@components/objetivo/InteractiveMap';
 
 const ObjetivosContainer = ({ data }) => {
     const temas = data.temas;
@@ -26,11 +27,17 @@ const ObjetivosContainer = ({ data }) => {
         <Box sx={{ mt: 10 }}>
             <ObjetivosList objetivos={objetivos} />
             {/* <AboutIndicadores /> */}
-            {isMobile ?
-                <TemasCarousel temas={temas} />
-                :
-                <TemasBook temas={temas} />
-            }
+            <Container maxWidth='lg'>
+                <Typography
+                    variant='h3'
+                    component='h1'
+                    fontWeight={600}
+                    className={style.subtitle}
+                >
+                    Temas de interés
+                </Typography>
+                <InteractiveMap />
+            </Container>
         </Box>
     )
 }

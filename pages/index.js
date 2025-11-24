@@ -6,6 +6,7 @@ import PartnersStrip from '@components/commons/PartnersStrip';
 import PDU2040 from '@components/information/PDU2040';
 import ObjetivosContainer from '@components/information/ObjetivosContainer';
 import AboutIndicadores from '@components/information/AboutIndicadores';
+import InteractiveMap from '@components/objetivo/InteractiveMap';
 
 export default function Home({ data }) {
 

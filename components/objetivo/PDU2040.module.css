@@ -28,11 +28,11 @@
 .cardContent {
     position: relative;
     height: 100%;
+    padding: 0;
 }
 
 .indicadorCounter {
     font-family: "Inter", sans-serif !important;
-    color: #123d70;
     line-height: 0.8 !important;
 }
 

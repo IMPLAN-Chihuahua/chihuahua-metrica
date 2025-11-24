@@ -1,0 +1,17 @@
+.component,
+.centralComponent {
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    transform-origin: center center;
+}
+
+.component:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+}
+
+.centralComponent:hover {
+    filter: drop-shadow(0 0 8px rgba(0, 150, 136, 0.4)) brightness(1.05);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}

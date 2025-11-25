@@ -1,5 +1,5 @@
 import ObjetivosList from '@components/objetivo/GridObjetivos';
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react'
 import style from './information.module.css'
 import AboutIndicadores from './AboutIndicadores';
@@ -7,6 +7,7 @@ import TemasCarousel from '@components/proyecto/TemasCarousel';
 import TemasBook from '@components/proyecto/TemasBook';
 import InteractiveMap from '@components/objetivo/InteractiveMap';
 import InteractiveMapDefinitions from '@components/objetivo/InteractiveMapDefinitions';
+import InteractiveMapTemas from '@components/objetivo/InteractiveMapTemas';
 
 const ObjetivosContainer = ({ data }) => {
     const temas = data.temas;
@@ -27,17 +28,43 @@ const ObjetivosContainer = ({ data }) => {
     return (
         <Box sx={{ mt: 10 }}>
             <ObjetivosList objetivos={objetivos} />
-            {/* <AboutIndicadores /> */}
             <Container maxWidth='lg'>
                 <Typography
-                    variant='h3'
+                    variant='h4'
                     component='h1'
-                    fontWeight={600}
+                    fontWeight={700}
+                    gutterBottom
                     className={style.subtitle}
+                    sx={{ color: '#1a202c' }}
                 >
                     Temas de interés
                 </Typography>
-                <InteractiveMap />
+                <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{
+                        fontSize: '1.1rem',
+                        lineHeight: 1.6
+                    }}
+                >
+                    Explora la integración de los datos municipales con el PDU 2040. Navega por este diagrama para entender cómo cada tema de interés contribuye a los grandes ejes de desarrollo y a los planes sectoriales que rigen nuestra ciudad. Puedes dar clic sobre algun tema para sabaer más al respecto.
+                </Typography>
+                <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    sx={{
+                        border: '1px solid',
+                        borderColor: 'rgba(0,0,0,0.08)',
+                        borderRadius: 3,
+                        backgroundColor: '#ffffff',
+                        mt: 2,
+                        boxShadow: '0px 2px 10px rgba(0,0,0,0.05)',
+                        minHeight: '450px'
+                    }}
+                >
+                    <InteractiveMap />
+                </Grid>
                 <InteractiveMapDefinitions />
             </Container>
         </Box>

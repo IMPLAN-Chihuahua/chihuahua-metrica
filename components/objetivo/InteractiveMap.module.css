@@ -15,3 +15,52 @@
     transform: scale(1.02);
     transition: all 0.3s ease;
 }
+
+.temaBox {
+    position: relative;
+    padding: 40px 20px;
+}
+
+.temaBox::before,
+.temaBox::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-color: #7a004b;
+    border-style: solid;
+}
+
+.temaBox::before {
+    top: 0;
+    left: 0;
+    border-width: 4px 0 0 4px;
+}
+
+.temaBox::after {
+    top: 0;
+    right: 0;
+    border-width: 4px 4px 0 0;
+}
+
+.temaBox .bottomLeft,
+.temaBox .bottomRight {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-color: #7a004b;
+    border-style: solid;
+}
+
+.temaBox .bottomLeft {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 4px 4px;
+}
+
+.temaBox .bottomRight {
+    bottom: 0;
+    right: 0;
+    border-width: 0 4px 4px 0;
+}

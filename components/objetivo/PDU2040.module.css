@@ -1,12 +1,14 @@
 .card {
     width: 25vw;
     height: 25vh;
+    container-type: inline-size;
+    container-name: objetivo-card;
 }
 
 .cardHeader {
     color: #123d70;
     font-family: "Inter", sans-serif !important;
-    font-size: 2em !important;
+    font-size: 2em;
 }
 
 .cardShortDescription {
@@ -34,6 +36,7 @@
 .indicadorCounter {
     font-family: "Inter", sans-serif !important;
     line-height: 0.8 !important;
+    font-size: 3.5rem;
 }
 
 .indicadorQuantity {
@@ -43,6 +46,41 @@
 }
 
 
+/* 🟦 Cuando el card mide MENOS de 450px */
+@container objetivo-card (max-width: 450px) {
+    .cardHeader {
+        font-size: 1.2rem;
+    }
+
+    .cardShortDescription {
+        font-size: 0.9rem;
+    }
+
+    .indicadorCounter {
+        font-size: 2rem;
+    }
+
+    .indicadorQuantity {
+        font-size: 0.85rem;
+    }
+}
+
+/* 🟩 Cuando el card mide MENOS de 350px */
+@container objetivo-card (max-width: 350px) {
+    .cardHeader {
+        font-size: 1rem;
+    }
+
+
+    .indicadorCounter {
+        font-size: 1.6rem;
+    }
+
+    .indicadorQuantity {
+        font-size: 0.75rem;
+    }
+}
+
 .indicadorBox {
     position: absolute;
     bottom: 0;
@@ -51,6 +89,7 @@
 @media (max-width: 768px) {
     .card {
         width: 80%;
+        height: 36vh;
         margin-top: 3vh;
     }
 
@@ -63,7 +102,6 @@
         padding: 0.5rem;
         border-radius: 0 0 0 0.5rem;
         width: 100%;
-        height: 20%;
     }
 
     .indicadorCounter {

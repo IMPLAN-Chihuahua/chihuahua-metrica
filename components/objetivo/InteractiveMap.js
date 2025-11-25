@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Grid } from '@mui/material'
 import React from 'react'
 import styles from './InteractiveMap.module.css'
 import { useRouter } from 'next/router';
@@ -13,17 +13,11 @@ const InteractiveMap = () => {
 
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'white',
-                py: 6,
-            }}
+        <Grid item md={12} lg={12} sm={12}
+
         >
             <Box sx={{
-                width: '90%',
+                width: '100%',
                 backgroundColor: '#fff',
                 borderRadius: 3,
                 p: 4,
@@ -350,7 +344,7 @@ const InteractiveMap = () => {
                     </g>
                 </svg>
             </Box>
-        </Box>
+        </Grid>
 
     )
 }

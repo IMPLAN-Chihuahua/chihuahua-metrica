@@ -1,9 +1,9 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
 
 const InteractiveMapDefinitions = () => {
     return (
-        <Box>
+        <Box item md={3} lg={3}>
             <Typography variant='caption'><b>PSMAMS</b> - Programa Sectorial Metropolitano de Accesibilidad y Movilidad Sostenible de Chihuahua</Typography> <br />
             <Typography variant='caption'><b>PMOTDU</b> - Plan Municipal de Ordenamiento Territorial y Desarrollo Urbano</Typography><br />
             <Typography variant='caption'><b>PMH</b> - Plan Municipal Hidrico</Typography><br />

@@ -21,7 +21,6 @@ const StarTree = ({ tree }) => {
     const onMouseLeave = (id) => {
         setIsHovering(false);
         setHoveredTree(null);
-        console.log('may god help us');
     }
 
     return (

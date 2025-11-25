@@ -5,7 +5,6 @@ import Header from "@components/indicador/Header";
 import HistoricalData from "@components/indicador/Historical";
 import PageBreadcrumb from "@components/commons/PageBreadcrumb";
 import { Stack, Typography } from "@mui/material";
-import Owner from '@components/commons/IndicadorOwner';
 import Formula from '@components/indicador/Datasheet/Formula';
 import Stats from '@components/indicador/Stats';
 import { numberWithCommas } from 'helpers/FormatNumbers';
@@ -72,17 +71,6 @@ export default function FichaTecnica(props) {
             indicador.related.length > 0 && (
               <IndicadorPageSection title='Indicadores relacionados'>
                 <IndicadoresRelacionados indicadores={indicador.related} />
-              </IndicadorPageSection>
-            )
-          }
-          {
-            indicador.responsable.length > 0 && (
-              <IndicadorPageSection title='Responsable'>
-                <Owner
-                  responsible={indicador.responsable[0]}
-                  indicadorDate={indicador.updatedAt}
-                  indicadorName={indicador.nombre}
-                />
               </IndicadorPageSection>
             )
           }

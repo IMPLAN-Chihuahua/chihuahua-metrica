@@ -47,7 +47,7 @@ const ObjetivosContainer = ({ data }) => {
                         lineHeight: 1.6
                     }}
                 >
-                    Explora la integración de los datos municipales con el PDU 2040. Navega por este diagrama para entender cómo cada tema de interés contribuye a los grandes ejes de desarrollo y a los planes sectoriales que rigen nuestra ciudad. Puedes dar clic sobre algun tema para sabaer más al respecto.
+                    Explora la integración de los datos municipales con el PDU 2040. Navega por este diagrama para entender cómo cada tema de interés contribuye a los grandes ejes de desarrollo y a los planes sectoriales que rigen nuestra ciudad. Puedes dar clic sobre algun tema para saber más al respecto.
                 </Typography>
                 <Grid
                     container

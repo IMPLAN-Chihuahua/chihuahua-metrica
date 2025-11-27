@@ -79,7 +79,7 @@ const Footer = () => {
                     color='#fff'
                     rel='noreferrer noopener'
                     target='_blank'>
-                    Aviso de privacidad integral Simplificado
+                    Aviso de privacidad simplificado
                   </MUILink>
                 </NextLink>
               </li>
@@ -91,7 +91,7 @@ const Footer = () => {
                     color='#fff'
                     rel='noreferrer noopener'
                     target='_blank'>
-                    Aviso de confidencialidad
+                    Aviso de privacidad integral
                   </MUILink>
                 </NextLink>
               </li>

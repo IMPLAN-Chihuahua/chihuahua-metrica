@@ -5,7 +5,7 @@ import style from './information.module.css'
 
 const AboutIndicadores = () => {
     return (
-        <Grid container className={style.container}>
+        <Grid container className={style.container} sx={{ mt: 20 }}>
             <Grid item
                 xs={12}
                 md={6}

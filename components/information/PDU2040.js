@@ -19,7 +19,7 @@ const PDU2040 = () => {
 
                 </Typography>
                 <Typography variant='body1' fontSize="1.2rem" sx={{ pb: 1 }}>
-                    Es una herramienta que permite dar seguimiento al avance y cumplimiento de los objetivos del PDU, identificando fortalezas y áreas de mejora, para enfocar esfuerzos donde más se requiera y facilitar la toma de decisiones informadas en la planificación urbana. Sus tres metas principales son: <b>monitorizar el progreso, identificar áreas de mejora y apoyar decisiones estratégicas basadas en información clave.</b>
+                    Es una herramiessssnta que permite dar seguimiento al avance y cumplimiento de los objetivos del PDU, identificando fortalezas y áreas de mejora, para enfocar esfuerzos donde más se requiera y facilitar la toma de decisiones informadas en la planificación urbana. Sus tres metas principales son: <b>monitorizar el progreso, identificar áreas de mejora y apoyar decisiones estratégicas basadas en información clave.</b>
                 </Typography>
 
             </Box>

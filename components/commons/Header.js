@@ -17,6 +17,7 @@ const navLinks = [
   { title: 'Inicio', path: '/', cssName: 'inicio' },
   { title: 'Conócenos', path: '/conocenos', cssName: 'conocenos' },
   { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
+  { title: 'Manual de usuario', path: 'https://view.genially.com/691e2306f1e1e7523249333e/interactive-content-manual-usuario', cssName: 'manual' },
 ]
 
 const Header = () => {

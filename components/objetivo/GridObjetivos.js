@@ -8,19 +8,19 @@ import LeavesIcon from './LeavesIcon'
 const objetivosConfig = [
     {
         title: 'Infraestructura de Desarrollo',
-        shortDescription: 'Incluye indicadores relacionados al crecimiento, planificación e infraestructura de la ciudad.',
+        shortDescription: 'Colocar a las personas en el centro de la planeación y del aprovechamiento de los recursos de la ciudad.',
         color: '#b3d9d0',
         icon: CraneIcon
     },
     {
         title: 'Entornos Urbanos Consolidados',
-        shortDescription: 'Evalúa la eficiencia, accesibilidad  y sostenibilidad de los sistemas de transporte',
+        shortDescription: 'Crear entornos urbanos pensados en las personas: accesibles, asequibles, cercanos, compactos, dinámicos, seguros y diversos.',
         color: '#6AC7B2',
         icon: CityIcon
     },
     {
         title: 'Calidad de Vida y Sostenibilidad',
-        shortDescription: 'Mide aspectos como la calidad del aire, manejo de residuos y conservación de recursos naturales.',
+        shortDescription: 'Impulsar una ciudad sustentable, competitiva y generadora de oportunidades, en un entorno equitativo.',
         color: '#2D9290',
         icon: LeavesIcon
     }

@@ -17,7 +17,7 @@ const Stat = ({ indicador, indextest }) => {
       >
         <div className={isHovering ? style.overlay : undefined}>
           <Box className={`${style.circleStats}`} style={{ filter: isHovering ? 'invert(100%)' : undefined }}>
-            <Image src={indicador.icon} width={100} height={100} />
+            <Image src={indicador.icon} width={100} height={100} alt={indicador.name} />
           </Box>
           <Typography textAlign='center' className={`${style.circleStatsDescription}`}>{indicador.value}</Typography>
         </div>

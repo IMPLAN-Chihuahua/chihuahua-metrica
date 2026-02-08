@@ -1,6 +1,7 @@
 import { Button, Container, Grid } from '@mui/material'
 import React from 'react'
 import style from './SatisfactionSurvey.module.css'
+import Image from 'next/image' // 1. Importar el componente Image
 
 const SatisfactionSurvey = () => {
   return (
@@ -18,7 +19,14 @@ const SatisfactionSurvey = () => {
         </Grid>
         <Grid item xs={12} md={6} >
           <div className={`${style.surveyImageContainer}`}>
-            <img src="/images/stats/survey.png" alt="Satisfaction Survey" className={style.surveyImage} />
+            <Image
+              src="/images/stats/survey.png"
+              alt="Satisfaction Survey"
+              className={style.surveyImage}
+              width={500}
+              height={300}
+              layout="responsive"
+            />
           </div>
         </Grid>
       </Grid>

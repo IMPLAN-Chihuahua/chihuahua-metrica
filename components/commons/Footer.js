@@ -49,7 +49,7 @@ const Footer = () => {
             alignItems='flex-start'
           >
             <Image
-              src='/logo_chihuahua_metrica.webp'
+              src='/logo_2026_white.png'
               height={90}
               width={300}
               alt='Implan logo'
@@ -108,16 +108,6 @@ const Footer = () => {
                   rel='noreferrer noopener'
                   className={styles.underline}>
                   <Facebook fontSize='large' />
-                </a>
-              </NextLink>
-              <NextLink href='https://twitter.com/IMPLANChih?s=08' passHref={true}>
-                <a
-                  alt="Ícono de X (antes conocido como Twitter) que redirecciona hacia al perfil del IMPLAN"
-                  title='¡Síguenos en Twitter!'
-                  target='_blank'
-                  rel='noreferrer noopener'
-                  className={styles.underline}>
-                  <XIcon fontSize='large' />
                 </a>
               </NextLink>
               <NextLink href='https://www.instagram.com/implanchihuahua/' passHref={true}>

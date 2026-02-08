@@ -8,6 +8,7 @@ import TemasBook from '@components/proyecto/TemasBook';
 import InteractiveMap from '@components/objetivo/InteractiveMap';
 import InteractiveMapDefinitions from '@components/objetivo/InteractiveMapDefinitions';
 import InteractiveMapTemas from '@components/objetivo/InteractiveMapTemas';
+import NewInteractiveMap from '@components/objetivo/NewInteractiveMap';
 
 const ObjetivosContainer = ({ data }) => {
     const temas = data.temas;
@@ -63,7 +64,7 @@ const ObjetivosContainer = ({ data }) => {
                         minHeight: '450px'
                     }}
                 >
-                    <InteractiveMap />
+                    <NewInteractiveMap />
                 </Grid>
                 <InteractiveMapDefinitions />
             </Container>

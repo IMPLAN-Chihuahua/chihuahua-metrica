@@ -8,7 +8,7 @@ const Splashscreen = () => {
     const globalLoader = document.getElementById('globalLoader');
     const loader = document.getElementById('loader');
     if (!globalLoader || !loader) return;
-    
+
     setTimeout(() => {
       loader.style.opacity = 0;
       setTimeout(() => {
@@ -40,7 +40,7 @@ const Splashscreen = () => {
       }}>
         <img
           alt='Chihuahua Metrica Logo'
-          src='/logo_chihuahua_metrica.webp'
+          src='/logo_2026_white.png'
           style={{ maxWidth: '300px' }} />
       </div>
     </div>

@@ -193,7 +193,7 @@ export async function getServerSideProps(context) {
 
 export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, descripcion }) => {
     return (
-        <>
+        <Box>
             <Box
                 sx={{
                     display: 'flex',
@@ -208,7 +208,7 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
             <Stack
                 direction={{ xs: 'column', md: 'row' }}
                 my={{ xs: 1, md: 3 }}
-                spacing={2}
+                spacing={4}
                 justifyContent='space-around'
             >
                 <Box
@@ -217,29 +217,71 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
                         maxWidth: 400,
                         height: 250,
                         position: 'relative',
-                        alignSelf: { xs: 'center', md: 'flex-start' }
+                        alignSelf: { xs: 'center', md: 'flex-start' },
+                        // --- CAMBIO PARA VERSATILIDAD ---
+                        backgroundColor: '#f5f5f5', // Gris muy claro (neutro)
+                        border: '1px solid #e0e0e0', // Borde sutil
+                        borderRadius: '12px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        overflow: 'hidden',
+                        boxShadow: '0px 2px 8px rgba(0,0,0,0.05)'
                     }}>
-                    <Image
-                        loader={(val) => val.src}
-                        src={urlImagen}
-                        layout='fill'
-                        objectFit='cover'
-                        style={{ borderRadius: 7 }}
-                        priority
-                        alt=''
-                    />
+
+                    {/* Contenedor de la imagen: Ajustamos el tamaño para que no toque los bordes */}
+                    <Box
+                        sx={{
+                            minWidth: { xs: '100%', sm: 500, md: 400 },
+                            maxWidth: 400,
+                            height: 250,
+                            position: 'relative',
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            boxShadow: 3,
+                        }}>
+                        <Image
+                            loader={(val) => val.src}
+                            src={urlImagen}
+                            layout='fill'
+                            objectFit='cover' // Aquí sí usamos cover para que llene todo
+                            priority
+                        />
+                        {/* Overlay oscuro solo en la base para el texto */}
+                        <Box sx={{
+                            position: 'absolute',
+                            bottom: 0,
+                            width: '100%',
+                            height: '40%',
+                            background: 'linear-gradient(transparent, rgba(0,0,0,0.4))',
+                            display: 'flex',
+                            alignItems: 'flex-end',
+                            p: 1
+                        }} />
+                    </Box>
                 </Box>
+
                 <Box
                     sx={{
                         flex: 1,
                         wordWrap: 'break-word',
                         alignSelf: 'flex-start'
                     }}>
-                    <Title variant='h4' component='h1'>{titulo}</Title>
-                    <Typography>{descripcion}</Typography>
+                    <Title
+                        variant='h4'
+                        component='h1'
+                        sx={{ fontWeight: 600, mb: 1, color: '#1A1A1A' }}
+                    >
+                        {titulo}
+                    </Title>
+                    <Typography
+                        sx={{ color: '#444', lineHeight: 1.7, fontSize: '1.1rem' }}
+                    >
+                        {descripcion}
+                    </Typography>
                 </Box>
             </Stack>
-        </>
+        </Box>
     )
 }
 

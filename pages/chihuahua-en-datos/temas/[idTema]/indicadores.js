@@ -2,11 +2,11 @@ import Head from "next/head";
 import {
   Box,
   Collapse, ToggleButton,
-  Container, 
+  Container,
 } from "@mui/material";
 import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form"
-import { FilterAlt,  } from "@mui/icons-material";
+import { FilterAlt, } from "@mui/icons-material";
 import IndicadoresFilter from "@components/indicador/IndicadorFilter";
 import IndicadorList from "@components/indicador/IndicadorList";
 import IndicadorPagination from "@components/indicador/IndicadorPagination";
@@ -24,7 +24,7 @@ export default function Tema(props) {
   const [open, setOpen] = useState(false);
   const methods = useForm();
   const tema = props.selectedTema;
-  const {indicadores, isLoading, page, totalPages, goToPage} = useIndicadores({
+  const { indicadores, isLoading, page, totalPages, goToPage } = useIndicadores({
     resource: 'temas',
     resourceId: props.selectedTema.id
   })

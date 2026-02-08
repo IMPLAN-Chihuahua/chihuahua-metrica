@@ -54,7 +54,7 @@ const Header = () => {
                 >
                   <NextLink href='/'>
                     <a>
-                      <Image src='/images/small-logo.png' width={210} height={60} objectFit='contain' alt="small Logo" />
+                      <Image src='/logo_2026.png' width={300} height={90} objectFit='contain' alt="small Logo" />
                     </a>
                   </NextLink>
                 </Grid>
@@ -81,7 +81,7 @@ const Header = () => {
                 } md={2}>
                   <NextLink href='/'>
                     <a>
-                      <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} objectFit='contain' alt="small Logo" />
+                      <Image src='/logo_2026_white.png' width={210} height={60} objectFit='contain' alt="small Logo" />
                     </a>
                   </NextLink>
 
@@ -100,7 +100,7 @@ const Header = () => {
                 scrollPosition > 100 &&
                 <NextLink href='/'>
                   <a>
-                    <Image src='/logo_chihuahua_metrica.webp' width={210} height={60} objectFit='contain' alt="small Logo" />
+                    <Image src='/logo_2026_white.png' width={210} height={60} objectFit='contain' alt="small Logo" />
                   </a>
                 </NextLink>
               }

@@ -1,14 +1,19 @@
 .navlink {
-  font-weight: 500;
-  font-size: '2rem';
-  color: whitesmoke;
-  cursor: pointer;
-  text-shadow: 1px 1px 2px black;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 12px;
+
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 2px rgba(0, 0, 0, 0.5);
+
+  transition: all 0.3s ease;
 }
 
 .navlink:hover {
-  text-shadow: 0px 0px 1px white;
-  box-shadow: inset 0 -3px 0 0 whitesmoke;
+  color: #f4885d;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 1);
 }
 
 .menu {

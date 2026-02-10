@@ -97,9 +97,9 @@ const Footer = () => {
               </li>
             </ul>
           </Box>
-          <Box component='div' flexGrow={1}>
+          <Box component='div' flexGrow={1} >
             <Typography variant='h5' component='h3'>Síguenos</Typography>
-            <Stack direction='row' spacing={4} justifyContent='center' mt={2}>
+            <Stack direction='row' spacing={3} mt={2}>
               <NextLink href='https://www.facebook.com/Implan-Chihuahua-108606468095094' passHref={true}>
                 <a
                   alt="Ícono de Facebook que redirecciona hacia el perfil del IMPLAN"

@@ -1,6 +1,8 @@
 .card {
     width: 25vw;
-    height: 25vh;
+    min-height: 35vh;
+    height: auto;
+    display: flex;
     container-type: inline-size;
     container-name: objetivo-card;
 }
@@ -14,6 +16,7 @@
 .cardShortDescription {
     font-family: "Inter", sans-serif !important;
     font-size: 1.3em !important;
+    margin-bottom: 2rem;
 }
 
 .objetivoGridItem {
@@ -28,14 +31,16 @@
 }
 
 .cardContent {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    padding: 0;
+    padding: 0 !important;
+    position: relative;
 }
 
 .indicadorCounter {
     font-family: "Inter", sans-serif !important;
-    line-height: 0.8 !important;
+    line-height: 1 !important;
     font-size: 3.5rem;
 }
 
@@ -82,8 +87,10 @@
 }
 
 .indicadorBox {
-    position: absolute;
-    bottom: 0;
+    margin-top: auto;
+    padding-top: 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 @media (max-width: 768px) {
@@ -119,7 +126,6 @@
     }
 }
 
-/*for laptop screens */
 @media (min-width: 769px) and (max-width: 1920px) {
     .cardHeader {
         font-size: 1.6rem !important;

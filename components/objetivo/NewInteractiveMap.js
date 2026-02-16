@@ -15,8 +15,8 @@ export const MAP_ROUTES = {
     // "PMOTDU": "/chihuahua-en-datos/programas/PMOTDU/indicadores",
     // "PSE": "/chihuahua-en-datos/programas/PSE/indicadores",
     // "AR": "/chihuahua-en-datos/programas/AR/indicadores",
-    // "PSMAMS": "/chihuahua-en-datos/programas/PSMAMS/indicadores",
-    // "PPCC": "/chihuahua-en-datos/programas/PPCC/indicadores",
+    "PSMAMS": "https://implanchihuahua.org/Descargables_EP.html",
+    "PPCC": "https://ciudadcercana.org/",
     // "PSDUPZVPHAAC": "/chihuahua-en-datos/programas/PSDUPZVPHAAC/indicadores",
 
     "Calidad_de_vida_sost": "/chihuahua-en-datos/objetivos/1/indicadores",
@@ -551,54 +551,9 @@ const NewInteractiveMap = () => {
                     <text
                         className="cls-2"
                         transform="translate(1185.06,1080.21)"
-                        id="text63"><tspan
-                            className="cls-49"
-                            x="0"
-                            y="0"
-                            id="tspan51">C</tspan><tspan
-                                className="cls-37"
-                                x="31.719999"
-                                y="0"
-                                id="tspan52">onse</tspan><tspan
-                                    className="cls-65"
-                                    x="144.58"
-                                    y="0"
-                                    id="tspan53">r</tspan><tspan
-                                        className="cls-44"
-                                        x="164.64999"
-                                        y="0"
-                                        id="tspan54">v</tspan><tspan
-                                            className="cls-68"
-                                            x="190.57001"
-                                            y="0"
-                                            id="tspan55">a</tspan><tspan
-                                                className="cls-55"
-                                                x="218.52"
-                                                y="0"
-                                                id="tspan56">c</tspan><tspan
-                                                    x="244.92999"
-                                                    y="0"
-                                                    id="tspan57">ión</tspan><tspan
-                                                        x="64.730003"
-                                                        y="54"
-                                                        id="tspan58">y</tspan><tspan
-                                                            className="cls-68"
-                                                            x="104.38"
-                                                            y="54"
-                                                            id="tspan59">m</tspan><tspan
-                                                                x="151.75999"
-                                                                y="54"
-                                                                id="tspan60">edio</tspan><tspan
-                                                                    x="46.389999"
-                                                                    y="108"
-                                                                    id="tspan61">ambien</tspan><tspan
-                                                                        className="cls-48"
-                                                                        x="225.45"
-                                                                        y="108"
-                                                                        id="tspan62">t</tspan><tspan
-                                                                            x="244.25999"
-                                                                            y="108"
-                                                                            id="tspan63">e</tspan></text>
+                        id="text63"><tspan x="0" y="0">Conservación</tspan>
+                        <tspan x="64.73" y="54">y medio</tspan>
+                        <tspan x="46.39" y="108">ambiente</tspan></text>
                     <g
                         id="g83"
                         style={{ display: 'inline' }}>
@@ -656,218 +611,37 @@ const NewInteractiveMap = () => {
                         <text
                             className="cls-12"
                             transform="translate(1094.2,1780.57)"
-                            id="text83"><tspan
-                                className="cls-55"
-                                x="0"
-                                y="0"
-                                id="tspan74">E</tspan><tspan
-                                    x="30.01"
-                                    y="0"
-                                    id="tspan75">stru</tspan><tspan
-                                        className="cls-69"
-                                        x="123.79"
-                                        y="0"
-                                        id="tspan76">c</tspan><tspan
-                                            x="150.75"
-                                            y="0"
-                                            id="tspan77">tu</tspan><tspan
-                                                className="cls-52"
-                                                x="201.24001"
-                                                y="0"
-                                                id="tspan78">r</tspan><tspan
-                                                    className="cls-35"
-                                                    x="218.88"
-                                                    y="0"
-                                                    id="tspan79">a</tspan><tspan
-                                                        x="37.349998"
-                                                        y="54"
-                                                        id="tspan80">U</tspan><tspan
-                                                            className="cls-55"
-                                                            x="72.809998"
-                                                            y="54"
-                                                            id="tspan81">r</tspan><tspan
-                                                                className="cls-58"
-                                                                x="92.019997"
-                                                                y="54"
-                                                                id="tspan82">b</tspan><tspan
-                                                                    className="cls-35"
-                                                                    x="122.67"
-                                                                    y="54"
-                                                                    id="tspan83">ana</tspan></text>
+                            id="text83">
+                            <tspan x="0" y="0">Estructura</tspan>
+                            <tspan x="0" y="54">Urbana</tspan>
+                        </text>
                     </g>
                     <text
                         className="cls-9"
                         transform="translate(2487.94,1159.77)"
-                        id="text88"><tspan
-                            className="cls-56"
-                            x="0"
-                            y="0"
-                            id="tspan84">P</tspan><tspan
-                                x="32.450001"
-                                y="0"
-                                id="tspan85">obl</tspan><tspan
-                                    className="cls-68"
-                                    x="106.51"
-                                    y="0"
-                                    id="tspan86">a</tspan><tspan
-                                        className="cls-54"
-                                        x="134.46001"
-                                        y="0"
-                                        id="tspan87">c</tspan><tspan
-                                            x="160.87"
-                                            y="0"
-                                            id="tspan88">ión</tspan></text>
+                        id="text88"><tspan x="0" y="0">Población</tspan>
+                    </text>
                     <text
                         className="cls-7"
                         transform="translate(2590.65,1777.55)"
-                        id="text104"><tspan
-                            x="0"
-                            y="0"
-                            id="tspan89">Se</tspan><tspan
-                                className="cls-66"
-                                x="57.099998"
-                                y="0"
-                                id="tspan90">r</tspan><tspan
-                                    className="cls-37"
-                                    x="77.169998"
-                                    y="0"
-                                    id="tspan91">vi</tspan><tspan
-                                        className="cls-54"
-                                        x="117.63"
-                                        y="0"
-                                        id="tspan92">c</tspan><tspan
-                                            x="144.03999"
-                                            y="0"
-                                            id="tspan93">ios</tspan><tspan
-                                                x="-14.96"
-                                                y="54"
-                                                id="tspan94">públi</tspan><tspan
-                                                    className="cls-61"
-                                                    x="105.14"
-                                                    y="54"
-                                                    id="tspan95">c</tspan><tspan
-                                                        className="cls-37"
-                                                        x="131.42"
-                                                        y="54"
-                                                        id="tspan96">os e</tspan><tspan
-                                                            x="-70.849998"
-                                                            y="108"
-                                                            id="tspan97">inf</tspan><tspan
-                                                                className="cls-52"
-                                                                x="-8.8000002"
-                                                                y="108"
-                                                                id="tspan98">r</tspan><tspan
-                                                                    className="cls-68"
-                                                                    x="8.8400002"
-                                                                    y="108"
-                                                                    id="tspan99">a</tspan><tspan
-                                                                        x="36.790001"
-                                                                        y="108"
-                                                                        id="tspan100">estru</tspan><tspan
-                                                                            className="cls-69"
-                                                                            x="158.96001"
-                                                                            y="108"
-                                                                            id="tspan101">c</tspan><tspan
-                                                                                x="185.92"
-                                                                                y="108"
-                                                                                id="tspan102">tu</tspan><tspan
-                                                                                    className="cls-52"
-                                                                                    x="236.41"
-                                                                                    y="108"
-                                                                                    id="tspan103">r</tspan><tspan
-                                                                                        className="cls-35"
-                                                                                        x="254.05"
-                                                                                        y="108"
-                                                                                        id="tspan104">a</tspan></text>
+                        id="text104">
+                        <tspan x="0" y="0">Servicios</tspan>
+                        <tspan x="-14.96" y="54">públicos e</tspan>
+                        <tspan x="-70.85" y="108">infraestructura</tspan>
+                    </text>
                     <text
                         className="cls-4"
                         transform="translate(1492.4,2289.2)"
-                        id="text114"><tspan
-                            className="cls-53"
-                            x="0"
-                            y="0"
-                            id="tspan105">A</tspan><tspan
-                                className="cls-62"
-                                x="34.25"
-                                y="0"
-                                id="tspan106">cc</tspan><tspan
-                                    className="cls-37"
-                                    x="86.800003"
-                                    y="0"
-                                    id="tspan107">esibilid</tspan><tspan
-                                        className="cls-67"
-                                        x="255.46001"
-                                        y="0"
-                                        id="tspan108">a</tspan><tspan
-                                            className="cls-35"
-                                            x="283.41"
-                                            y="0"
-                                            id="tspan109">d</tspan><tspan
-                                                x="22.68"
-                                                y="54"
-                                                id="tspan110">y M</tspan><tspan
-                                                    className="cls-46"
-                                                    x="105.3"
-                                                    y="54"
-                                                    id="tspan111">o</tspan><tspan
-                                                        x="134.10001"
-                                                        y="54"
-                                                        id="tspan112">vilid</tspan><tspan
-                                                            className="cls-68"
-                                                            x="232.78"
-                                                            y="54"
-                                                            id="tspan113">a</tspan><tspan
-                                                                x="260.73001"
-                                                                y="54"
-                                                                id="tspan114">d</tspan></text>
+                        id="text114"><tspan x="0" y="0">Accesibilidad</tspan>
+                        <tspan x="22.68" y="54">y Movilidad</tspan></text>
                     <text
                         className="cls-3"
                         transform="translate(2153.82,2327.64)"
-                        id="text120"><tspan
-                            className="cls-55"
-                            x="0"
-                            y="0"
-                            id="tspan115">E</tspan><tspan
-                                x="30.01"
-                                y="0"
-                                id="tspan116">qui</tspan><tspan
-                                    className="cls-58"
-                                    x="105.52"
-                                    y="0"
-                                    id="tspan117">p</tspan><tspan
-                                        x="136.17"
-                                        y="0"
-                                        id="tspan118">amien</tspan><tspan
-                                            className="cls-47"
-                                            x="284.17001"
-                                            y="0"
-                                            id="tspan119">t</tspan><tspan
-                                                x="302.98001"
-                                                y="0"
-                                                id="tspan120">o</tspan></text>
+                        id="text120"><tspan x="0" y="0">Equipamiento</tspan></text>
                     <text
                         className="cls-5"
                         transform="translate(1875.18,850.71)"
-                        id="text125"><tspan
-                            className="cls-55"
-                            x="0"
-                            y="0"
-                            id="tspan121">E</tspan><tspan
-                                className="cls-62"
-                                x="30.01"
-                                y="0"
-                                id="tspan122">c</tspan><tspan
-                                    x="56.290001"
-                                    y="0"
-                                    id="tspan123">o</tspan><tspan
-                                        className="cls-68"
-                                        x="85.769997"
-                                        y="0"
-                                        id="tspan124">n</tspan><tspan
-                                            className="cls-37"
-                                            x="117.04"
-                                            y="0"
-                                            id="tspan125">omía</tspan></text>
+                        id="text125"><tspan x="0" y="0">Economía</tspan></text>
                     <g
                         id="g128"
                         style={{ display: 'inline' }}>

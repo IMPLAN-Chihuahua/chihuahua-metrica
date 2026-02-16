@@ -29,6 +29,14 @@ export default function Tema(props) {
     resourceId: props.selectedTema.id
   })
 
+  const activeIds = [2, 4, 5, 6, 7, 9, 10];
+  const currentIndex = activeIds.indexOf(tema.id);
+  const prevId = currentIndex > 0 ? activeIds[currentIndex - 1] : null;
+
+  const nextId = (currentIndex !== -1 && currentIndex < activeIds.length - 1)
+    ? activeIds[currentIndex + 1]
+    : null;
+
   return (
     <>
       <Head>
@@ -53,13 +61,13 @@ export default function Tema(props) {
             <NavBackAndFoward
               prev={{
                 title: 'Tema anterior',
-                disabled: tema.id === 1,
-                link: `/chihuahua-en-datos/temas/${tema.id - 1}/indicadores`
+                disabled: !prevId,
+                link: prevId ? `/chihuahua-en-datos/temas/${prevId}/indicadores` : '#'
               }}
               next={{
                 title: 'Siguiente tema',
-                disabled: tema.id === 14,
-                link: `/chihuahua-en-datos/temas/${tema.id + 1}/indicadores`
+                disabled: !nextId,
+                link: nextId ? `/chihuahua-en-datos/temas/${nextId}/indicadores` : '#'
               }}
             />
           }

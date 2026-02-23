@@ -19,10 +19,10 @@ export const MAP_ROUTES = {
     "PPCC": "https://ciudadcercana.org/",
     // "PSDUPZVPHAAC": "/chihuahua-en-datos/programas/PSDUPZVPHAAC/indicadores",
 
-    "Calidad_de_vida_sost": "/chihuahua-en-datos/objetivos/1/indicadores",
+    "Calidad_de_vida_sost": "/chihuahua-en-datos/objetivos/3/indicadores",
     "Entornos_urbanos_consolidados": "/chihuahua-en-datos/objetivos/2/indicadores",
-    "Infraestructura_de_Desarrollo": "/chihuahua-en-datos/objetivos/3/indicadores",
-    "PDU2040": "/chihuahua-en-datos",
+    "Infraestructura_de_Desarrollo": "/chihuahua-en-datos/objetivos/1/indicadores",
+    "PDU2040": "https://implanchihuahua.org/PDU2040.html",
 };
 
 

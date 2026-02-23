@@ -106,56 +106,55 @@ const SlideContent = ({ href, callToActionLabel, title, description, titleWeight
 }
 
 const EmblaCarousel = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const isSingleSlide = true;
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: !isSingleSlide,
+    align: isSingleSlide ? 'center' : 'start',
+    watchDrag: !isSingleSlide
+  });
+
   const { selectedIndex, onDotButtonClick, scrollSnaps } = useDotButton(emblaApi);
   const { nextBtnDisabled, onNextButtonClick, prevBtnDisabled, onPrevButtonClick, } = usePrevNextButton(emblaApi);
 
   return (
     <section className={styles.embla}>
       <div className={styles.embla__viewport} ref={emblaRef}>
-        <div className={styles.embla__container}>
+        <div
+          className={styles.embla__container}
+          style={isSingleSlide ? { justifyContent: 'center', marginLeft: 0 } : {}}
+        >
+
           <SlideContainer backgroundImageUrl='https://www.implanchihuahua.org/indicadores/images/objetivos/new/banner.jpeg'>
             <PDU20240Slide />
           </SlideContainer>
-          <SlideContainer>
-            <SlideContent
-              href='/arbolado-urbano'
-              title='Arbolado urbano'
-              description='La presencia del arbolado urbano forma parte de una infraestructura verde que impacta en el aspecto social, económico y cultural, mejorando la calidad de vida de la sociedad y mantener la resiliencia de las ciudades.'
-              callToActionLabel='Ver arbolado urbano'
-            />
-          </SlideContainer>
-          <SlideContainer >
-            <SlideContent
-              href='https://view.genially.com/691e2306f1e1e7523249333e/interactive-content-manual-usuario'
-              title='Chihuahua Métrica'
-              description='Plataforma digital para informar, monitorear y evaluar la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial'
-              callToActionLabel='Ver manual de usuario'
-            />
-          </SlideContainer>
+
+
         </div>
       </div>
-      <div className={styles.embla__controls}>
-        <div className={styles.embla__dots}>
-          {
-            scrollSnaps.map((_, index) => (
-              <DotButton
-                key={index}
-                onClick={() => onDotButtonClick(index)}
-                selected={index == selectedIndex}
-              />
-            ))
-          }
+
+      {!isSingleSlide && (
+        <div className={styles.embla__controls}>
+          <div className={styles.embla__dots}>
+            {
+              scrollSnaps.map((_, index) => (
+                <DotButton
+                  key={index}
+                  onClick={() => onDotButtonClick(index)}
+                  selected={index === selectedIndex}
+                />
+              ))
+            }
+          </div>
+          <Box className={styles.embla__arrows}>
+            <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+            <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+          </Box>
         </div>
-        <Box className={styles.embla__arrows}>
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </Box>
-      </div>
+      )}
     </section>
   );
 };
-
 const PDU20240Slide = () => {
   return (
     <SlideContent

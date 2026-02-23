@@ -14,12 +14,15 @@ const GraphBox = (props) => {
 
 function HistoricalValues({ history }) {
   const { history: data } = history;
+  console.log('forkenmel')
+  console.log(data.historicos);
+  console.log('forkezzzzznmel')
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} md>
         <HistoricalTable data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
       </Grid>
-      <Grid item xs={12} md overflow='scroll'>
+      <Grid item xs={12} md >
         <Graph data={data.historicos} lastValue={data.ultimoValorDisponible} lastYear={data.anioUltimoValorDisponible} lastSource={data.fuente} />
       </Grid>
     </Grid>

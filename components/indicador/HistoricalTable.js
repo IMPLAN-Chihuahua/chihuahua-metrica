@@ -1,6 +1,5 @@
 import { numberWithCommas } from "helpers/FormatNumbers";
-
-const {
+import {
   TableContainer,
   TableHead,
   TableRow,
@@ -8,17 +7,21 @@ const {
   Table,
   TableCell,
   TableBody,
-} = require("@mui/material");
-
+} from "@mui/material";
 
 const HistoricalTable = ({ data, lastSource, lastValue, lastYear }) => {
-  data = [...data, { anio: lastYear, valor: numberWithCommas(lastValue), fuente: lastSource }]
-  const sortedData = data.sort((a, b) => a.anio - b.anio);
+  const hasLastYear = data.some((item) => item.anio === lastYear);
+
+  const combinedData = hasLastYear
+    ? [...data]
+    : [...data, { anio: lastYear, valor: numberWithCommas(lastValue), fuente: lastSource }];
+
+  const sortedData = [...combinedData].sort((a, b) => a.anio - b.anio);
 
   return (
     <TableContainer>
       <Table aria-label='Tabla de datos históricos' sx={{ minWidth: 400 }}>
-        <TableHead>
+        <TableHead sx={{ backgroundColor: 'rgba(240, 244, 248, 1)' }}>
           <TableRow>
             <TableCell align="right"><b>Año</b></TableCell>
             <TableCell align="right"><b>Valor</b></TableCell>
@@ -27,7 +30,7 @@ const HistoricalTable = ({ data, lastSource, lastValue, lastYear }) => {
         </TableHead>
         <TableBody>
           {sortedData.map((historico) => (
-            <TableRow hover key={historico.anio}>
+            <TableRow hover key={`table-${historico.anio}`}>
               <TableCell scope="row" align="right">{historico.anio}</TableCell>
               <TableCell scope="row" align="right">{historico.valor}</TableCell>
               <TableCell scope="row" align="left">{historico.fuente}</TableCell>
@@ -35,7 +38,15 @@ const HistoricalTable = ({ data, lastSource, lastValue, lastYear }) => {
           ))}
         </TableBody>
       </Table>
-      <Typography variant='caption' mt={1}>Tabla con la evolución de los datos registrados en los últimos años.</Typography>
+      <Typography
+        variant='caption'
+        mt={1}
+        color="text.secondary"
+        fontStyle="italic"
+        display="block"
+      >
+        Tabla con la evolución de los datos registrados en los últimos años.
+      </Typography>
     </TableContainer>
   );
 };

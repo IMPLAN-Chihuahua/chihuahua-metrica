@@ -126,7 +126,12 @@ const EmblaCarousel = () => {
             />
           </SlideContainer>
           <SlideContainer >
-            <ChihuahuaMetricaSlide />
+            <SlideContent
+              href='https://view.genially.com/691e2306f1e1e7523249333e/interactive-content-manual-usuario'
+              title='Chihuahua Métrica'
+              description='Plataforma digital para informar, monitorear y evaluar la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial'
+              callToActionLabel='Ver manual de usuario'
+            />
           </SlideContainer>
         </div>
       </div>
@@ -177,10 +182,10 @@ const ChihuahuaMetricaSlide = () => {
   return (
     <>
       <SlideContent
-        href='/conocenos'
+        href='https://view.genially.com/691e2306f1e1e7523249333e/interactive-content-manual-usuariosss'
         title='Chihuahua Métrica'
         description='Plataforma digital para informar, monitorear y evaluar la transformación de nuestra ciudad y municipio en el ámbito de la planeación urbana y territorial'
-        callToActionLabel='Reproducir video'
+        callToActionLabel='Ver manual de usuario'
         onClick={() => {
           setOpen(true)
         }}
@@ -196,7 +201,7 @@ const ChihuahuaMetricaSlide = () => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}>
-          <iframe width="1180" height="480" src="https://www.youtube.com/embed/5Jc6aMbJkAc" title="Métrica  Chihuahua" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          <iframe width="1180" height="480" src="https://view.genially.com/691e2306f1e1e7523249333e/interactive-content-manual-usuario" title="Métrica  Chihuahua" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
         </Box>
       </Modal>
     </>

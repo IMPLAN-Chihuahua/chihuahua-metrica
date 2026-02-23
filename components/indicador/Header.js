@@ -11,6 +11,12 @@ import { useTheme } from '@emotion/react';
 
 const DOC_FORMATS = ['xlsx', 'csv', 'pdf', 'json'];
 
+const dotChecker = (texto) => {
+  if (!texto) return ''; // Por si viene null o undefined
+  const textoLimpio = texto.trim();
+  return textoLimpio.endsWith('.') ? textoLimpio : `${textoLimpio}.`;
+};
+
 const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
   width: '80px',
   maxHeight: '35px',
@@ -57,8 +63,8 @@ const TopData = (info) => {
     <section>
       <IndicadorAppBar indicador={indicador} />
       <IndicadorHeader indicador={indicador} />
-      <Typography>{indicador.definicion}. {indicador.ods
-        ? `Este indicador sigue el objetivo de desarrollo sostenible "${indicador.ods.titulo}", el cual busca "${indicador.ods.descripcion}".`
+      <Typography>{dotChecker(indicador.definicion)} {indicador.ods
+        ? `Este indicador sigue el objetivo de desarrollo sostenible "${indicador.ods.titulo}", el cual busca "${dotChecker(indicador.ods.descripcion)}"`
         : ''}</Typography>
       <IndicadorElif elif={indicador.elif} />
     </section >

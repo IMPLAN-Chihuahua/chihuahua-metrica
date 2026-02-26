@@ -17,7 +17,6 @@ const ObjetivosContainer = ({ data }) => {
     const [isMobile, setIsMobile] = useState(
         typeof window !== 'undefined' && window.innerWidth < 760
     );
-    console.log(isMobile)
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 760);

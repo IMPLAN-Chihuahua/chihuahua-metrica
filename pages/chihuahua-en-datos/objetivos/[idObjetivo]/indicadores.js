@@ -34,7 +34,6 @@ const Indicadores = (props) => {
         cobertura: null
     });
     const values = useWatch({ control: methods.control });
-    console.log(props);
     const filters = {
         temas: values.temas ? values.temas : null,
         anioUltimoValorDisponible: values.anioUltimoValorDisponible ? new Date(values.anioUltimoValorDisponible).getFullYear() : null,

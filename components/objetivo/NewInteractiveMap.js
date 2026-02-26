@@ -137,7 +137,6 @@ const NewInteractiveMap = () => {
         const destination = MAP_ROUTES[clickedId];
 
         if (destination) {
-            console.log(`Navegando a: ${destination}`);
             router.push(destination);
         }
     };

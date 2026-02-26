@@ -23,7 +23,6 @@ const TemasCarousel = ({ temas }) => {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
     const { selectedIndex, onDotButtonClick, scrollSnaps } = useDotButton(emblaApi);
     const { nextBtnDisabled, onNextButtonClick, prevBtnDisabled, onPrevButtonClick, } = usePrevNextButton(emblaApi);
-    console.log(temas)
     return (
         <section className={emblaStyles.embla}>
             <Typography variant="h2" className={style.title}>Temas de interés</Typography>

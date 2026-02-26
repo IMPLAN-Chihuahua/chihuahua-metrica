@@ -2,10 +2,6 @@ import React from "react";
 
 export default function RandoFile() {
 
-    const handleClick = (id) => {
-        console.log('pushita')
-    };
-
     const sectores = [
         { id: "conservacion", color: "#4CAF50", label: "Conservación" },
         { id: "economia", color: "#FFC107", label: "Economía" },

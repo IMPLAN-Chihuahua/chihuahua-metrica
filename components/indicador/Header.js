@@ -59,13 +59,17 @@ const DocumentButton = ({ indicadorId, format, icon, showErrorMessage, ...props 
 
 const TopData = (info) => {
   const { info: indicador } = info;
+  console.log('ods indi')
+  console.log(indicador.ods)
   return (
     <section>
       <IndicadorAppBar indicador={indicador} />
       <IndicadorHeader indicador={indicador} />
-      <Typography>{dotChecker(indicador.definicion)} {indicador.ods
-        ? `Este indicador sigue el objetivo de desarrollo sostenible "${indicador.ods.titulo}", el cual busca "${dotChecker(indicador.ods.descripcion)}"`
-        : ''}</Typography>
+      {
+        indicador.ods.posicion !== 18 && <Typography>{dotChecker(indicador.definicion)} {indicador.ods
+          ? `Este indicador sigue el objetivo de desarrollo sostenible "${indicador.ods.titulo}", el cual busca "${dotChecker(indicador.ods.descripcion)}"`
+          : ''}</Typography>
+      }
       <IndicadorElif elif={indicador.elif} />
     </section >
   );

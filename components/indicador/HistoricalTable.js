@@ -14,8 +14,7 @@ const HistoricalTable = ({ data, lastSource, lastValue, lastYear }) => {
 
   const combinedData = hasLastYear
     ? [...data]
-    : [...data, { anio: lastYear, valor: numberWithCommas(lastValue), fuente: lastSource }];
-
+    : [...data, { anio: lastYear, valor: lastValue, fuente: lastSource }];
   const sortedData = [...combinedData].sort((a, b) => a.anio - b.anio);
 
   return (
@@ -32,7 +31,7 @@ const HistoricalTable = ({ data, lastSource, lastValue, lastYear }) => {
           {sortedData.map((historico) => (
             <TableRow hover key={`table-${historico.anio}`}>
               <TableCell scope="row" align="right">{historico.anio}</TableCell>
-              <TableCell scope="row" align="right">{historico.valor}</TableCell>
+              <TableCell scope="row" align="right">{numberWithCommas(historico.valor)}</TableCell>
               <TableCell scope="row" align="left">{historico.fuente}</TableCell>
             </TableRow>
           ))}

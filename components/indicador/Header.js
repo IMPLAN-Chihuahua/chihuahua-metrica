@@ -59,8 +59,6 @@ const DocumentButton = ({ indicadorId, format, icon, showErrorMessage, ...props 
 
 const TopData = (info) => {
   const { info: indicador } = info;
-  console.log('ods indi')
-  console.log(indicador.ods)
   return (
     <section>
       <IndicadorAppBar indicador={indicador} />

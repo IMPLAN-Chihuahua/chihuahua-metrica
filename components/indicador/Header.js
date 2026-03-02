@@ -66,7 +66,7 @@ const TopData = (info) => {
       <Typography>
         {dotChecker(indicador.definicion)}
         {(indicador.ods && indicador.ods.posicion !== 18)
-          ? ` Este indicador sigue el objetivo de desarrollo sostenible "${indicador.ods.titulo}", el cual busca "${dotChecker(indicador.ods.descripcion)}"`
+          ? ` Este indicador sigue el objetivo de desarrollo sostenible "${indicador.ods.titulo}". ${dotChecker(indicador.ods.descripcion)}`
           : ''
         }
       </Typography>

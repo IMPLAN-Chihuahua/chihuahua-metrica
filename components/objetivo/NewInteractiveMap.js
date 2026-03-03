@@ -1,6 +1,7 @@
-import { Grid } from '@mui/material';
+import { Grid, Modal, Box, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { useRouter } from 'next/router';
-import React from 'react'
+import React, { useState } from 'react';
 
 export const MAP_ROUTES = {
     "9": "/chihuahua-en-datos/temas/9/indicadores",  // Estructura
@@ -11,7 +12,6 @@ export const MAP_ROUTES = {
     "10": "/chihuahua-en-datos/temas/10/indicadores", // Poblacion
     "2": "/chihuahua-en-datos/temas/2/indicadores",  // Economia
 
-    // "PMH": "/chihuahua-en-datos/programas/PMH/indicadores",
     // "PMOTDU": "/chihuahua-en-datos/programas/PMOTDU/indicadores",
     // "PSE": "/chihuahua-en-datos/programas/PSE/indicadores",
     // "AR": "/chihuahua-en-datos/programas/AR/indicadores",
@@ -125,21 +125,48 @@ svg [data-label] {
     }
 `;
 
+// Estilos del Modal
+const modalStyle = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: { xs: '90%', md: '80%', lg: '70%' },
+    maxHeight: '90vh',
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 2,
+    borderRadius: 2,
+    outline: 'none',
+    display: 'flex',
+    flexDirection: 'column',
+};
+
 const NewInteractiveMap = () => {
 
     const router = useRouter();
+
+    const [openModal, setOpenModal] = useState(false);
 
     const handleGlobalClick = (event) => {
         const target = event.target.closest('[id]');
         if (!target) return;
 
         const clickedId = target.id;
+
+        if (clickedId === "PMH") {
+            setOpenModal(true);
+            return;
+        }
+
         const destination = MAP_ROUTES[clickedId];
 
         if (destination) {
             router.push(destination);
         }
     };
+
+    const handleClose = () => setOpenModal(false);
 
     return (
         <Grid
@@ -1956,6 +1983,37 @@ const NewInteractiveMap = () => {
                         y="0"
                         id="tspan321">AR</tspan></text>
             </svg>
+
+            {/* --- COMPONENTE MODAL --- */}
+            <Modal
+                open={openModal}
+                onClose={handleClose}
+                aria-labelledby="modal-pmh-title"
+            >
+                <Box sx={modalStyle}>
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
+                        <IconButton onClick={handleClose} size="medium">
+                            <CloseIcon />
+                        </IconButton>
+                    </Box>
+                    <Box sx={{
+                        overflow: 'auto',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <img
+                            src="/images/pmh.jpg"
+                            alt="Información del PMH"
+                            style={{
+                                maxWidth: '100%',
+                                height: 'auto',
+                                display: 'block'
+                            }}
+                        />
+                    </Box>
+                </Box>
+            </Modal>
 
         </Grid>
     )

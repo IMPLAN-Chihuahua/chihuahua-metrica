@@ -22,18 +22,16 @@ const navLinks = [
 
 const Header = () => {
   const [scrollPosition, setScroll] = useState(0)
+
   useEffect(() => {
     const handleScroll = () => {
       setScroll(window.scrollY);
     };
-
     handleScroll();
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-
   }, []);
 
   const router = useRouter();
@@ -46,18 +44,7 @@ const Header = () => {
           {
             pathname === '/' ?
               (
-                <Grid
-                  item
-                  flexGrow={1}
-                  style={{ backgroundColor: 'white', height: '5rem' }}
-                  className={`${style.navbarCentered} ${scrollPosition > 100 ? style.disappear : style.exists}`}
-                >
-                  <NextLink href='/'>
-                    <a>
-                      <Image src='/logo_2026.png' width={300} height={90} objectFit='contain' alt="small Logo" />
-                    </a>
-                  </NextLink>
-                </Grid>
+                null
               )
               :
               <>
@@ -94,10 +81,9 @@ const Header = () => {
               item
               xs
               justifyContent='flex-end'
-              className={`${style.navbarCentered} ${style.navbarMenu} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}
+              className={`${style.navbarCentered} ${style.navbarMenu} ${style.scrolledDown}`}
             >
               {
-                scrollPosition > 100 &&
                 <NextLink href='/'>
                   <a>
                     <Image src='/logo_2026_white.png' width={210} height={60} objectFit='contain' alt="small Logo" />

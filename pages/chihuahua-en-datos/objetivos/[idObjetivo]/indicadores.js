@@ -209,17 +209,18 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
                 my={{ xs: 1, md: 3 }}
                 spacing={4}
                 justifyContent='space-around'
+                alignItems='center'  // <--- CAMBIO CLAVE: Esto centra verticalmente todo
             >
+                {/* --- SECCIÓN DE IMAGEN --- */}
                 <Box
                     sx={{
-                        minWidth: { xs: '100%', sm: 500, md: 400 },
-                        maxWidth: 400,
-                        height: 250,
+                        minWidth: { xs: '100%', sm: 600, md: 600 },
+                        maxWidth: 600,
+                        height: 300,
                         position: 'relative',
-                        alignSelf: { xs: 'center', md: 'flex-start' },
-                        // --- CAMBIO PARA VERSATILIDAD ---
-                        backgroundColor: '#f5f5f5', // Gris muy claro (neutro)
-                        border: '1px solid #e0e0e0', // Borde sutil
+                        // alignSelf borrado para que obedezca al padre y se centre
+                        backgroundColor: '#f5f5f5',
+                        border: '1px solid #e0e0e0',
                         borderRadius: '12px',
                         display: 'flex',
                         alignItems: 'center',
@@ -228,12 +229,11 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
                         boxShadow: '0px 2px 8px rgba(0,0,0,0.05)'
                     }}>
 
-                    {/* Contenedor de la imagen: Ajustamos el tamaño para que no toque los bordes */}
                     <Box
                         sx={{
-                            minWidth: { xs: '100%', sm: 500, md: 400 },
-                            maxWidth: 400,
-                            height: 250,
+                            minWidth: { xs: '100%', sm: 600, md: 600 },
+                            maxWidth: 600,
+                            height: 300,
                             position: 'relative',
                             borderRadius: '12px',
                             overflow: 'hidden',
@@ -243,10 +243,10 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
                             loader={(val) => val.src}
                             src={urlImagen}
                             layout='fill'
-                            objectFit='cover' // Aquí sí usamos cover para que llene todo
+                            objectFit='cover'
                             priority
                         />
-                        {/* Overlay oscuro solo en la base para el texto */}
+                        {/* Gradiente opcional sobre la imagen */}
                         <Box sx={{
                             position: 'absolute',
                             bottom: 0,
@@ -264,7 +264,6 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
                     sx={{
                         flex: 1,
                         wordWrap: 'break-word',
-                        alignSelf: 'flex-start'
                     }}>
                     <Title
                         variant='h4'

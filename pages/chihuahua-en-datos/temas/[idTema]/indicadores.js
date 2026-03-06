@@ -51,9 +51,6 @@ export default function Tema(props) {
           urlImagen={tema.urlImagen}
           Breadcrumbs={
             <PageBreadcrumb crumbs={[{
-              text: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
-              href: '/chihuahua-en-datos'
-            }, {
               text: `${tema.temaIndicador.substring(0, 50)}${tema.temaIndicador.length > 50 ? '...' : ''}`,
             }]} />
           }

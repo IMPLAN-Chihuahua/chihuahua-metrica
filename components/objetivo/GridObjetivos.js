@@ -9,19 +9,19 @@ const objetivosConfig = [
     {
         title: 'Infraestructura de Desarrollo',
         shortDescription: 'Colocar a las personas en el centro de la planeación y del aprovechamiento de los recursos de la ciudad.',
-        color: '#b3d9d0',
+        color: '#4d6f85',
         icon: CraneIcon
     },
     {
         title: 'Entornos Urbanos Consolidados',
         shortDescription: 'Crear entornos urbanos pensados en las personas: accesibles, asequibles, cercanos, compactos, dinámicos, seguros y diversos.',
-        color: '#6AC7B2',
+        color: '#192b43',
         icon: CityIcon
     },
     {
         title: 'Calidad de Vida y Sostenibilidad',
         shortDescription: 'Impulsar una ciudad sustentable, competitiva y generadora de oportunidades, en un entorno equitativo.',
-        color: '#2D9290',
+        color: '#010203',
         icon: LeavesIcon
     }
 ]
@@ -93,7 +93,7 @@ const Objetivo = ({ objetivoObject }) => {
                                         <Typography color={config.color} variant='h2' fontWeight={600} className={styles.indicadorCounter}>
                                             {indicadoresCount}
                                         </Typography>
-                                        <Typography variant='body1' fontWeight={420} className={styles.indicadorQuantity}>
+                                        <Typography variant='body1' fontWeight={420} className={styles.indicadorQuantity} color={config.color}>
                                             Indicadores disponibles
                                         </Typography>
                                     </Box>

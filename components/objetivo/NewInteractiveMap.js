@@ -147,6 +147,7 @@ const NewInteractiveMap = () => {
     const router = useRouter();
 
     const [openModal, setOpenModal] = useState(false);
+    const [modalType, setModalType] = useState(null);
 
     const handleGlobalClick = (event) => {
         const target = event.target.closest('[id]');
@@ -155,6 +156,13 @@ const NewInteractiveMap = () => {
         const clickedId = target.id;
 
         if (clickedId === "PMH") {
+            setModalType("PMH");
+            setOpenModal(true);
+            return;
+        }
+
+        if (clickedId === "PMOTDU") {
+            setModalType("PMOTDU");
             setOpenModal(true);
             return;
         }
@@ -166,7 +174,10 @@ const NewInteractiveMap = () => {
         }
     };
 
-    const handleClose = () => setOpenModal(false);
+    const handleClose = () => {
+        setOpenModal(false);
+        setModalType(null);
+    };
 
     return (
         <Grid
@@ -2003,13 +2014,9 @@ const NewInteractiveMap = () => {
                         alignItems: 'center'
                     }}>
                         <img
-                            src="/images/pmh.jpg"
-                            alt="Información del PMH"
-                            style={{
-                                maxWidth: '100%',
-                                height: 'auto',
-                                display: 'block'
-                            }}
+                            src={modalType === "PMH" ? "/images/pmh.jpeg" : "/images/pmotdu.jpeg"}
+                            alt={`Información del ${modalType}`}
+                            style={{ maxWidth: '100%', height: 'auto', display: 'block' }}
                         />
                     </Box>
                 </Box>

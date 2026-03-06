@@ -34,7 +34,7 @@ const Splashscreen = () => {
       <div id='loader' style={{
         position: 'absolute',
         left: '50%',
-        top: '50%',
+        top: '40%',
         transform: 'translate(-50%, -50%)',
         transition: 'opacity 0.25s linear',
       }}>

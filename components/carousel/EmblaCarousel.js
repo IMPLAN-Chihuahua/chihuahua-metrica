@@ -125,7 +125,7 @@ const EmblaCarousel = () => {
           style={isSingleSlide ? { justifyContent: 'center', marginLeft: 0 } : {}}
         >
 
-          <SlideContainer backgroundImageUrl='https://www.implanchihuahua.org/indicadores/images/objetivos/new/banner.jpeg'>
+          <SlideContainer backgroundImageUrl='images/banner_1.jpeg'>
             <PDU20240Slide />
           </SlideContainer>
 

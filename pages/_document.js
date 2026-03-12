@@ -12,6 +12,18 @@ export default function MyDocument(props) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <DocumentHeadTags {...props} />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDXBPMHC9Y" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-YDXBPMHC9Y');
+            `,
+          }}
+        />
       </Head>
       <body>
         <script>0</script>

@@ -10,19 +10,19 @@ import Image from 'next/image';
 const goals = [{
   title: 'Informa',
   desc: 'Datos de alta prioridad y relevancia para la toma de decisiones en temas de desarrollo socioeconómico, urbano y ambiental.',
-  Icon: (props) => <FlagIcon {...props} />
+  icon: '/informa.png'
 }, {
   title: 'Evalúa',
   desc: 'Las políticas públicas referentes a al desarrollo y competitividad.',
-  Icon: (props) => <VisibilityIcon {...props} />,
+  icon: '/evalua.png',
 }, {
   title: 'Monitorea',
   desc: 'Indicadores en temas de desarrollo socioeconómico, urbano y ambiental.',
-  Icon: (props) => <TimelineIcon {...props} />
+  icon: '/monitorea.png'
 }, {
   title: 'Ofrece',
   desc: 'Herramientas didácticas para la consulta de la información contenida en la plataforma.',
-  Icon: (props) => <ContactlessIcon {...props} />
+  icon: '/ofrece.png'
 }]
 
 const AboutUs = () => {
@@ -57,7 +57,7 @@ const AboutUs = () => {
             urbana y territorial, a través de proyectos y herramientas fáciles de utilizar, entender e interpretar
             para cualquier usuario que tome decisiones.
           </Typography>
-          <Stack direction='row' columnGap={2} my={3} flexWrap='wrap'>
+          <Stack direction='row' columnGap={2} rowGap={2} my={3} flexWrap='wrap'>
             {
               goals.map((goal, idx) => (
                 <Goal key={idx} {...goal} />
@@ -72,25 +72,53 @@ const AboutUs = () => {
 
 
 const Goal = (props) => {
-  const { title, desc, Icon } = props;
+  const { title, desc, icon } = props;
   return (
-    <Box my={3} sx={{ flex: { md: '1 1 0', xs: '1 1 100%' } }}>
-      <Box
-        display='flex'
-        flexDirection='row'
-        alignItems='center'
-        sx={{ color: '#183350' }}
-      >
-        <Icon
+    <Box
+      my={1}
+      sx={{
+        flex: { md: '1 1 0', xs: '1 1 100%' },
+        background: '#fff',
+        border: '1px solid rgba(0,0,0,0.08)',
+        borderRadius: '12px',
+        padding: '20px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '12px',
+        transition: 'box-shadow 0.2s',
+        '&:hover': {
+          boxShadow: '0 4px 16px rgba(24, 51, 80, 0.1)',
+        }
+      }}
+    >
+      <Box display='flex' flexDirection='row' alignItems='center' gap={1.5}>
+        <Box
           sx={{
-            fontSize: '3em',
-            marginRight: '8px',
-            color: 'rgba(8, 32, 62, 1)',
+            width: 44,
+            height: 44,
+            borderRadius: '50%',
+            background: '#EEF2F7',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
           }}
-        />
-        <Typography fontSize='1.5em' fontWeight={600}>{title}</Typography>
+        >
+          <Image
+            src={icon}
+            alt={title}
+            width={26}
+            height={26}
+            style={{ objectFit: 'contain' }}
+          />
+        </Box>
+        <Typography fontSize='1.1em' fontWeight={500} color='#183350'>
+          {title}
+        </Typography>
       </Box>
-      <Typography variant='body2'>{desc}</Typography>
+      <Typography variant='body2' color='text.secondary' lineHeight={1.6}>
+        {desc}
+      </Typography>
     </Box>
   )
 };

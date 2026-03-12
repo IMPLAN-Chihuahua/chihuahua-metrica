@@ -19,15 +19,13 @@ export default function FichaTecnica(props) {
   const { indicador } = props;
   const objetivo = indicador.objetivos[0]
   const CRUMBS = [{
-    text: 'Sistema de Indicadores del PDU2040 Séptima Actualización',
-    href: '/chihuahua-en-datos'
-  }, {
     text: `${objetivo.titulo}`,
     href: `/chihuahua-en-datos/objetivos/${objetivo.id}/indicadores`
   }, {
     text: indicador.nombre
   }];
 
+  console.log(indicador)
   const unidad = indicador?.unidadMedida || "NA";
   const cobertura = indicador?.cobertura || "NA";
 
@@ -52,7 +50,6 @@ export default function FichaTecnica(props) {
           <section>
             <Typography fontStyle='italic' variant='body2'>{indicador.fuente}</Typography>
           </section>
-          {/* TODO: ADD ELI5 SECTION */}
           {
             indicador.formula && (
               <IndicadorPageSection title={indicador.formula.isFormula === 'NO' ? 'Origen de datos' : 'Fórmula'}>

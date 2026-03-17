@@ -112,15 +112,29 @@ const Objetivo = ({ objetivoObject }) => {
 
 const ObjetivosList = ({ objetivos }) => {
     return (
-        <Grid container
-            className={styles.objetivosList}
-        >
-            {objetivos.map((objetivo) => (
-                parseInt(objetivo.indicadoresCount) > 0 && (
-                    <Objetivo key={objetivo.id} objetivoObject={objetivo} />
-                )
-            ))}
-        </Grid>
+        <Box sx={{ width: '100%', mb: 4 }}>
+            <Typography
+                variant="h4"
+                component="h2"
+                fontWeight={600}
+                sx={{
+                    textAlign: 'center',
+                    mb: 8,
+                    color: '#1a202c',
+                    fontFamily: '"Inter", sans-serif'
+                }}
+            >
+                Objetivos Estratégicos del PDU 2040
+            </Typography>
+
+            <Grid container className={styles.objetivosList}>
+                {objetivos.map((objetivo) => (
+                    parseInt(objetivo.indicadoresCount) > 0 && (
+                        <Objetivo key={objetivo.id} objetivoObject={objetivo} />
+                    )
+                ))}
+            </Grid>
+        </Box>
     )
 }
 

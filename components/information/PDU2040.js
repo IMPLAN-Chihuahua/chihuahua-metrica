@@ -15,25 +15,14 @@ const PDU2040 = () => {
                     Sistema de Indicadores del PDU2040 Séptima Actualización
                 </Typography>
                 <Typography variant='body1' fontSize="1.3rem" sx={{ pb: 1 }}>
-                    El Sistema de Indicadores del PDU2040 ofrece a la ciudadanía los datos de los objetivos evaluados en el PDU2040, con el objetivo de monitorear diferentes aspectos de la ciudad de Chihuahua. Los indicadores presentados en este sistema permiten analizar la Infraestructura de Desarrollo, los Entornos Urbanos Consolidados y la Calidad de Vida y Sostenibilidad Ambiental mediante diferentes medios de obtención de datos representados mediante una ficha técnica.
-
+                    El sistema <b>“Chihuahua Métrica”</b> tiene el objetivo de <b>monitorear el avance del Plan de Desarrollo Urbano</b> del centro de población de Chihuahua 2040 (PDU2040), séptima actualización, y está enfocado en medir datos de la escala geográfica de la ciudad de Chihuahua, aunque cuenta con algunos indicadores a escala municipal. Su propósito es ofrecer datos útiles y accesibles sobre el entorno urbano, para la identificación de fortalezas y áreas de mejora en <b>apoyo a la toma de decisiones</b>, y enfocar los esfuerzos donde más se requiera, así como fomentar la <b>transparencia y participación ciudadana</b>.
                 </Typography>
-                <Typography variant='body1' fontSize="1.2rem" sx={{ pb: 1 }}>
-                    Es una herramienta que permite dar seguimiento al avance y cumplimiento de los objetivos del PDU, identificando fortalezas y áreas de mejora, para enfocar esfuerzos donde más se requiera y facilitar la toma de decisiones informadas en la planificación urbana. Sus tres metas principales son: <b>monitorizar el progreso, identificar áreas de mejora y apoyar decisiones estratégicas basadas en información clave.</b>
+                <Typography variant='body1' fontSize="1.3rem" sx={{ pb: 1 }}>
+                    Actualmente el sistema cuenta con <b>más de 80 indicadores</b> que se clasifican en <b>3 objetivos o ejes rectores</b>: Infraestructura de desarrollo, Entornos urbanos consolidados, Calidad de vida y sostenibilidad. A su vez se clasifican en <b>7 temáticas</b>: población, estructura urbana, equipamiento y espacio público, accesibilidad y movilidad, economía, servicios públicos e infraestructura y conservación medioambiental.
                 </Typography>
 
             </Box>
 
-            {/* 
-            <Typography variant='body1' fontWeight={600} sx={{ mb: 3 }}>
-                ¿Te interesa conocer más al respecto? {' '}
-                <Typography variant='body1' component='span' sx={{ color: 'blueviolet', fontWeight: 'bold' }}>
-                    <NextLink href={`/chihuahua-en-datos`} passHref >
-                        <a>¡Revisa esto!</a>
-                    </NextLink>
-                </Typography>
-            </Typography> */}
-            {/* <PrimordialBox /> */}
         </section>
     )
 }

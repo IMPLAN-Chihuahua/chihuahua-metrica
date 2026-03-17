@@ -14,6 +14,10 @@
     height: 10vh;
 }
 
+.card {
+    background-color: red !important;
+}
+
 .title {
     font-family: "Inter", sans-serif !important;
     font-optical-sizing: auto;

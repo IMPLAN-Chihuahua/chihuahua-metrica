@@ -2,12 +2,7 @@ import ObjetivosList from '@components/objetivo/GridObjetivos';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react'
 import style from './information.module.css'
-import AboutIndicadores from './AboutIndicadores';
-import TemasCarousel from '@components/proyecto/TemasCarousel';
-import TemasBook from '@components/proyecto/TemasBook';
-import InteractiveMap from '@components/objetivo/InteractiveMap';
 import InteractiveMapDefinitions from '@components/objetivo/InteractiveMapDefinitions';
-import InteractiveMapTemas from '@components/objetivo/InteractiveMapTemas';
 import NewInteractiveMap from '@components/objetivo/NewInteractiveMap';
 
 const ObjetivosContainer = ({ data }) => {
@@ -26,7 +21,7 @@ const ObjetivosContainer = ({ data }) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
     return (
-        <Box sx={{ mt: 10 }}>
+        <Box sx={{ mt: 2 }}>
             <ObjetivosList objetivos={objetivos} />
             <Container maxWidth='lg'>
                 <Typography
@@ -47,8 +42,7 @@ const ObjetivosContainer = ({ data }) => {
                         lineHeight: 1.6
                     }}
                 >
-                    Explora la integración de los datos municipales con el PDU 2040. Navega por este diagrama para entender cómo cada tema de interés contribuye a los grandes ejes de desarrollo y a los planes sectoriales que rigen nuestra ciudad. Puedes dar clic sobre algun tema para saber más al respecto.
-                </Typography>
+                    Explora la integración de los datos de la ciudad y el municipio con el PDU 2040. Navega por este diagrama para entender cómo cada tema de interés contribuye a los grandes ejes de desarrollo y a los planes sectoriales que rigen nuestra ciudad. Puedes dar clic sobre algún tema para saber más al respecto.                </Typography>
                 <Grid
                     container
                     justifyContent="center"

@@ -56,49 +56,42 @@ const CallToActionButton = styled(Button)(({ theme }) => ({
   borderRadius: 25,
   textTransform: 'none',
   minWidth: '8rem',
+  position: 'relative',
+  zIndex: 2,
   '&:hover': {
     color: theme.palette.getContrastText(grey[200]),
     backgroundColor: grey[200],
   }
 }))
 
-const SlideContent = ({ href, callToActionLabel, title, description, titleWeight, onClick }) => {
-  const router = useRouter();
-
+const SlideContent = ({ preTitle, title, description, titleWeight, callToActionLabel, onClick }) => {
   return (
     <>
-      <Box
-        zIndex={1}
-        className={styles.embla__slide__text}
-      >
-        <Typography
-          variant='h3'
-          fontWeight={titleWeight || 500}
-          style={{ textShadow: '1px 1px 3px black' }}
-          className={styles.embla__slide__title}
-        >
+      <Box zIndex={1} className={styles.embla__slide__text}>
+
+        {/* Antetítulo */}
+        {preTitle && (
+          <Typography variant='overline' sx={{ color: '#90caf9', fontWeight: 600, letterSpacing: 2, lineHeight: 1 }}>
+            {preTitle}
+          </Typography>
+        )}
+
+        {/* Título Principal */}
+        <Typography variant='h3' fontWeight={titleWeight || 700} className={styles.embla__slide__title}>
           {title}
         </Typography>
-        <Typography
-          variant='body1'
-          maxWidth='50em'
-          style={{ textShadow: '1px 1px 3px black' }}
-          className={styles.embla__slide__description}
-        >
-          {description}
-        </Typography>
+
+        {/* Subtítulo / Descripción */}
+        {description && (
+          <Typography variant='h6' sx={{ color: '#e0e0e0', fontWeight: 300, lineHeight: 1.4 }} className={styles.embla__slide__description}>
+            {description}
+          </Typography>
+        )}
+
       </Box>
 
-      <CallToActionButton
-        sx={{ mt: 2 }}
-        onClick={() => {
-          if (onClick instanceof Function) {
-            onClick();
-            return;
-          }
-          router.push(href);
-        }}
-      >
+      {/* Tu botón se queda afuera de la caja para que mantenga su propio estilo */}
+      <CallToActionButton sx={{ mt: 2 }} onClick={onClick}>
         {callToActionLabel || 'Ver más'}
       </CallToActionButton>
     </>
@@ -158,9 +151,10 @@ const EmblaCarousel = () => {
 const PDU20240Slide = () => {
   return (
     <SlideContent
-      titleWeight={600}
-      title='Sistema de indicadores del PDU2040'
-      description={''}
+      preTitle='SÉPTIMA ACTUALIZACIÓN'
+      title='Sistema de Monitoreo PDU 2040'
+      description='Plan de Desarrollo Urbano del centro de población de Chihuahua.'
+      titleWeight={400}
       callToActionLabel='Saber más'
       onClick={() => {
         const elem = document.getElementById('PDU2040-section')
@@ -173,7 +167,6 @@ const PDU20240Slide = () => {
     />
   )
 }
-
 
 const ChihuahuaMetricaSlide = () => {
   const [open, setOpen] = useState(false)

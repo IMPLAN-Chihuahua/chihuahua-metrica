@@ -95,7 +95,8 @@
 @media (max-width: 768px) {
     .card {
         width: 80%;
-        height: 36vh;
+        min-height: 36vh;
+        height: auto;
         margin-top: 3vh;
     }
 
@@ -106,6 +107,10 @@
         justify-content: flex-end;
         align-items: center;
         padding: 0.5rem;
+        padding-right: 85px;
+        /* Empuja el texto a la izquierda para que no choque con el ícono de 80px */
+        min-height: 85px;
+        /* Asegura que la tarjeta baje lo suficiente para que quepa el ícono */
         border-radius: 0 0 0 0.5rem;
         width: 100%;
     }
@@ -122,6 +127,8 @@
     .cardShortDescription {
         padding-top: 0.3rem;
         font-size: 1em !important;
+        margin-bottom: 1rem;
+        /* Un poco de respiro antes de los indicadores */
     }
 }
 

@@ -26,7 +26,6 @@ const objetivosConfig = [
     }
 ]
 
-
 import styles from './PDU2040.module.css'
 
 const Objetivo = ({ objetivoObject }) => {
@@ -41,10 +40,15 @@ const Objetivo = ({ objetivoObject }) => {
         <Grid item xs={12} md={6} lg={4} className={styles.objetivoGridItem}>
             <Card
                 sx={{
+                    // Aquí agregamos '15' al final del hex para darle un 15% de opacidad.
+                    // Esto crea un fondo en tono pastel del color original.
+                    backgroundColor: `${config.color}15`,
                     boxShadow: isHover ? '0px 0px 20px 0px rgba(0,0,0,0.6)' : '0px 0px 10px 0px rgba(0,0,0,0.3)',
                     display: 'flex',
                     flexDirection: 'column',
-                    height: '100%'
+                    height: '100%',
+                    // Opcional: una transición suave para el hover
+                    transition: 'box-shadow 0.3s ease-in-out'
                 }}
                 className={styles.card}
                 onMouseEnter={() => setHover(true)}
@@ -70,6 +74,7 @@ const Objetivo = ({ objetivoObject }) => {
                                 padding: '0 !important'
                             }}
                         >
+                            {/* Mantenemos la barra superior sólida para dar un acento fuerte */}
                             <Box sx={{ backgroundColor: config.color, height: '10px', width: '100%', flexShrink: 0 }}></Box>
 
                             <Box sx={{
@@ -78,6 +83,7 @@ const Objetivo = ({ objetivoObject }) => {
                                 flexDirection: 'column',
                                 flex: 1
                             }}>
+                                {/* Los textos se mantienen en sus colores originales (oscuros) */}
                                 <Typography variant='h5' component='h5' fontWeight={500} className={styles.cardHeader}>
                                     {config.title}
                                 </Typography>
@@ -127,7 +133,7 @@ const ObjetivosList = ({ objetivos }) => {
                 Objetivos Estratégicos del PDU 2040
             </Typography>
 
-            <Grid container className={styles.objetivosList}>
+            <Grid container spacing={3} className={styles.objetivosList}> {/* Añadí spacing(3) para separar un poco las tarjetas si no lo tenías en tu CSS */}
                 {objetivos.map((objetivo) => (
                     parseInt(objetivo.indicadoresCount) > 0 && (
                         <Objetivo key={objetivo.id} objetivoObject={objetivo} />

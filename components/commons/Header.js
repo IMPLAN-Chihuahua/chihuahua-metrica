@@ -17,7 +17,7 @@ const navLinks = [
   { title: 'Inicio', path: '/', cssName: 'inicio' },
   { title: 'Conócenos', path: '/conocenos', cssName: 'conocenos' },
   { title: 'Contacto', path: '/contacto', cssName: 'contacto' },
-  { title: 'Manual de usuario', path: 'https://view.genially.com/691e2306f1e1e7523249333e/interactive-content-manual-usuario', cssName: 'manual' },
+  { title: 'Manual de usuario', path: 'https://view.genially.com/691e2306f1e1e7523249333e/interactive-content-manual-usuario', cssName: 'manual', target: '_blank' },
 ]
 
 const Header = () => {
@@ -41,59 +41,47 @@ const Header = () => {
     <>
       <AppBar position="fixed" elevation={0} className={`${style.appbar}`}>
         <Grid container direction='column'>
-          {
-            pathname === '/' ?
-              (
-                null
-              )
-              :
-              <>
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    height: '100%',
-                    display: { xs: 'flex', lg: 'none' },
-                    alignItems: 'center',
-                    ml: 2,
-                  }}>
-                  <IconButton onClick={() => router.back()}>
-                    <ArrowBackIosNew fontSize='large' htmlColor='white' />
-                  </IconButton>
-                </Box>
-                <Grid item flexGrow={1} className={
-                  `${style.navbarCentered} ${style.scrolledDown}
-                    ${(pathname === '/arbolado-urbano' || pathname === '/arbolado-urbano/catalogo')
-                    ? style.arboladoHeader : ''}
-                  `
-                } md={2}>
-                  <NextLink href='/'>
-                    <a>
-                      <Image src='/logo_2026_white.png' width={210} height={60} objectFit='contain' alt="small Logo" />
-                    </a>
-                  </NextLink>
 
-                </Grid>
-              </>
-          }
-          {
-            pathname === '/' &&
-            <Grid
-              item
-              xs
-              justifyContent='flex-end'
-              className={`${style.navbarCentered} ${style.navbarMenu} ${style.scrolledDown}`}
-            >
-              {
-                <NextLink href='/'>
-                  <a>
-                    <Image src='/logo_2026_white.png' width={210} height={60} objectFit='contain' alt="small Logo" />
-                  </a>
-                </NextLink>
-              }
-              <Navbar navLinks={navLinks} />
-              <SideBar navLinks={navLinks} />
-            </Grid>
-          }
+          {/* Botón de retroceso: Solo aparece si NO estás en el Inicio ('/') */}
+          {pathname !== '/' && (
+            <Box
+              sx={{
+                position: 'absolute',
+                height: '100%',
+                display: { xs: 'flex', lg: 'none' },
+                alignItems: 'center',
+                ml: 2,
+                zIndex: 10 // Agregamos zIndex por si choca con el logo en pantallas pequeñas
+              }}>
+              <IconButton onClick={() => router.back()}>
+                <ArrowBackIosNew fontSize='large' htmlColor='white' />
+              </IconButton>
+            </Box>
+          )}
+
+          {/* Menú Principal: AHORA SE MUESTRA SIEMPRE */}
+          <Grid
+            item
+            xs
+            justifyContent='flex-end'
+            className={`
+              ${style.navbarCentered} 
+              ${style.navbarMenu} 
+              ${style.scrolledDown} 
+              ${(pathname === '/arbolado-urbano' || pathname === '/arbolado-urbano/catalogo') ? style.arboladoHeader : ''}
+            `}
+          >
+            <NextLink href='/'>
+              <a>
+                <Image src='/logo_2026_white.png' width={210} height={60} objectFit='contain' alt="small Logo" />
+              </a>
+            </NextLink>
+
+            {/* Estos dos componentes antes estaban ocultos en otras rutas */}
+            <Navbar navLinks={navLinks} />
+            <SideBar navLinks={navLinks} />
+          </Grid>
+
         </Grid>
       </AppBar>
 

@@ -5,15 +5,30 @@ import NextLink from 'next/link';
 import style from '../../styles/dropdown.module.css'
 import { useState, useEffect } from "react";
 
-const NavLink = ({ title, path, cssName }) => {
+const NavLink = ({ title, path, cssName, target }) => {
+  const isExternal = path.startsWith('http');
+
+  if (isExternal) {
+    return (
+      <a
+        href={path}
+        target={target || '_blank'}
+        rel="noopener noreferrer"
+        className={style.navlink}
+      >
+        {title}
+      </a>
+    );
+  }
+
   return (
-    <NextLink href={path} passHref >
+    <NextLink href={path} passHref>
       <a className={style.navlink}>
         {title}
       </a>
     </NextLink>
   );
-}
+};
 
 const Navbar = ({ navLinks }) => {
 
@@ -45,12 +60,14 @@ const Navbar = ({ navLinks }) => {
             className={`${style.navbar} ${scrollPosition > 100 ? style.scrolledDown : style.scrolledUp}`}
           >
             {navLinks.map(
-              ({ title, path, cssName }, i) => (
+              ({ title, path, cssName, target }, i) => (
                 <NavLink
                   title={title}
                   path={path}
                   cssName={cssName}
-                  key={i} />
+                  target={target}
+                  key={i}
+                />
               )
             )}
           </Stack>

@@ -40,15 +40,12 @@ const Objetivo = ({ objetivoObject }) => {
         <Grid item xs={12} md={6} lg={4} className={styles.objetivoGridItem}>
             <Card
                 sx={{
-                    // Aquí agregamos '15' al final del hex para darle un 15% de opacidad.
-                    // Esto crea un fondo en tono pastel del color original.
-                    backgroundColor: `${config.color}15`,
+                    backgroundColor: config.color, // Fondo del color de la configuración
+                    color: '#ffffff', // Forzamos el texto base a blanco
                     boxShadow: isHover ? '0px 0px 20px 0px rgba(0,0,0,0.6)' : '0px 0px 10px 0px rgba(0,0,0,0.3)',
                     display: 'flex',
                     flexDirection: 'column',
-                    height: '100%',
-                    // Opcional: una transición suave para el hover
-                    transition: 'box-shadow 0.3s ease-in-out'
+                    height: '100%'
                 }}
                 className={styles.card}
                 onMouseEnter={() => setHover(true)}
@@ -74,8 +71,8 @@ const Objetivo = ({ objetivoObject }) => {
                                 padding: '0 !important'
                             }}
                         >
-                            {/* Mantenemos la barra superior sólida para dar un acento fuerte */}
-                            <Box sx={{ backgroundColor: config.color, height: '10px', width: '100%', flexShrink: 0 }}></Box>
+                            {/* Barra superior ahora es blanca para contrastar */}
+                            <Box sx={{ backgroundColor: '#ffffff', height: '10px', width: '100%', flexShrink: 0 }}></Box>
 
                             <Box sx={{
                                 padding: 1,
@@ -83,11 +80,11 @@ const Objetivo = ({ objetivoObject }) => {
                                 flexDirection: 'column',
                                 flex: 1
                             }}>
-                                {/* Los textos se mantienen en sus colores originales (oscuros) */}
-                                <Typography variant='h5' component='h5' fontWeight={500} className={styles.cardHeader}>
+                                {/* Textos explícitamente blancos por si acaso tus clases CSS los sobreescriben */}
+                                <Typography variant='h5' component='h5' fontWeight={500} sx={{ color: '#ffffff' }}>
                                     {config.title}
                                 </Typography>
-                                <Typography variant='body1' component='h3' className={styles.cardShortDescription}>
+                                <Typography variant='body1' component='h3' className={styles.cardShortDescription} sx={{ color: '#ffffff' }}>
                                     {config.shortDescription}
                                 </Typography>
 
@@ -96,15 +93,17 @@ const Objetivo = ({ objetivoObject }) => {
                                     marginTop: 'auto'
                                 }}>
                                     <Box className={styles.indicadorBox}>
-                                        <Typography color={config.color} variant='h2' fontWeight={600} className={styles.indicadorCounter}>
+                                        {/* Quitamos color={config.color} y lo pasamos a blanco */}
+                                        <Typography sx={{ color: '#ffffff' }} variant='h2' fontWeight={600} className={styles.indicadorCounter}>
                                             {indicadoresCount}
                                         </Typography>
-                                        <Typography variant='body1' fontWeight={420} className={styles.indicadorQuantity} color={config.color}>
+                                        <Typography sx={{ color: '#ffffff' }} variant='body1' fontWeight={420} className={styles.indicadorQuantity}>
                                             Indicadores disponibles
                                         </Typography>
                                     </Box>
                                     <Box sx={{ position: 'absolute', right: 0, bottom: 0 }}>
-                                        <IconComponent color={config.color} size={80} />
+                                        {/* El icono también lo pasamos a blanco */}
+                                        <IconComponent color="#ffffff" size={80} />
                                     </Box>
                                 </Box>
                             </Box>
@@ -133,7 +132,7 @@ const ObjetivosList = ({ objetivos }) => {
                 Objetivos Estratégicos del PDU 2040
             </Typography>
 
-            <Grid container spacing={3} className={styles.objetivosList}> {/* Añadí spacing(3) para separar un poco las tarjetas si no lo tenías en tu CSS */}
+            <Grid container spacing={3} className={styles.objetivosList}> {/* Añadí un poco de spacing(3) por si lo necesitas */}
                 {objetivos.map((objetivo) => (
                     parseInt(objetivo.indicadoresCount) > 0 && (
                         <Objetivo key={objetivo.id} objetivoObject={objetivo} />

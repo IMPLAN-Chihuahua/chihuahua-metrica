@@ -74,18 +74,10 @@ export default function Tema(props) {
           <FormProvider {...methods}>
             <Box sx={{ display: 'flex', mb: 3 }}>
               <SearchBar setSearch={setSearch} />
-              <ToggleButton
-                value='cheked'
-                selected={open}
-                onChange={() => setOpen(old => !old)}
-                sx={{ ml: 3 }}
-              >
-                <FilterAlt />
-              </ToggleButton>
-            </Box>
-            <Collapse in={open}>
-              <IndicadoresFilter />
-            </Collapse>
+
+              <Collapse in={open}>
+                <IndicadoresFilter />
+              </Collapse>
           </FormProvider>
           {
             isLoading ? (

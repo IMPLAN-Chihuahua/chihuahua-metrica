@@ -87,14 +87,6 @@ const Indicadores = (props) => {
                     <FormProvider {...methods}>
                         <Box sx={{ display: 'flex', mb: 1 }}>
                             <SearchBar setSearch={setSearchQuery} />
-                            <ToggleButton
-                                value='cheked'
-                                selected={open}
-                                onChange={() => setOpen(old => !old)}
-                                sx={{ ml: 3 }}
-                            >
-                                <FilterAlt />
-                            </ToggleButton>
                         </Box>
                         <Collapse in={open} >
                             <IndicadoresFilter />
@@ -209,7 +201,7 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
                 my={{ xs: 1, md: 3 }}
                 spacing={4}
                 justifyContent='space-around'
-                alignItems='center'  // <--- CAMBIO CLAVE: Esto centra verticalmente todo
+                alignItems='center'
             >
                 {/* --- SECCIÓN DE IMAGEN --- */}
                 <Box
@@ -218,7 +210,6 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
                         maxWidth: 600,
                         height: 300,
                         position: 'relative',
-                        // alignSelf borrado para que obedezca al padre y se centre
                         backgroundColor: '#f5f5f5',
                         border: '1px solid #e0e0e0',
                         borderRadius: '12px',
@@ -246,7 +237,6 @@ export const IndicadoresPageHeader = ({ titulo, Nav, Breadcrumbs, urlImagen, des
                             objectFit='cover'
                             priority
                         />
-                        {/* Gradiente opcional sobre la imagen */}
                         <Box sx={{
                             position: 'absolute',
                             bottom: 0,
